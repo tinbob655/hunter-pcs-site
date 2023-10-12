@@ -1,0 +1,157 @@
+body {
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+
+    opacity: 0.0;
+    visibility: hidden;
+    transition-property: opacity;
+    transition-duration: 1s;
+}
+
+h1 {
+    color: white;
+    font-family: 'Akatab';
+    font-weight: 900;
+    font-size: 70px;
+}
+
+h2 {
+    color: #f2e1ee;
+    font-family: 'Overpass';
+    font-weight: 800;
+    font-size: 50px;
+
+    &.linkButtonTitle {
+        margin-left: 1px;
+        margin-right: 0;
+        width: 50%;
+        transition-property: margin-left margin-right;
+        transition-duration: 0.75s;
+    }
+}
+
+h3 {
+    color: #bd9bb4;
+    font-family: 'Albert Sans';
+    font-weight: 200;
+    font-size: 25px;
+    text-decoration: none;
+
+    transition-property: transform;
+    transition-duration: 0.5s;
+
+    &:hover {
+        transform: scale(1.5);
+    }
+}
+
+p {
+    color: #d9ccd5;
+    font-family: 'Albert Sans';
+    font-weight: 100;
+    font-size: 20px;
+}
+
+h1, h2, h3, p {
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    opacity: 1.0;
+    background-color: transparent;
+    padding: 20px;
+    margin: auto;
+    width: 100%;
+    border: none;
+
+    &.linkButton {
+        width: 75% !important;
+        margin: 50px !important;
+        padding-bottom: 25px;
+        border-radius: 10px;
+        overflow-x: hidden;
+
+        background-color: rgba(50, 50, 50, .25);
+        box-shadow: 0 0 100px 1px #050505;
+
+        transition-duration: 0.75s;
+        transition-property: max-height background-color box-shadow;
+        transition-timing-function: ease-out;
+        max-height: 200px;
+        overflow-y: hidden;
+        
+        &.expanded {
+            max-height: 500px;
+            background-color: #1a1619;
+            box-shadow: 0 0 50px 1px #1a1619;
+        }
+    }
+}
+
+div {
+    margin: none auto;
+    padding: none;
+    border: none;
+    display: block;
+
+    &.hiddenScroll {
+        overflow-y: hidden;
+    }
+
+    &.withBackgroundImage {
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    &.purpleGrey {
+        $backgroundColor: #30112c;
+        background-color: $backgroundColor;
+        box-shadow: 0 0 10000px 200px $backgroundColor;
+    }
+
+    &.linkButtonDivider {
+        background-color: #70666d;
+        height: 1px;
+        width: 10%;
+        border-radius: 50%;
+        margin: auto auto 50px auto;
+        transition-property: transform opacity;
+        transition-duration: 0.5s;
+        opacity: 0.0;
+    }
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+
+    &.centered {
+        margin: auto;
+    }
+
+    &.linkButtonImage {
+        margin-top: 20px;
+    }
+}
+
+table {
+    table-layout: fixed;
+}
+
+.rounded {
+    display: block;
+    border-radius: 50%;
+}
