@@ -16,11 +16,11 @@ class Home extends Component {
                     <table>
                         <thead>
                             <tr>
-                                <td>
+                                <td style={{width: '60%'}}>
                                     <img src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Falt%20Logo.jpg?alt=media&token=83dd8d5d-16ec-4f74-bb00-0fb407d8e659"
                                     style={{width: '50vw', height: '50vw', marginLeft: '7.5%', marginRight: 'unset', boxShadow: '0 0 50px 5px #222222', borderRadius: '10px'}}/>
                                 </td>
-                                <td>
+                                <td style={{paddingRight: '5%'}}>
                                     <h2 style={{marginRight: '1%', textAlign: 'right'}}>
                                         Packing a serious punch
                                     </h2>
@@ -129,16 +129,82 @@ class Home extends Component {
                     <h1>
                         Play your favourite titles
                     </h1>
-                    <p>
-                    contentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontentcontent
-                    </p>
-                    <h2>
-                        INSET VIDEO OF GAMEPLAY HERE
-                    </h2>
+                    {this.getVideos()}
                 </div>
 
             </React.Fragment>
         );
+    };
+
+    getVideos() {
+        let videoHTML = [];
+        const videoURLs = ['https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/gameplayVideos%2Fgta%2Fgta%20test%20video.mp4?alt=media&token=527af84b-9499-492b-9078-918ace4e5357',
+    'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/gameplayVideos%2Fgta%2Fgta%20test%20video.mp4?alt=media&token=527af84b-9499-492b-9078-918ace4e5357',];
+        const videoTitles = ['GTA_TEST', 'GTA_TEST_2'];
+
+        function getVideo(url, onRight) {
+            return (
+                <React.Fragment>
+                    <video loading="lazy" autoPlay loop className={onRight == true ? "videoInGallery onRight " : "videoInGallery onLeft "}>
+                        <source src={url} type="video/mp4"/>
+                    </video>
+                </React.Fragment>
+            )
+    
+        };
+
+        //repeat for each video
+        for (let i = 0; i < videoURLs.length; i = i + 2) {
+            let video = videoURLs[i];
+            //skip so that only every 2 cells are repeated
+            if (videoURLs.indexOf(video) % 2 == 0) {
+    
+                //render the HTML
+                //NOTE: AN EVEN LENGTH OF VIDEOS MUST BE SUPPLISED OR ELSE DOOM
+                videoHTML.push(
+                    <React.Fragment>
+                        <table style={{marginTop: '2vh'}}>
+                            <thead>
+                                <tr>
+                                    {/*FIRST CELL, FIRST ROW*/}
+                                    <td style={{width: '75%'}}>
+                                        {getVideo(video, false)}
+                                    </td>
+    
+                                    {/*SECOND CELL, FIRST ROW*/}
+                                    <td>
+                                        <h2>
+                                            {videoTitles[videoURLs.indexOf(video)]}
+                                        </h2>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+    
+                        <table style={{marginTop: '5vh'}}>
+                            <thead>
+                                <tr>
+                                    {/*FIST CELL, SECOND ROW*/}
+                                    <td style={{width: '25%'}}>
+                                        <h2>
+                                            {videoTitles[videoURLs.indexOf(video) + 1]}
+                                        </h2>
+                                    </td>
+    
+                                    {/*SECOND CELL, SECOND ROW*/}
+                                    <td style={{width: '75%'}}>
+                                        {getVideo(videoURLs[videoURLs.indexOf(video) +1], true)}
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </React.Fragment>
+                );
+            };
+        };
+
+        //return the HTML to the main script
+        return videoHTML;
     };
 };
 
