@@ -23,8 +23,6 @@ function getFromFirebase(path) {
     });
 };
 
-getFromFirebase('images/rounded skull 2.jpeg');
-
 //function to change the displayed page
 export function changePage(newPage) {
   sessionStorage.setItem('currentPage', newPage);
