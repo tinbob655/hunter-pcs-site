@@ -12,5 +12,5 @@ export function firebaseInit() {
     };
     
     // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
+    initializeApp(firebaseConfig);
 };
