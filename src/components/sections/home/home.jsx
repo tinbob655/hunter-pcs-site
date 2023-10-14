@@ -117,14 +117,14 @@ class Home extends Component {
 
                                 <td style={{width: '50%'}}>
                                 <img src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%202.jpeg?alt=media&token=c9e0128f-15ca-4595-bc92-15618109e0de" 
-                                    style={{width: '85%', boxShadow: '0 0 50px 5px #070707', borderRadius: '10px'}} />
+                                    style={{width: '85%'}} className="mainImage"/>
                                 </td>
                             </tr>
                         </thead>
                     </table>
                 </div>
 
-                {/*VIDEOS FROM PCS SECION*/}
+                {/*VIDEOS FROM PCS SECTION*/}
                 <div>
                     <h1>
                         Play your favourite titles
@@ -132,6 +132,46 @@ class Home extends Component {
                     {this.getVideos()}
                 </div>
 
+                {/*DESIGN YOUR OWN PC SECTION*/}
+                <div className="purpleGrey" style={{ marginTop: '15vh'}}>
+                    <h1 className="alignRight">
+                        Design your own, custom build
+                    </h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>
+                                    <p className="alignLeft">
+                                        Need that specific pc you've always wanted? Well you're in luck: here at Hunter Pcs, you can design your own cusom pc
+                                         and have one of our experts assemble it for you. We'll even deliver it straight to your door as well
+                                    </p>
+                                    <button type="button" onClick={function() {changePage('customPcs')}}>
+                                        <h3>
+                                            Design your dream pc ⟶
+                                        </h3>
+                                    </button>
+                                </td>
+                                <td style={{width: '50%'}}>
+                                    <img src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8"
+                                    className="mainImage" style={{marginRight: 'auto', width: '65%', marginLeft: '10%'}} />
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                {/*HANDCRAFTED BY EXPERTS SECTION*/}
+                <div>
+                    <h1 className="alignLeft">
+                        Hand-crafted by experts
+                    </h1>
+                    <p className="alignRight">
+                        Here at Hunter Pcs we're committed to quality: each and every one of our gaming pcs is crafted by hand. And not just that,
+                         our trained experts test all of the pcs they make to ensure that you get the best performance out of your build.
+                    </p>
+                    <img style={{width: '75%'}} className="mainImage centered"
+                     src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull.jpeg?alt=media&token=18ff9c55-6983-4275-a879-98d672380c6d" />
+                </div>
             </React.Fragment>
         );
     };
