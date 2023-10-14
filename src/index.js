@@ -77,7 +77,7 @@ root.render(
       <Header/>
     </div>
 
-    <div id="content">
+    <div id="content" style={{marginTop: '100px'}}>
       <Content/>
     </div>
 
