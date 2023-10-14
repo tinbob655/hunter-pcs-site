@@ -186,6 +186,17 @@ img {
 table {
     table-layout: fixed;
     width: 100%;
+
+    &.fadeinWithHover {
+        opacity: 0.75;
+
+        transition-property: opacity;
+        transition-duration: 0.5s;
+
+        &:hover {
+            opacity: 1.0;
+        }
+    }
 }
 
 video {

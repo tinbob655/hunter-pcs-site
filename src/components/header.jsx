@@ -6,7 +6,7 @@ class Header extends Component {
     render() {
         return (
             <React.Fragment>
-                <table style={{backgroundColor: '#070707', boxShadow: '0 0 5px 5px #070707', position: 'absolute', top: '0', left: '0', zIndex: '99'}}>
+                <table style={{backgroundColor: '#070707', boxShadow: '0 0 5px 5px #070707', position: 'fixed', top: '0', left: '0', zIndex: '99'}} className="fadeinWithHover">
                     <thead>
                         <tr>
                             {this.getHeaders()}
