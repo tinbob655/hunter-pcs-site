@@ -21,7 +21,7 @@ class PcsMain extends Component {
                                 </td>
                                 <td>
                                     <h2 className="alignRight">
-                                        Make your dream setup
+                                        Design your dream setup
                                     </h2>
                                     <p className="alignLeft">
                                         We sell pcs ranging from the highest performing to the most budget effective. Whatever your needs, satisfy them here
