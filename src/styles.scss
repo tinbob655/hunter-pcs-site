@@ -194,7 +194,7 @@ table {
         transition-duration: 0.5s;
 
         &:hover {
-            opacity: 1.0;
+            opacity: 1.0 !important;
         }
     }
 }
