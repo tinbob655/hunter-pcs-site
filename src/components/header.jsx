@@ -12,7 +12,9 @@ class Header extends Component {
             else{
                 header.style.opacity = 0.75;
             }
-        })
+        });
+
+        window.onload = () => {document.getElementById('headerTable').style.opacity = 1.0;}
         return (
             <React.Fragment>
                 <table style={{backgroundColor: '#070707', boxShadow: '0 0 5px 5px #070707', position: 'fixed', top: '0', left: '0', zIndex: '99'}} 
