@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { changePage } from '../../../index.js';
 import { buttonExpand } from '../../../index.js';
+import SlidingButton from '../../slidingButton.jsx';
 
 class Home extends Component {
 
@@ -50,46 +51,33 @@ class Home extends Component {
                     <table style={{width: '100%'}}>
                         <thead>
                             <tr>
-                                
+
                                 {/*GAMING PCS BUTTON*/}
                                 <td style={{width: '33.3%'}}>
-                                    <button id="gamingPcsbutton" onClick={function() {changePage('pcsMain')}} type="button" className="linkButton"
-                                    onMouseOver={function() {buttonExpand('gamingPcs')}}>
-                                        <h2 id="gamingPcstitle" className="linkButtonTitle">
-                                            Gaming
-                                        </h2>
-                                        <div className="linkButtonDivider" id="gamingPcsdivider"></div>
-                                        <img src={'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8'}
-                                        style={{width: '25%', height: 'auto'}} className="centered"/>
-                                    </button>
+                                    <SlidingButton 
+                                    id="gamingPcs"
+                                    imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8'
+                                    linkLocation='pcsMain'
+                                    textContent='Gaming' />
                                 </td>
 
                                 {/*PREBULIT PCS BUTTON*/}
                                 <td style={{width: '33.3%'}}>
-                                    <button id="pre-builtbutton" onClick={function() {changePage('preBuiltPcs')}} type="button" className="linkButton"
-                                        onMouseOver={function() {buttonExpand('pre-built')}}>
-                                        <h2 id="pre-builttitle" className="linkButtonTitle">
-                                            Prebuilt
-                                        </h2>
-                                        <div className="linkButtonDivider" id="pre-builtdivider"></div>
-                                        <img src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frainbow%20pc.png?alt=media&token=0e548201-b1c6-4ea6-8efb-bea42aea9bdb"
-                                        style={{width: '30%', height: 'auto'}} className="centered"/>
-                                    </button>
+                                    <SlidingButton
+                                    id="preBuilt"
+                                    imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frainbow%20pc.png?alt=media&token=0e548201-b1c6-4ea6-8efb-bea42aea9bdb'
+                                    linkLocation='preBuiltPcs'
+                                    textContent='Prebuilt' />
                                 </td>
 
                                 {/*CUSTOM PCS BUTTON*/}
                                 <td style={{width: '33.3%'}}>
-                                    <button id="custombutton" onClick={function() {changePage('customPcs')}} type="button" className="linkButton"
-                                    onMouseOver={function() {buttonExpand('custom')}}>
-                                        <h2 id="customtitle" className="linkButtonTitle">
-                                            Custom
-                                        </h2>
-                                        <div className="linkButtonDivider" id="customdivider"></div>
-                                        <img src={'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fstock%20pc%20parts.png?alt=media&token=f920a622-e3cc-4e59-9df1-ee6cf27c9c7b'}
-                                        style={{width: '35%', height: 'auto'}} className="centered"/>
-                                    </button>
+                                    <SlidingButton 
+                                    id="custom"
+                                    imgSrc="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fstock%20pc%20parts.png?alt=media&token=f920a622-e3cc-4e59-9df1-ee6cf27c9c7b"
+                                    linkLocation='customPcs'
+                                    textContent='Custom' />
                                 </td>
-
                             </tr>
                         </thead>
                     </table>
