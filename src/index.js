@@ -2,15 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles.scss';
 
-import { firebaseInit } from './firebase.js';
 import {getStorage, ref, getDownloadURL} from 'firebase/storage';
 
 import Header from './components/header.jsx';
 import Content from './components/content.jsx';
 import Footer from './components/footer.jsx';
 
-//start firebase
-firebaseInit()
 
 //DEV FUNCTION to get firebase url
 function getFromFirebase(path) {
