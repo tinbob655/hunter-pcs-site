@@ -4,9 +4,19 @@ import { changePage } from '../index.js';
 class Header extends Component {
 
     render() {
+        document.addEventListener("scroll", (event) => {
+            const header = document.getElementById('headerTable');
+            if (window.scrollY == 0) {
+                header.style.opacity = 1.0;
+            }
+            else{
+                header.style.opacity = 0.75;
+            }
+        })
         return (
             <React.Fragment>
-                <table style={{backgroundColor: '#070707', boxShadow: '0 0 5px 5px #070707', position: 'fixed', top: '0', left: '0', zIndex: '99'}} className="fadeinWithHover">
+                <table style={{backgroundColor: '#070707', boxShadow: '0 0 5px 5px #070707', position: 'fixed', top: '0', left: '0', zIndex: '99'}} 
+                className="fadeinWithHover" id="headerTable" >
                     <thead>
                         <tr>
                             {this.getHeaders()}
