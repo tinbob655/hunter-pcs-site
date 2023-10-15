@@ -71,7 +71,7 @@ class Header extends Component {
 
         let headersHTML = [];
         const frontendHeaders = ['Gaming Pcs', 'Home', 'About', 'Support', 'Tell a Friend', 'Basket', 'Account']
-        const backendHeaders = ['gamingPcs', 'home', 'about', 'support', 'referAFriend', 'basket', 'account'];
+        const backendHeaders = ['pcsMain', 'home', 'about', 'support', 'referAFriend', 'basket', 'account'];
 
         frontendHeaders.forEach((header) => {
             headersHTML.push(
