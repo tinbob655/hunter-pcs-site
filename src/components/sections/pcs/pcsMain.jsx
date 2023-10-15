@@ -1,9 +1,46 @@
 import React, {Component} from 'react';
 import SlidingButton from '../../slidingButton.jsx';
+import {doc, getDoc} from 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore';
+import { firebaseInit } from '../../../firebase.js';
 
-//TASK: GET CURRENCY CONVERSIONS WORKING
+firebaseInit();
 
 class PcsMain extends Component {
+
+    constructor (props) {
+        super(props);
+
+        this.state = {
+            prices: {
+            },
+        };
+    };
+
+    async componentDidMount() {
+
+        //fetch all the prices from database
+        let fetchedPrices = [];
+        const pcTypes = ['solidPc', 'strongPc', 'powerfulPc', 'dominantPc'];
+
+        //repeat for each product
+        for (let pc = 0; pc < pcTypes.length; pc++) {
+            const database = getFirestore();
+            let docRef = doc(database, 'products', pcTypes[pc]);
+            let docSnap = await getDoc(docRef);
+
+            //append the fetched price to the array of prices
+            fetchedPrices.push(docSnap.data().price)
+        };
+
+        //now add the fetched prices to state
+        this.setState({prices: {
+            solid: fetchedPrices[0],
+            strong: fetchedPrices[1],
+            powerful: fetchedPrices[2],
+            dominant: fetchedPrices[3],
+        }});
+    };
 
     render() {
         return (
@@ -45,7 +82,11 @@ class PcsMain extends Component {
                                     id="solidPcsButton"
                                     imgSrc=""
                                     linkLocation=""
-                                    textContent="Solid £000" />
+                                    textContent={this.state.prices.solid ? (
+                                        <React.Fragment>
+                                            Solid <br/><br/>{"£ "+this.state.prices.solid}
+                                        </React.Fragment>
+                                    ) : 'loading...'} />
                                 </td>
 
                                 {/*LOW MID RANGE PC BUTTON*/}
@@ -54,8 +95,18 @@ class PcsMain extends Component {
                                     id="strongPcsButton"
                                     imgSrc=""
                                     linkLocation=""
-                                    textContent="Strong £000" />
+                                    textContent={this.state.prices.strong ? (
+                                        <React.Fragment>
+                                            Strong <br/><br/>{"£ "+this.state.prices.strong}
+                                        </React.Fragment>
+                                    ) : 'loading...'} />
                                 </td>
+                            </tr>
+                        </thead>
+                    </table>
+                    <table>
+                        <thead>
+                            <tr>
 
                                 {/*UPPER MID RANGE PC BUTTON*/}
                                 <td>
@@ -63,7 +114,11 @@ class PcsMain extends Component {
                                     id="powerfulPcsButton"
                                     imgSrc=""
                                     linkLocation=""
-                                    textContent="Powerful £000" />
+                                    textContent={this.state.prices.powerful ? (
+                                        <React.Fragment>
+                                            Powerful <br/><br/>{"£ "+this.state.prices.powerful}
+                                        </React.Fragment>
+                                    ) : 'loading...'} />
                                 </td>
 
                                 {/*ALL OUT PC BUTTON*/}
@@ -72,7 +127,11 @@ class PcsMain extends Component {
                                     id="dominantPcsButton"
                                     imgSrc=""
                                     linkLocation=""
-                                    textContent="Dominant £000" />
+                                    textContent={this.state.prices.dominant ? (
+                                        <React.Fragment>
+                                            Dominant <br/><br/>{"£ "+this.state.prices.dominant}
+                                        </React.Fragment>
+                                    ) : 'loading...'} />
                                 </td>
                             </tr>
                         </thead>
