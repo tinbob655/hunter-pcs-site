@@ -81,7 +81,9 @@ class PcsMain extends Component {
                                     <SlidingButton 
                                     id="solidPcsButton"
                                     imgSrc=""
-                                    linkLocation=""
+                                    linkLocation="productPage"
+                                    product={{frontendName: 'Solid Pc', backendName: 'solidPc'}}
+                                    productImageSrc=''
                                     textContent={this.state.prices.solid ? (
                                         <React.Fragment>
                                             Solid <br/><br/>{"£ "+this.state.prices.solid}
@@ -94,7 +96,9 @@ class PcsMain extends Component {
                                     <SlidingButton 
                                     id="strongPcsButton"
                                     imgSrc=""
-                                    linkLocation=""
+                                    linkLocation="productPage"
+                                    product={{frontendName: 'Strong Pc', backendName: 'strongPc'}}
+                                    productImageSrc=""
                                     textContent={this.state.prices.strong ? (
                                         <React.Fragment>
                                             Strong <br/><br/>{"£ "+this.state.prices.strong}
@@ -113,7 +117,9 @@ class PcsMain extends Component {
                                     <SlidingButton 
                                     id="powerfulPcsButton"
                                     imgSrc=""
-                                    linkLocation=""
+                                    linkLocation="productPage"
+                                    product={{frontendName: 'Powerful Pc', backendName: 'powerfulPc'}}
+                                    productImageSrc=''
                                     textContent={this.state.prices.powerful ? (
                                         <React.Fragment>
                                             Powerful <br/><br/>{"£ "+this.state.prices.powerful}
@@ -126,7 +132,9 @@ class PcsMain extends Component {
                                     <SlidingButton 
                                     id="dominantPcsButton"
                                     imgSrc=""
-                                    linkLocation=""
+                                    linkLocation="productPage"
+                                    product={{frontendName: 'Dominant Pc', backendName: 'dominantPc'}}
+                                    productImageSrc=''
                                     textContent={this.state.prices.dominant ? (
                                         <React.Fragment>
                                             Dominant <br/><br/>{"£ "+this.state.prices.dominant}

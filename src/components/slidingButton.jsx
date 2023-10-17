@@ -1,11 +1,17 @@
 import React from 'react';
 import { buttonExpand, changePage } from '../index.js';
 
-function SlidingButton({id, imgSrc, linkLocation, textContent}) {
+function SlidingButton({id, imgSrc, linkLocation, textContent, product, productImageSrc}) {
     return(
         <React.Fragment>
-            <button id={id+'button'} onClick={function() {changePage(linkLocation)}} type="button" className="linkButton"
-                onMouseOver={function() {buttonExpand(id)}}>
+            <button id={id+'button'} type="button" className="linkButton"
+
+                onMouseOver={function() {buttonExpand(id)}}
+                
+                onClick={function() {sessionStorage.setItem('currentProduct', product);
+                                     sessionStorage.setItem('currentProductImageSrc', productImageSrc);
+                                     changePage(linkLocation);}}>
+
                     <h2 id={id+'title'} className="linkButtonTitle">
                         {textContent}
                     </h2>
