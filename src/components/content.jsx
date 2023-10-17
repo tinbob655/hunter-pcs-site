@@ -12,6 +12,7 @@ import PreBuiltPcs from './sections/pcs/prebuilt/prebuiltPcs.jsx';
 import ReferAFriend from './sections/referAFriend/referAFriend.jsx';
 import SignUpLogIn from './sections/signUpLogIn/signUpLogIn.jsx';
 import Support from './sections/support/support.jsx';
+import ProductPage from './sections/pcs/prebuilt/productPage.jsx';
 
 class Content extends Component {
 
@@ -44,6 +45,7 @@ class Content extends Component {
             referAFriend: <ReferAFriend/>,
             signUpLogIn: <SignUpLogIn/>,
             support: <Support/>,
+            productPage: <ProductPage/>,
         };
 
         //now return the page to be displayed
