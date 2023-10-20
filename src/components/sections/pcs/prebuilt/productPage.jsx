@@ -161,7 +161,12 @@ class ProductPage extends Component {
             const components = ['processor', 'GPU', 'memory', 'storage', 'motherboard', 'cooler', 'case', 'powerSupply'];
             for (let index in components) {
                 let key = components[index]
+
+                //format the component name from the backend name to a frontend name (eg powerSupply --> Power Supply)
                 let pcComponent = key.charAt(0).toUpperCase() + key.slice(1);
+                pcComponent = pcComponent.replace(/([a-z])([A-Z])/g, '$1 $2');
+
+                //add this component's HTML to the list
                 specHTML.push(
                     <React.Fragment>
                         <p style={{color: '#bd9bb4', fontSize: '25px'}}>
@@ -174,6 +179,7 @@ class ProductPage extends Component {
                 );
             };
 
+            //return the HTML list
             return specHTML;
         }
 
