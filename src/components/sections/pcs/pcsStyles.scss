@@ -5,7 +5,7 @@ div#fullSpecDiv {
     max-height: 0;
     box-shadow: 0 0 10000px 200px #000000;
     background-color: #000000;
-    $heightWhenShown: 150vh;
+    $heightWhenShown: 1200px;
     height: $heightWhenShown;
     transition-property: max-height box-shadow background-color;
     transition-duration: 1s;
