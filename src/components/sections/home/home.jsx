@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { changePage } from '../../../index.js';
-import { buttonExpand } from '../../../index.js';
 import SlidingButton from '../../slidingButton.jsx';
 
 class Home extends Component {
