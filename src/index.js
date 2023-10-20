@@ -60,6 +60,11 @@ export function buttonExpand(id) {
   };
 };
 
+//function to show "loading..." if content has not yet loaded
+export function renderIfLoaded(content) {
+  return content ? content : 'loading...';
+};
+
 //fadin the page and scroll to top
 setTimeout(() => {
   window.scrollTo(0, 0);
