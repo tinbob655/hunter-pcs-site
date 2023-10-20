@@ -59,20 +59,28 @@ class ProductPage extends Component {
                 <table>
                     <tr>
                         <td>
+                            {/*PRODUCT NAME AND DESCRIPTION */}
                             <h2 className="alignRight">
                                 {renderIfLoaded(this.state.subheaderDescription)}
                             </h2>
                             <p className="alignLeft">
                                 {renderIfLoaded(this.state.fullDescription)}
                             </p>
+
+                            {/*PURCHASE BUTTON*/}
                             <button type="button" onClick={function() {
-                                //ADD THE PRODUCT TO THE BASKET
+                                //ADD THE PRODUCT TO THE BASKET FUNCTION NEEDED
                                 changePage('basket');
-                            }}></button>
+                            }}>
+                                <h3>
+                                    Buy it now, we'll build it tomorrow ⟶
+                                </h3>
+                            </button>
                         </td>
 
                         <td>
-                            <img src={this.state.productImageURL} style={{width: '85%'}}  className="mainImage centered" alt="loading"/>
+                            {/*PRODUCT IMAGE*/}
+                            <img src={this.state.productImageURL} style={{width: '75%'}}  className="mainImage centered" alt="loading..."/>
                             <h2>
                                 {renderIfLoaded("£ "+this.state.price)}
                             </h2>
@@ -80,8 +88,7 @@ class ProductPage extends Component {
                     </tr>
                 </table>
                 
-                <div className="purpleGrey"></div>
-                
+                {/*PRODUCT SPEC CONTENT*/}
                 <button type="button" onClick={function() {const specDiv = document.getElementById('fullSpecDiv');
                                                             specDiv.classList.toggle('shown')}}>
                     <h3>
@@ -89,9 +96,54 @@ class ProductPage extends Component {
                     </h3>
                 </button>
                 <div id="fullSpecDiv">
-                    <div style={{width: '75%', margin: 'auto'}}>
-                        {this.displaySystemSpecAsString()}
-                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>
+                                <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=1e13e531-cf90-4a64-953f-84e850755064'
+                                className="mainImage" style={{width: '75%', marginLeft: '5%'}} alt="loading..."/>
+                                </td>
+
+                                <td>
+                                    {this.displaySystemSpecAsString()}
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                {/*NO EXPENSES SPARED*/}
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>
+                                    <h2 className="alignRight">
+                                        We guarantee no expenses spared
+                                    </h2>
+                                    <p className="alignLeft">
+                                        At hunter pcs, we understand how annoying it can be to purchase a new device only for it to fail and need returning. That's why we
+                                        guarantee all pcs delivered to you are made with 100% brand new components. All our power supply units are heavily tested along with
+                                        the pcs themselves.
+                                    </p>
+                                    <button type="button" onClick={function() {changePage('support')}}>
+                                        <h3>
+                                            More on our quality guarantee ⟶
+                                        </h3>
+                                    </button>
+                                </td>
+                                <td style={{width: '60%'}}>
+                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df' 
+                                    className="mainImage centered" style={{width: '85%'}} alt="loading..."/>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                {/*CUSTOMISE YOUR OWN PC*/}
+                <div className="purpleGrey">
+                    {/*FINISH THIS*/}
                 </div>
             </React.Fragment>
         );
@@ -101,24 +153,25 @@ class ProductPage extends Component {
         //only run if a value has been found
         if (this.state.fullSystemSpec) {
             let specHTML = [<h2>
-                {"This "+this.state.frontendName+" could be yours"}
+                {"Our "+this.state.frontendName+" could be yours"}
             </h2>];
             let spec = this.state.fullSystemSpec;
 
-            let onLeft = true;
-            for (let key in spec) {
+            //iterates over this list not in order of object returned because the object returned would be in a different order each time
+            const components = ['processor', 'GPU', 'memory', 'storage', 'motherboard', 'cooler', 'case', 'powerSupply'];
+            for (let index in components) {
+                let key = components[index]
                 let pcComponent = key.charAt(0).toUpperCase() + key.slice(1);
                 specHTML.push(
-                    <p className={onLeft == true ? "alignLeft" : "alignRight"}>
-                        {
-                        '-'
-                        +String(pcComponent)
-                        +': '
-                        +String(spec[key])
-                        }
-                    </p>
+                    <React.Fragment>
+                        <p style={{color: '#bd9bb4', fontSize: '25px'}}>
+                            {'-'+pcComponent+': '}
+                            <p style={{display: 'inline'}}>
+                                {spec[key]}
+                            </p>
+                        </p>
+                    </React.Fragment>
                 );
-                onLeft = !onLeft;
             };
 
             return specHTML;
