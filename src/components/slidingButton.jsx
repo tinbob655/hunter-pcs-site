@@ -16,7 +16,7 @@ function SlidingButton({id, imgSrc, linkLocation, textContent, ssIndex, ssValue}
 
                     <div className="linkButtonDivider" id={id+'divider'} ></div>
 
-                    <img src={imgSrc}
+                    <img src={imgSrc} alt="loading..."
                     style={{width: '25%', height: 'auto'}} className="centered"/>
                 </button>
         </React.Fragment>

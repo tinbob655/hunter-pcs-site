@@ -91,7 +91,7 @@ class Header extends Component {
                                     :
                                     <img src={'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2FbasketIcon.png?alt=media&token=e2448ce8-e238-45d8-ba6a-f8b87f8b23ac'}
                                     style={{height: '50px', transitionProperty: 'background-color', transitionDuration: '1s'}}
-                                    className="centered rounded" id={header+'image'} />
+                                    className="centered rounded" id={header+'image'} alt="loading..."/>
                                 )}
                             </h3>
                         </button>

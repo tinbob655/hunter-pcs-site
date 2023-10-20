@@ -54,7 +54,7 @@ class PcsMain extends Component {
                             <tr>
                                 <td>
                                     <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE1.jpeg?alt=media&token=aa72a5f1-7adb-42cd-98d2-a0e8795822da' 
-                                    className="mainImage"/>
+                                    className="mainImage" alt="loading..."/>
                                 </td>
                                 <td>
                                     <h2 className="alignRight">

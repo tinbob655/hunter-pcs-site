@@ -18,7 +18,8 @@ class Home extends Component {
                             <tr>
                                 <td style={{width: '60%'}}>
                                     <img src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Falt%20Logo.jpg?alt=media&token=83dd8d5d-16ec-4f74-bb00-0fb407d8e659"
-                                    style={{width: '50vw', height: '50vw', marginLeft: '7.5%', marginRight: 'unset', boxShadow: '0 0 50px 5px #222222', borderRadius: '10px'}}/>
+                                    style={{width: '50vw', height: '50vw', marginLeft: '7.5%', marginRight: 'unset', boxShadow: '0 0 50px 5px #222222', borderRadius: '10px'}}
+                                    alt="loading..."/>
                                 </td>
                                 <td style={{paddingRight: '5%'}}>
                                     <h2 style={{marginRight: '1%', textAlign: 'right'}}>
@@ -104,7 +105,7 @@ class Home extends Component {
 
                                 <td style={{width: '50%'}}>
                                 <img src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%202.jpeg?alt=media&token=c9e0128f-15ca-4595-bc92-15618109e0de" 
-                                    style={{width: '85%'}} className="mainImage"/>
+                                    style={{width: '85%'}} className="mainImage" alt="loading..."/>
                                 </td>
                             </tr>
                         </thead>
@@ -140,7 +141,7 @@ class Home extends Component {
                                 </td>
                                 <td style={{width: '50%'}}>
                                     <img src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8"
-                                    className="mainImage" style={{marginRight: 'auto', width: '65%', marginLeft: '10%'}} />
+                                    className="mainImage" style={{marginRight: 'auto', width: '65%', marginLeft: '10%'}} alt="loading..." />
                                 </td>
                             </tr>
                         </thead>
@@ -156,7 +157,7 @@ class Home extends Component {
                         Here at Hunter Pcs we're committed to quality: each and every one of our gaming pcs is crafted by hand. And not just that,
                          our trained experts test all of the pcs they make to ensure that you get the best performance out of your build.
                     </p>
-                    <img style={{width: '75%'}} className="mainImage centered"
+                    <img style={{width: '75%'}} className="mainImage centered" alt="loading..."
                      src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull.jpeg?alt=media&token=18ff9c55-6983-4275-a879-98d672380c6d" />
                 </div>
             </React.Fragment>
