@@ -1,0 +1,12 @@
+div#fullSpecDiv {
+    overflow: hidden;
+    max-height: 0;
+    $heightWhenShown: 150vh;
+    height: $heightWhenShown;
+    transition-property: max-height;
+    transition-duration: 1s;
+
+    &.shown {
+        max-height: $heightWhenShown;
+    }
+}
