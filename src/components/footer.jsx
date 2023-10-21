@@ -71,7 +71,7 @@ class Footer extends Component {
                         {infoLink? (
                             <td>
                                 <button type="button" style={{width: 'auto'}} onClick={function() {
-                                    sessionStorage.setItem('supportPageLink', infoLink);
+                                    sessionStorage.setItem('supportPageScroll', infoLink);
                                     changePage('support');
                                 }}>
                                     <h3 style={{padding: 0, margin: 0}}>
