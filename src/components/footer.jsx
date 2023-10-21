@@ -31,7 +31,7 @@ class Footer extends Component {
                                 </td>
                                 <td>
                                     <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupTall1.jpeg?alt=media&token=032bf5f9-4dc2-4697-bb8d-ee8fdf61aa77'
-                                     className="mainImage centered" style={{width: '80%', marginLeft: 0}} />
+                                     className="mainImage centered" style={{width: '80%', marginLeft: 0}} alt="loading..." />
                                 </td>
                             </tr>
                         </thead>
