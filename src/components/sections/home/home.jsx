@@ -150,13 +150,44 @@ class Home extends Component {
 
                 {/*HANDCRAFTED BY EXPERTS SECTION*/}
                 <div>
-                    <h1 className="alignLeft">
-                        Hand-crafted by experts
-                    </h1>
-                    <p className="alignRight">
-                        Here at Hunter Pcs we're committed to quality: each and every one of our gaming pcs is crafted by hand. And not just that,
-                         our trained experts test all of the pcs they make to ensure that you get the best performance out of your build.
-                    </p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>
+                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupTall2.jpeg?alt=media&token=fb61bf07-a94d-4b28-8285-eb866345f9e7' 
+                                    className="mainImage centered" style={{width: '85%'}} alt="loading..."/>
+                                </td>
+
+                                <td style={{width: '60%'}}>
+                                    <h1 className="alignRight">
+                                        Quality guaranteed
+                                    </h1>
+                                    <p className="alignRight">
+                                        Here at Hunter Pcs we're committed to customisation: see something you want to change in one of our builds?
+                                         Just make your own build using our cutsom pc creator
+                                    </p>
+                                    <button type="button" onClick={function() {changePage('customPcs')}}>
+                                        <h3>
+                                            Design your own pc ⟶
+                                        </h3>
+                                    </button>
+                                    <p className="alignLeft">
+                                        What's more: we guarantee no expenses spared. That means every one of your pc's components is made from branded and trusted manufacturers.
+                                        And not just that, we will also thoroughly test your build to make sure you get the maximum performance possible
+                                    </p>
+                                    <button type="button" onClick={function() {
+                                        sessionStorage.setItem('supportPageScroll', 'noExpensesSpared');
+                                        changePage('support');
+                                    }}>
+                                        <h3>
+                                            Learn more about our no expenses spared guarantee ⟶
+                                        </h3>
+                                    </button>
+                                </td>
+
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
             </React.Fragment>
         );
