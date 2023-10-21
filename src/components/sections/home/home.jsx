@@ -148,7 +148,7 @@ class Home extends Component {
                     </table>
                 </div>
 
-                {/*HANDCRAFTED BY EXPERTS SECTION*/}
+                {/*QUALITY GUARANTEED SECTION*/}
                 <div>
                     <table>
                         <thead>
