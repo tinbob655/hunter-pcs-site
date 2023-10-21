@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles.scss';
+import { Analytics} from '@vercel/analytics/react';
 
 import {getStorage, ref, getDownloadURL} from 'firebase/storage';
 
@@ -86,5 +87,7 @@ root.render(
     <div id="footer">
       <Footer/>
     </div>
+
+    <Analytics/>
   </React.Fragment>
 );
