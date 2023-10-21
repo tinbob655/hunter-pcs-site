@@ -157,8 +157,6 @@ class Home extends Component {
                         Here at Hunter Pcs we're committed to quality: each and every one of our gaming pcs is crafted by hand. And not just that,
                          our trained experts test all of the pcs they make to ensure that you get the best performance out of your build.
                     </p>
-                    <img style={{width: '75%'}} className="mainImage centered" alt="loading..."
-                     src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull.jpeg?alt=media&token=18ff9c55-6983-4275-a879-98d672380c6d" />
                 </div>
             </React.Fragment>
         );
