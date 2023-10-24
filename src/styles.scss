@@ -45,6 +45,11 @@ h3 {
     transition-property: transform color;
     transition-duration: 0.5s;
 
+    &.limitedSize {
+        max-width: 50%;
+        margin: auto;
+    }
+
     &:hover {
         transform: scale(1.5);
     }

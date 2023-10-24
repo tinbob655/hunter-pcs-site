@@ -62,7 +62,7 @@ class Support extends Component {
                                         you shouldn't hesitate to contact us
                                     </p>
                                     <a href="mailto:HunterPcsSupport@gmail.com" target="_blank">
-                                        <h3>
+                                        <h3 className="limitedSize">
                                             Contact us at: hunterPcsSupport@gmail.com
                                         </h3>
                                     </a>
@@ -154,7 +154,7 @@ class Support extends Component {
                         <h2>
                             Can't work out who's fault it is?
                         </h2>
-                        <h3 style={{maxWidth: '50%',  marginRight: 'auto', marginLeft: 'auto'}}>
+                        <h3 className="limitedSize">
                             Then just message us here and we'll have a chat about what we can do to get you back in the game as soon as possible
                         </h3>
                     </a>
