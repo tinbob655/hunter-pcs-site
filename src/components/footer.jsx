@@ -7,6 +7,7 @@ class Footer extends Component {
         return (
             <React.Fragment>
                 <div id="footerContent">
+                    <div style={{width: '90%', backgroundColor: 'white', height: '5px', margin: 'auto'}}></div>
                     <table>
                         <thead>
                             <tr>
