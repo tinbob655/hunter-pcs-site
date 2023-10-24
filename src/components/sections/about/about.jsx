@@ -24,12 +24,12 @@ class About extends Component {
                                     Fully customisable
                                 </h2>
                                 <p className="alignLeft">
-                                    Each and every pc you find in our prebuilt gaming pcs section can be fully customised to your heart's content
-                                    Just have a look over there and hit the customise button
+                                    Each and every pc you find in our prebuilt gaming pcs section can be fully customised to your heart's content.
+                                    Just have a look over on our custom pcs page
                                 </p>
                                 <button type="button" onClick={function() {changePage('customPcs')}}>
                                     <h3>
-                                        Customise our pcs
+                                        Customise your own pc
                                     </h3>
                                 </button>
                             </td>
@@ -53,7 +53,7 @@ class About extends Component {
                                         Choose Hunter Pcs because here, we guarantee that all our products are thoroughly tested. Not only that, but each and every
                                         pc we ship to you will come fitted with components exclusivley from brands we can all trust such as corsair, AMD and NVIDIA.
                                         <br/>
-                                        That's the Hunter Pcs no expenses spared guraantee
+                                        That's the Hunter Pcs no expenses spared gurantee
                                     </p>
                                     <button type="button" onClick={function() {
                                         sessionStorage.setItem('supportPageScroll', 'noExpensesSpared');
@@ -118,7 +118,7 @@ class About extends Component {
                                     </h2>
                                     <p className="alignRight">
                                         Not able to come and pick up your pc? Don't want to? We got you sorted. We'll deliver anything to you provided you tell us where
-                                        to drop it. If it gets damaged in the post, that's on us and we'll come to collect your pc and repair it fully free of charge.
+                                        to drop it off. If it gets damaged in the post, that's on us and we'll come to collect your pc and repair it fully free of charge.
                                         Its all just part of the Hunter Pcs quality guarantee
                                     </p>
                                     <button type="button" onClick={function() {
