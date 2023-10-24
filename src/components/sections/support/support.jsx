@@ -61,9 +61,9 @@ class Support extends Component {
                                         We're dedicated to making sure that every step of the way between being here and owning a Hunter Pc is smooth sailing. That's why
                                         you shouldn't hesitate to contact us
                                     </p>
-                                    <a href="mailto:HunterPcsSupport@gmail.com" target="_blank">
+                                    <a href="mailto:huterpcs@gmail.com" target="_blank">
                                         <h3 className="limitedSize">
-                                            Contact us at: hunterPcsSupport@gmail.com
+                                            Contact us at: huterpcs@gmail.com
                                         </h3>
                                     </a>
                                 </td>
@@ -150,7 +150,7 @@ class Support extends Component {
                             </tr>
                         </thead>
                     </table>
-                    <a href="mailto:HunterPcsSupport@gmail.com" target="_blank">
+                    <a href="mailto:huterpcs@gmail.com" target="_blank">
                         <h2>
                             Can't work out who's fault it is?
                         </h2>

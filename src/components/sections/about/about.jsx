@@ -93,9 +93,9 @@ class About extends Component {
                                         You can contact us, anytime. One of our trained support officers will contact you within 0-5 buisiness days will the full intent
                                         of making your life easier. Here at Hunter Pcs, we pride ourselves on the quality of our customer support.
                                     </p>
-                                    <a href="mailto:HunterPcsSupport@gmail.com" target="_blank">
+                                    <a href="mailto:huterpcs@gmail.com" target="_blank">
                                         <h3 className="limitedSize">
-                                            Just drop us a message at HunterPcsSuport@gmail.com
+                                            Just drop us a message at huterpcs@gmail.com
                                         </h3>
                                     </a>
                                 </td>
