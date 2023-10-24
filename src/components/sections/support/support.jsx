@@ -3,6 +3,16 @@ import './supportStyles.scss';
 
 class Support extends Component {
 
+    componentDidMount() {
+        const scrollTarget = document.getElementById(sessionStorage.getItem('supportPageScroll'));
+        if (scrollTarget) {
+            setTimeout(() => {
+                scrollTarget.scrollIntoView(true);
+            }, 1000);
+        };
+        sessionStorage.setItem('supportPageScroll', undefined);
+    }
+
     render() {
         //NEED TO MAKE PAGE SCROLL AUTOMATICALLY BASED ON SESSIONSTORAGE.GETITEM(supportPageScroll)
         return (
