@@ -73,6 +73,7 @@ setTimeout(() => {
   document.body.style.visibility = 'visible';
 }, 1000);
 
+//Now load the page header, footer and content
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.Fragment>
