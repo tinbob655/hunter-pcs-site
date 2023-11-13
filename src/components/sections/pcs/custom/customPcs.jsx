@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './customPcsStyles.scss';
 import {getPartsList} from 'pcpartpickerparser';
 
 class CustomPcs extends Component {
