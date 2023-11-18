@@ -195,6 +195,42 @@ img {
     }
 }
 
+input {
+    margin: auto;
+    display: block;
+    width: 50%;
+    max-width: 20vw;
+    background-color: #101010;
+    border: 5px solid #202020;
+    border-radius: 5px;
+    outline: none;
+    color: #bd9bb4;
+    
+    transition-property: background-color transform;
+    transition-duration: 0.5s;
+
+    &:focus {
+        background-color: #404040;
+        transform: scale(1.1, 1.1);
+    }
+
+    &.submit {
+        background-color: unset !important;
+        border: unset;
+        font-size: 25px;
+        font-weight: 200;
+        font-family: 'Albert Sans';
+        color: #bd9bb4;
+
+        transition-property: transform;
+        transition-duration: 0.5s;
+
+        &:hover {
+            transform: scale(1.5);
+        }
+    }
+}
+
 table {
     table-layout: fixed;
     width: 100%;
