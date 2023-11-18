@@ -72,8 +72,8 @@ class Header extends Component {
         };
 
         let headersHTML = [];
-        const frontendHeaders = ['Gaming Pcs', 'Home', 'About', 'Support', 'Tell a Friend', 'Basket', 'Account']
-        const backendHeaders = ['pcsMain', 'home', 'about', 'support', 'referAFriend', 'basket', 'account'];
+        const frontendHeaders = ['Gaming Pcs', 'Home', 'About', 'Support', 'Tell a Friend', 'Account', 'Basket']
+        const backendHeaders = ['pcsMain', 'home', 'about', 'support', 'referAFriend', 'account', 'basket'];
 
         frontendHeaders.forEach((header) => {
             headersHTML.push(
@@ -85,11 +85,11 @@ class Header extends Component {
 
                                 {/*RETURN TEXT FOR TEXT HEADRS, AND RESPECTIVE IMAGES FOR THE ACCOUNT AND BASKET PAGES*/}
                                 {header != 'Basket' && header != 'Account' ? header : (
-                                    header == 'Basket' ? <img src={'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2FaccountIcon.png?alt=media&token=af8b312a-50d4-49cc-b874-010dd0b2201a'}
+                                    header == 'Basket' ? <img src={'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2FbasketIcon.png?alt=media&token=e2448ce8-e238-45d8-ba6a-f8b87f8b23ac'}
                                     style={{height: '50px', transitionProperty: 'background-color', transitionDuration: '1s'}}
                                      className="centered rounded" id={header+'image'} />
                                     :
-                                    <img src={'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2FbasketIcon.png?alt=media&token=e2448ce8-e238-45d8-ba6a-f8b87f8b23ac'}
+                                    <img src={'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2FaccountIcon.png?alt=media&token=af8b312a-50d4-49cc-b874-010dd0b2201a'}
                                     style={{height: '50px', transitionProperty: 'background-color', transitionDuration: '1s'}}
                                     className="centered rounded" id={header+'image'} alt="loading..."/>
                                 )}
