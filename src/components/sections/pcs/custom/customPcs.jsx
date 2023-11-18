@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {getPartsList} from 'pcpartpickerparser';
+import './customPcsStyles.scss';
+import { clickGetStartedButton } from './customPcsScripts.js';
 
 class CustomPcs extends Component {
 
@@ -20,10 +21,10 @@ class CustomPcs extends Component {
                                         Build your dreams
                                     </h2>
                                     <p className="alignRight">
-                                        Below is the hunter pcs cutsom pc designer, so you can create your own custom rig with ease. We'll build it and ship it to you as 
+                                        Below is the hunter pcs custom pc designer, so you can create your own custom rig with ease. We'll build it and ship it to you as 
                                         usual
                                     </p>
-                                    <button type="button" onClick={function() {document.getElementById('customPcDesignerWrapper').scrollIntoView(true)}}>
+                                    <button type="button" onClick={function() {clickGetStartedButton()}}>
                                         <h3>
                                             Get started!
                                         </h3>
@@ -38,57 +39,15 @@ class CustomPcs extends Component {
                     </table>
                 </div>
 
-                {/*CUSTOM PC DESIGNER*/}
-                <div id="customPcDesignerWrapper">
-                    <table>
-                        <thead>
-                            {this.getCustomPcDesigner()}
-                        </thead>
-                    </table>
+                <div id="pcPartsDialogueBox">
+                    <h2>
+                        All finished?
+                    </h2>
+                    
+                    {/*NEED BUTTON TO SAVE THE CUSTOM PC TO THE USER'S BASKET*/}
                 </div>
             </React.Fragment>
         );
-    };
-
-    getCustomPcDesigner() {
-        //function to allow a user to open the selector menu for a specific pc component
-        function openPartSelector(part) {
-            console.log();
-        };
-
-        let customPcDesignerHTML = [];
-        const pcComponents = ['CPU', 'GPU', 'Motherboard', 'RAM', 'Storage', 'Cooler', 'Case', 'Power Supply'];
-
-        //repeat for every component (part) required
-        pcComponents.forEach((part) => {
-            customPcDesignerHTML.push(
-                <React.Fragment>
-                    <tr>
-                        {/*part name and row header*/}
-                        <td>
-                            <h2>
-                                {part}
-                            </h2>
-                        </td>
-
-                        {/*button to open selector*/}
-                        <td>
-                            <button type="button" onClick={function() {openPartSelector(part)}}>
-                                <p>
-                                    Select {" "+part}
-                                </p>
-                            </button>
-                        </td>
-
-                        {/*product image (shows after selected)*/}
-                        <td>
-                            <img src='a'
-                            className="productImage centered" alt="loading..." />
-                        </td>
-                    </tr>
-                </React.Fragment>
-            );
-        });
     };
 };
 
