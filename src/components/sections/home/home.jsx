@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { changePage } from '../../../index.js';
 import SlidingButton from '../../slidingButton.jsx';
+import { renderIfLoaded } from '../../../index.js';
 
 class Home extends Component {
 
@@ -112,12 +113,15 @@ class Home extends Component {
                     </table>
                 </div>
 
-                {/*VIDEOS FROM PCS SECTION*/}
+                {/*VIDEO FROM PC SECTION*/}
                 <div>
                     <h1>
                         Play your favourite titles
                     </h1>
-                    {this.getVideos()}
+                        <video autoPlay loop loading="lazy" alt="loading...">
+                        <source src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/gameplayVideos%2FHunterPcs%20all%20games%20compilation.mp4?alt=media&token=7832a553-ca65-4f08-9438-eb7b9d08340c'
+                        type="video/mp4"/>
+                    </video>
                 </div>
 
                 {/*DESIGN YOUR OWN PC SECTION*/}
@@ -191,77 +195,6 @@ class Home extends Component {
                 </div>
             </React.Fragment>
         );
-    };
-
-    getVideos() {
-        let videoHTML = [];
-        const videoURLs = ['https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/gameplayVideos%2Fgta%2Fgta%20test%20video.mp4?alt=media&token=527af84b-9499-492b-9078-918ace4e5357',
-    'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/gameplayVideos%2Fgta%2Fgta%20test%20video.mp4?alt=media&token=527af84b-9499-492b-9078-918ace4e5357',];
-        const videoTitles = ['GTA_TEST', 'GTA_TEST_2'];
-
-        function getVideo(url, onRight) {
-            return (
-                <React.Fragment>
-                    <video loading="lazy" autoPlay loop className={onRight == true ? "videoInGallery onRight " : "videoInGallery onLeft "}>
-                        <source src={url} type="video/mp4"/>
-                    </video>
-                </React.Fragment>
-            )
-    
-        };
-
-        //repeat for each video
-        for (let i = 0; i < videoURLs.length; i = i + 2) {
-            let video = videoURLs[i];
-            //skip so that only every 2 cells are repeated
-            if (videoURLs.indexOf(video) % 2 == 0) {
-    
-                //render the HTML
-                //NOTE: AN EVEN LENGTH OF VIDEOS MUST BE SUPPLISED OR ELSE DOOM
-                videoHTML.push(
-                    <React.Fragment>
-                        <table style={{marginTop: '2vh'}}>
-                            <thead>
-                                <tr>
-                                    {/*FIRST CELL, FIRST ROW*/}
-                                    <td style={{width: '75%'}}>
-                                        {getVideo(video, false)}
-                                    </td>
-    
-                                    {/*SECOND CELL, FIRST ROW*/}
-                                    <td>
-                                        <h2>
-                                            {videoTitles[videoURLs.indexOf(video)]}
-                                        </h2>
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
-    
-                        <table style={{marginTop: '5vh'}}>
-                            <thead>
-                                <tr>
-                                    {/*FIST CELL, SECOND ROW*/}
-                                    <td style={{width: '25%'}}>
-                                        <h2>
-                                            {videoTitles[videoURLs.indexOf(video) + 1]}
-                                        </h2>
-                                    </td>
-    
-                                    {/*SECOND CELL, SECOND ROW*/}
-                                    <td style={{width: '75%'}}>
-                                        {getVideo(videoURLs[videoURLs.indexOf(video) +1], true)}
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
-                    </React.Fragment>
-                );
-            };
-        };
-
-        //return the HTML to the main script
-        return videoHTML;
     };
 };
 
