@@ -13,12 +13,21 @@ import SignUpLogIn from './sections/signUpLogIn/signUpLogIn.jsx';
 import Support from './sections/support/support.jsx';
 import ProductPage from './sections/pcs/prebuilt/productPage.jsx';
 
+import { isMobile } from '../index.js';
+
 class Content extends Component {
 
     render() {
         return (
             <React.Fragment>
-                {this.getContent()}
+                {/*temporarily disabled site access for mobile*/}
+                {isMobile() == true ? (
+                    <div style={{width: '100vw', height: '100vh', position: 'fixed', top: 0, left: 0, backgroundColor: 'black', zIndex: 99}}>
+                        <p style={{marginTop: '40vh'}}>
+                            Look mate, I haven't finished the mobile site yet, k? Just look at it on a pc or rotate to landscape and select desktop site arite.
+                        </p>
+                    </div>
+                ) : this.getContent()}
             </React.Fragment>
         );
     };
