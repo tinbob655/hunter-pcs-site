@@ -4,7 +4,6 @@ import './styles.scss';
 import { Analytics} from '@vercel/analytics/react';
 
 import {getStorage, ref, getDownloadURL} from 'firebase/storage';
-import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
 
 import Header from './components/header.jsx';
 import Content from './components/content.jsx';
@@ -87,26 +86,6 @@ export function isMobile () {
   catch {
     return window.orientation > 1;
   }
-};
-
-//if this is the user's first time accessing the website this session, attempt to log them in from saved credentitals
-if ((!sessionStorage.getItem('user')) && (localStorage.getItem('hunterPcsEmailAndPassword'))) {
-  //get the inputted data from the form
-  const credentials = localStorage.getItem('hunterPcsEmailAndPassword');
-
-  //attempt to log in with the provided credentials
-  const auth = getAuth();
-  signInWithEmailAndPassword(auth, credentials.email, credentials.password)
-      .then((userCreds) => {
-          const user = userCreds.user;
-          sessionStorage.setItem('user', user);
-          sessionStorage.setItem('loggedIn', true);
-      })
-
-      .catch((error) => {
-        sessionStorage.setItem('user', undefined);
-        throw('Failed automatic login due to: '+error);
-      });
 };
 
 //fadin the page and scroll to top
