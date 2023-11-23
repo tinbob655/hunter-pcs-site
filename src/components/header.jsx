@@ -3,7 +3,15 @@ import { changePage } from '../index.js';
 
 class Header extends Component {
 
+    state = {
+        accountImage: sessionStorage.getItem('loggedIn') ? 
+        'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2FloggedInSymbol.png?alt=media&token=94582489-6f5b-4204-84df-a7814b97b66a'
+        :
+        'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2FaccountIcon.png?alt=media&token=af8b312a-50d4-49cc-b874-010dd0b2201a',
+    };
+
     render() {
+        console.log(sessionStorage.getItem('loggedIn'))
         document.addEventListener("scroll", (event) => {
             const header = document.getElementById('headerTable');
             if (window.scrollY == 0) {
@@ -89,7 +97,7 @@ class Header extends Component {
                                     style={{height: '50px', transitionProperty: 'background-color', transitionDuration: '1s'}}
                                      className="centered rounded" id={header+'image'} />
                                     :
-                                    <img src={'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2FaccountIcon.png?alt=media&token=af8b312a-50d4-49cc-b874-010dd0b2201a'}
+                                    <img src={this.state.accountImage}
                                     style={{height: '50px', transitionProperty: 'background-color', transitionDuration: '1s'}}
                                     className="centered rounded" id={header+'image'} alt="loading..."/>
                                 )}
