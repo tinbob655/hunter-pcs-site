@@ -6,9 +6,9 @@ div#loginPopupWrapper {
     opacity: 0.95;
     border: 5px solid #101010;
     width: 80%;
-    max-height: 60vh;
     left: 0;
     right: 0;
+    bottom: 3vh;
     top: 20vh;
     margin: auto;
     overflow-y: scroll;
@@ -16,14 +16,14 @@ div#loginPopupWrapper {
     display: block;
 
     transform: scale(0);
-    visibility: hidden;
-    transition-property: transform;
+    opacity: 0.0;
+    transition-property: transform opacity;
     transition-duration: 0.75s;
     transition-timing-function: ease-out;
 
     &.shown {
         transform: scale(1);
-        visibility: visible;
+        opacity: 1.0;
     }
 }
 

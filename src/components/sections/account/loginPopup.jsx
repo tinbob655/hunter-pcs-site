@@ -1,72 +1,83 @@
 import React, {Component} from 'react';
-import ReactDOMServer from 'react-dom/server';
 import './loginStyles.scss';
 
 //firebase modules for accounts
-import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword} from 'firebase/auth';
+import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
 
 
 //will fire after a user proceedes past either the log in or sign up form
 function userSucessfullyLoggedIn() {
 
-    //frontend
-    document.getElementById('loginPopupWrapper').classList.remove('shown');
+    //animate the login popup away then remove it from the DOM
+    try {
+
+        document.getElementById('loginPopupWrapper').classList.remove('shown');
+        setTimeout(() => {
+            document.getElementById('loginPopupWrapper').remove();
+        }, 751);
+    }
+    catch(error) {
+        return;
+    };
 };
 
 
 class LoginPopup extends Component {
 
     state = {
-        randomVar: 0,
+        panelContent: <></>,
     };
 
     componentDidMount() {
         setTimeout(() => {
             document.getElementById('loginPopupWrapper').classList.add('shown');
-            console.log('rendering');
         }, 500);
     };
 
     render() {
 
-        return (
-            <React.Fragment>
-                <div id="loginPopupWrapper">
-                    <h2>
-                        To do that, you'll need an account!
-                    </h2>
-                    <table style={{borderBottom: '7px solid #555555'}}>
-                        <thead>
-                            <tr>
-                                <td style={{borderRight: '5px solid #555555'}}>
-
-                                    {/*log in button */}
-                                    <button className="loginPanelSelector" type="button" id="logInPanelSelectorButton" onClick={() => {this.showLogInOrSignUp(true)}}>
-                                        <h3 style={{padding: 0}}>
-                                            Log in
-                                        </h3>
-                                    </button>
-                                </td>
-                                <td>
-
-                                    {/*sign up button */}
-                                    <button className="loginPanelSelector" type="button" id="signUpPanelSelectorButton" onClick={() => {this.showLogInOrSignUp(false)}}>
-                                        <h3 style={{padding: 0}}>
-                                            Sign up
-                                        </h3>
-                                    </button>
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
-
-                    <div id="loginPanelContent">
-                        {/*content will be generated here when the user loads either log in or sign up*/}
+        //only ask the user to log in if they have not already logged in
+        if (!sessionStorage.getItem('loggedIn')) {
+            return (
+                <React.Fragment>
+                    <div id="loginPopupWrapper" className="customScrollbar">
+                        <h2 id="popupHeader">
+                            To do that, you'll need an account!
+                        </h2>
+                        <table style={{borderBottom: '7px solid #555555'}}>
+                            <thead>
+                                <tr>
+                                    <td style={{borderRight: '5px solid #555555'}}>
+    
+                                        {/*log in button */}
+                                        <button className="loginPanelSelector" type="button" id="logInPanelSelectorButton" onClick={() => {this.showLogInOrSignUp(true)}}>
+                                            <h3 style={{padding: 0}}>
+                                                Log in
+                                            </h3>
+                                        </button>
+                                    </td>
+                                    <td>
+    
+                                        {/*sign up button */}
+                                        <button className="loginPanelSelector" type="button" id="signUpPanelSelectorButton" onClick={() => {this.showLogInOrSignUp(false)}}>
+                                            <h3 style={{padding: 0}}>
+                                                Sign up
+                                            </h3>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+    
+                        <div id="loginPanelContent">
+                            {/*content will be generated here when the user loads either log in or sign up*/}
+                            {this.state.panelContent}
+                        </div>
                     </div>
-                </div>
-
-            </React.Fragment>
-        );
+    
+                </React.Fragment>
+            );
+        };
     };
 
     showLogInOrSignUp(logInBool) {
@@ -87,6 +98,10 @@ class LoginPopup extends Component {
             signInWithEmailAndPassword(auth, credentials.email, credentials.password)
                 .then((userCreds) => {
                     const user = userCreds.user;
+
+                    sessionStorage.setItem('user', user);
+                    sessionStorage.setItem('loggedIn', true);
+                    userSucessfullyLoggedIn();
                 })
 
                 .catch((error) => {
@@ -98,8 +113,6 @@ class LoginPopup extends Component {
                     errorText.style.color = 'red';
                     document.getElementById('logInHeader').appendChild(errorText);
                 });
-
-            userSucessfullyLoggedIn();
         };
 
         //define function to fire when a new user is signing up
@@ -115,7 +128,16 @@ class LoginPopup extends Component {
                 }
                 const creds = {email: form.email.value, password: form.password0.value}
                 const auth = getAuth();
-                createUserWithEmailAndPassword(auth, creds.email, creds.password);
+                createUserWithEmailAndPassword(auth, creds.email, creds.password)
+                    .then((userCredential) => {
+                        const user = userCredential.user;
+
+                        sessionStorage.setItem('user', user);
+                        sessionStorage.setItem('loggedIn', true);
+                        localStorage.setItem('hunterPcsEmailAndPassword', {email: creds.email, password: creds.password});
+
+                        userSucessfullyLoggedIn();
+                    });
             }
 
             catch(error) {
@@ -124,22 +146,48 @@ class LoginPopup extends Component {
                     errorText.innerText = 'The passwords you entered were not the same. Try again.';
                 }
                 else {
-                    errorText.innerText = 'We encountered an errors, please try again.';
+                    errorText.innerText = 'We encountered an error, please try again.';
                 }
                 document.getElementById('signInHeader').appendChild(errorText);
             };
+        };
 
-            userSucessfullyLoggedIn();
+        //function for a user attempting to log in with google
+        function logInWithGoogle() {
+            const auth = getAuth();
+            auth.useDeviceLanguage();
+
+            const provider = new GoogleAuthProvider;
+
+
+            signInWithPopup(auth, provider)
+                .then((res) => {
+
+                    //store user data
+                    const userCredential = GoogleAuthProvider.credentialFromResult(res);
+                    const userAccessToken = userCredential.accessToken;
+                    const user = res.user;
+                    sessionStorage.setItem('user', user);
+
+                    userSucessfullyLoggedIn();
+                })
+                .catch((error) => {
+                    console.log(error);
+                    let text = error == 'passwordsNotEqual' ? 'Incorrect password, please try again.' : 'We encountered an error, please try again.';
+                    const errorText = document.createElement('p');
+                    errorText.innerText = text;
+
+                });
         };
 
         //delay to allow the login panel content to fade out before its html is replaced
         setTimeout(() => {
-            let panelContentHTML;
+            let panelContentHTML = [];
 
             if (logInBool) {
     
-                //show the log in content
-                panelContentHTML = (
+                //log in HTML
+                panelContentHTML.push(
                     <React.Fragment>
                         <h2 id="logInHeader">
                             Log in
@@ -169,13 +217,21 @@ class LoginPopup extends Component {
                              </table>
                              <input type="submit" value="Submit" className="submit"></input>
                         </form>
+
+                        <div className="cleanLinkButtonDivider" style={{maxWidth: '85%', marginTop: '5vh'}}></div>
+
+                        <button type="button" onClick={function() {logInWithGoogle()}}>
+                            <h3>
+                                Or log in with google
+                            </h3>
+                        </button>
                     </React.Fragment>
                 );
             }
             else {
     
-                //show the sign up content
-                panelContentHTML = (
+                //sign up HTML
+                panelContentHTML.push(
                     <React.Fragment>
                         <h2>
                             Sign up
@@ -210,19 +266,27 @@ class LoginPopup extends Component {
                             </table>
                             <input id="submit" type="submit" className="submit" name="submit"></input>
                         </form>
+
+                        <div className="cleanLinkButtonDivider" style={{maxWidth: '85%', marginTop: '5vh'}}></div>
+
+                        <button type="button" onClick={function() {logInWithGoogle()}}>
+                            <h3>
+                                Or log in with google
+                            </h3>
+                        </button>
                     </React.Fragment>
                 );
             };
 
-            panelContent.innerHTML = ReactDOMServer.renderToStaticMarkup(panelContentHTML);
+            //load the generated HTML into DOM
+
+            this.setState({panelContent: panelContentHTML});
 
             //create event listeners for either the log in form submit button on the sign up for submit button
             document.getElementById('logInForm')?.addEventListener('submit', loginFormSubmitted);
             document.getElementById('signUpForm')?.addEventListener('submit', signUpFormSubmitted);
 
-            //update state to cause the component to refresh (and thus show changes)
-            this.setState = ({randomvar: Math.random()});
-
+            //fade in the pannel content
             panelContent.style.opacity = 1.0;
         }, 500);
     };
