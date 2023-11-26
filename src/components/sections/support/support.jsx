@@ -218,7 +218,7 @@ class Support extends Component {
                 </div>
 
                 {/*PRIVACY POLICY and TERMS OF SERVICE*/}
-                <div>
+                <div id="privacyPolicy">
                     <h1 className="alignRight">
                         Boring legal stuff
                     </h1>
