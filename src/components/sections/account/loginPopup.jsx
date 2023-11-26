@@ -51,7 +51,7 @@ class LoginPopup extends Component {
             <React.Fragment>
                 <div id="loginPopupWrapper" className="customScrollbar">
                     <h2 id="popupHeader">
-                        To do that, you'll need an account!
+                        You're going to need an account!
                     </h2>
                     <table style={{borderBottom: '7px solid #555555'}}>
                         <thead>
