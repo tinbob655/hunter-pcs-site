@@ -88,6 +88,13 @@ export function isMobile () {
   }
 };
 
+//function to convert a string out of camel case
+export function convertOutOfCamelCase(stringToConvert) {
+  let str = stringToConvert.charAt(0).toUpperCase() + stringToConvert.slice(1);
+  str = str.replace(/([a-z])([A-Z])/g, '$1 $2');
+  return str;
+};
+
 //initialise local and session storage
 if (!sessionStorage.getItem('loggedIn')) {
   sessionStorage.setItem('loggedIn', 'false');
