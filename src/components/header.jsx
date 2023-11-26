@@ -4,7 +4,7 @@ import { changePage } from '../index.js';
 class Header extends Component {
 
     state = {
-        accountImage: sessionStorage.getItem('loggedIn') == true ? 
+        accountImage: sessionStorage.getItem('loggedIn') == 'true' ? 
         'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2FloggedInSymbol.png?alt=media&token=94582489-6f5b-4204-84df-a7814b97b66a'
         :
         'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2FaccountIcon.png?alt=media&token=af8b312a-50d4-49cc-b874-010dd0b2201a',

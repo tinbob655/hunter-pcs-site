@@ -33,7 +33,7 @@ class LoginPopup extends Component {
 
     componentDidMount() {
         //only ask the user to log in if they have not already logged in
-        if (!sessionStorage.getItem('loggedIn')) {
+        if (sessionStorage.getItem('loggedIn') == 'false') {
             setTimeout(() => {
                 document.getElementById('loginPopupWrapper').classList.add('shown');
             }, 500);
@@ -42,7 +42,7 @@ class LoginPopup extends Component {
 
     shouldComponentUpdate() {
         //only load this popup if the user is not already logged in
-        return !sessionStorage.getItem('loggedIn');
+        return sessionStorage.getItem('loggedIn') == 'true' ? false : true;
     };
 
     render() {
@@ -89,7 +89,7 @@ class LoginPopup extends Component {
 
     showLogInOrSignUp(logInBool) {
         //only ask the user to log in if they have not already logged in
-        if (!sessionStorage.getItem('loggedIn')) {
+        if (sessionStorage.getItem('loggedIn') == 'false') {
 
             const panelContent = document.getElementById('loginPanelContent');
             panelContent.style.opacity = 0.0;
