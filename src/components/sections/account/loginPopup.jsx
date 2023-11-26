@@ -113,7 +113,7 @@ class LoginPopup extends Component {
                             const user = userCreds.user;
         
                             sessionStorage.setItem('user', user);
-                            sessionStorage.setItem('loggedIn', true);
+                            sessionStorage.setItem('loggedIn', 'true');
                             userSucessfullyLoggedIn();
                         })
         
@@ -150,7 +150,7 @@ class LoginPopup extends Component {
                             const user = userCredential.user;
     
                             sessionStorage.setItem('user', user);
-                            sessionStorage.setItem('loggedIn', true);
+                            sessionStorage.setItem('loggedIn', 'true');
                             localStorage.setItem('hunterPcsEmailAndPassword', {email: creds.email, password: creds.password});
     
                             userSucessfullyLoggedIn();
@@ -185,7 +185,7 @@ class LoginPopup extends Component {
                         const userAccessToken = userCredential.accessToken;
                         const user = res.user;
                         sessionStorage.setItem('user', user);
-                        sessionStorage.setItem('loggedIn', true);
+                        sessionStorage.setItem('loggedIn', 'true');
     
                         userSucessfullyLoggedIn();
                     })
