@@ -7,7 +7,6 @@ import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, Goo
 
 //will fire after a user proceedes past either the log in or sign up form
 function userSucessfullyLoggedIn() {
-    alert('final function fired')
 
     //animate the login popup away then remove it from the DOM
     try {
