@@ -89,9 +89,6 @@ export function isMobile () {
 };
 
 //initialise local and session storage
-if (!localStorage.getItem('purchases')) {
-  localStorage.setItem('purchases', []);
-};
 if (!sessionStorage.getItem('loggedIn')) {
   sessionStorage.setItem('loggedIn', 'false');
 }

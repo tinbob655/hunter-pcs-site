@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
+
 import { getDoc, doc, getFirestore } from 'firebase/firestore';
 import { firebaseInit } from '../../../../firebase.js';
+
 import { renderIfLoaded, changePage } from '../../../../index.js';
+import LoginPopup from '../../account/loginPopup.jsx';
 import '../pcsStyles.scss';
 
 firebaseInit();
@@ -19,6 +22,8 @@ class ProductPage extends Component {
             fullDescription: undefined,
             fullSystemSpec: undefined,
             productImageURL: 'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8',
+            popup: undefined,
+            purchaseButtonContent: "Buy it now, we'll build it tomorrow ⟶"
              //for now this is just a stock image until product images are available
         };
     };
@@ -52,6 +57,12 @@ class ProductPage extends Component {
     render() {
         return (
             <React.Fragment>
+
+                {/*placeholder for if the login popup is needed*/}
+                <div id="productPagePopupWrapper">
+                    {this.state.popup}
+                </div>
+
                 {/*PAGE TO ALLOW A USER TO PURCHACE A PRODUCT*/}
                 <h1 className="alignRight">
                     {renderIfLoaded('Hunter '+this.state.frontendName)}
@@ -68,12 +79,40 @@ class ProductPage extends Component {
                             </p>
 
                             {/*PURCHASE BUTTON*/}
-                            <button type="button" onClick={function() {
-                                //ADD THE PRODUCT TO THE BASKET FUNCTION NEEDED
-                                changePage('basket');
+                            <button type="button" id="purchaseButton" onClick={() => {
+                                if (sessionStorage.getItem('loggedIn') == 'false') {
+
+                                    //the user can only make a purcase if logged in, so make sure they are logged in
+                                    this.setState({popup: <LoginPopup/>})
+                                }
+
+                                //if the user is logged in, allow them to purchase
+                                if (sessionStorage.getItem('loggedIn') == 'true') {
+
+                                    //save the purchase to local broswer storage
+                                    //cannot store arrays in local storage, so iterate until a free variable name is found
+                                    var i = 0;
+                                    var productStorageName = ''
+                                    do {
+                                        productStorageName = 'hunterPcsProduct'+i;
+                                        i++;
+                                        if (i > 100) {
+                                            throw('Value to store in local storage became too high')
+                                        }
+                                    } while (localStorage.getItem(productStorageName));
+
+                                    //free variable name has been found, store the product there
+                                    localStorage.setItem(productStorageName, this.state.product);
+
+                                    //NOTE: the local storage vars for products will be cleared upon purchase to optimise browser storage usage
+
+                                    //alter frontend
+                                    this.setState({purchaseButtonContent: 'Added to basket! Visit the checkout to buy now'})
+                                    document.getElementById('purchaseButton').style.opacity = 0.5;
+                                }
                             }}>
                                 <h3>
-                                    Buy it now, we'll build it tomorrow ⟶
+                                    {this.state.purchaseButtonContent}
                                 </h3>
                             </button>
                         </td>
@@ -139,11 +178,6 @@ class ProductPage extends Component {
                             </tr>
                         </thead>
                     </table>
-                </div>
-
-                {/*CUSTOMISE YOUR OWN PC*/}
-                <div className="purpleGrey">
-                    {/*FINISH THIS*/}
                 </div>
             </React.Fragment>
         );
