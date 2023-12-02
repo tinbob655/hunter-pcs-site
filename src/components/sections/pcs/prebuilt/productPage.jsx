@@ -107,12 +107,12 @@ class ProductPage extends Component {
                                     //NOTE: the local storage vars for products will be cleared upon purchase to optimise browser storage usage
 
                                     //alter frontend
-                                    this.setState({purchaseButtonContent: 'Added to basket! Visit the checkout to buy now'})
+                                    this.setState({purchaseButtonContent: 'Added to basket! Visit your basket to buy now'})
                                     document.getElementById('purchaseButton').style.opacity = 0.5;
 
                                     //change the page to the checkout page
                                     setTimeout(() => {
-                                        changePage('checkout');
+                                        changePage('basket');
                                     }, 1000);
                                 }
                             }}>

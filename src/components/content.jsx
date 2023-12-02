@@ -5,7 +5,6 @@ import Home from './sections/home/home.jsx';
 import About from './sections/about/about.jsx';
 import Account from './sections/account/account.jsx';
 import Basket from './sections/basket/basket.jsx';
-import Checkout from './sections/basket/checkout/checkout.jsx';
 import PcsMain from './sections/pcs/pcsMain.jsx';
 import CustomPcs from './sections/pcs/custom/customPcs.jsx';
 import ReferAFriend from './sections/referAFriend/referAFriend.jsx';
@@ -46,7 +45,6 @@ class Content extends Component {
             about: <About/>,
             account: <Account/>,
             basket: <Basket/>,
-            checkout: <Checkout/>,
             pcsMain: <PcsMain/>,
             customPcs: <CustomPcs/>,
             referAFriend: <ReferAFriend/>,
