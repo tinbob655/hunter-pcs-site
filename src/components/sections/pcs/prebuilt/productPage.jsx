@@ -109,6 +109,11 @@ class ProductPage extends Component {
                                     //alter frontend
                                     this.setState({purchaseButtonContent: 'Added to basket! Visit the checkout to buy now'})
                                     document.getElementById('purchaseButton').style.opacity = 0.5;
+
+                                    //change the page to the checkout page
+                                    setTimeout(() => {
+                                        changePage('checkout');
+                                    }, 1000);
                                 }
                             }}>
                                 <h3>
