@@ -12,6 +12,7 @@ class Basket extends Component {
     state = {
         loginPopup: <></>,
         stripeCheckout: <></>,
+        loggedInPaymentButtonText: 'Click here to get your perfect pc delivered straight to you ⟶',
     };
 
     render() {
@@ -21,7 +22,7 @@ class Basket extends Component {
                     Your basket
                 </h1>
 
-                {/*link to checkout page*/}
+                {/*buy now section*/}
                 <div>
                     <table>
                         <thead>
@@ -49,14 +50,18 @@ class Basket extends Component {
                                     ) : (
                                         <React.Fragment>
 
-                                            {/*if the user is logged in, then rev up stripe. Time for profit!!!*/}
+                                            {/*if the user is logged in and there is stuff in their basket, then rev up stripe. Time for profit!!!*/}
                                             <button type="button" onClick={() => {
-                                                this.revUpStripe();
+                                                //make sure the basket is not empty
+                                                if (basketArray.length > 0) {
+                                                    this.revUpStripe();
+                                                }
+                                                else {
+                                                    this.setState({loggedInPaymentButtonText: 'Your basket is empty. Please add something to your basket before you buy'})
+                                                }
                                             }}>
                                                 <h3>
-                                                    Click here to get your perfect pc delivered straight to you ⟶
-                                                    <br/>
-                                                    All payments are 100% secure
+                                                    {this.state.loggedInPaymentButtonText}
                                                 </h3>
                                             </button>
                                         </React.Fragment>
@@ -108,7 +113,6 @@ class Basket extends Component {
     async revUpStripe() {
         try {
             //stonks time
-            this.setState({stripeCheckout: <StripeCheckout/>});
     
             //setup cloud firestore
             const db = getFirestore();
@@ -154,13 +158,17 @@ class Basket extends Component {
                 }],
                 mode: 'payment',
                 ui_mode: 'embedded',
-                return_url: 'https://www.hunterpcs.com',
+                redirect_on_completion: 'never',
             });
     
             sessionStorage.setItem('stripeSession', JSON.stringify(session));
+
+            this.setState({stripeCheckout: <StripeCheckout/>});
     
             //now show the stripe popup
-            document.getElementById('stripeCheckoutWrapper').classList.add('shown');
+            setTimeout(() => {
+                document.getElementById('stripeCheckoutWrapper').classList.add('shown');
+            }, 100);
         } catch (error) {
             console.log(error);
         };
@@ -196,7 +204,7 @@ class Basket extends Component {
         };
 
         return basketHTML;
-    }
+    };
 };
 
 export default Basket;
