@@ -26,6 +26,7 @@ module.exports = function override(config, env) {
         assert: require.resolve("assert/"),
         fs: false,
         os: false,
+        async_hooks: false,
     };
     config.plugins.push (
         new webpack.ProvidePlugin({
