@@ -176,7 +176,7 @@ class Basket extends Component {
             let docRef = doc(db, 'keys', 'stripe_sk');
             let docSnap = await getDoc(docRef);
 
-            const sk = docSnap().data.value;
+            const sk = docSnap.data().value
     
             const stripe = require('stripe')(sk);
             const session = await stripe.checkout.sessions.create({
