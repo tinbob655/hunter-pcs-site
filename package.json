@@ -9,21 +9,34 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@vercel/analytics": "^1.1.1",
+    "assert": "^2.1.0",
     "body-parser": "^1.20.2",
+    "browserify-zlib": "^0.2.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
     "dotenv": "^16.3.1",
-    "firebase": "^10.4.0",
+    "firebase": "^10.7.0",
+    "fs": "^0.0.1-security",
+    "net": "^1.0.2",
     "parse5": "^7.1.2",
+    "path-browserify": "^1.0.1",
     "pcpartpickerparser": "^1.0.2",
+    "querystring-es3": "^0.2.1",
     "react": "^18.2.0",
+    "react-app-rewired": "^2.2.1",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
     "sass": "^1.69.0",
     "scss": "^0.2.4",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
     "stripe": "^14.7.0",
+    "url": "^0.11.3",
+    "util": "^0.12.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set GENERATE_SOURCEMAP=false && react-app-rewired start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -47,6 +60,12 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "process": "^0.11.10"
+  },
+  "browser": {
+    "fs": false,
+    "os": false,
+    "path": false
   }
 }
