@@ -174,9 +174,9 @@ class Basket extends Component {
 
             //get the key from firebase
             let docRef = doc(db, 'keys', 'stripe_sk');
-            let docSnap = await getDoc(docRef);
+            let docSnap = await getDoc(docRef)
     
-            const stripe = require('stripe')(docSnap.data().value);
+            const stripe = require('stripe')('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');
             const session = await stripe.checkout.sessions.create({
                 line_items: [{
                     price_data: {

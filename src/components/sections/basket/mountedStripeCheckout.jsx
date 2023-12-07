@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { EmbeddedCheckout, EmbeddedCheckoutProvider } from '@stripe/react-stripe-js';
 
-const stripePromise = loadStripe('pk_test_51OIsKCCzpWfV0Kwk1E0NbTsrGGhHbRBDBZAximjX9NQSm5m8alYLA0TR7w0FLZuGvCAqspxyDUNQ4oJRYd8QEnpI0037jzKB5l');
+const stripePromise = loadStripe('pk_live_51OIsKCCzpWfV0Kwk7LPqpBIw0kMMQVd8SiMzIjsG8Iz6ofCJ7k1KCEPPd9Jkk5Sz1m0QumHcl7eQC3HjVBYJEeB200wMUMSheW');
 
 function paymentSucsessfulFunction() {
     //empty the user's basket
