@@ -122,6 +122,7 @@ class Basket extends Component {
                                             </button>
                                         </React.Fragment>
                                     )}
+                                    <h2>
                                         All the stuff you've added, right here:
                                     </h2>
                                     {this.getBasket()}
