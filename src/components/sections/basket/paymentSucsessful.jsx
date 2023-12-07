@@ -3,6 +3,10 @@ import React, {Component} from 'react';
 class PaymentSucsessful extends Component {
 
     componentDidMount() {
+
+        //send myself an e-mail with the pc model/parts and the address to deliver to
+        const address = sessionStorage.getItem('address');
+        const purchasedProducts = sessionStorage.getItem('purchasedProducts');
         
         //after rendering this page, the user is not allowed to render the page again
         setTimeout(() => {
