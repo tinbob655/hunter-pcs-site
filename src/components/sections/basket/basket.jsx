@@ -171,9 +171,12 @@ class Basket extends Component {
             //total price must be in P not £
             totalPrice *= 100;
             sessionStorage.setItem('purchasedProducts', finalProudctNameString);
-            
+
+            //get the key from firebase
+            let docRef = doc(db, 'keys', 'stripe_sk');
+            let docSnap = await getDoc(docRef);
     
-            const stripe = require('stripe')('sk_test_51OIsKCCzpWfV0Kwku1Usf1FFdFZTgPOwFtt7zOpA9aPEb40kRgAmeUegSJ0uT2tC9YDtK8cPcZPVHB9ds0ovKrPW000Cn5l82B');
+            const stripe = require('stripe')(docSnap.data().value);
             const session = await stripe.checkout.sessions.create({
                 line_items: [{
                     price_data: {
