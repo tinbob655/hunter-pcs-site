@@ -11,12 +11,11 @@ function userSucessfullyLoggedIn() {
     //animate the login popup away then remove it from the DOM
     try {
 
-        document.getElementById('loginPopupWrapper').classList.remove('shown');
+        document.getElementById('innerLoginPopupWrapper').classList.remove('shown');
         setTimeout(() => {
-            document.getElementById('loginPopupWrapper').remove();
+            document.getElementById('innerLoginPopupWrapper').remove();
 
             //refresh the window to update the header image
-            console.log(sessionStorage.getItem('loggedIn'))
             window.location.reload();
         }, 751);
     }
@@ -28,27 +27,24 @@ function userSucessfullyLoggedIn() {
 class LoginPopup extends Component {
     
     state = {
-        panelContent: <></>,
+        panelContent: <></>
     };
 
-    componentDidMount() {
-        //only ask the user to log in if they have not already logged in
-        if (sessionStorage.getItem('loggedIn') == 'false') {
-            setTimeout(() => {
-                document.getElementById('loginPopupWrapper').classList.add('shown');
-            }, 500);
-        };
+    async componentDidMount() {
+        setTimeout(() => {
+            document.getElementById('innerLoginPopupWrapper').classList.add('shown');
+        }, 100);
     };
 
     shouldComponentUpdate() {
         //only load this popup if the user is not already logged in
-        return sessionStorage.getItem('loggedIn') == 'true' ? false : true;
+        return sessionStorage.getItem('loggedIn') == 'true' ? false : true
     };
 
     render() {
         return (
             <React.Fragment>
-                <div id="loginPopupWrapper" className="customScrollbar">
+                <div id="innerLoginPopupWrapper" className="customScrollbar">
                     <h2 id="popupHeader">
                         You're going to need an account!
                     </h2>

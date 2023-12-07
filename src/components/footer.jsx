@@ -48,7 +48,7 @@ class Footer extends Component {
     getFooterLinks() {
         let footerLinksHTML = [];
         const informationLinks = ['brandsWeUse', 'returns', 'fraudPrevention', 'warrantyInformation', 'termsOfService', 'privacyPolicy'];
-        const menuLinks = ['gamingPcs', 'home', 'about', 'support', 'tellAFriend', 'account', 'basket'];
+        const menuLinks = ['pcsMain', 'home', 'about', 'support', 'tellAFriend', 'account', 'basket'];
 
         menuLinks.forEach((link) => {
 

@@ -11,6 +11,7 @@ import ReferAFriend from './sections/referAFriend/referAFriend.jsx';
 import SignUpLogIn from './sections/signUpLogIn/signUpLogIn.jsx';
 import Support from './sections/support/support.jsx';
 import ProductPage from './sections/pcs/prebuilt/productPage.jsx';
+import PaymentSucsessful from './sections/basket/paymentSucsessful.jsx';
 
 import { isMobile } from '../index.js';
 
@@ -51,6 +52,7 @@ class Content extends Component {
             signUpLogIn: <SignUpLogIn/>,
             support: <Support/>,
             productPage: <ProductPage/>,
+            paymentSucsessful: <PaymentSucsessful/>
         };
 
         //now return the page to be displayed

@@ -1,3 +1,15 @@
+
+//I HATE WEBPACK 5, I HATE WEBPACK 5, I HATE WEBPACK 5
+
+//three hours later, sobbing has intensified
+
+//questioning life choices
+
+//managed to get down from 1023 errors to 64 progress?
+
+//another 2 hours, considering ejecting project and going back to html
+
+//cried some more, then made the below code
 const webpack = require('webpack');
 module.exports = function override(config, env) {
     config.resolve.fallback = {
@@ -13,6 +25,7 @@ module.exports = function override(config, env) {
         assert: require.resolve("assert/"),
         fs: false,
         os: false,
+        async_hooks: false
     };
     config.plugins.push (
         new webpack.ProvidePlugin({
@@ -23,3 +36,7 @@ module.exports = function override(config, env) {
 
     return config;
 }
+
+//it worked, IT WORKED. GOD IS REAL!!!!! YESSSSSS. I'm gonna burst rn
+
+//Note To Self: the next time you see a webpack > 5 error. Smash your pc, drop computer science and become a carpenter

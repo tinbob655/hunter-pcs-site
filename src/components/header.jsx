@@ -11,7 +11,6 @@ class Header extends Component {
     };
 
     render() {
-        console.log(sessionStorage.getItem('loggedIn'))
         document.addEventListener("scroll", (event) => {
             const header = document.getElementById('headerTable');
             if (window.scrollY == 0) {

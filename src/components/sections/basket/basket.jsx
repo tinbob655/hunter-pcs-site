@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { convertOutOfCamelCase, changePage } from '../../../index.js';
 import LoginPopup from '../account/loginPopup.jsx';
 import { getDoc, doc, getFirestore } from 'firebase/firestore';
+import StripeCheckout from './mountedStripeCheckout.jsx';
 
 //defining basketArray here not later beause it is to be used in multiple processes
 var basketArray = [];
@@ -10,6 +11,9 @@ class Basket extends Component {
 
     state = {
         loginPopup: <></>,
+        stripeCheckout: <></>,
+        loggedInPaymentButtonText: 'Click here to get your perfect pc delivered straight to you ⟶',
+        addressPopup: <></>,
     };
 
     render() {
@@ -19,19 +23,53 @@ class Basket extends Component {
                     Your basket
                 </h1>
 
-                {/*list of products the user has in their basket*/}
+                {/*buy now section*/}
                 <div>
                     <table>
                         <thead>
                             <tr>
                                 <td>
                                     <h2 className="alignLeft">
-                                        All the stuff you've added, right here:
+                                        Buy now
                                     </h2>
-                                    {this.getBasket()}
+                                    <p className="alignRight">
+                                        Done browsing? Ready to buy? Then hit the purchase button: the final step between you and a quality gaming pc. All payments are 100% secure
+                                        as per our privacy policy
+                                    </p>
+                                    {sessionStorage.getItem('loggedIn') == 'false' ? (
+                                        <React.Fragment>
+
+                                            {/*if the user is not logged in, make them log in before paying*/}
+                                            <button type="button" onClick={() => {
+                                                this.setState({loginPopup: <LoginPopup/>});
+                                            }}>
+                                                <h3>
+                                                    Log in before you buy ⟶
+                                                </h3>
+                                            </button>
+                                        </React.Fragment>
+                                    ) : (
+                                        <React.Fragment>
+
+                                            {/*if the user is logged in and there is stuff in their basket, then rev up stripe. Time for profit!!!*/}
+                                            <button type="button" onClick={() => {
+                                                //make sure the basket is not empty
+                                                if (basketArray.length > 0) {
+                                                    this.revUpStripe();
+                                                }
+                                                else {
+                                                    this.setState({loggedInPaymentButtonText: 'Your basket is empty. Please add something to your basket before you buy'})
+                                                }
+                                            }}>
+                                                <h3>
+                                                    {this.state.loggedInPaymentButtonText}
+                                                </h3>
+                                            </button>
+                                        </React.Fragment>
+                                    )}
                                 </td>
                                 <td>
-                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788' 
+                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
                                     className="mainImage centered" alt="loading..." />
                                 </td>
                             </tr>
@@ -39,16 +77,16 @@ class Basket extends Component {
                     </table>
                 </div>
 
-                {/*link to checkout page*/}
+                {/*list of products the user has in their basket*/}
                 <div>
                     <h1 className="alignLeft">
-                        Buy now
+                        Your stuff
                     </h1>
                     <table>
                         <thead>
                             <tr>
                                 <td>
-                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
+                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788' 
                                     className="mainImage centered" alt="loading..." />
                                 </td>
                                 <td>
@@ -84,6 +122,9 @@ class Basket extends Component {
                                             </button>
                                         </React.Fragment>
                                     )}
+                                        All the stuff you've added, right here:
+                                    </h2>
+                                    {this.getBasket()}
                                 </td>
                             </tr>
                         </thead>
@@ -93,6 +134,19 @@ class Basket extends Component {
                 <div id="loginPopupWrapper">
                     {this.state.loginPopup}
                 </div>
+
+                <div id="outerLoginPopupWrapper">
+                    {this.state.loginPopup}
+                </div>
+
+                <div id="stripeCheckoutWrapper" className="popupWrapper" style={{padding: '30px'}}>
+                    {this.state.stripeCheckout}
+                </div>
+
+                <div id="addressPopupWrapper" className="popupWrapper" style={{padding: '30px'}}>
+                    {this.state.addressPopup}
+                </div>
+                
             </React.Fragment>
         );
     };
@@ -162,6 +216,8 @@ class Basket extends Component {
     getBasket() {
         let basketHTML = [];
 
+        basketArray = [];
+
         //because an array cannot be stored in local storage, there are many storage locations (0-100) which may be used to store products, combine them
         for (let i = 0; i < 100; i++) {
             if (localStorage.getItem('hunterPcsProduct'+i)) {
@@ -177,16 +233,16 @@ class Basket extends Component {
         //if the user has not added anything to their basket
         if (basketHTML.length == 0) {
             basketHTML.push(<React.Fragment>
-                <button type="button" onClick={function() {changePage('gamingPcs')}}>
+                <button type="button" onClick={function() {changePage('pcsMain')}}>
                     <h3>
-                        Looks like you haven't added anything to your basket. Click here to do something about that
+                        Looks like you haven't added anything to your basket. Click here to do something about that ⟶
                     </h3>
                 </button>
             </React.Fragment>)
         };
 
         return basketHTML;
-    }
+    };
 };
 
 export default Basket;
