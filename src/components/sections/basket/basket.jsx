@@ -1,7 +1,16 @@
 import React, {Component} from 'react';
 import { convertOutOfCamelCase, changePage } from '../../../index.js';
+import LoginPopup from '../account/loginPopup.jsx';
+import { getDoc, doc, getFirestore } from 'firebase/firestore';
+
+//defining basketArray here not later beause it is to be used in multiple processes
+var basketArray = [];
 
 class Basket extends Component {
+
+    state = {
+        loginPopup: <></>,
+    };
 
     render() {
         return (
@@ -44,31 +53,116 @@ class Basket extends Component {
                                 </td>
                                 <td>
                                     <h2 className="alignRight">
-                                        Visit the checkout
+                                        Buy now
                                     </h2>
                                     <p className="alignLeft">
-                                        Done browsing? Ready to buy? Then visit the checkout, the final step between you and a quality gaming pc. All payments are 100% secure
+                                        Done browsing? Ready to buy? Then hit the purchase button: the final step between you and a quality gaming pc. All payments are 100% secure
                                         as per our privacy policy
                                     </p>
-                                    <button type="button" onClick={function() {changePage('checkout')}}>
-                                        <h3>
-                                            Checkout here and get your perfect pc ⟶
-                                        </h3>
-                                    </button>
+                                    {sessionStorage.getItem('loggedIn') == 'false' ? (
+                                        <React.Fragment>
+
+                                            {/*if the user is not logged in, make them log in before paying*/}
+                                            <button type="button" onClick={() => {
+                                                this.setState({loginPopup: <LoginPopup/>});
+                                            }}>
+                                                <h3>
+                                                    Log in before you buy ⟶
+                                                </h3>
+                                            </button>
+                                        </React.Fragment>
+                                    ) : (
+                                        <React.Fragment>
+
+                                            {/*if the user is logged in, then rev up stripe. Time for profit!!!*/}
+                                            <button type="button" onClick={() => {
+                                                this.revUpStripe();
+                                            }}>
+                                                <h3>
+                                                    Click here to get your perfect pc delivered straight to you ⟶
+                                                </h3>
+                                            </button>
+                                        </React.Fragment>
+                                    )}
                                 </td>
                             </tr>
                         </thead>
                     </table>
                 </div>
+
+                <div id="loginPopupWrapper">
+                    {this.state.loginPopup}
+                </div>
             </React.Fragment>
         );
+    };
+
+    async revUpStripe() {
+
+        //stonks time
+
+        //setup express
+        const express = require('express');
+        const app = express();
+
+        //setup cloud firestore
+        const db = getFirestore();
+
+        //get the product name(s) and their total price 
+        let finalProudctNameString = '';
+        let totalPrice = 0;
+
+        for (let i = 0; i < basketArray.length; i++) {
+            let item = basketArray[i];
+
+            //name
+            finalProudctNameString += '-'+item+'\n';
+    
+            //price (get backend name)
+            let formattedName = item.substring(0, 1).toLowerCase();
+            formattedName += item.substring(1).replace(' ', '');
+
+            //price (fetch from cloud firestore)
+            let docRef = doc(db, 'products', formattedName);
+            let docSnap = await getDoc(docRef);
+            
+            //add to total price
+            totalPrice += docSnap.data().price;
+        };
+
+        //total price must be in P not £
+        totalPrice *= 100;
+        
+
+        const stripe = require('stripe')('sk_test_51OIsKCCzpWfV0Kwku1Usf1FFdFZTgPOwFtt7zOpA9aPEb40kRgAmeUegSJ0uT2tC9YDtK8cPcZPVHB9ds0ovKrPW000Cn5l82B');
+
+        app.post('/create-checkout-session', async (req, res) => {
+            const session = await stripe.checkout.sessions.create({
+                line_items: [{
+                    price_data: {
+                        currency: 'gbp',
+                        product_data: {
+                            name: finalProudctNameString,
+                        },
+                        unit_amount: totalPrice,
+                    },
+                    quantity: 1,
+                }],
+                mode: 'payment',
+                ui_mode: 'embedded',
+                return_url: 'https://www.hunterpcs.com',
+            });
+
+            res.send({clientSecret: session.client_secret});
+        });
+
+        app.listen(4242, () => {console.log(`Listening on port ${4242}!`)})
     };
 
     getBasket() {
         let basketHTML = [];
 
         //because an array cannot be stored in local storage, there are many storage locations (0-100) which may be used to store products, combine them
-        let basketArray = [];
         for (let i = 0; i < 100; i++) {
             if (localStorage.getItem('hunterPcsProduct'+i)) {
                 basketArray.push(convertOutOfCamelCase(localStorage.getItem('hunterPcsProduct'+i)));
