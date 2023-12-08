@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './customPcsStyles.scss';
 import { clickGetStartedButton } from './customPcsScripts.js';
 
 class CustomPcs extends Component {
@@ -26,7 +25,7 @@ class CustomPcs extends Component {
                                     </p>
                                     <button type="button" onClick={function() {clickGetStartedButton()}}>
                                         <h3>
-                                            Get started!
+                                            Get started designing your very own rig ⟶
                                         </h3>
                                     </button>
                                 </td>
@@ -38,13 +37,38 @@ class CustomPcs extends Component {
                         </thead>
                     </table>
                 </div>
-
-                <div id="pcPartsDialogueBox">
-                    <h2>
+                
+                {/*button and content for after a pc is purchased*/}
+                <div>
+                    <h1 className="alignLeft">
                         All finished?
-                    </h2>
-                    
-                    {/*NEED BUTTON TO SAVE THE CUSTOM PC TO THE USER'S BASKET*/}
+                    </h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td style={{width: '40%'}}>
+                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%203.jpeg?alt=media&token=94698dad-8a82-45fc-a076-171fd9c833af'
+                                    alt="loading..." className="mainImage centered" />
+                                </td>
+                                <td>
+                                    <h2 className="alignRight">
+                                        Buy now
+                                    </h2>
+                                    <p className="alignLeft">
+                                        We will verify that the pc you have designed works and then build it and ship it to you as usual. A small build fee of 25%
+                                         will also be charged.
+                                    </p>
+                                    <button type="button" onClick={() => {
+                                        //custom pc purchase sequence
+                                    }}>
+                                        <h3>
+                                            Get your custom pc delivered straight to you ⟶
+                                        </h3>
+                                    </button>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
             </React.Fragment>
         );
