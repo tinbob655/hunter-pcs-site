@@ -166,7 +166,7 @@ class PcsMain extends Component {
                                     </p>
                                     <button type="button" onClick={function() {changePage('customPcs')}}>
                                         <h3>
-                                            Click here to get started
+                                            Click here to get started ⟶
                                         </h3>
                                     </button>
                                 </td>
