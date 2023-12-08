@@ -67,7 +67,7 @@ class Home extends Component {
                                     <SlidingButton
                                     id="preBuilt"
                                     imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frainbow%20pc.png?alt=media&token=0e548201-b1c6-4ea6-8efb-bea42aea9bdb'
-                                    linkLocation='preBuiltPcs'
+                                    linkLocation='pcsMain'
                                     textContent='Prebuilt' />
                                 </td>
 
