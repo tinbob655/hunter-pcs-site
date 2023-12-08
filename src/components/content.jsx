@@ -23,8 +23,8 @@ class Content extends Component {
                 {/*temporarily disabled site access for mobile*/}
                 {isMobile() == true ? (
                     <div style={{width: '100vw', height: '100vh', position: 'fixed', top: 0, left: 0, backgroundColor: 'black', zIndex: 99}}>
-                        <p style={{marginTop: '40vh'}}>
-                            Look mate, I haven't finished the mobile site yet, k? Just rotate landscape and hit refresh arrite?
+                        <p style={{marginTop: '40vh', fontSize: '45px'}}>
+                            Look mate, I haven't finished the mobile site yet, k? Just rotate landscape and hit refresh arrite (and it ain't gonna look nice)
                         </p>
                     </div>
                 ) : this.getContent()}
