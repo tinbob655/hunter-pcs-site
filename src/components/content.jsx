@@ -24,7 +24,7 @@ class Content extends Component {
                 {isMobile() == true ? (
                     <div style={{width: '100vw', height: '100vh', position: 'fixed', top: 0, left: 0, backgroundColor: 'black', zIndex: 99}}>
                         <p style={{marginTop: '40vh'}}>
-                            Look mate, I haven't finished the mobile site yet, k? Just look at it on a pc or rotate to landscape and select desktop site arite.
+                            Look mate, I haven't finished the mobile site yet, k? Just rotate landscape and hit refresh arrite?
                         </p>
                     </div>
                 ) : this.getContent()}
