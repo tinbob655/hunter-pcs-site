@@ -1,10 +1,22 @@
 import React, {Component} from 'react';
+import {getFirestore, doc, setDoc} from 'firebase/firestore';
 
 class PaymentSucsessful extends Component {
 
-    componentDidMount() {
+    async componentDidMount() {
 
-        //need to somehow alert myself that a product has been purchased
+        //save to the databse the proudct that was purchased as well as needed information
+        const addressVar = sessionStorage.getItem('address');
+        const purchasedProducts = sessionStorage.getItem('purchasedProducts');
+        const emailVar = sessionStorage.getItem('email');
+
+        //save the data to firestore
+        const db = getFirestore();
+        await setDoc(doc(db, 'purchaces', emailVar), {
+            email: emailVar,
+            address: addressVar,
+            products: purchasedProducts,
+        });
         
         //after rendering this page, the user is not allowed to render the page again
         setTimeout(() => {

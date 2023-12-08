@@ -121,24 +121,35 @@ class Basket extends Component {
         //will fire after the user submits the address form
         function afterAddressRecieved(event) {
             event.preventDefault();
-            //save the address to session storage
-            const currentTarget = event.currentTarget;
-            try {
-                const address = {
-                    addressLine1: currentTarget.addressLine1.value,
-                    addressLine2: currentTarget.addressLine2.value,
-                    townOrCity: currentTarget.townOrCity.value,
-                    postcode: currentTarget.postcode.value,
-                };
-                sessionStorage.setItem('address', JSON.stringify(address));
-                
-                            //now proceed, allowing the user to open the payment popup
-                document.getElementById('addressPopupWrapper').classList.remove('shown');
-                openPaymentPopup();
 
-            } catch(error) {
-                console.log(error);
-            };
+            const currentTarget = event.currentTarget;
+
+            //make sure there are values in all fields
+            if ((!currentTarget.email.value || !currentTarget.addressLine1.value || !currentTarget.addressLine2.value || !currentTarget.townOrCity.value || !currentTarget.postcode.value)) {
+                document.getElementById('fillAllFieldsPopup').style.visibility = 'visible';
+                document.getElementById('addressPopupWrapper').scrollTop = 0;
+            }
+            else {
+
+                //save the address and other info to session storage
+                try {
+                    const address = {
+                        addressLine1: currentTarget.addressLine1.value,
+                        addressLine2: currentTarget.addressLine2.value,
+                        townOrCity: currentTarget.townOrCity.value,
+                        postcode: currentTarget.postcode.value,
+                    };
+                    sessionStorage.setItem('address', JSON.stringify(address));
+                    sessionStorage.setItem('email', event.currentTarget.email.value);
+
+                    //now proceed, allowing the user to open the payment popup
+                    document.getElementById('addressPopupWrapper').classList.remove('shown');
+                    openPaymentPopup();
+    
+                } catch(error) {
+                    console.log(error);
+                };
+            }
         };
 
         const openPaymentPopup = async() => {
@@ -178,7 +189,7 @@ class Basket extends Component {
 
             const sk = docSnap.data().value
     
-            const stripe = require('stripe')(sk);
+            const stripe = require('stripe')('sk_test_51OIsKCCzpWfV0Kwku1Usf1FFdFZTgPOwFtt7zOpA9aPEb40kRgAmeUegSJ0uT2tC9YDtK8cPcZPVHB9ds0ovKrPW000Cn5l82B');
             const session = await stripe.checkout.sessions.create({
                 line_items: [{
                     price_data: {
@@ -205,16 +216,28 @@ class Basket extends Component {
             }, 100);
         };
 
+        //render the address form
         try {
             //stonks time
 
             //first, we gotta get a delivery address
             this.setState({addressPopup: (
                 <React.Fragment>
+                    <div id="fillAllFieldsPopup" style={{visibility: 'hidden'}}>
+                        <h2 style={{color: 'red'}}>
+                            Please fill in all the fields
+                        </h2>
+                    </div>
                     <h2>
                         Where do you want us to drop it off?
                     </h2>
                     <form id="addressForm">
+                        <p>
+                            Email:
+                        </p>
+                        <label htmlFor="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Email..."/>
+
                         <p>
                             Address line 1:
                         </p>
