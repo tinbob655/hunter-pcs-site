@@ -19,7 +19,8 @@ p {
 h1, h2, h3, p {
     padding-top: 10px;
     padding-bottom: 10px;
-    max-width: 85% !important;
+    max-width: 80% !important;
+    margin: auto;
 }
 
 button {
@@ -36,7 +37,7 @@ button {
 div {
 
     &.purpleGrey {
-        box-shadow: 0 0 500px 100px #30112c;
+        box-shadow: 0 0 200px 100px #30112c;
     }
 
     &.footerContent {
@@ -94,6 +95,13 @@ div {
 
             transform: scale(1)
         }
+    }
+
+    &.dividerLine {
+        width: 80%;
+        background-color: white;
+        height: 5px;
+        margin: 1vh auto;
     }
 }
 
