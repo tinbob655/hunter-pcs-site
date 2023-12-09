@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import { changePage } from '../index.js';
+import { isMobile } from '../index.js';
+import '../hamburgers.css';
 
 class Header extends Component {
 
@@ -11,29 +13,66 @@ class Header extends Component {
     };
 
     render() {
-        document.addEventListener("scroll", (event) => {
-            const header = document.getElementById('headerTable');
-            if (window.scrollY == 0) {
-                header.style.opacity = 1.0;
-            }
-            else{
-                header.style.opacity = 0.75;
-            }
-        });
 
-        window.onload = () => {document.getElementById('headerTable').style.opacity = 1.0;}
-        return (
+        //desktop header
+        if (!isMobile()) {
+            document.addEventListener("scroll", (event) => {
+                const header = document.getElementById('headerTable');
+                if (window.scrollY == 0) {
+                    header.style.opacity = 1.0;
+                }
+                else{
+                    header.style.opacity = 0.75;
+                }
+            });
+    
+            window.onload = () => {document.getElementById('headerTable').style.opacity = 1.0;}
+            return (
+                <React.Fragment>
+                    <table style={{backgroundColor: '#070707', boxShadow: '0 0 5px 5px #070707', position: 'fixed', top: '0', left: '0', zIndex: '99'}} 
+                    className="fadeinWithHover" id="headerTable" >
+                        <thead>
+                            <tr>
+                                {this.getHeaders()}
+                            </tr>
+                        </thead>
+                    </table>
+                </React.Fragment>
+            );
+        }
+
+        //mobile header
+        else {
+            return (
             <React.Fragment>
-                <table style={{backgroundColor: '#070707', boxShadow: '0 0 5px 5px #070707', position: 'fixed', top: '0', left: '0', zIndex: '99'}} 
-                className="fadeinWithHover" id="headerTable" >
-                    <thead>
-                        <tr>
-                            {this.getHeaders()}
-                        </tr>
-                    </thead>
-                </table>
+
+                {/*hamburger button*/}
+                <button id="headerButton" className="hamburger hamburger--emphatic" type="button"
+                onClick={() => {
+                    const header = document.getElementById('mobileHeader');
+                    const button = document.getElementById('headerButton');
+                    const content = document.getElementById('content');
+
+                    button.classList.toggle('is-active');
+                    header.classList.toggle('shown');
+                    
+                    content.addEventListener('click', function openMobileHeader() {
+                        header.classList.remove('shown');
+                        button.classList.remove('is-active');
+                    });
+                }}>
+                    <span className="hamburger-box">
+                        <span className="hamburger-inner"></span>
+                    </span>
+                </button>
+
+                {/*actual header content*/}
+                <div id="mobileHeader" className="hiddenScroll">
+                    {this.getMobileHeaders()}
+                </div>
             </React.Fragment>
-        );
+            );
+        };
     };
 
     getHeaders() {
@@ -104,6 +143,27 @@ class Header extends Component {
                         </button>
                         <div className="cleanLinkButtonDivider" id={header+'divLine'}></div>
                     </td>
+                </React.Fragment>
+            );
+        });
+
+        return headersHTML;
+    };
+
+    getMobileHeaders() {
+        const frontendHeaders = ['Gaming Pcs', 'Home', 'About', 'Support', 'Tell a Friend', 'Account', 'Basket']
+        const backendHeaders = ['pcsMain', 'home', 'about', 'support', 'referAFriend', 'account', 'basket'];
+
+        let headersHTML = [];
+
+        backendHeaders.forEach((backendHeader) => {
+            headersHTML.push (
+                <React.Fragment>
+                    <button type="button" onClick={function() {changePage(backendHeader)}} style={{width:  '50%'}}>
+                        <h3>
+                            {frontendHeaders[backendHeaders.indexOf(backendHeader)]}
+                        </h3>
+                    </button>
                 </React.Fragment>
             );
         });

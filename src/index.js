@@ -7,7 +7,7 @@ import {getStorage, ref, getDownloadURL} from 'firebase/storage';
 
 import Header from './components/header.jsx';
 import Content from './components/content.jsx';
-import Footer from './components/footer.jsx';
+import Footer from './components/footer.jsx'
 
 
 //DEV FUNCTION to get firebase url
@@ -72,7 +72,10 @@ export function isMobile () {
   let windowWidth = window.innerWidth;
 
   return windowHeight > windowWidth ? true: false;
-}
+};
+
+//conditionally import the mobile styles
+isMobile() === true ? import('./mobileStyles.scss') : <></>;
 
 //function to convert a string out of camel case
 export function convertOutOfCamelCase(stringToConvert) {
@@ -101,7 +104,7 @@ root.render(
       <Header/>
     </div>
 
-    <div id="content" style={{marginTop: '100px'}}>
+    <div id="content" style={isMobile() ? {marginTop: '25px'} : {marginTop: '100px'}}>
       <Content/>
     </div>
 
