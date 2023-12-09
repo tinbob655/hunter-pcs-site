@@ -1,27 +1,28 @@
 import React, {Component} from 'react';
 import { changePage } from '../index.js';
+import {isMobile} from '../index.js';
 
 class Footer extends Component {
 
     render() {
         return (
             <React.Fragment>
-                <div id="footerContent">
+                <div id="footerContent" style={isMobile() ? {marginTop: '5vh'} : {marginTop: '20vh'}}>
                     <div style={{width: '90%', backgroundColor: 'white', height: '5px', margin: 'auto'}}></div>
-                    <table>
+                    <table style={{width: '99vw', margin: 'auto'}}>
                         <thead>
                             <tr>
-                                <td style={{width: '60%'}}>
+                                <td style={isMobile() ? {width: '70%'} : {width: '60%'}}>
                                     <table>
                                         <thead>
                                             <tr>
                                                 <td>
-                                                    <h2 className="alignLeft">
-                                                        Additional information
+                                                    <h2>
+                                                        Info
                                                     </h2>
                                                 </td>
                                                 <td>
-                                                    <h2 className="alignLeft">
+                                                    <h2>
                                                         Menu
                                                     </h2>
                                                 </td>
@@ -64,6 +65,10 @@ class Footer extends Component {
             let frontendMenuLinkName = link.replace(/([A-Z])/g, " $1");
             frontendMenuLinkName = frontendMenuLinkName.charAt(0).toUpperCase() + frontendMenuLinkName.slice(1);
 
+            if (frontendMenuLinkName == 'Pcs Main') {
+                frontendMenuLinkName = 'Gaming Pcs';
+            };
+
             //generate this row's HTML
             footerLinksHTML.push(
                 <React.Fragment>
@@ -71,21 +76,21 @@ class Footer extends Component {
                         {/*INFORMATION SECTION*/}
                         {infoLink? (
                             <td>
-                                <button type="button" style={{width: 'auto'}} onClick={function() {
+                                <button type="button" onClick={function() {
                                     sessionStorage.setItem('supportPageScroll', infoLink);
                                     changePage('support');
                                 }}>
-                                    <h3 style={{padding: 0, margin: 0}}>
+                                    <h3 style={{padding: 0}}>
                                         {frontendLinkName}
                                     </h3>
                                 </button>
                             </td>
-                        ) : <></>}
+                        ) : <td></td>}
 
                         {/*MENU SECTION*/}
                         <td>
-                            <button type="button" onClick={function() {changePage(link)}} style={{width: 'auto'}}>
-                                <h3 style={{padding: 0, margin: 0,}}>
+                            <button type="button" onClick={function() {changePage(link)}}>
+                                <h3 style={{padding: 0}}>
                                     {frontendMenuLinkName}
                                 </h3>
                             </button>
