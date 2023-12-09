@@ -21,7 +21,7 @@ class PcsMain extends Component {
 
         //fetch all the prices from database
         let fetchedPrices = [];
-        const pcTypes = ['solidPc', 'strongPc', 'powerfulPc', 'dominantPc'];
+        const pcTypes = ['solidPc', 'strongPc', 'powerfulPc', 'supremePc', 'dominantPc'];
 
         //repeat for each product
         for (let pc = 0; pc < pcTypes.length; pc++) {
@@ -38,7 +38,8 @@ class PcsMain extends Component {
             solid: fetchedPrices[0],
             strong: fetchedPrices[1],
             powerful: fetchedPrices[2],
-            dominant: fetchedPrices[3],
+            supreme: fetchedPrices[3],
+            dominant: fetchedPrices[4],
         }});
     };
 
@@ -75,74 +76,92 @@ class PcsMain extends Component {
                     <h1>
                         For high quality pcs, you're in the right place
                     </h1>
-                    <table>
+
+                    <table style={{tableLayout: 'fixed'}}>
                         <thead>
                             <tr>
-                                
-                                {/*BUDGET PC BUTTON*/}
-                                <td>
-                                    <SlidingButton 
-                                    id="solidPcsButton"
-                                    imgSrc=""
-                                    linkLocation="productPage"
-                                    ssIndex='product'
-                                    ssValue='solidPc'
-                                    textContent={this.state.prices.solid ? (
-                                        <React.Fragment>
-                                            Solid <br/><br/>{"£ "+this.state.prices.solid}
-                                        </React.Fragment>
-                                    ) : 'loading...'} />
-                                </td>
+                                <td colSpan='2'>
 
-                                {/*LOW MID RANGE PC BUTTON*/}
-                                <td>
+                                    {/*solid pc button*/}
+                                    <SlidingButton 
+                                        id="solidPcsButton"
+                                        imgSrc=""
+                                        linkLocation="productPage"
+                                        ssIndex='product'
+                                        ssValue='solidPc'
+                                        textContent={this.state.prices.solid ? (
+                                            <React.Fragment>
+                                                Solid <br/><br/>{"£ "+this.state.prices.solid}
+                                            </React.Fragment>
+                                        ) : 'loading...'} />
+                                </td>
+                                <td style={{width: '0'}}></td>
+                                <td colSpan="2">
+
+                                    {/*strong pc button*/}
                                     <SlidingButton
-                                    id="strongPcsButton"
-                                    imgSrc=""
-                                    linkLocation="productPage"
-                                    ssIndex="product"
-                                    ssValue='strongPc'
-                                    textContent={this.state.prices.strong ? (
-                                        <React.Fragment>
-                                            Strong <br/><br/>{"£ "+this.state.prices.strong}
-                                        </React.Fragment>
-                                    ) : 'loading...'} />
+                                        id="strongPcsButton"
+                                        imgSrc=""
+                                        linkLocation="productPage"
+                                        ssIndex="product"
+                                        ssValue='strongPc'
+                                        textContent={this.state.prices.strong ? (
+                                            <React.Fragment>
+                                                Strong <br/><br/>{"£ "+this.state.prices.strong}
+                                            </React.Fragment>
+                                        ) : 'loading...'} />
                                 </td>
                             </tr>
-                        </thead>
-                    </table>
-                    <table>
-                        <thead>
                             <tr>
+                                <td></td>
+                                <td colSpan="3">
 
-                                {/*UPPER MID RANGE PC BUTTON*/}
-                                <td>
+                                    {/*powerful pc button*/}
                                     <SlidingButton 
-                                    id="powerfulPcsButton"
-                                    imgSrc=""
-                                    linkLocation="productPage"
-                                    ssIndex='product'
-                                    ssValue='powerfulPc'
-                                    textContent={this.state.prices.powerful ? (
-                                        <React.Fragment>
-                                            Powerful <br/><br/>{"£ "+this.state.prices.powerful}
-                                        </React.Fragment>
-                                    ) : 'loading...'} />
+                                        id="powerfulPcsButton"
+                                        imgSrc=""
+                                        linkLocation="productPage"
+                                        ssIndex='product'
+                                        ssValue='powerfulPc'
+                                        textContent={this.state.prices.powerful ? (
+                                            <React.Fragment>
+                                                Powerful <br/><br/>{"£ "+this.state.prices.powerful}
+                                            </React.Fragment>
+                                        ) : 'loading...'} />
                                 </td>
+                                <td colSpan></td>
+                            </tr>
+                            <tr>
+                                <td colSpan="2">
 
-                                {/*ALL OUT PC BUTTON*/}
-                                <td>
+                                    {/*supreme pc button*/}
                                     <SlidingButton 
-                                    id="dominantPcsButton"
-                                    imgSrc=""
-                                    linkLocation="productPage"
-                                    ssIndex='product'
-                                    ssValue='dominantPc'
-                                    textContent={this.state.prices.dominant ? (
-                                        <React.Fragment>
-                                            Dominant <br/><br/>{"£ "+this.state.prices.dominant}
-                                        </React.Fragment>
-                                    ) : 'loading...'} />
+                                        id="supremePcsButton"
+                                        imgSrc=""
+                                        linkLocation="productPage"
+                                        ssIndex='product'
+                                        ssValue='supremePc'
+                                        textContent={this.state.prices.supreme? (
+                                            <React.Fragment>
+                                                Supreme <br/><br/>{"£ "+this.state.prices.supreme}
+                                            </React.Fragment>
+                                        ) : 'loading...'} />
+                                </td>
+                                <td></td>
+                                <td colSpan="2">
+
+                                    {/*dominant pc button*/}
+                                    <SlidingButton 
+                                        id="dominantPcsButton"
+                                        imgSrc=""
+                                        linkLocation="productPage"
+                                        ssIndex='product'
+                                        ssValue='dominantPc'
+                                        textContent={this.state.prices.dominant ? (
+                                            <React.Fragment>
+                                                Dominant <br/><br/>{"£ "+this.state.prices.dominant}
+                                            </React.Fragment>
+                                        ) : 'loading...'} />
                                 </td>
                             </tr>
                         </thead>
