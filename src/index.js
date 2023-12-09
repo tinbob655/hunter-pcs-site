@@ -89,13 +89,6 @@ if (!sessionStorage.getItem('loggedIn')) {
   sessionStorage.setItem('loggedIn', 'false');
 }
 
-//fadin the page and scroll to top
-setTimeout(() => {
-  window.scrollTo(0, 0);
-  document.body.style.opacity = 1.0;
-  document.body.style.visibility = 'visible';
-}, 1000);
-
 //Now load the page header, footer and content
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
