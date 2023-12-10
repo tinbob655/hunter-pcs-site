@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { convertOutOfCamelCase, changePage } from '../../../index.js';
+import { convertOutOfCamelCase, changePage, isMobile } from '../../../index.js';
 import LoginPopup from '../account/loginPopup.jsx';
 import { getDoc, doc, getFirestore } from 'firebase/firestore';
 import StripeCheckout from './mountedStripeCheckout.jsx';
@@ -18,102 +18,208 @@ class Basket extends Component {
     };
 
     render() {
-        return (
-            <React.Fragment>
-                <h1 className="alignRight">
-                    Your basket
-                </h1>
 
-                {/*buy now section*/}
-                <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>
-                                    <h2 className="alignLeft">
-                                        Buy now
-                                    </h2>
-                                    <p className="alignRight">
-                                        Done browsing? Ready to buy? Then hit the purchase button: the final step between you and a quality gaming pc. All payments are 100% secure
-                                        as per our privacy policy
-                                    </p>
-                                    {sessionStorage.getItem('loggedIn') == 'false' ? (
-                                        <React.Fragment>
-
-                                            {/*if the user is not logged in, make them log in before paying*/}
-                                            <button type="button" onClick={() => {
-                                                this.setState({loginPopup: <LoginPopup/>});
-                                            }}>
-                                                <h3>
-                                                    Log in before you buy ⟶
-                                                </h3>
-                                            </button>
-                                        </React.Fragment>
-                                    ) : (
-                                        <React.Fragment>
-
-                                            {/*if the user is logged in and there is stuff in their basket, then rev up stripe. Time for profit!!!*/}
-                                            <button type="button" onClick={() => {
-                                                //make sure the basket is not empty
-                                                if (basketArray.length > 0) {
-                                                    this.revUpStripe();
-                                                }
-                                                else {
-                                                    this.setState({loggedInPaymentButtonText: 'Your basket is empty. Please add something to your basket before you buy'})
-                                                }
-                                            }}>
-                                                <h3>
-                                                    {this.state.loggedInPaymentButtonText}
-                                                </h3>
-                                            </button>
-                                        </React.Fragment>
-                                    )}
-                                </td>
-                                <td>
-                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
-                                    className="mainImage centered" alt="loading..." />
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-
-                {/*list of products the user has in their basket*/}
-                <div>
-                    <h1 className="alignLeft">
-                        Your stuff
+        //desktop basket
+        if (!isMobile()) {
+            return (
+                <React.Fragment>
+                    <h1 className="alignRight">
+                        Your basket
                     </h1>
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>
-                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788' 
-                                    className="mainImage centered" alt="loading..." />
-                                </td>
-                                <td>
-                                    <h2>
-                                        All the stuff you've added, right here:
-                                    </h2>
-                                    {this.getBasket()}
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
+    
+                    {/*buy now section*/}
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <h2 className="alignLeft">
+                                            Buy now
+                                        </h2>
+                                        <p className="alignRight">
+                                            Done browsing? Ready to buy? Then hit the purchase button: the final step between you and a quality gaming pc. All payments are 100% secure
+                                            as per our privacy policy
+                                        </p>
+                                        {sessionStorage.getItem('loggedIn') == 'false' ? (
+                                            <React.Fragment>
+    
+                                                {/*if the user is not logged in, make them log in before paying*/}
+                                                <button type="button" onClick={() => {
+                                                    this.setState({loginPopup: <LoginPopup/>});
+                                                }}>
+                                                    <h3>
+                                                        Log in before you buy ⟶
+                                                    </h3>
+                                                </button>
+                                            </React.Fragment>
+                                        ) : (
+                                            <React.Fragment>
+    
+                                                {/*if the user is logged in and there is stuff in their basket, then rev up stripe. Time for profit!!!*/}
+                                                <button type="button" onClick={() => {
+                                                    //make sure the basket is not empty
+                                                    if (basketArray.length > 0) {
+                                                        this.revUpStripe();
+                                                    }
+                                                    else {
+                                                        this.setState({loggedInPaymentButtonText: 'Your basket is empty. Please add something to your basket before you buy'})
+                                                    }
+                                                }}>
+                                                    <h3>
+                                                        {this.state.loggedInPaymentButtonText}
+                                                    </h3>
+                                                </button>
+                                            </React.Fragment>
+                                        )}
+                                    </td>
+                                    <td>
+                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
+                                        className="mainImage centered" alt="loading..." />
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+    
+                    {/*list of products the user has in their basket*/}
+                    <div>
+                        <h1 className="alignLeft">
+                            Your stuff
+                        </h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788' 
+                                        className="mainImage centered" alt="loading..." />
+                                    </td>
+                                    <td>
+                                        <h2>
+                                            All the stuff you've added, right here:
+                                        </h2>
+                                        {this.getBasket()}
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+    
+                    <div id="outerLoginPopupWrapper">
+                        {this.state.loginPopup}
+                    </div>
+    
+                    <div id="stripeCheckoutWrapper" className="popupWrapper" style={{padding: '30px'}}>
+                        {this.state.stripeCheckout}
+                    </div>
+    
+                    <div id="addressPopupWrapper" className="popupWrapper" style={{padding: '30px'}}>
+                        {this.state.addressPopup}
+                    </div>
+                </React.Fragment>
+            );
+        }
 
-                <div id="outerLoginPopupWrapper">
-                    {this.state.loginPopup}
-                </div>
+        //mobile basket
+        else {
+            return (
+                <React.Fragment>
+                    <h1>
+                        Your basket
+                    </h1>
 
-                <div id="stripeCheckoutWrapper" className="popupWrapper" style={{padding: '30px'}}>
-                    {this.state.stripeCheckout}
-                </div>
+                    {/*buy now section*/}
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
+                                        className="mainImage centered" alt="loading..." />
+                                    </td>
+                                    <td style={{width: '40%'}}>
+                                        <h2 className="alignLeft">
+                                            Buy now
+                                        </h2>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <p>
+                            Done browsing? Ready to buy? Then hit the purchase button: the final step between you and a quality gaming pc. All payments are 100% secure
+                            as per our privacy policy
+                        </p>
+                        {sessionStorage.getItem('loggedIn') == 'false' ? (
+                            <React.Fragment>
 
-                <div id="addressPopupWrapper" className="popupWrapper" style={{padding: '30px'}}>
-                    {this.state.addressPopup}
-                </div>
-            </React.Fragment>
-        );
+                                {/*if the user is not logged in, make them log in before paying*/}
+                                <button type="button" onClick={() => {
+                                    this.setState({loginPopup: <LoginPopup/>});
+                                }}>
+                                    <h3>
+                                        Log in before you buy ⟶
+                                    </h3>
+                                </button>
+                            </React.Fragment>
+                        ) : (
+                            <React.Fragment>
+
+                                {/*if the user is logged in and there is stuff in their basket, then rev up stripe. Time for profit!!!*/}
+                                <button type="button" onClick={() => {
+                                    //make sure the basket is not empty
+                                    if (basketArray.length > 0) {
+                                        this.revUpStripe();
+                                    }
+                                    else {
+                                        this.setState({loggedInPaymentButtonText: 'Your basket is empty. Please add something to your basket before you buy'})
+                                    }
+                                }}>
+                                    <h3>
+                                        {this.state.loggedInPaymentButtonText}
+                                    </h3>
+                                </button>
+                            </React.Fragment>
+                        )}
+                    </div>
+
+                    <div className="dividerLine"></div>
+
+                    {/*list of all the products the user has in their basket*/}
+                    <div>
+                        <h1>
+                            Your stuff
+                        </h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td style={{width: '40%'}}>
+                                        <h2 className="alignRight">
+                                            All the stuff you've added, right here
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788' 
+                                        className="mainImage centered" alt="loading..." />
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                        {this.getBasket()}
+                    </div>
+
+                    <div id="outerLoginPopupWrapper">
+                        {this.state.loginPopup}
+                    </div>
+    
+                    <div id="stripeCheckoutWrapper" className="popupWrapper" style={{padding: '30px'}}>
+                        {this.state.stripeCheckout}
+                    </div>
+    
+                    <div id="addressPopupWrapper" className="popupWrapper" style={{padding: '30px'}}>
+                        {this.state.addressPopup}
+                    </div>
+                </React.Fragment>
+            )
+        }
     };
 
     async revUpStripe() {
@@ -127,6 +233,7 @@ class Basket extends Component {
             //make sure there are values in all fields
             if ((!currentTarget.email.value || !currentTarget.addressLine1.value || !currentTarget.addressLine2.value || !currentTarget.townOrCity.value || !currentTarget.postcode.value)) {
                 document.getElementById('fillAllFieldsPopup').style.visibility = 'visible';
+                document.getElementById('fillAllFieldsPopup').style.height = 'auto';
                 document.getElementById('addressPopupWrapper').scrollTop = 0;
             }
             else {
@@ -223,7 +330,7 @@ class Basket extends Component {
             //first, we gotta get a delivery address
             this.setState({addressPopup: (
                 <React.Fragment>
-                    <div id="fillAllFieldsPopup" style={{visibility: 'hidden'}}>
+                    <div id="fillAllFieldsPopup" style={{visibility: 'hidden', height: 0}}>
                         <h2 style={{color: 'red'}}>
                             Please fill in all the fields
                         </h2>
@@ -238,33 +345,39 @@ class Basket extends Component {
                         <label htmlFor="email">Email</label>
                         <input type="email" id="email" name="email" placeholder="Email..."/>
 
+                        <div className="dividerLine"></div>
+
                         <p>
                             Address line 1:
                         </p>
                         <label htmlFor="addressLine1">Address line 1</label>
                         <input type="text" id="addressLine1" name="addressLine1" style={{maxWidth: '75%'}} placeholder='Address line 1...'></input>
-                        <div className="cleanLinkButtonDivider" style={{maxWidth: '75%', marginTop: '2vh'}}></div>
+
+                        <div className="dividerLine"></div>
 
                         <p>
                             Address line 2:
                         </p>
                         <label htmlFor="addressLine2">Address line 2</label>
                         <input type="text" id="addressLine2" name="addressLine2" style={{maxWidth: '75%'}} placeholder='Address line 2...'></input>
-                        <div className="cleanLinkButtonDivider" style={{maxWidth: '75%', marginTop: '2vh'}}></div>
+
+                        <div className="dividerLine"></div>
 
                         <p>
                             Town or city:
                         </p>
                         <label htmlFor="townOrCity">Town or city</label>
                         <input type="text" id="townOrCity" name="townOrCity" style={{maxWidth: '75%'}} placeholder='Town or city...'></input>
-                        <div className="cleanLinkButtonDivider" style={{maxWidth: '75%', marginTop: '2vh'}}></div>
+
+                        <div className="dividerLine"></div>
 
                         <p>
                             Postcode:
                         </p>
                         <label htmlFor="postcode">Postcode</label>
                         <input type="text" id="postcode" name="postcode" style={{maxWidth: '75%'}} placeholder='Postcode...'></input>
-                        <div className="cleanLinkButtonDivider" style={{maxWidth: '75%', marginTop: '2vh'}}></div>
+
+                        <div className="dividerLine"></div>
 
                         <label htmlFor="submit">Submit</label>
                         <input type="submit" id="submit" name="submit" value="Submit" className="submit" style={{fontWeight: 900}}></input>
