@@ -159,7 +159,7 @@ class Header extends Component {
         backendHeaders.forEach((backendHeader) => {
             headersHTML.push (
                 <React.Fragment>
-                    <button type="button" onClick={function() {changePage(backendHeader)}} style={{width:  '50%'}}>
+                    <button type="button" onClick={function() {changePage(backendHeader)}} style={{width:  '75%'}}>
                         <h3>
                             {frontendHeaders[backendHeaders.indexOf(backendHeader)]}
                         </h3>

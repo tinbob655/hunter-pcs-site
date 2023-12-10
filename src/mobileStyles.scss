@@ -48,52 +48,68 @@ div {
         top: 0;
         left: 0;
         position: fixed;
-        width: 65vw;
         z-index: 99;
         background-image: linear-gradient(#050505, #1b0a19);
-        border: #303030 solid 3px;
-        border-left: none;
+        border-left: none !important;
         border-top-right-radius: 15px;
         border-bottom-right-radius: 15px;
         overflow-x: hidden;
         overflow-y: scroll;
-        transform: scale(0);
-        transform-origin: left top;
+        border: #303030 solid 3px;
+        
+        $maxWidth: 33vw;
+        $maxHeight: 100vh;
 
-        @keyframes hideHeader {
-            from {
-                transform: scale(1);
+        @keyframes hideHeader{
+            0% {
+                max-height: $maxHeight;
+                max-width: $maxWidth;
+                opacity: 1.0;
             }
-            60% {
-                transform: scale(1, 0.05);
+            66% {
+                max-width: $maxWidth;
+                max-height: 0;
+                opacity: 1.0;
             }
-            to {
-                transform: scale(0, 0.05);
+            99% {
+                max-height: 0;
+                max-width: 0;
+                opacity: 1.0;
+            }
+            100% {
+                opacity: 0.0;
             }
         }
-
         animation-name: hideHeader;
-        animation-duration: 0.75s;
-        animation-timing-function: ease-in;
+        animation-duration: 1s;
+        max-height: 0;
+        max-width: 0;
+        opacity: 0.0;
 
         &.shown {
             @keyframes showHeader {
-                from {
-                    transform: scale(0, 0.05);
+                0% {
+                    max-height: 0;
+                    max-width: 0;
                 }
-                40% {
-                    transform: scale(1, 0.05);
+                1% {
+                    opacity: 1.0;
                 }
-                to {
-                    transform: scale(1);
-                };
+                33% {
+                    max-width: $maxWidth;
+                    max-height: 0;
+                }
+                100% {
+                    max-height: $maxHeight;
+                    max-width: $maxWidth;
+                }
             }
-
             animation-name: showHeader;
-            animation-duration: 0.75s;
-            animation-timing-function: ease-out;
+            animation-duration: 1s;
 
-            transform: scale(1)
+            max-height: $maxHeight;
+            max-width: $maxWidth;
+            opacity: 1.0;
         }
     }
 
