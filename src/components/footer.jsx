@@ -4,6 +4,10 @@ import {isMobile} from '../index.js';
 
 class Footer extends Component {
 
+    state = {
+        logoImageWidth: isMobile() ? '60%' : '25%',
+    };
+
     render() {
         return (
             <React.Fragment>
@@ -41,7 +45,7 @@ class Footer extends Component {
                 </div>
 
                 <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FhunterPcsLogo.png?alt=media&token=c7353b9c-aa81-4882-ac8f-cfdc9dcc61ea'
-                    className="centered" style={{width: '25%', margin: 'auto', marginTop: '5vh'}} />
+                    className="centered" style={{width: this.state.logoImageWidth}} />
             </React.Fragment>
         );
     };
