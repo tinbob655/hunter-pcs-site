@@ -94,10 +94,18 @@ class Basket extends Component {
                                         className="mainImage centered" alt="loading..." />
                                     </td>
                                     <td>
-                                        <h2>
+                                        <h2 className="alignRight">
                                             All the stuff you've added, right here:
                                         </h2>
                                         {this.getBasket()}
+
+                                        <button type="button" onClick={() => {
+                                            this.clearBasket();
+                                        }}>
+                                            <h3 className="alignLeft">
+                                                Click here to empty your basket
+                                            </h3>
+                                        </button>
                                     </td>
                                 </tr>
                             </thead>
@@ -204,6 +212,14 @@ class Basket extends Component {
                             </thead>
                         </table>
                         {this.getBasket()}
+
+                        <button type="button" onClick={() => {
+                            this.clearBasket();
+                        }}>
+                            <h3>
+                                Click here to empty your basket
+                            </h3>
+                        </button>
                     </div>
 
                     <div id="outerLoginPopupWrapper">
@@ -425,6 +441,20 @@ class Basket extends Component {
         };
 
         return basketHTML;
+    };
+
+    clearBasket() {
+
+        //once again, can't store arrays in session storage yada yada yada. AKA: gotta do for loop
+        for(let i = 0; i < 100; i++) {
+            localStorage.removeItem('hunterPcsProduct'+i);
+            console.log(localStorage.getItem('hunterPcsProduct'+i));
+        };
+
+        //refresh the page
+        setTimeout(() => {
+            window.location.reload();
+        }, 100);
     };
 };
 
