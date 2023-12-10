@@ -6,10 +6,11 @@ class Support extends Component {
 
     componentDidMount() {
         const scrollTarget = document.getElementById(sessionStorage.getItem('supportPageScroll'));
+        console.log(scrollTarget)
         if (scrollTarget) {
             setTimeout(() => {
                 scrollTarget.scrollIntoView(true);
-            }, 1000);
+            }, 1100);
         };
         sessionStorage.setItem('supportPageScroll', undefined);
     }
