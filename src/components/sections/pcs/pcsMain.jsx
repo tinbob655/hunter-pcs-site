@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import SlidingButton from '../../slidingButton.jsx';
 import {doc, getDoc, getFirestore} from 'firebase/firestore';
 import { firebaseInit } from '../../../firebase.js';
-import { changePage } from '../../../index.js';
+import { changePage, isMobile } from '../../../index.js';
 
 firebaseInit();
 
@@ -44,161 +44,305 @@ class PcsMain extends Component {
     };
 
     render() {
-        return (
-            <React.Fragment>
-                {/*HEADER SECTION*/}
-                <div>
-                    <h1 className="alignRight">
-                        Hand crafted gaming pcs, ready to go
-                    </h1>
-                    <table>
-                        <thead>
+
+        //desktop gaming pcs page
+        if (!isMobile()) {
+            return (
+                <React.Fragment>
+                    {/*HEADER SECTION*/}
+                    <div>
+                        <h1 className="alignRight">
+                            Hand crafted gaming pcs, ready to go
+                        </h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE1.jpeg?alt=media&token=aa72a5f1-7adb-42cd-98d2-a0e8795822da' 
+                                        className="mainImage" alt="loading..."/>
+                                    </td>
+                                    <td>
+                                        <h2 className="alignRight">
+                                            Get your dream setup
+                                        </h2>
+                                        <p className="alignLeft">
+                                            We sell pcs ranging from the highest performing to the most budget effective. Whatever your needs, satisfy them here
+                                        </p>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+    
+                    {/*PREBUILT PRODUCTS SECTION*/}
+                    <div className="purpleGrey">
+                        <h1>
+                            For high quality pcs, you're in the right place
+                        </h1>
+    
+                        <table style={{tableLayout: 'fixed'}}>
+                            <thead>
+                                <tr>
+                                    <td colSpan='2'>
+    
+                                        {/*solid pc button*/}
+                                        <SlidingButton 
+                                            id="solidPcsButton"
+                                            imgSrc=""
+                                            linkLocation="productPage"
+                                            ssIndex='product'
+                                            ssValue='solidPc'
+                                            textContent={this.state.prices.solid ? (
+                                                <React.Fragment>
+                                                    Solid <br/><br/>{"£ "+this.state.prices.solid}
+                                                </React.Fragment>
+                                            ) : 'loading...'} />
+                                    </td>
+                                    <td style={{width: '0'}}></td>
+                                    <td colSpan="2">
+    
+                                        {/*strong pc button*/}
+                                        <SlidingButton
+                                            id="strongPcsButton"
+                                            imgSrc=""
+                                            linkLocation="productPage"
+                                            ssIndex="product"
+                                            ssValue='strongPc'
+                                            textContent={this.state.prices.strong ? (
+                                                <React.Fragment>
+                                                    Strong <br/><br/>{"£ "+this.state.prices.strong}
+                                                </React.Fragment>
+                                            ) : 'loading...'} />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td colSpan="3">
+    
+                                        {/*powerful pc button*/}
+                                        <SlidingButton 
+                                            id="powerfulPcsButton"
+                                            imgSrc=""
+                                            linkLocation="productPage"
+                                            ssIndex='product'
+                                            ssValue='powerfulPc'
+                                            textContent={this.state.prices.powerful ? (
+                                                <React.Fragment>
+                                                    Powerful <br/><br/>{"£ "+this.state.prices.powerful}
+                                                </React.Fragment>
+                                            ) : 'loading...'} />
+                                    </td>
+                                    <td colSpan></td>
+                                </tr>
+                                <tr>
+                                    <td colSpan="2">
+    
+                                        {/*supreme pc button*/}
+                                        <SlidingButton 
+                                            id="supremePcsButton"
+                                            imgSrc=""
+                                            linkLocation="productPage"
+                                            ssIndex='product'
+                                            ssValue='supremePc'
+                                            textContent={this.state.prices.supreme? (
+                                                <React.Fragment>
+                                                    Supreme <br/><br/>{"£ "+this.state.prices.supreme}
+                                                </React.Fragment>
+                                            ) : 'loading...'} />
+                                    </td>
+                                    <td></td>
+                                    <td colSpan="2">
+    
+                                        {/*dominant pc button*/}
+                                        <SlidingButton 
+                                            id="dominantPcsButton"
+                                            imgSrc=""
+                                            linkLocation="productPage"
+                                            ssIndex='product'
+                                            ssValue='dominantPc'
+                                            textContent={this.state.prices.dominant ? (
+                                                <React.Fragment>
+                                                    Dominant <br/><br/>{"£ "+this.state.prices.dominant}
+                                                </React.Fragment>
+                                            ) : 'loading...'} />
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+    
+                    {/*CUSTOM PCS SECTION*/}
+                    <div>
+                        <h1>
+                            Design your own pc
+                        </h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <h2 className="alignLeft">
+                                            Build your dreams
+                                        </h2>
+                                        <p className="alignRight">
+                                            Using our custom pc creator, you can design the pc of your dreams online, right now.
+                                        </p>
+                                        <button type="button" onClick={function() {changePage('customPcs')}}>
+                                            <h3>
+                                                Click here to get started ⟶
+                                            </h3>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=b7433866-5203-4cbb-9808-ca1d47ee1a48'
+                                        className="mainImage centered" style={{width: '85%', height: '450px', objectFit: 'cover'}} alt="loading..." />
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </React.Fragment>
+            );
+        }
+
+        //mobile gaming pcs page
+        else {
+            return (
+                <React.Fragment>
+
+                    {/*header section*/}
+                    <div>
+                        <h1>
+                            Hand crafted gaming pcs, ready to go
+                        </h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE1.jpeg?alt=media&token=aa72a5f1-7adb-42cd-98d2-a0e8795822da' 
+                                        className="mainImage" alt="loading..."/>
+                                    </td>
+                                    <td style={{width: '40%'}}>
+                                        <h2 className="alignLeft">
+                                            Get your dream setup
+                                        </h2>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <p>
+                            We sell pcs ranging from the highest performing to the most budget effective. Whatever your needs, satisfy them here
+                        </p>
+                    </div>
+
+                    <div className="dividerLine"></div>
+
+                    {/*PREBUILT PRODUCTS SECTION*/}
+                    <div className="purpleGrey">
+                        <h1 className="alignLeft">
+                            Browse our pcs
+                        </h1>
+                        <h2 className="alignRight">
+                            For high quality gaming pcs, you're in the right place
+                        </h2>
+
+                        {/*solid pc button*/}
+                        <SlidingButton 
+                            id="solidPcsButton"
+                            imgSrc=""
+                            linkLocation="productPage"
+                            ssIndex='product'
+                            ssValue='solidPc'
+                            textContent={this.state.prices.solid ? (
+                                <React.Fragment>
+                                    Solid <br/><br/>{"£ "+this.state.prices.solid}
+                                </React.Fragment>
+                            ) : 'loading...'} />
+
+                        {/*strong pc button*/}
+                        <SlidingButton
+                            id="strongPcsButton"
+                            imgSrc=""
+                            linkLocation="productPage"
+                            ssIndex="product"
+                            ssValue='strongPc'
+                            textContent={this.state.prices.strong ? (
+                                <React.Fragment>
+                                    Strong <br/><br/>{"£ "+this.state.prices.strong}
+                                </React.Fragment>
+                            ) : 'loading...'} />
+
+                        {/*powerful pc button*/}
+                        <SlidingButton 
+                            id="powerfulPcsButton"
+                            imgSrc=""
+                            linkLocation="productPage"
+                            ssIndex='product'
+                            ssValue='powerfulPc'
+                            textContent={this.state.prices.powerful ? (
+                                <React.Fragment>
+                                    Powerful <br/><br/>{"£ "+this.state.prices.powerful}
+                                </React.Fragment>
+                            ) : 'loading...'} />
+
+                        {/*supreme pc button*/}
+                        <SlidingButton 
+                            id="supremePcsButton"
+                            imgSrc=""
+                            linkLocation="productPage"
+                            ssIndex='product'
+                            ssValue='supremePc'
+                            textContent={this.state.prices.supreme? (
+                                <React.Fragment>
+                                    Supreme <br/><br/>{"£ "+this.state.prices.supreme}
+                                </React.Fragment>
+                            ) : 'loading...'} />
+
+                            {/*dominant pc button*/}
+                            <SlidingButton 
+                                id="dominantPcsButton"
+                                imgSrc=""
+                                linkLocation="productPage"
+                                ssIndex='product'
+                                ssValue='dominantPc'
+                                textContent={this.state.prices.dominant ? (
+                                    <React.Fragment>
+                                        Dominant <br/><br/>{"£ "+this.state.prices.dominant}
+                                    </React.Fragment>
+                                ) : 'loading...'} />
+                    </div>
+
+                    <div className="dividerLine"></div>
+
+                    {/*CUSTOM PCS SECTION*/}
+                    <div>
+                        <h1>
+                            Design your own pc
+                        </h1>
+                        <table>
                             <tr>
-                                <td>
-                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE1.jpeg?alt=media&token=aa72a5f1-7adb-42cd-98d2-a0e8795822da' 
-                                    className="mainImage" alt="loading..."/>
-                                </td>
-                                <td>
+                                <td style={{width: '40%'}}>
                                     <h2 className="alignRight">
-                                        Design your dream setup
-                                    </h2>
-                                    <p className="alignLeft">
-                                        We sell pcs ranging from the highest performing to the most budget effective. Whatever your needs, satisfy them here
-                                    </p>
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-
-                {/*PREBUILT PRODUCTS SECTION*/}
-                <div className="purpleGrey">
-                    <h1>
-                        For high quality pcs, you're in the right place
-                    </h1>
-
-                    <table style={{tableLayout: 'fixed'}}>
-                        <thead>
-                            <tr>
-                                <td colSpan='2'>
-
-                                    {/*solid pc button*/}
-                                    <SlidingButton 
-                                        id="solidPcsButton"
-                                        imgSrc=""
-                                        linkLocation="productPage"
-                                        ssIndex='product'
-                                        ssValue='solidPc'
-                                        textContent={this.state.prices.solid ? (
-                                            <React.Fragment>
-                                                Solid <br/><br/>{"£ "+this.state.prices.solid}
-                                            </React.Fragment>
-                                        ) : 'loading...'} />
-                                </td>
-                                <td style={{width: '0'}}></td>
-                                <td colSpan="2">
-
-                                    {/*strong pc button*/}
-                                    <SlidingButton
-                                        id="strongPcsButton"
-                                        imgSrc=""
-                                        linkLocation="productPage"
-                                        ssIndex="product"
-                                        ssValue='strongPc'
-                                        textContent={this.state.prices.strong ? (
-                                            <React.Fragment>
-                                                Strong <br/><br/>{"£ "+this.state.prices.strong}
-                                            </React.Fragment>
-                                        ) : 'loading...'} />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td colSpan="3">
-
-                                    {/*powerful pc button*/}
-                                    <SlidingButton 
-                                        id="powerfulPcsButton"
-                                        imgSrc=""
-                                        linkLocation="productPage"
-                                        ssIndex='product'
-                                        ssValue='powerfulPc'
-                                        textContent={this.state.prices.powerful ? (
-                                            <React.Fragment>
-                                                Powerful <br/><br/>{"£ "+this.state.prices.powerful}
-                                            </React.Fragment>
-                                        ) : 'loading...'} />
-                                </td>
-                                <td colSpan></td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2">
-
-                                    {/*supreme pc button*/}
-                                    <SlidingButton 
-                                        id="supremePcsButton"
-                                        imgSrc=""
-                                        linkLocation="productPage"
-                                        ssIndex='product'
-                                        ssValue='supremePc'
-                                        textContent={this.state.prices.supreme? (
-                                            <React.Fragment>
-                                                Supreme <br/><br/>{"£ "+this.state.prices.supreme}
-                                            </React.Fragment>
-                                        ) : 'loading...'} />
-                                </td>
-                                <td></td>
-                                <td colSpan="2">
-
-                                    {/*dominant pc button*/}
-                                    <SlidingButton 
-                                        id="dominantPcsButton"
-                                        imgSrc=""
-                                        linkLocation="productPage"
-                                        ssIndex='product'
-                                        ssValue='dominantPc'
-                                        textContent={this.state.prices.dominant ? (
-                                            <React.Fragment>
-                                                Dominant <br/><br/>{"£ "+this.state.prices.dominant}
-                                            </React.Fragment>
-                                        ) : 'loading...'} />
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-
-                {/*CUSTOM PCS SECTION*/}
-                <div>
-                    <h1>
-                        Design your own pc
-                    </h1>
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>
-                                    <h2 className="alignLeft">
                                         Build your dreams
                                     </h2>
-                                    <p className="alignRight">
-                                        Using our custom pc creator, you can design the pc of your dreams right here on our website.
-                                    </p>
-                                    <button type="button" onClick={function() {changePage('customPcs')}}>
-                                        <h3>
-                                            Click here to get started ⟶
-                                        </h3>
-                                    </button>
                                 </td>
                                 <td>
                                     <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=b7433866-5203-4cbb-9808-ca1d47ee1a48'
-                                    className="mainImage centered" style={{width: '85%', height: '450px', objectFit: 'cover'}} alt="loading..." />
+                                        className="mainImage centered" style={{maxHeight: '30vh', objectFit: 'cover'}} alt="loading..." />
                                 </td>
                             </tr>
-                        </thead>
-                    </table>
-                </div>
-            </React.Fragment>
-        );
+                        </table>
+                        <p>
+                            Using our custom pc creator, you can design the pc of your dreams online, right now.
+                        </p>
+                        <button type="button" onClick={function() {changePage('customPcs')}}>
+                            <h3>
+                                Click here to get started ⟶
+                            </h3>
+                        </button>
+                    </div>
+                </React.Fragment>
+            );
+        };
     };
 };
 
