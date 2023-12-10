@@ -51,7 +51,7 @@ div {
     }
 
     &#mobileHeader {
-        top: 0;
+        top: 5vh;
         left: 0;
         position: fixed;
         z-index: 99;
@@ -64,7 +64,7 @@ div {
         border: #303030 solid 3px;
         
         $maxWidth: 33vw;
-        $maxHeight: 100vh;
+        $maxHeight: 50vh;
 
         @keyframes hideHeader{
             0% {
@@ -72,7 +72,7 @@ div {
                 max-width: $maxWidth;
                 opacity: 1.0;
             }
-            66% {
+            75% {
                 max-width: $maxWidth;
                 max-height: 0;
                 opacity: 1.0;
@@ -101,7 +101,7 @@ div {
                 1% {
                     opacity: 1.0;
                 }
-                33% {
+                25% {
                     max-width: $maxWidth;
                     max-height: 0;
                 }
