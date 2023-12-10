@@ -238,7 +238,7 @@ class PcsMain extends Component {
 
                     {/*PREBUILT PRODUCTS SECTION*/}
                     <div className="purpleGrey">
-                        <h1 className="alignLeft">
+                        <h1>
                             Browse our pcs
                         </h1>
                         <h2 className="alignRight">
