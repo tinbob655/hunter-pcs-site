@@ -30,6 +30,9 @@ class Home extends Component {
                                         <h2 style={{marginRight: '1%', textAlign: 'right'}}>
                                             Packing a serious punch
                                         </h2>
+                                        <p className="alignRight">
+                                            Perfect for:
+                                        </p>
                                         <p style={{textAlign: 'right', marginRight: '15%'}}>
                                             -AAA gaming
                                         </p>
@@ -40,7 +43,7 @@ class Home extends Component {
                                             -Office and work
                                         </p>
                                         <p style={{textAlign: 'right', marginRight: '30%'}}>
-                                            Streaming video
+                                            -Streaming video
                                         </p>
                                         <p style={{textAlign: 'right', marginRight: '40%'}}>
                                             -Just chilling
@@ -123,8 +126,7 @@ class Home extends Component {
                             Play your favourite titles
                         </h1>
                             <video autoPlay loop loading="lazy" alt="loading..." controls>
-                            <source src={gamesCompilationVideo}
-                            type="video/mp4"/>
+                            <source src={gamesCompilationVideo} type="video/mp4"/>
                         </video>
                     </div>
     
@@ -171,16 +173,7 @@ class Home extends Component {
                                             Quality guaranteed
                                         </h1>
                                         <p className="alignRight">
-                                            Here at Hunter Pcs we're committed to customisation: see something you want to change in one of our builds?
-                                             Just make your own build using our cutsom pc creator
-                                        </p>
-                                        <button type="button" onClick={function() {changePage('customPcs')}}>
-                                            <h3>
-                                                Design your own pc ⟶
-                                            </h3>
-                                        </button>
-                                        <p className="alignLeft">
-                                            What's more: we guarantee no expenses spared. That means every one of your pc's components is made from branded and trusted manufacturers.
+                                            We guarantee no expenses spared. That means every one of your pc's components is made from branded and trusted manufacturers.
                                             And not just that, we will also thoroughly test your build to make sure you get the maximum performance possible
                                         </p>
                                         <button type="button" onClick={function() {
@@ -211,6 +204,184 @@ class Home extends Component {
                         <h1>
                             Pcs Made to Measure
                         </h1>
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Falt%20Logo.jpg?alt=media&token=83dd8d5d-16ec-4f74-bb00-0fb407d8e659"
+                                    className="mainImage centered"
+                                    alt="loading..."/>
+                                </td>
+                                <td style={{width: '40%'}}>
+                                    <h2 className="alignLeft">
+                                        Packing a serious punch
+                                    </h2>
+                                </td>
+                            </tr>
+                        </table>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            -AAA gaming
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p>
+                                            -Ultra low latency
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            -Office and work
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p>
+                                            -Streaming video
+                                        </p>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <p>
+                            -Just chilling
+                        </p>
+                    </div>
+
+                    <div className="dividerLine"></div>
+
+                    {/*GAMING, PREBUILT AND CUSTOM BUTTONS*/}
+                    <div className="purpleGrey">
+                        <SlidingButton 
+                        id="gamingPcs"
+                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8'
+                        linkLocation='pcsMain'
+                        textContent='Gaming' />
+
+                        <SlidingButton
+                        id="preBuilt"
+                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frainbow%20pc.png?alt=media&token=0e548201-b1c6-4ea6-8efb-bea42aea9bdb'
+                        linkLocation='pcsMain'
+                        textContent='Prebuilt' />
+
+                        <SlidingButton 
+                        id="custom"
+                        imgSrc="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fstock%20pc%20parts.png?alt=media&token=f920a622-e3cc-4e59-9df1-ee6cf27c9c7b"
+                        linkLocation='customPcs'
+                        textContent='Custom' />
+                    </div>
+
+                    {/*PERFECT FOT GAMING SECTION*/}
+                    <div>
+                        <h1>
+                            Perfect for gaming
+                        </h1>
+                        <table>
+                            <tr>
+                                <td style={{width: '40%'}}>
+                                    <h2 className="alignRight">
+                                        Maximum speed
+                                    </h2>
+                                </td>
+                                <td>
+                                    <img src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%202.jpeg?alt=media&token=c9e0128f-15ca-4595-bc92-15618109e0de" 
+                                    className="mainImage" alt="loading..."/>
+                                </td>
+                            </tr>
+                        </table>
+                        <p>
+                            Here at Hunter pcs, we know that the best pcs are designed to run games smooth as butter. That's why we've been working hard to deliver you the 
+                            best gaming experience at the lowest price. <br/>We make all our computers with high end components from trusted manufacturers.
+                        </p>
+                        <button onClick={function() {changePage('gamingPcs')}} type="button">
+                            <h3>
+                                Browse all gaming pcs  ⟶
+                            </h3>
+                        </button>
+                    </div>
+
+                    <div className="dividerLine"></div>
+
+                    {/*VIDEO OF GAMEPLAY SECTION*/}
+                    <div>
+                        <h1>
+                            Play your favourite titles, no sweat
+                        </h1>
+                        <video autoPlay loop loading="lazy" alt="loading..." controls>
+                            <source src={gamesCompilationVideo} type="video/mp4" />
+                        </video>
+                    </div>
+
+                    <div className="dividerLine"></div>
+
+                    {/*DESIGN YOUR OWN PC SECTION*/}
+                    <div className="purpleGrey">
+                        <h1>
+                            Design your own, custom build
+                        </h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <img src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8"
+                                        className="mainImage" alt="loading..." />
+                                    </td>
+                                    <td style={{width: '40%'}}>
+                                        <h2 className="alignLeft">
+                                            Build your dreams
+                                        </h2>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <p>
+                            Need that specific pc you've always wanted? Well you're in luck: here at Hunter Pcs, you can design your own cusom pc
+                            and have one of our experts assemble it for you. We'll even deliver it straight to your door as well
+                        </p>
+                        <button type="button" onClick={function() {changePage('customPcs')}}>
+                            <h3>
+                                Pick your perfect parts ⟶
+                            </h3>
+                        </button>
+                    </div>
+
+                    <div className="dividerLine"></div>
+
+                    {/*QUALITY GUARANTEED SECTION*/}
+                    <div>
+                        <h1>
+                            Quality guaranteed
+                        </h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td style={{width: '40%'}}>
+                                        <h2 className="alignRight">
+                                            No expenses spared
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupTall2.jpeg?alt=media&token=fb61bf07-a94d-4b28-8285-eb866345f9e7' 
+                                        className="mainImage centered" style={{width: '85%'}} alt="loading..."/>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <p>
+                            We guarantee no expenses spared. That means every one of your pc's components is made from branded and trusted manufacturers.
+                            And not just that, we will also thoroughly test your build to make sure you get the maximum performance possible
+                        </p>
+                        <button type="button" onClick={function() {
+                            sessionStorage.setItem('supportPageScroll', 'noExpensesSpared');
+                            changePage('support');
+                        }}>
+                            <h3>
+                                Learn more about our no expenses spared guarantee ⟶
+                            </h3>
+                        </button>
                     </div>
                 </React.Fragment>
             );

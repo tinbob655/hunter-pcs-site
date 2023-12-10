@@ -32,6 +32,12 @@ button {
         right: 0;
         width: auto;
     }
+
+    &.linkButton {
+        padding-bottom: 2vw;
+        margin: auto;
+        max-height: max(300px, 50vw);
+    }
 }
 
 div {
