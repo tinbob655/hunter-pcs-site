@@ -125,6 +125,11 @@ div {
         height: 5px;
         margin: 1vh auto;
     }
+    
+    &#fullSpecDiv {
+        margin: 5vh auto;
+        overflow-y: scroll;
+    }
 }
 
 img {
