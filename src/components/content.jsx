@@ -8,12 +8,9 @@ import Basket from './sections/basket/basket.jsx';
 import PcsMain from './sections/pcs/pcsMain.jsx';
 import CustomPcs from './sections/pcs/custom/customPcs.jsx';
 import ReferAFriend from './sections/referAFriend/referAFriend.jsx';
-import SignUpLogIn from './sections/signUpLogIn/signUpLogIn.jsx';
 import Support from './sections/support/support.jsx';
 import ProductPage from './sections/pcs/prebuilt/productPage.jsx';
 import PaymentSucsessful from './sections/basket/paymentSucsessful.jsx';
-
-import { isMobile } from '../index.js';
 
 class Content extends Component {
 
@@ -50,7 +47,6 @@ class Content extends Component {
             pcsMain: <PcsMain/>,
             customPcs: <CustomPcs/>,
             referAFriend: <ReferAFriend/>,
-            signUpLogIn: <SignUpLogIn/>,
             support: <Support/>,
             productPage: <ProductPage/>,
             paymentSucsessful: <PaymentSucsessful/>
