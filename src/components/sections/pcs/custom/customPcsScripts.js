@@ -1,11 +1,8 @@
-import {doc, getDoc, getFirestore} from 'firebase/firestore';
-
 export function clickGetStartedButton() {
 
     //make sure the user has an account, if not, make them create one
 
-    //CANNOT COMPLETE THIS FUNCTION AND THEREFORE THIS PAGE UNTIL THE ACCOUNTS PAGE IS MADE
-    const db = getFirestore();
+    //get the address off the user
 
     //take the user to pcpartpickers.com
     alert('Leaving this website!\n\nThis is a link to an external site, proceed at own risk.');
@@ -13,4 +10,6 @@ export function clickGetStartedButton() {
 
     //show the ui for submitting a designed pc
     document.getElementById('pcPartsDialogueBox').classList.add('shown');
+
+    // promot the user to send an email with a picture of the product from pcpartpickers.com
 };
