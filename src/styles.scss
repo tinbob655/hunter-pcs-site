@@ -173,7 +173,7 @@ div {
         box-shadow: 0 0 150px 125px #0e030e;
     }
 
-    div.popupWrapper {
+    &.popupWrapper {
         position: fixed;
         z-index: 98;
         border-radius: 15px;

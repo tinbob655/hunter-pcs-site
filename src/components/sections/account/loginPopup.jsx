@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './loginStyles.scss';
+import {isMobile} from '../../../index.js';
 
 //firebase modules for accounts
 import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
@@ -44,7 +45,7 @@ class LoginPopup extends Component {
     render() {
         return (
             <React.Fragment>
-                <div id="innerLoginPopupWrapper" className="customScrollbar">
+                <div id="innerLoginPopupWrapper" className="popupWrapper">
                     <h2 id="popupHeader">
                         You're going to need an account!
                     </h2>
@@ -200,96 +201,193 @@ class LoginPopup extends Component {
     
                 if (logInBool) {
         
-                    //log in HTML
-                    panelContentHTML.push(
-                        <React.Fragment>
-                            <h2 id="logInHeader">
-                                Log in
-                            </h2>
-        
-                            {/*Email and password input*/}
-                            <form id="loginForm">
+                    //desktop login in form
+                    if (!isMobile()) {
+                        panelContentHTML.push(
+                            <React.Fragment>
+                                <h2 id="logInHeader">
+                                    Log in
+                                </h2>
+            
+                                {/*Email and password input*/}
+                                <form id="loginForm">
                                     <table>
-                                    <thead>
+                                        <thead>
+                                            <tr>
+                                                <td>
+                                                    <p>
+                                                        Email:
+                                                    </p>
+                                                    <label htmlFor="email">Email</label>
+                                                    <input type="text" id="email" name="email" placeholder='Enter your Email...'></input>
+                                                </td>
+                                                <td>
+                                                    <p>
+                                                        Password:
+                                                    </p>
+                                                    <label htmlFor="password">Password</label>
+                                                    <input type="password" id="password" name="password" placeholder='Enter your password...'></input>
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                        <input type="submit" value="Submit" className="submit"></input>
+                                </form>
+        
+                                <div className="cleanLinkButtonDivider" style={{maxWidth: '85%', marginTop: '5vh'}}></div>
+        
+                                <button type="button" onClick={function() {logInWithGoogle()}}>
+                                    <h3>
+                                        Or log in with google
+                                    </h3>
+                                </button>
+                            </React.Fragment>
+                        );
+                    }
+
+                    //mobile login form
+                    else {
+                        panelContentHTML.push (
+                            <React.Fragment>
+                                <h1 id="logInHeader">
+                                    Log in
+                                </h1>
+
+                                {/*email and password input*/}
+                                <form id="loginForm">
+                                    <p>
+                                        Email:
+                                    </p>
+                                    <label htmlFor="email">Email</label>
+                                    <input type="text" id="email" name="email" placeholder='Enter your Email...'></input>
+
+                                    <div className="dividerLine"></div>
+
+                                    <p>
+                                        Password:
+                                    </p>
+                                    <label htmlFor="password">Password</label>
+                                    <input type="password" id="password" name="password" placeholder='Enter your password...'></input>
+
+                                    <input type="submit" value="Submit" className="submit"></input>
+
+                                    <div className="dividerLine"></div>
+
+                                    <button type="button" onClick={function() {logInWithGoogle()}}>
+                                        <h3>
+                                            Or log in with google
+                                        </h3>
+                                    </button>
+                                </form>
+                            </React.Fragment>
+                        )
+                    }
+                }
+                else {
+        
+                    //desktop sign in form
+                    if (!isMobile()) {
+                        panelContentHTML.push(
+                            <React.Fragment>
+                                <h2>
+                                    Sign up
+                                </h2>
+                                <p>
+                                    Creating an account with us is easy, just enter your email address and create a password
+                                </p>
+                                <form id="signUpForm">
+                                    <table>
                                         <tr>
                                             <td>
                                                 <p>
                                                     Email:
                                                 </p>
                                                 <label htmlFor="email">Email</label>
-                                                <input type="text" id="email" name="email" placeholder='Enter your Email...'></input>
+                                                <input id="email" type="text" name="email" placeholder='Enter your email...'></input>
                                             </td>
+        
                                             <td>
                                                 <p>
                                                     Password:
                                                 </p>
-                                                <label htmlFor="password">Password</label>
-                                                <input type="password" id="password" name="password" placeholder='Enter your password...'></input>
+                                                <label htmlFor="password0">Password</label>
+                                                <input id="password0" type="password" name="password0" placeholder='Enter your password...'></input>
+                                                <p>
+                                                    Confirm password:
+                                                </p>
+                                                <label htmlFor="password1">Confirm password</label>
+                                                <input id="password1" type="password" name="password1" placeholder='Confirm your password...'></input>
                                             </td>
                                         </tr>
-                                    </thead>
                                     </table>
-                                    <input type="submit" value="Submit" className="submit"></input>
-                            </form>
-    
-                            <div className="cleanLinkButtonDivider" style={{maxWidth: '85%', marginTop: '5vh'}}></div>
-    
-                            <button type="button" onClick={function() {logInWithGoogle()}}>
-                                <h3>
-                                    Or log in with google
-                                </h3>
-                            </button>
-                        </React.Fragment>
-                    );
-                }
-                else {
+                                    <input id="submit" type="submit" className="submit" name="submit"></input>
+                                </form>
         
-                    //sign up HTML
-                    panelContentHTML.push(
-                        <React.Fragment>
-                            <h2>
-                                Sign up
-                            </h2>
-                            <p>
-                                Creating an account with us is easy, just enter your email address and create a password
-                            </p>
-                            <form id="signUpForm">
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <p>
-                                                Email:
-                                            </p>
-                                            <label htmlFor="email">Email</label>
-                                            <input id="email" type="text" name="email" placeholder='Enter your email...'></input>
-                                        </td>
-    
-                                        <td>
-                                            <p>
-                                                Password:
-                                            </p>
-                                            <label htmlFor="password0">Password</label>
-                                            <input id="password0" type="password" name="password0" placeholder='Enter your password...'></input>
-                                            <p>
-                                                Confirm password:
-                                            </p>
-                                            <label htmlFor="password1">Confirm password</label>
-                                            <input id="password1" type="password" name="password1" placeholder='Confirm your password...'></input>
-                                        </td>
-                                    </tr>
-                                </table>
-                                <input id="submit" type="submit" className="submit" name="submit"></input>
-                            </form>
-    
-                            <div className="cleanLinkButtonDivider" style={{maxWidth: '85%', marginTop: '5vh'}}></div>
-    
-                            <button type="button" onClick={function() {logInWithGoogle()}}>
-                                <h3>
-                                    Or log in with google
-                                </h3>
-                            </button>
-                        </React.Fragment>
-                    );
+                                <div className="cleanLinkButtonDivider" style={{maxWidth: '85%', marginTop: '5vh'}}></div>
+        
+                                <button type="button" onClick={function() {logInWithGoogle()}}>
+                                    <h3>
+                                        Or log in with Google
+                                    </h3>
+                                </button>
+                            </React.Fragment>
+                        );
+                    }
+
+                    //mobile sign in form
+                    else {
+                        panelContentHTML.push (
+                            <React.Fragment>
+                                <h1>
+                                    Sign up
+                                </h1>
+                                <p>
+                                    Creating your HunterPcs account is easy, just enter your email address and create a password
+                                </p>
+
+                                <form id="signUpForm">
+                                    <p>
+                                        Email:
+                                    </p>
+                                    <label htmlFor="email">Email</label>
+                                    <input id="email" type="text" name="email" placeholder='Enter your email...'></input>
+
+                                    <div className="dividerLine"></div>
+
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <td>
+                                                    <p>
+                                                        Password:
+                                                    </p>
+                                                    <label htmlFor="password0">Password</label>
+                                                    <input id="password0" type="password" name="password0" placeholder='Enter your password...'></input>
+                                                </td>
+                                                <td>
+                                                    <p>
+                                                        Confirmation:
+                                                    </p>
+                                                    <label htmlFor="password1">Confirm password</label>
+                                                    <input id="password1" type="password" name="password1" placeholder='Confirm your password...'></input>
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                    </table>
+
+                                    <input id="submit" type="submit" className="submit" name="submit"></input>
+                                </form>
+
+                                <div className="dividerLine"></div>
+
+                                <button type="button" onClick={function() {logInWithGoogle()}}>
+                                    <h3>
+                                        Or log in with Google
+                                    </h3>
+                                </button>
+                            </React.Fragment>
+                        )
+                    }
                 };
     
                 //load the generated HTML into DOM

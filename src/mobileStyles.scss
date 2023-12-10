@@ -10,6 +10,7 @@ h2 {
 
 h3 {
     font-size: 17px;
+    transform: unset !important;
 }
 
 p {
@@ -130,6 +131,59 @@ div {
         margin: 5vh auto;
         overflow-y: scroll;
     }
+
+    &.popupWrapper {
+        border-radius: 25px;
+        border: 5px #202020 solid;
+        top: 25vh;
+        $height: 50vh;
+        height: $height;
+        $width: 80%;
+        width: $width;
+        bottom: unset;
+
+        @keyframes hidePopup {
+            0% {
+                max-height: $height;
+                max-width: $width;
+            }
+            50% {
+                max-width: $width;
+                max-height: 0;
+            }
+            100% {
+                max-width: 0;
+                max-height: 0;
+            }
+        }
+
+        animation-name: hidePopup;
+        animation-duration: 1.5s;
+        max-width: 0;
+        max-height: 0;
+
+        &.shown {
+            @keyframes showPopup {
+                0% {
+                    max-height: 0;
+                    max-width: 0
+                }
+                30% {
+                    max-height: 0;
+                    max-width: $width
+                }
+                100% {
+                    max-height: $height;
+                    max-width: $width;
+                }
+            }
+
+            animation-name: showPopup;
+            animation-duration: 1.5s;
+            max-height: $height;
+            max-width: $width;
+        }
+    }
 }
 
 img {
@@ -140,9 +194,11 @@ img {
 }
 
 input {
-    width: 85%;
+    width: 75%;
     max-width: unset;
     border: 3px solid #202020;
+    margin-bottom: 5vh;
+    transform: unset !important;
 
     &.submit {
         font-size: 17px;
