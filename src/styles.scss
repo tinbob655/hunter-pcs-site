@@ -201,6 +201,13 @@ div {
             opacity: 1.0;
         }
     }
+
+    &.dividerLine {
+        width: 80%;
+        background-color: white;
+        height: 5px;
+        margin: 1vh auto;
+    }
 }
 
 img {

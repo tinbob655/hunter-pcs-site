@@ -294,9 +294,9 @@ class Basket extends Component {
             let docRef = doc(db, 'keys', 'stripe_sk');
             let docSnap = await getDoc(docRef);
 
-            const sk = docSnap.data().value
+            const sk = docSnap.data().value;
     
-            const stripe = require('stripe')('sk_test_51OIsKCCzpWfV0Kwku1Usf1FFdFZTgPOwFtt7zOpA9aPEb40kRgAmeUegSJ0uT2tC9YDtK8cPcZPVHB9ds0ovKrPW000Cn5l82B');
+            const stripe = require('stripe')(sk);
             const session = await stripe.checkout.sessions.create({
                 line_items: [{
                     price_data: {
@@ -343,9 +343,9 @@ class Basket extends Component {
                             Email:
                         </p>
                         <label htmlFor="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Email..."/>
+                        <input type="email" id="email" name="email" style={{maxWidth: '75%'}} placeholder="Email..."></input>
 
-                        <div className="dividerLine"></div>
+                        <div className="dividerLine" style={{marginTop: '5vh'}}></div>
 
                         <p>
                             Address line 1:
@@ -353,7 +353,7 @@ class Basket extends Component {
                         <label htmlFor="addressLine1">Address line 1</label>
                         <input type="text" id="addressLine1" name="addressLine1" style={{maxWidth: '75%'}} placeholder='Address line 1...'></input>
 
-                        <div className="dividerLine"></div>
+                        <div className="dividerLine" style={{marginTop: '5vh'}}></div>
 
                         <p>
                             Address line 2:
@@ -361,7 +361,7 @@ class Basket extends Component {
                         <label htmlFor="addressLine2">Address line 2</label>
                         <input type="text" id="addressLine2" name="addressLine2" style={{maxWidth: '75%'}} placeholder='Address line 2...'></input>
 
-                        <div className="dividerLine"></div>
+                        <div className="dividerLine" style={{marginTop: '5vh'}}></div>
 
                         <p>
                             Town or city:
@@ -369,7 +369,7 @@ class Basket extends Component {
                         <label htmlFor="townOrCity">Town or city</label>
                         <input type="text" id="townOrCity" name="townOrCity" style={{maxWidth: '75%'}} placeholder='Town or city...'></input>
 
-                        <div className="dividerLine"></div>
+                        <div className="dividerLine" style={{marginTop: '5vh'}}></div>
 
                         <p>
                             Postcode:
@@ -377,7 +377,7 @@ class Basket extends Component {
                         <label htmlFor="postcode">Postcode</label>
                         <input type="text" id="postcode" name="postcode" style={{maxWidth: '75%'}} placeholder='Postcode...'></input>
 
-                        <div className="dividerLine"></div>
+                        <div className="dividerLine" style={{marginTop: '5vh'}}></div>
 
                         <label htmlFor="submit">Submit</label>
                         <input type="submit" id="submit" name="submit" value="Submit" className="submit" style={{fontWeight: 900}}></input>
