@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import SlidingButton from '../../slidingButton.jsx';
+import SlidingButton from '../multiPageComponents/slidingButton.jsx';
 import {doc, getDoc, getFirestore} from 'firebase/firestore';
 import { firebaseInit } from '../../../firebase.js';
 import { changePage, isMobile } from '../../../index.js';

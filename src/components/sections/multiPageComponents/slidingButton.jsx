@@ -1,6 +1,6 @@
 import React from 'react';
-import { buttonExpand, changePage } from '../index.js';
-import { isMobile } from '../index.js';
+import { buttonExpand, changePage } from '../../../index.js';
+import { isMobile } from '../../../index.js';
 
 function SlidingButton({id, imgSrc, linkLocation, textContent, ssIndex, ssValue}) {
     return(

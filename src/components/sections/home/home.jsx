@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { changePage } from '../../../index.js';
-import SlidingButton from '../../slidingButton.jsx';
+import SlidingButton from '../multiPageComponents/slidingButton.jsx';
 import gamesCompilationVideo from '../../../media/allGamesCompilationVideo.mp4';
 import {isMobile} from '../../../index.js';
 
