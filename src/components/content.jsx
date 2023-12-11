@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Route, Routes} from 'react-router-dom';
 
 //import all pages
 import Home from './sections/home/home.jsx';
@@ -24,23 +25,14 @@ class Content extends Component {
 
     render() {
         return (
-            <React.Fragment>
-                {this.getContent()}
-            </React.Fragment>
+            <Routes>
+                {this.getRoutes()}
+            </Routes>
         );
     };
 
-    getContent() {
-        let currentPage = sessionStorage.getItem('currentPage');
-
-        //if there is no current page set, set it to the default page
-        if (currentPage == null) {
-            sessionStorage.setItem('currentPage', 'home');
-            currentPage = 'home';
-        };
-
+    getRoutes() {
         const allPages = {
-            home: <Home/>,
             about: <About/>,
             account: <Account/>,
             basket: <Basket/>,
@@ -51,9 +43,22 @@ class Content extends Component {
             productPage: <ProductPage/>,
             paymentSucsessful: <PaymentSucsessful/>
         };
+        let routeHTML = [];
 
-        //now return the page to be displayed
-        return allPages[currentPage];
+        //make home the default route
+        routeHTML.push(
+            <Route path='/' element={<Home/>}/>
+        );
+
+        //push all the other routes
+        Object.keys(allPages).forEach((page) => {
+
+            routeHTML.push (
+                <Route exact path={'/'+Object.keys(allPages)[Object.keys(allPages).indexOf(page)]} element={allPages[page]} />
+            );
+        });
+
+        return routeHTML;
     };
 };
 

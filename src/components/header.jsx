@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { changePage } from '../index.js';
+import { Link } from 'react-router-dom';
 import { isMobile } from '../index.js';
 import '../hamburgers.css';
 
@@ -29,7 +29,7 @@ class Header extends Component {
             window.onload = () => {document.getElementById('headerTable').style.opacity = 1.0;}
             return (
                 <React.Fragment>
-                    <table style={{backgroundColor: '#070707', boxShadow: '0 0 5px 5px #070707', position: 'fixed', top: '0', left: '0', zIndex: '99'}} 
+                    <table style={{backgroundColor: '#070707', boxShadow: '0 0 5px 5px #070707', position: 'fixed', top: '0', left: '0', zIndex: '99', height: '100px'}} 
                     className="fadeinWithHover" id="headerTable" >
                         <thead>
                             <tr>
@@ -119,29 +119,31 @@ class Header extends Component {
 
         let headersHTML = [];
         const frontendHeaders = ['Gaming Pcs', 'Home', 'About', 'Support', 'Tell a Friend', 'Account', 'Basket']
-        const backendHeaders = ['pcsMain', 'home', 'about', 'support', 'referAFriend', 'account', 'basket'];
+        const backendHeaders = ['/pcsMain', '/', '/about', '/support', '/referAFriend', '/account', '/basket'];
 
         frontendHeaders.forEach((header) => {
             headersHTML.push(
                 <React.Fragment>
                     <td id={header+'cell'} style={{transitionProperty: 'background-color', transitionDuration: '0.33s', borderRadius: '5px'}}>
-                        <button type="button" onClick={function() {changePage(backendHeaders[frontendHeaders.indexOf(header)])}} id={header+'button'}>
-                            <h3 style={{padding: '0', marginTop: '0', marginBottom: '0', fontSize: '20px', whiteSpace: 'nowrap', color: '#606060'}} 
-                            onMouseOver={function() {headerHoveredOver(header)}} id={header+'text'} >
+                        <div style={{marginTop: '10%'}}>
+                            <Link to={backendHeaders[frontendHeaders.indexOf(header)]} id={header+'button'}>
+                                <h3 style={{padding: '0', marginTop: '0', marginBottom: '0', fontSize: '20px', whiteSpace: 'nowrap', color: '#606060'}} 
+                                onMouseOver={function() {headerHoveredOver(header)}} id={header+'text'} >
 
-                                {/*RETURN TEXT FOR TEXT HEADRS, AND RESPECTIVE IMAGES FOR THE ACCOUNT AND BASKET PAGES*/}
-                                {header != 'Basket' && header != 'Account' ? header : (
-                                    header == 'Basket' ? <img src={'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2FbasketIcon.png?alt=media&token=e2448ce8-e238-45d8-ba6a-f8b87f8b23ac'}
-                                    style={{height: '50px', transitionProperty: 'background-color', transitionDuration: '1s'}}
-                                     className="centered rounded" id={header+'image'} />
-                                    :
-                                    <img src={this.state.accountImage}
-                                    style={{height: '50px', transitionProperty: 'background-color', transitionDuration: '1s'}}
-                                    className="centered rounded" id={header+'image'} alt="loading..."/>
-                                )}
-                            </h3>
-                        </button>
-                        <div className="cleanLinkButtonDivider" id={header+'divLine'}></div>
+                                    {/*RETURN TEXT FOR TEXT HEADRS, AND RESPECTIVE IMAGES FOR THE ACCOUNT AND BASKET PAGES*/}
+                                    {header != 'Basket' && header != 'Account' ? header : (
+                                        header == 'Basket' ? <img src={'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2FbasketIcon.png?alt=media&token=e2448ce8-e238-45d8-ba6a-f8b87f8b23ac'}
+                                        style={{height: '50px', transitionProperty: 'background-color', transitionDuration: '1s'}}
+                                        className="centered rounded" id={header+'image'} />
+                                        :
+                                        <img src={this.state.accountImage}
+                                        style={{height: '50px', transitionProperty: 'background-color', transitionDuration: '1s'}}
+                                        className="centered rounded" id={header+'image'} alt="loading..."/>
+                                    )}
+                                </h3>
+                            </Link>
+                        </div>
+                        <div className="cleanLinkButtonDivider" id={header+'divLine'} style={{marginTop: '10%'}}></div>
                     </td>
                 </React.Fragment>
             );
@@ -152,18 +154,20 @@ class Header extends Component {
 
     getMobileHeaders() {
         const frontendHeaders = ['Gaming Pcs', 'Home', 'About', 'Support', 'Tell a Friend', 'Account', 'Basket']
-        const backendHeaders = ['pcsMain', 'home', 'about', 'support', 'referAFriend', 'account', 'basket'];
+        const backendHeaders = ['/pcsMain', '/', '/about', '/support', '/referAFriend', '/account', '/basket'];
 
         let headersHTML = [];
 
         backendHeaders.forEach((backendHeader) => {
             headersHTML.push (
                 <React.Fragment>
-                    <button type="button" onClick={function() {changePage(backendHeader)}} style={{width:  '75%'}}>
-                        <h3>
-                            {frontendHeaders[backendHeaders.indexOf(backendHeader)]}
-                        </h3>
-                    </button>
+                    <div style={{width: '75%', marginTop: '3vh'}}>
+                        <Link to={backendHeader}>
+                            <h3>
+                                {frontendHeaders[backendHeaders.indexOf(backendHeader)]}
+                            </h3>
+                        </Link>
+                    </div>
                 </React.Fragment>
             );
         });

@@ -1,8 +1,12 @@
 import React from 'react';
-import { buttonExpand, changePage } from '../../../index.js';
+import { buttonExpand } from '../../../index.js';
+import { useNavigate } from 'react-router-dom';
 import { isMobile } from '../../../index.js';
 
 function SlidingButton({id, imgSrc, linkLocation, textContent, ssIndex, ssValue}) {
+
+    const navigate = useNavigate();
+
     return(
         <React.Fragment>
             <button id={id+'button'} type="button" className="linkButton"
@@ -11,11 +15,11 @@ function SlidingButton({id, imgSrc, linkLocation, textContent, ssIndex, ssValue}
                 onClick={function() {ssValue ? (sessionStorage.setItem(ssIndex, ssValue)) : console.log('No value to store in session storage');
                 if (isMobile()) {
                     setTimeout(() => {
-                        changePage(linkLocation);
+                        navigate(linkLocation);
                     }, 1500);
                 }
                 else {
-                    changePage(linkLocation);
+                    navigate(linkLocation);
                 }}}
                     >
 

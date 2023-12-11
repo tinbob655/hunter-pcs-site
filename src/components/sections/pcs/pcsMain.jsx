@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import SlidingButton from '../multiPageComponents/slidingButton.jsx';
 import {doc, getDoc, getFirestore} from 'firebase/firestore';
 import { firebaseInit } from '../../../firebase.js';
-import { changePage, isMobile } from '../../../index.js';
+import { isMobile } from '../../../index.js';
+import { Link } from 'react-router-dom';
 
 firebaseInit();
 
@@ -186,11 +187,11 @@ class PcsMain extends Component {
                                         <p className="alignRight">
                                             Using our custom pc creator, you can design the pc of your dreams online, right now.
                                         </p>
-                                        <button type="button" onClick={function() {changePage('customPcs')}}>
+                                        <Link to='/customPcs'>
                                             <h3>
                                                 Click here to get started ⟶
                                             </h3>
-                                        </button>
+                                        </Link>
                                     </td>
                                     <td>
                                         <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=b7433866-5203-4cbb-9808-ca1d47ee1a48'
@@ -334,11 +335,11 @@ class PcsMain extends Component {
                         <p>
                             Using our custom pc creator, you can design the pc of your dreams online, right now.
                         </p>
-                        <button type="button" onClick={function() {changePage('customPcs')}}>
+                        <Link to='/customPcs'>
                             <h3>
                                 Click here to get started ⟶
                             </h3>
-                        </button>
+                        </Link>
                     </div>
                 </React.Fragment>
             );

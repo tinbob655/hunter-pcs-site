@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import './styles.scss';
 import { Analytics} from '@vercel/analytics/react';
 
@@ -8,6 +9,7 @@ import {getStorage, ref, getDownloadURL} from 'firebase/storage';
 import Header from './components/header.jsx';
 import Content from './components/content.jsx';
 import Footer from './components/footer.jsx'
+import ScrollToTop from './components/scrollToTop.jsx';
 
 
 //DEV FUNCTION to get firebase url
@@ -19,12 +21,6 @@ function getFromFirebase(path) {
       console.log(url);
       return;
     });
-};
-
-//function to change the displayed page
-export function changePage(newPage) {
-  sessionStorage.setItem('currentPage', newPage);
-  window.location.reload();
 };
 
 //function for when a button is hovered over
@@ -92,19 +88,22 @@ if (!sessionStorage.getItem('loggedIn')) {
 //Now load the page header, footer and content
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.Fragment>
-    <div id="header">
-      <Header/>
-    </div>
+  <BrowserRouter>
+    <React.Fragment>
+      <ScrollToTop/>
+      <div id="header">
+        <Header/>
+      </div>
 
-    <div id="content" style={isMobile() ? {marginTop: '25px'} : {marginTop: '100px'}}>
-      <Content/>
-    </div>
+      <div id="content" style={isMobile() ? {marginTop: '25px'} : {marginTop: '100px'}}>
+        <Content/>
+      </div>
 
-    <div id="footer">
-      <Footer/>
-    </div>
+      <div id="footer">
+        <Footer/>
+      </div>
 
-    <Analytics/>
-  </React.Fragment>
+      <Analytics/>
+    </React.Fragment>
+  </BrowserRouter>
 );

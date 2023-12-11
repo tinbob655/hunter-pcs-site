@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { changePage } from '../index.js';
+import { Link } from 'react-router-dom';
 import {isMobile} from '../index.js';
 
 class Footer extends Component {
@@ -80,24 +80,21 @@ class Footer extends Component {
                         {/*INFORMATION SECTION*/}
                         {infoLink? (
                             <td>
-                                <button type="button" onClick={function() {
-                                    sessionStorage.setItem('supportPageScroll', infoLink);
-                                    changePage('support');
-                                }}>
+                                <Link to='/support' state={{targetLocation: infoLink}}>
                                     <h3 style={{padding: 0}}>
                                         {frontendLinkName}
                                     </h3>
-                                </button>
+                                </Link>
                             </td>
                         ) : <td></td>}
 
                         {/*MENU SECTION*/}
                         <td>
-                            <button type="button" onClick={function() {changePage(link)}}>
+                            <Link to={'/'+link}>
                                 <h3 style={{padding: 0}}>
                                     {frontendMenuLinkName}
                                 </h3>
-                            </button>
+                            </Link>
                         </td>
                     </tr>
                 </React.Fragment>

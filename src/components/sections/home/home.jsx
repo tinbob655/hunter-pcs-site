@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { changePage } from '../../../index.js';
+import { Link } from 'react-router-dom';
 import SlidingButton from '../multiPageComponents/slidingButton.jsx';
 import gamesCompilationVideo from '../../../media/allGamesCompilationVideo.mp4';
 import {isMobile} from '../../../index.js';
@@ -104,11 +104,11 @@ class Home extends Component {
                                         Here at Hunter pcs, we know that the best pcs are designed to run games smooth as butter. That's why we've been working hard to deliver you the 
                                         best gaming experience at the lowest price. <br/>We make all our computers with high end components from trusted manufacturers.
                                     </p>
-                                    <button onClick={function() {changePage('gamingPcs')}} type="button">
+                                    <Link to='/pcsMain'>
                                         <h3>
                                             Browse all gaming pcs  ⟶
                                         </h3>
-                                    </button>
+                                    </Link>
                                     </td>
     
                                     <td style={{width: '50%'}}>
@@ -143,11 +143,11 @@ class Home extends Component {
                                             Need that specific pc you've always wanted? Well you're in luck: here at Hunter Pcs, you can design your own cusom pc
                                              and have one of our experts assemble it for you. We'll even deliver it straight to your door as well
                                         </p>
-                                        <button type="button" onClick={function() {changePage('customPcs')}}>
+                                        <Link to='/customPcs'>
                                             <h3>
                                                 Design your dream pc ⟶
                                             </h3>
-                                        </button>
+                                        </Link>
                                     </td>
                                     <td style={{width: '50%'}}>
                                         <img src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8"
@@ -176,14 +176,11 @@ class Home extends Component {
                                             We guarantee no expenses spared. That means every one of your pc's components is made from branded and trusted manufacturers.
                                             And not just that, we will also thoroughly test your build to make sure you get the maximum performance possible
                                         </p>
-                                        <button type="button" onClick={function() {
-                                            sessionStorage.setItem('supportPageScroll', 'noExpensesSpared');
-                                            changePage('support');
-                                        }}>
+                                        <Link to='/support'>
                                             <h3>
                                                 Learn more about our no expenses spared guarantee ⟶
                                             </h3>
-                                        </button>
+                                        </Link>
                                     </td>
     
                                 </tr>
@@ -298,11 +295,11 @@ class Home extends Component {
                             Here at Hunter pcs, we know that the best pcs are designed to run games smooth as butter. That's why we've been working hard to deliver you the 
                             best gaming experience at the lowest price. <br/>We make all our computers with high end components from trusted manufacturers.
                         </p>
-                        <button onClick={function() {changePage('gamingPcs')}} type="button">
+                        <Link to='/pcsMain'>
                             <h3>
                                 Browse all gaming pcs  ⟶
                             </h3>
-                        </button>
+                        </Link>
                     </div>
 
                     <div className="dividerLine"></div>
@@ -343,11 +340,11 @@ class Home extends Component {
                             Need that specific pc you've always wanted? Well you're in luck: here at Hunter Pcs, you can design your own cusom pc
                             and have one of our experts assemble it for you. We'll even deliver it straight to your door as well
                         </p>
-                        <button type="button" onClick={function() {changePage('customPcs')}}>
+                        <Link to='/customPcs'>
                             <h3>
                                 Pick your perfect parts ⟶
                             </h3>
-                        </button>
+                        </Link>
                     </div>
 
                     <div className="dividerLine"></div>
@@ -376,14 +373,11 @@ class Home extends Component {
                             We guarantee no expenses spared. That means every one of your pc's components is made from branded and trusted manufacturers.
                             And not just that, we will also thoroughly test your build to make sure you get the maximum performance possible
                         </p>
-                        <button type="button" onClick={function() {
-                            sessionStorage.setItem('supportPageScroll', 'noExpensesSpared');
-                            changePage('support');
-                        }}>
+                        <Link to='/support'>
                             <h3>
                                 Learn more about our no expenses spared guarantee ⟶
                             </h3>
-                        </button>
+                        </Link>
                     </div>
                 </React.Fragment>
             );

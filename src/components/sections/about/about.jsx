@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { changePage, isMobile } from '../../../index.js';
+import { isMobile } from '../../../index.js';
+import { Link } from 'react-router-dom';
 
 class About extends Component {
 
@@ -30,11 +31,11 @@ class About extends Component {
                                         Each and every pc you find in our prebuilt gaming pcs section can be fully customised to your heart's content.
                                         Just have a look over on our custom pcs page
                                     </p>
-                                    <button type="button" onClick={function() {changePage('customPcs')}}>
+                                    <Link to='/customPcs'>
                                         <h3>
                                             Customise your own pc
                                         </h3>
-                                    </button>
+                                    </Link>
                                 </td>
                             </tr>
                         </table>
@@ -58,14 +59,11 @@ class About extends Component {
                                             <br/>
                                             That's the Hunter Pcs no expenses spared gurantee
                                         </p>
-                                        <button type="button" onClick={function() {
-                                            sessionStorage.setItem('supportPageScroll', 'noExpensesSpared');
-                                            changePage('support');
-                                        }}>
+                                        <Link to='/support'>
                                             <h3 className="limitedSize">
                                                 Read more on our no expenses spared guarantee
                                             </h3>
-                                        </button>
+                                        </Link>
                                     </td>
                                     <td>
                                         <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8'
@@ -124,14 +122,11 @@ class About extends Component {
                                             to drop it off. If it gets damaged in the post, that's on us and we'll come to collect your pc and repair it fully free of charge.
                                             Its all just part of the Hunter Pcs quality guarantee
                                         </p>
-                                        <button type="button" onClick={function() {
-                                            sessionStorage.setItem('supportPageScroll', 'noExpensesSpared');
-                                            changePage('support');
-                                        }}>
+                                        <Link to='/support'>
                                             <h3 className="limitedSize">
                                                 More on our quality guarantee
                                             </h3>
-                                        </button>
+                                        </Link>
                                     </td>
                                     <td>
                                         <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788'
@@ -172,11 +167,11 @@ class About extends Component {
                             Each and every pc you find in our prebuilt gaming pcs section can be fully customised to your heart's content.
                             Just have a look over on our custom pcs page
                         </p>
-                        <button type="button" onClick={function() {changePage('customPcs')}}>
+                        <Link to='/customPcs'>
                             <h3>
                                 Customise your own pc
                             </h3>
-                        </button>
+                        </Link>
                     </div>
 
                     <div className="dividerLine"></div>
@@ -207,14 +202,11 @@ class About extends Component {
                             <br/>
                             That's the Hunter Pcs no expenses spared gurantee
                         </p>
-                        <button type="button" onClick={function() {
-                            sessionStorage.setItem('supportPageScroll', 'noExpensesSpared');
-                            changePage('support');
-                        }}>
+                        <Link to='/support'>
                             <h3>
                                 Read more on our no expenses spared guarantee
                             </h3>
-                        </button>
+                        </Link>
                     </div>
 
                     <div className="dividerLine"></div>
@@ -275,14 +267,11 @@ class About extends Component {
                             to drop it off. If it gets damaged in the post, that's on us and we'll come to collect your pc and repair it fully free of charge.
                             Its all just part of the Hunter Pcs quality guarantee
                         </p>
-                        <button type="button" onClick={function() {
-                            sessionStorage.setItem('supportPageScroll', 'noExpensesSpared');
-                            changePage('support');
-                        }}>
+                        <Link to='/support'>
                             <h3>
                                 More on our quality guarantee
                             </h3>
-                        </button>
+                        </Link>
                     </div>
                 </React.Fragment>
             );

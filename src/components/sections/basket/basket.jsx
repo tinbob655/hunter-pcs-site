@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import { convertOutOfCamelCase, changePage, isMobile } from '../../../index.js';
+import { convertOutOfCamelCase, isMobile } from '../../../index.js';
+import { Link } from 'react-router-dom';
 import LoginPopup from '../account/loginPopup.jsx';
 import { getDoc, doc, getFirestore } from 'firebase/firestore';
 import StripeCheckout from './mountedStripeCheckout.jsx';
@@ -156,7 +157,7 @@ class Basket extends Component {
                             Done browsing? Ready to buy? Then hit the purchase button: the final step between you and a quality gaming pc. All payments are 100% secure
                             as per our privacy policy
                         </p>
-                        {sessionStorage.getItem('loggedIn') == 'false' ? (
+                        {sessionStorage.getItem('loggedIn') != 'true' ? (
                             <React.Fragment>
 
                                 {/*if the user is not logged in, make them log in before paying*/}
@@ -432,11 +433,11 @@ class Basket extends Component {
         //if the user has not added anything to their basket
         if (basketHTML.length == 0) {
             basketHTML.push(<React.Fragment>
-                <button type="button" onClick={function() {changePage('pcsMain')}}>
+                <Link tp='/pcsMain'>
                     <h3>
                         Looks like you haven't added anything to your basket. Click here to do something about that ⟶
                     </h3>
-                </button>
+                </Link>
             </React.Fragment>)
         };
 
