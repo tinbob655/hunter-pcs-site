@@ -274,6 +274,8 @@ class Home extends Component {
                         textContent='Custom' />
                     </div>
 
+                    <div className="dividerLine"></div>
+
                     {/*PERFECT FOT GAMING SECTION*/}
                     <div>
                         <h1>
