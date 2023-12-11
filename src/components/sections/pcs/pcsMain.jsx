@@ -250,7 +250,7 @@ class PcsMain extends Component {
                         <SlidingButton 
                             id="solidPcsButton"
                             imgSrc=""
-                            linkLocation="productPage"
+                            linkLocation="/productPage"
                             ssIndex='product'
                             ssValue='solidPc'
                             textContent={this.state.prices.solid ? (
@@ -263,7 +263,7 @@ class PcsMain extends Component {
                         <SlidingButton
                             id="strongPcsButton"
                             imgSrc=""
-                            linkLocation="productPage"
+                            linkLocation="/productPage"
                             ssIndex="product"
                             ssValue='strongPc'
                             textContent={this.state.prices.strong ? (
@@ -276,7 +276,7 @@ class PcsMain extends Component {
                         <SlidingButton 
                             id="powerfulPcsButton"
                             imgSrc=""
-                            linkLocation="productPage"
+                            linkLocation="/productPage"
                             ssIndex='product'
                             ssValue='powerfulPc'
                             textContent={this.state.prices.powerful ? (
@@ -289,7 +289,7 @@ class PcsMain extends Component {
                         <SlidingButton 
                             id="supremePcsButton"
                             imgSrc=""
-                            linkLocation="productPage"
+                            linkLocation="/productPage"
                             ssIndex='product'
                             ssValue='supremePc'
                             textContent={this.state.prices.supreme? (
@@ -302,7 +302,7 @@ class PcsMain extends Component {
                             <SlidingButton 
                                 id="dominantPcsButton"
                                 imgSrc=""
-                                linkLocation="productPage"
+                                linkLocation="/productPage"
                                 ssIndex='product'
                                 ssValue='dominantPc'
                                 textContent={this.state.prices.dominant ? (

@@ -58,6 +58,10 @@ class Content extends Component {
             );
         });
 
+        routeHTML.push(
+            <Route exact path={'/pcsMain/ProductPage'} element={<ProductPage/>}></Route>
+        );
+
         return routeHTML;
     };
 };

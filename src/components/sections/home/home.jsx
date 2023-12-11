@@ -65,7 +65,7 @@ class Home extends Component {
                                         <SlidingButton 
                                         id="gamingPcs"
                                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8'
-                                        linkLocation='pcsMain'
+                                        linkLocation='/pcsMain'
                                         textContent='Gaming' />
                                     </td>
     
@@ -74,7 +74,7 @@ class Home extends Component {
                                         <SlidingButton
                                         id="preBuilt"
                                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frainbow%20pc.png?alt=media&token=0e548201-b1c6-4ea6-8efb-bea42aea9bdb'
-                                        linkLocation='pcsMain'
+                                        linkLocation='/pcsMain'
                                         textContent='Prebuilt' />
                                     </td>
     
@@ -83,7 +83,7 @@ class Home extends Component {
                                         <SlidingButton 
                                         id="custom"
                                         imgSrc="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fstock%20pc%20parts.png?alt=media&token=f920a622-e3cc-4e59-9df1-ee6cf27c9c7b"
-                                        linkLocation='customPcs'
+                                        linkLocation='/customPcs'
                                         textContent='Custom' />
                                     </td>
                                 </tr>
