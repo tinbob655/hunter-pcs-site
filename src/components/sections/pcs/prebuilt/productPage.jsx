@@ -257,6 +257,9 @@ function ProductPage() {
                             </td>
                             <td>
                                 <img src={state.productImageURL} className="mainImage centered" alt="loading..."/>
+                                <p>
+                                    £{state.price}
+                                </p>
                             </td>
                         </tr>
                     </thead>
@@ -351,7 +354,7 @@ function ProductPage() {
                                 More on our quality guarantee ⟶
                             </h3>
                         </Link>
-                    </div>
+                </div>
                 </React.Fragment>
         );
     };
