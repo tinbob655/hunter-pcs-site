@@ -67,11 +67,14 @@ export function isMobile () {
   let windowHeight = window.innerHeight;
   let windowWidth = window.innerWidth;
 
-  return windowHeight > windowWidth ? true: false;
+  if (windowHeight > windowWidth) {
+    sessionStorage.setItem('mobile', true);
+  }
+  else {
+    sessionStorage.setItem('mobile', false);
+  };
+  return windowHeight > windowWidth ? true : false;
 };
-
-//conditionally import the mobile styles
-isMobile() === true ? import('./mobileStyles.scss') : <></>;
 
 //function to convert a string out of camel case
 export function convertOutOfCamelCase(stringToConvert) {
@@ -80,10 +83,21 @@ export function convertOutOfCamelCase(stringToConvert) {
   return str;
 };
 
+//conditionally import the mobile styles
+isMobile() === true ? import('./mobileStyles.scss') : <></>;
+
 //initialise local and session storage
 if (!sessionStorage.getItem('loggedIn')) {
   sessionStorage.setItem('loggedIn', 'false');
-}
+};
+
+//add an event listener for when the window is resized for automatic mobile site toggling
+window.onresize = function() {
+  if((window.innerHeight > window.innerWidth && sessionStorage.getItem('mobile') == 'false') || (window.innerHeight < window.innerWidth && sessionStorage.getItem('mobile') == 'true')) {
+    //change the site type
+    window.location.reload();
+  };
+};
 
 //Now load the page header, footer and content
 const root = ReactDOM.createRoot(document.getElementById('root'));
