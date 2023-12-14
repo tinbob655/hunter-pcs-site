@@ -190,7 +190,7 @@ function ProductPage() {
                             <tr>
                                 <td>
                                 <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=1e13e531-cf90-4a64-953f-84e850755064'
-                                className="mainImage" style={{width: '75%', marginLeft: '5%'}} alt="loading..."/>
+                                className="mainImage" style={{width: '75%', marginLeft: '5%', maxHeight: 'unset'}} alt="loading..."/>
                                 </td>
 
                                 <td>
