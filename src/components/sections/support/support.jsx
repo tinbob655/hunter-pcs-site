@@ -504,6 +504,32 @@ class Support extends Component {
                             </p>
                         </div>
                     </div>
+
+                    {/*DELIVERY INFORMATION SECTION*/}
+                    <div id="deliveryInformation">
+                        <h1>
+                            Delivery information
+                        </h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td style={{width: '40%'}}>
+                                        <h2 className="alignRight">
+                                            We deliver
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetup5.jpeg?alt=media&token=ae0b17a9-63c4-4632-89c4-265c75e1a2bd'
+                                        alt='loading...' className="mainImage centered" />
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <p>
+                            We only use the highest quality services for delivery. All Hunter PCs are delivered using Royal Mail: the UK's highest quality delivery
+                            service. We therefore only deliver our PCs to England.
+                        </p>
+                    </div>
                 </React.Fragment>
             );
         };
