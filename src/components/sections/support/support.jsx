@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './supportStyles.scss';
 import {isMobile} from '../../../index.js';
+import GenericMarkupSection from '../multiPageComponents/genericMarkupSection.jsx';
 
 class Support extends Component {
 
@@ -166,59 +167,30 @@ class Support extends Component {
     
                     {/*WARRANTY INFORMATION SECTION*/}
                     <div id="warrantyInformation">
-                        <h1 className="alignRight">
-                            Warranty Information
-                        </h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td style={{width: '40%'}}>
-                                        <h2 className="alignLeft">
-                                            Tinker to your heart's content
-                                        </h2>
-                                        <p className="alignRight">
-                                            Love tinkering with a pc? Us too: you can tinker and edit your pc all you want, however do so at your own risk 
-                                            <br/><br/>
-                                            If something breaks, thats on you. We can still fix it, but you'll be paying for the replacement parts
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=1e13e531-cf90-4a64-953f-84e850755064'
-                                        className="centered mainImage" style={{width: '85%', maxHeight: '400px', objectFit: 'cover'}} alt="loading..." />
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
+                        <GenericMarkupSection
+                        headingText='Warranty Information'
+                        subheadingText="Tinker to your heart's content"
+                        paragraphText={`Love tinkering with a pc? Us too: you can tinker and edit your pc all you want, however do so at your own risk.
+                        If something breaks, that's on you. We can still fix it, but you'll be paying for the replacement parts`}
+                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=1e13e531-cf90-4a64-953f-84e850755064'
+                        leftBool={false}
+                        customImageStyles={{maxHeight: '400px', objectFit: 'cover'}} />
                     </div>
     
                     {/*FRAUD PREVENTION SECTION*/}
                     <div className="purpleGrey" id="fraudPrevention">
-                        <h1 className="alignLeft">
-                            Fraud Prevention
-                        </h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%204.jpeg?alt=media&token=fc2925fe-3d55-47ca-adc8-42bcf4a8b025'
-                                        className="mainImage centered" style={{width: '85%'}} alt="loading..." />
-                                    </td>
-                                    <td>
-                                        <h2 className="alignRight">
-                                            Fraud is illegal, don't do it
-                                        </h2>
-                                        <p className="alignLeft">
-                                            We HATE fraud, so we may request to see any customer's photo id as well as an image of the bank card used to purchase a pc. This is to 
-                                            make sure that our real customers can get their pc faster, and to stop you dirty AI startups taking everyone else's GPUs
-                                            <br/><br/>
-                                            If you don't send us images on reuest then we may revoke access to your HunterPcs account and refuse to send you any gaming pcs
-                                            <br/><br/>
-                                            By purchasing any product from HunterPcs, you agree to our fraud prevention program
-                                        </p>
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
+                        <GenericMarkupSection
+                        headingText='Fraud Prevention'
+                        subheadingText="Fraud is illegal, don't do it"
+                        paragraphText={`We HATE fraud, so we may request to see any customer's photo id as well as an image of the bank card used to purchase a pc. This is to 
+                        make sure that our real customers can get their pc faster, and to stop you dirty AI startups taking everyone else's GPUs
+                        <br/><br/>
+                        If you don't send us images on reuest then we may revoke access to your HunterPcs account and refuse to send you any gaming pcs
+                        <br/><br/>
+                        By purchasing any product from HunterPcs, you agree to our fraud prevention program`}
+                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%204.jpeg?alt=media&token=fc2925fe-3d55-47ca-adc8-42bcf4a8b025'
+                        leftBool={true} 
+                        customImageCellStyles={{width: '45%'}}/>
                     </div>
     
                     {/*PRIVACY POLICY and TERMS OF SERVICE*/}
@@ -259,28 +231,14 @@ class Support extends Component {
 
                     {/*DELIVERY INFORMATION SECTION*/}
                     <div id="deliveryInformation">
-                        <h1 className="alignLeft">
-                            Delivery information
-                        </h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td style={{width: '60%'}}>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetup5.jpeg?alt=media&token=ae0b17a9-63c4-4632-89c4-265c75e1a2bd'
-                                        alt='loading...' className="mainImage centered" />
-                                    </td>
-                                    <td>
-                                        <h2 className="alignRight">
-                                            We deliver
-                                        </h2>
-                                        <p className="alignLeft">
-                                            We only use the highest quality services for delivery. All Hunter PCs are delivered using Royal Mail: the UK's highest quality delivery
-                                            service. We therefore only deliver our PCs to England.
-                                        </p>
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
+                        <GenericMarkupSection
+                        headingText='Delivery Information'
+                        subheadingText='We deliver'
+                        paragraphText="We only use the highest quality services for delivery. All Hunter PCs are delivered using Royal Mail: the UK's highest quality delivery
+                        service. We therefore only deliver our PCs to England."
+                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetup5.jpeg?alt=media&token=ae0b17a9-63c4-4632-89c4-265c75e1a2bd'
+                        leftBool={true} 
+                        customImageCellStyles={{width: '60%'}}/>
                     </div>
                 </React.Fragment>
             );
@@ -423,62 +381,28 @@ class Support extends Component {
 
                     {/*WARRANTY INFORMATION SECTION*/}
                     <div id="warrantyInformation">
-                        <h1>
-                            Warranty Information
-                        </h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>
-                                        <h2 className="alignRight">
-                                            Tinker to your heart's content
-                                        </h2>
-                                    </td>
-                                    <td style={{width: '60%'}}>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=1e13e531-cf90-4a64-953f-84e850755064'
-                                        className="centered mainImage" style={{ maxHeight: '250px', objectFit: 'cover'}} alt="loading..." />
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
-                        <p>
-                            Love tinkering with a pc? Us too: you can tinker and edit your pc all you want, however do so at your own risk 
-                            <br/><br/>
-                            If something breaks, thats on you. We can still fix it, but you'll be paying for the replacement parts
-                        </p>
+                        <GenericMarkupSection
+                        headingText='Warranty Information'
+                        subheadingText="Tinker to your heart's content"
+                        paragraphText="Love tinkering with a pc? Us too: you can tinker and edit your pc all you want, however do so at your own risk.
+                        If something breaks, thats on you. We can still fix it, but you'll be paying for the replacement parts"
+                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=1e13e531-cf90-4a64-953f-84e850755064'
+                        leftBool={false} 
+                        customImageStyles={{maxHeight: '250px', objectFit: 'cover'}} />
                     </div>
-
-                    <div className="dividerLine"></div>
 
                     {/*FRAUD PREVENTION SECTION*/}
                     <div id="fraudPrevention" className="purpleGrey">
-                        <h1>
-                            Fraud Prevention
-                        </h1>
-                        <table>
-                            <tr>
-                                <td style={{width: '60%'}}>
-                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%204.jpeg?alt=media&token=fc2925fe-3d55-47ca-adc8-42bcf4a8b025'
-                                        className="mainImage centered" alt="loading..." />
-                                </td>
-                                <td>
-                                    <h2 className="alignLeft">
-                                        Fraud is illegal, don't do it
-                                    </h2>
-                                </td>
-                            </tr>
-                        </table>
-                        <p>
-                            We HATE fraud, so we may request to see any customer's photo id as well as an image of the bank card used to purchase a pc. This is to 
-                            make sure that our real customers can get their pc faster, and to stop you dirty AI startups taking everyone else's GPUs
-                            <br/><br/>
-                            If you don't send us images on reuest then we may revoke access to your HunterPcs account and refuse to send you any gaming pcs
-                            <br/><br/>
-                            By purchasing any product from HunterPcs, you agree to our fraud prevention program
-                        </p>
+                        <GenericMarkupSection
+                        headingText='Fraud Prevention'
+                        subheadingText="Fraud is illegal, don't do it"
+                        paragraphText={`We HATE fraud, so we may request to see any customer's photo id as well as an image of the bank card used to purchase a pc. This is to 
+                        make sure that our real customers can get their pc faster, and to stop you dirty AI startups taking everyone else's GPUs.
+                        If you don't send us images on reuest then we may revoke access to your HunterPcs account and refuse to send you any gaming pcs.
+                        By purchasing any product from HunterPcs, you agree to our fraud prevention program`}
+                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%204.jpeg?alt=media&token=fc2925fe-3d55-47ca-adc8-42bcf4a8b025'
+                        leftBool={true} />
                     </div>
-
-                    <div className="dividerLine"></div>
 
                     {/*PRIVACY POLICY AND TERMS OF SERVICE*/}
                     <div>
@@ -505,30 +429,18 @@ class Support extends Component {
                         </div>
                     </div>
 
+                    <div className="dividerLine"></div>
+
                     {/*DELIVERY INFORMATION SECTION*/}
                     <div id="deliveryInformation">
-                        <h1>
-                            Delivery information
-                        </h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td style={{width: '40%'}}>
-                                        <h2 className="alignRight">
-                                            We deliver
-                                        </h2>
-                                    </td>
-                                    <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetup5.jpeg?alt=media&token=ae0b17a9-63c4-4632-89c4-265c75e1a2bd'
-                                        alt='loading...' className="mainImage centered" />
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
-                        <p>
-                            We only use the highest quality services for delivery. All Hunter PCs are delivered using Royal Mail: the UK's highest quality delivery
-                            service. We therefore only deliver our PCs to England.
-                        </p>
+                        <GenericMarkupSection
+                        headingText='Delivery Information'
+                        subheadingText='We deliver'
+                        paragraphText="We only use the highest quality services for delivery. All Hunter PCs are delivered using Royal Mail: the UK's highest quality delivery
+                        service. We therefore only deliver our PCs to England."
+                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetup5.jpeg?alt=media&token=ae0b17a9-63c4-4632-89c4-265c75e1a2bd'
+                        leftBool={false}
+                        DontShowDividerLineBool={true} />
                     </div>
                 </React.Fragment>
             );
