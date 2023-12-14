@@ -6,7 +6,6 @@ class Support extends Component {
 
     componentDidMount() {
         const scrollTarget = document.getElementById(sessionStorage.getItem('supportPageScroll'));
-        console.log(scrollTarget)
         if (scrollTarget) {
             setTimeout(() => {
                 scrollTarget.scrollIntoView(true);
@@ -252,6 +251,32 @@ class Support extends Component {
                                     <td>
                                         <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupTall3.jpeg?alt=media&token=2aa1cc21-dfdf-44aa-b228-e1de4cc45337'
                                         className="mainImage centered" style={{width: '85%'}} alt="loading..." />
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    {/*DELIVERY INFORMATION SECTION*/}
+                    <div id="deliveryInformation">
+                        <h1 className="alignLeft">
+                            Delivery information
+                        </h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td style={{width: '60%'}}>
+                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetup5.jpeg?alt=media&token=ae0b17a9-63c4-4632-89c4-265c75e1a2bd'
+                                        alt='loading...' className="mainImage centered" />
+                                    </td>
+                                    <td>
+                                        <h2 className="alignRight">
+                                            We deliver
+                                        </h2>
+                                        <p className="alignLeft">
+                                            We only use the highest quality services for delivery. All Hunter PCs are delivered using Royal Mail: the UK's highest quality delivery
+                                            service. We therefore only deliver our PCs to England.
+                                        </p>
                                     </td>
                                 </tr>
                             </thead>
