@@ -133,7 +133,7 @@ class PcsMain extends Component {
                                                 </React.Fragment>
                                             ) : 'loading...'} />
                                     </td>
-                                    <td colSpan></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td colSpan="2">
