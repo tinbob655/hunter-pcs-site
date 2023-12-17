@@ -237,8 +237,10 @@ class LoginPopup extends Component {
                                 <div className="cleanLinkButtonDivider" style={{maxWidth: '85%', marginTop: '5vh'}}></div>
         
                                 <button type="button" onClick={function() {logInWithGoogle()}}>
-                                    <h3>
-                                        Or log in with google
+                                    <h3 style={{marginBottom: 0, paddingBottom: 0}} >
+                                        Or log in with:
+                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2Fgoogle%20logo.png?alt=media&token=e18829e4-9cba-4141-bb2e-385eb563e8f5'
+                                        style={{height: 'auto', width: '60px'}} className="centered"/>
                                     </h3>
                                 </button>
                             </React.Fragment>
@@ -275,7 +277,9 @@ class LoginPopup extends Component {
 
                                     <button type="button" onClick={function() {logInWithGoogle()}}>
                                         <h3>
-                                            Or log in with google
+                                            Or log in with:
+                                            <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2Fgoogle%20logo.png?alt=media&token=e18829e4-9cba-4141-bb2e-385eb563e8f5'
+                                        style={{height: 'auto', width: '40px'}} className="centered"/>
                                         </h3>
                                     </button>
                                 </form>
@@ -327,7 +331,9 @@ class LoginPopup extends Component {
         
                                 <button type="button" onClick={function() {logInWithGoogle()}}>
                                     <h3>
-                                        Or log in with Google
+                                        Or log in with:
+                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2Fgoogle%20logo.png?alt=media&token=e18829e4-9cba-4141-bb2e-385eb563e8f5'
+                                        style={{height: 'auto', width: '60px'}} className="centered"/>
                                     </h3>
                                 </button>
                             </React.Fragment>
@@ -382,7 +388,9 @@ class LoginPopup extends Component {
 
                                 <button type="button" onClick={function() {logInWithGoogle()}}>
                                     <h3>
-                                        Or log in with Google
+                                        Or log in with:
+                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2Fgoogle%20logo.png?alt=media&token=e18829e4-9cba-4141-bb2e-385eb563e8f5'
+                                        style={{height: 'auto', width: '40px'}} className="centered"/>
                                     </h3>
                                 </button>
                             </React.Fragment>
