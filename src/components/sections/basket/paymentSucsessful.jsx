@@ -1,23 +1,16 @@
 import React, {Component} from 'react';
-import {getFirestore, doc, setDoc} from 'firebase/firestore';
 import { isMobile } from '../../../index.js';
 
 class PaymentSucsessful extends Component {
 
     async componentDidMount() {
 
-        //save to the databse the proudct that was purchased as well as needed information
+        //get the purchase information
         const addressVar = sessionStorage.getItem('address');
         const purchasedProducts = sessionStorage.getItem('purchasedProducts');
         const emailVar = sessionStorage.getItem('email');
 
-        //save the data to firestore
-        const db = getFirestore();
-        await setDoc(doc(db, 'purchaces', emailVar), {
-            email: emailVar,
-            address: addressVar,
-            products: purchasedProducts,
-        });
+        //send the purhcase information to discord
         
         //after rendering this page, the user is not allowed to render the page again
         setTimeout(() => {
