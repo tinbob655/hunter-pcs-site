@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './supportStyles.scss';
 import {isMobile} from '../../../index.js';
 import GenericMarkupSection from '../multiPageComponents/genericMarkupSection.jsx';
 

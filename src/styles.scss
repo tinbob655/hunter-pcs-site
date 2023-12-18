@@ -60,6 +60,12 @@ p {
     font-family: 'Albert Sans';
     font-weight: 100;
     font-size: 20px;
+
+    &.legalText {
+        font-family: monospace;
+        font-size: 12px;
+        color: #868386;
+    }
 }
 
 h1, h2, h3, p {

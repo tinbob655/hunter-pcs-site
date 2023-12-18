@@ -357,14 +357,6 @@ class Basket extends Component {
                     </h2>
                     <form id="addressForm">
                         <p>
-                            Email:
-                        </p>
-                        <label htmlFor="email">Email</label>
-                        <input type="email" id="email" name="email" style={{maxWidth: '75%'}} placeholder="Email..."></input>
-
-                        <div className="dividerLine" style={{marginTop: '5vh'}}></div>
-
-                        <p>
                             Address line 1:
                         </p>
                         <label htmlFor="addressLine1">Address line 1</label>
@@ -398,6 +390,17 @@ class Basket extends Component {
 
                         <label htmlFor="submit">Submit</label>
                         <input type="submit" id="submit" name="submit" value="Submit" className="submit" style={{fontWeight: 900}}></input>
+
+                        <div className="dividerLine" style={{marginTop: '5vh'}}></div>
+
+                        <p>
+                            Email:
+                        </p>
+                        <p className="legalText">
+                            If you enter the wrong email here then there is a high chance that we won't be able to process your order.
+                        </p>
+                        <label htmlFor="email">Email</label>
+                        <input type="email" id="email" name="email" style={{maxWidth: '75%'}} placeholder="Email..."></input>
                     </form>
                 </React.Fragment>
             )});
