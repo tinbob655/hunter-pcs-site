@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {isMobile} from '../../../index.js';
 import GenericMarkupSection from '../multiPageComponents/genericMarkupSection.jsx';
+import { Link } from 'react-router-dom';
 
 class Support extends Component {
 
@@ -205,9 +206,14 @@ class Support extends Component {
                                             <h2 className="alignLeft">
                                                 Privacy policy
                                             </h2>
-                                            <p className="alignRight legalText">
-                                                ENTER_PRIVACY_POLICY_HERE
+                                            <p className="alignRight">
+                                                We collect the minimal ammount of information possible, and store it in a safe place
                                             </p>
+                                            <Link to='/privacyPolicy'>
+                                                <h3>
+                                                    Read full privacy policy ⟶
+                                                </h3>
+                                            </Link>
                                         </div>
                                         
                                         <div id="termsOfService" style={{borderTop: '5px solid white'}}>
@@ -413,9 +419,14 @@ class Support extends Component {
                             <h2 className="alignRight">
                                 Privacy Policy
                             </h2>
-                            <p className="alignRight">
-                                ENTER_PRIVACY_POLICY_HERE
+                            <p>
+                                We collect the minimal ammount of information possible, and store it in a safe place
                             </p>
+                            <Link to='/privacyPolicy'>
+                                <h3>
+                                    Read full privacy policy ⟶
+                                </h3>
+                            </Link>
                         </div>
 
                         <div id="termsOfService" style={{marginTop: '3vh'}}>

@@ -12,6 +12,7 @@ import ReferAFriend from './sections/referAFriend/referAFriend.jsx';
 import Support from './sections/support/support.jsx';
 import ProductPage from './sections/pcs/prebuilt/productPage.jsx';
 import PaymentSucsessful from './sections/basket/paymentSucsessful.jsx';
+import PrivacyPolicy from './sections/support/privacyPolicy.jsx';
 
 class Content extends Component {
 
@@ -41,7 +42,8 @@ class Content extends Component {
             referAFriend: <ReferAFriend/>,
             support: <Support/>,
             productPage: <ProductPage/>,
-            paymentSucsessful: <PaymentSucsessful/>
+            paymentSucsessful: <PaymentSucsessful/>,
+            privacyPolicy: <PrivacyPolicy/>,
         };
         let routeHTML = [];
 
