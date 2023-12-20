@@ -10,8 +10,22 @@ class PaymentSucsessful extends Component {
         const purchasedProducts = sessionStorage.getItem('purchasedProducts');
         const emailVar = sessionStorage.getItem('email');
 
-        //send the purhcase information to discord
+        //create a discord webhook session
+        const request = new XMLHttpRequest();
+        request.open("POST", "https://discord.com/api/webhooks/1187071870407807027/RKqIEOQhwxXsrBMmL_SCqpuIlbSZvvmn4YJ-kypWkp4aT6x289XF7GMVbItLz4-Ja9eS");
         
+        //define the data being sent to the discord bot
+        request.setRequestHeader('Content-Type', 'application/json');
+        const messageJSON = {
+            content: `New purchase with the following information:\n
+            Product: ${purchasedProducts}\n
+            Delivery address: ${addressVar}\n
+            Email: ${emailVar}`,
+        };
+        
+        //send the message
+        request.send(JSON.stringify(messageJSON));
+    
         //after rendering this page, the user is not allowed to render the page again
         setTimeout(() => {
             sessionStorage.setItem('currentPage', 'home');

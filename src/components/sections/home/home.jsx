@@ -5,11 +5,6 @@ import gamesCompilationVideo from '../../../media/allGamesCompilationVideo.mp4';
 import {isMobile} from '../../../index.js';
 
 class Home extends Component {
-    
-
-    //TEMPORARILY ADDED BECAUSE CANT BE BOTHERED TO VISIT THE PURCHASE SUCSESSFUL PAGE ALL THE TIME
-    componentDidMount() {
-    };
 
     render() {
 

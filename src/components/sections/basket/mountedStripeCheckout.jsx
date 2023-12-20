@@ -1,23 +1,24 @@
 import React, {useState, useEffect} from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { EmbeddedCheckout, EmbeddedCheckoutProvider } from '@stripe/react-stripe-js';
+import { useNavigate } from 'react-router-dom';
 
 const stripePromise = loadStripe('pk_live_51OIsKCCzpWfV0Kwk7LPqpBIw0kMMQVd8SiMzIjsG8Iz6ofCJ7k1KCEPPd9Jkk5Sz1m0QumHcl7eQC3HjVBYJEeB200wMUMSheW');
 
-function paymentSucsessfulFunction() {
-    //empty the user's basket
-    for(let i = 0; i < 100; i++) {
-        localStorage.removeItem('hunterPcsProduct'+i);
-    };
-
-    //next time the user renders the page, show a payment sucsessful screen
-    sessionStorage.setItem('currentPage', 'paymentSucsessful');
-
-    window.location.reload();
-};
-
 export default function StripeCheckout() {
     const [clientSecret, setClientSecret] = useState('');
+
+    const navigate = useNavigate();
+    function paymentCompleted(){
+
+        //empty the user's basket
+        for(let i = 0; i < 100; i++) {
+            localStorage.removeItem('hunterPcsProduct'+i);
+        };
+    
+        //change the page to the payment sucsessful page
+        navigate('/paymentSucsessful');
+    };
 
     useEffect(() => {
 
@@ -27,7 +28,7 @@ export default function StripeCheckout() {
         setClientSecret(stripeSession.client_secret);
     }, []);
 
-    const options = {clientSecret, onComplete: function() {paymentSucsessfulFunction()}};
+    const options = {clientSecret, onComplete: function() {paymentCompleted();}};
 
     return(
         <div id="checkout">
