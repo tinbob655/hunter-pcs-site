@@ -4,6 +4,7 @@ import {doc, getDoc, getFirestore} from 'firebase/firestore';
 import { firebaseInit } from '../../../firebase.js';
 import { isMobile } from '../../../index.js';
 import { Link } from 'react-router-dom';
+import GenericMarkupSection from '../multiPageComponents/genericMarkupSection.jsx';
 
 firebaseInit();
 
@@ -174,32 +175,15 @@ class PcsMain extends Component {
     
                     {/*CUSTOM PCS SECTION*/}
                     <div>
-                        <h1>
-                            Design your own pc
-                        </h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>
-                                        <h2 className="alignLeft">
-                                            Build your dreams
-                                        </h2>
-                                        <p className="alignRight">
-                                            Using our custom pc creator, you can design the pc of your dreams online, right now.
-                                        </p>
-                                        <Link to='/customPcs'>
-                                            <h3>
-                                                Click here to get started ⟶
-                                            </h3>
-                                        </Link>
-                                    </td>
-                                    <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=b7433866-5203-4cbb-9808-ca1d47ee1a48'
-                                        className="mainImage centered" style={{width: '85%', height: '450px', objectFit: 'cover'}} alt="loading..." />
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
+                        <GenericMarkupSection
+                        headingText='Design your own pc'
+                        subheadingText='Build your dreams'
+                        paragraphText='Using our custom pc creator, you can design the pc of your dreams online, right now.'
+                        linkContent='Click here to get started ⟶'
+                        linkDestination='/customPcs'
+                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=b7433866-5203-4cbb-9808-ca1d47ee1a48'
+                        leftBool={false} 
+                        customImageCellStyles={{width: '60%'}}/>
                     </div>
                 </React.Fragment>
             );
@@ -316,30 +300,16 @@ class PcsMain extends Component {
 
                     {/*CUSTOM PCS SECTION*/}
                     <div>
-                        <h1>
-                            Design your own pc
-                        </h1>
-                        <table>
-                            <tr>
-                                <td style={{width: '40%'}}>
-                                    <h2 className="alignRight">
-                                        Build your dreams
-                                    </h2>
-                                </td>
-                                <td>
-                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=b7433866-5203-4cbb-9808-ca1d47ee1a48'
-                                        className="mainImage centered" style={{maxHeight: '30vh', objectFit: 'cover'}} alt="loading..." />
-                                </td>
-                            </tr>
-                        </table>
-                        <p>
-                            Using our custom pc creator, you can design the pc of your dreams online, right now.
-                        </p>
-                        <Link to='/customPcs'>
-                            <h3>
-                                Click here to get started ⟶
-                            </h3>
-                        </Link>
+                        <GenericMarkupSection
+                            headingText='Design your own pc'
+                            subheadingText='Build your dreams'
+                            paragraphText='Using our custom pc creator, you can design the pc of your dreams online, right now.'
+                            linkContent='Click here to get started ⟶'
+                            linkDestination='/customPcs'
+                            imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=b7433866-5203-4cbb-9808-ca1d47ee1a48'
+                            leftBool={false} 
+                            customImageCellStyles={{width: '60%'}}
+                            DontShowDividerLineBool={true}/>
                     </div>
                 </React.Fragment>
             );

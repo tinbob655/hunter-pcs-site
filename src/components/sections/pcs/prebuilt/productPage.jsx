@@ -6,6 +6,7 @@ import { firebaseInit } from '../../../../firebase.js';
 
 import { renderIfLoaded, isMobile } from '../../../../index.js';
 import LoginPopup from '../../account/loginPopup.jsx';
+import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection.jsx';
 import '../pcsStyles.scss';
 
 firebaseInit();
@@ -203,32 +204,18 @@ function ProductPage() {
 
                 {/*NO EXPENSES SPARED*/}
                 <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>
-                                    <h2 className="alignRight">
-                                        We guarantee no expenses spared
-                                    </h2>
-                                    <p className="alignLeft">
-                                        At hunter pcs, we understand how annoying it can be to purchase a new device only for it to fail and need returning. That's why we
-                                        guarantee all pcs delivered to you are made with 100% brand new components. All our power supply units are heavily tested along with
-                                        the pcs themselves.
-                                    </p>
-                                        <Link to='/support'>
-                                            <h3>
-                                                More on our quality guarantee ⟶
-                                            </h3>
-                                        </Link>
-                                    </td>
-                                    <td style={{width: '60%'}}>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df' 
-                                        className="mainImage centered" style={{width: '85%'}} alt="loading..."/>
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
+                    <GenericMarkupSection
+                    headingText='No expenses spared'
+                    subheadingText='We guarantee quality'
+                    paragraphText="At hunter pcs, we understand how annoying it can be to purchase a new device only for it to fail and need returning. That's why we
+                    guarantee all pcs delivered to you are made with 100% brand new components. All our power supply units are heavily tested along with
+                    the pcs themselves."
+                    linkContent='More on our quality guarantee ⟶'
+                    linkDestination='/support'
+                    imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
+                    customImageCellStyles={{width: '60%'}} 
+                    leftBool={true}/>
+                </div>
                 </React.Fragment>
             );
         }
@@ -326,36 +313,19 @@ function ProductPage() {
 
                 {/*NO EXPENSES SPARED SECTION*/}
                 <div>
-                    <h1>
-                        No expenses spared
-                    </h1>
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>
-                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df' 
-                                    className="mainImage centered" alt="loading..."/>
-                                </td>
-                                <td style={{width: '40%'}}>
-                                    <h2 className="alignLeft">
-                                        We're committed to quality
-                                    </h2>
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
-                    <p>
-                        At hunter pcs, we understand how annoying it can be to purchase a new device only for it to fail and need returning. That's why we
-                        guarantee all pcs delivered to you are made with 100% brand new components. All our power supply units are heavily tested along with
-                        the pcs themselves.
-                    </p>
-                        <Link to='/support'>
-                            <h3>
-                                More on our quality guarantee ⟶
-                            </h3>
-                        </Link>
+                <GenericMarkupSection
+                    headingText='No expenses spared'
+                    subheadingText='We guarantee quality'
+                    paragraphText="At hunter pcs, we understand how annoying it can be to purchase a new device only for it to fail and need returning. That's why we
+                    guarantee all pcs delivered to you are made with 100% brand new components. All our power supply units are heavily tested along with
+                    the pcs themselves."
+                    linkContent='More on our quality guarantee ⟶'
+                    linkDestination='/support'
+                    imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
+                    DontShowDividerLineBool={true}
+                    leftBool={true}/>
                 </div>
-                </React.Fragment>
+            </React.Fragment>
         );
     };
 };

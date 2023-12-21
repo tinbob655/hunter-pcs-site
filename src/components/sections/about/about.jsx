@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { isMobile } from '../../../index.js';
 import { Link } from 'react-router-dom';
+import GenericMarkupSection from '../multiPageComponents/genericMarkupSection.jsx';
 
 class About extends Component {
 
@@ -43,35 +44,17 @@ class About extends Component {
     
                     {/*WHY HUNTER PCS SECTION*/}
                     <div>
-                        <h1 className="alignRight">
-                            Why Hunter Pcs?
-                        </h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>
-                                        <h2 className="alignLeft">
-                                            Because we're the best
-                                        </h2>
-                                        <p className="alignRight">
-                                            Choose Hunter Pcs because here, we guarantee that all our products are thoroughly tested. Not only that, but each and every
-                                            pc we ship to you will come fitted with components exclusivley from brands we can all trust such as corsair, AMD and NVIDIA.
-                                            <br/>
-                                            That's the Hunter Pcs no expenses spared gurantee
-                                        </p>
-                                        <Link to='/support'>
-                                            <h3 className="limitedSize">
-                                                Read more on our no expenses spared guarantee
-                                            </h3>
-                                        </Link>
-                                    </td>
-                                    <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8'
-                                        className="mainImage centered" style={{width: '80%'}} alt='loading...' />
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
+                        <GenericMarkupSection
+                        headingText='Why Hunter PCs?'
+                        subheadingText="Becase we're the best"
+                        paragraphText={`Choose Hunter Pcs because here, we guarantee that all our products are thoroughly tested. Not only that, but each and every
+                        pc we ship to you will come fitted with components exclusivley from brands we can all trust such as corsair, AMD and NVIDIA.
+                        \n\n
+                        That's the Hunter Pcs no expenses spared gurantee`}
+                        linkContent='Read more on our no expenses spared guarantee'
+                        linkDestination='/support'
+                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8'
+                        leftBool={false} />
                     </div>
     
                     {/*GET IN TOUCH SECTION*/}
@@ -107,34 +90,16 @@ class About extends Component {
     
                     {/*DELIVERY SECTION*/}
                     <div>
-                        <h1 className="alignRight">
-                            We deliver
-                        </h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>
-                                        <h2 className="alignLeft">
-                                            From us to your doorstep
-                                        </h2>
-                                        <p className="alignRight">
-                                            Not able to come and pick up your pc? Don't want to? We got you sorted. We'll deliver anything to you provided you tell us where
-                                            to drop it off. If it gets damaged in the post, that's on us and we'll come to collect your pc and repair it fully free of charge.
-                                            Its all just part of the Hunter Pcs quality guarantee
-                                        </p>
-                                        <Link to='/support'>
-                                            <h3 className="limitedSize">
-                                                More on our quality guarantee
-                                            </h3>
-                                        </Link>
-                                    </td>
-                                    <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788'
-                                        className="mainImage centered" alt="loading..." />
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
+                        <GenericMarkupSection
+                        headingText='We deliver'
+                        subheadingText='From us to your doorstep'
+                        paragraphText="Not able to come and pick up your pc? Don't want to? We got you sorted. We'll deliver anything to you provided you tell us where
+                        to drop it off. If it gets damaged in the post, that's on us and we'll come to collect your pc and repair it fully free of charge.
+                        Its all just part of the Hunter Pcs quality guarantee"
+                        linkContent='More on our quality guarantee'
+                        linkDestination='/support'
+                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788'
+                        leftBool={false} />
                     </div>
                 </React.Fragment>
             );
@@ -178,35 +143,17 @@ class About extends Component {
 
                     {/*WHY HUNTER PCS SECTION*/}
                     <div>
-                        <h1>
-                            Why Hunter Pcs?
-                        </h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td style={{width: '40%'}}>
-                                        <h2 className="alignRight">
-                                            Because we're the best
-                                        </h2>
-                                    </td>
-                                    <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8'
-                                        className="mainImage centered" alt='loading...' />
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
-                        <p>
-                            Choose Hunter Pcs because here, we guarantee that all our products are thoroughly tested. Not only that, but each and every
-                            pc we ship to you will come fitted with components exclusivley from brands we can all trust such as corsair, AMD and NVIDIA.
-                            <br/>
-                            That's the Hunter Pcs no expenses spared gurantee
-                        </p>
-                        <Link to='/support'>
-                            <h3>
-                                Read more on our no expenses spared guarantee
-                            </h3>
-                        </Link>
+                        <GenericMarkupSection
+                        headingText='Why Hunter PCs?'
+                        subheadingText="Becase we're the best"
+                        paragraphText={`Choose Hunter Pcs because here, we guarantee that all our products are thoroughly tested. Not only that, but each and every
+                        pc we ship to you will come fitted with components exclusivley from brands we can all trust such as corsair, AMD and NVIDIA.
+                        \n\n
+                        That's the Hunter Pcs no expenses spared gurantee`}
+                        linkContent='Read more on our no expenses spared guarantee'
+                        linkDestination='/support'
+                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8'
+                        leftBool={false} />
                     </div>
 
                     <div className="dividerLine"></div>
@@ -244,34 +191,17 @@ class About extends Component {
 
                     {/*DELIVERY SECTION*/}
                     <div>
-                        <h1>
-                            We deliver
-                        </h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td style={{width: '40%'}}>
-                                        <h2 className="alignRight">
-                                            From us to your doorstep
-                                        </h2>
-                                    </td>
-                                    <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788'
-                                        className="mainImage centered" alt="loading..." />
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
-                        <p>
-                            Not able to come and pick up your pc? Don't want to? We got you sorted. We'll deliver anything to you provided you tell us where
+                        <GenericMarkupSection
+                            headingText='We deliver'
+                            subheadingText='From us to your doorstep'
+                            paragraphText="Not able to come and pick up your pc? Don't want to? We got you sorted. We'll deliver anything to you provided you tell us where
                             to drop it off. If it gets damaged in the post, that's on us and we'll come to collect your pc and repair it fully free of charge.
-                            Its all just part of the Hunter Pcs quality guarantee
-                        </p>
-                        <Link to='/support'>
-                            <h3>
-                                More on our quality guarantee
-                            </h3>
-                        </Link>
+                            Its all just part of the Hunter Pcs quality guarantee"
+                            linkContent='More on our quality guarantee'
+                            linkDestination='/support'
+                            imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788'
+                            DontShowDividerLineBool={true}
+                            leftBool={false} />
                     </div>
                 </React.Fragment>
             );
