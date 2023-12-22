@@ -2,18 +2,18 @@ import React, {Component} from 'react';
 import { Route, Routes} from 'react-router-dom';
 
 //import all pages
-import Home from './sections/home/home.jsx';
-import About from './sections/about/about.jsx';
-import Account from './sections/account/account.jsx';
-import Basket from './sections/basket/basket.jsx';
-import PcsMain from './sections/pcs/pcsMain.jsx';
-import CustomPcs from './sections/pcs/custom/customPcs.jsx';
-import ReferAFriend from './sections/referAFriend/referAFriend.jsx';
-import Support from './sections/support/support.jsx';
-import ProductPage from './sections/pcs/prebuilt/productPage.jsx';
-import PaymentSucsessful from './sections/basket/paymentSucsessful.jsx';
-import PrivacyPolicy from './sections/support/privacyPolicy.jsx';
-import CustomPcPurchaseSucsessful from './sections/pcs/custom/customPcPurchaseSucsessful.jsx';
+import Home from './pages/home/home.jsx';
+import About from './pages/about/about.jsx';
+import Account from './pages/account/account.jsx';
+import Basket from './pages/basket/basket.jsx';
+import PcsMain from './pages/pcs/pcsMain.jsx';
+import CustomPcs from './pages/pcs/custom/customPcs.jsx';
+import ReferAFriend from './pages/referAFriend/referAFriend.jsx';
+import Support from './pages/support/support.jsx';
+import ProductPage from './pages/pcs/prebuilt/productPage.jsx';
+import PaymentSucsessful from './pages/basket/paymentSucsessful.jsx';
+import PrivacyPolicy from './pages/support/privacyPolicy.jsx';
+import CustomPcPurchaseSucsessful from './pages/pcs/custom/customPcPurchaseSucsessful.jsx';
 
 class Content extends Component {
 
