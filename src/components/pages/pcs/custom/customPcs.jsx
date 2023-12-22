@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { clickGetStartedButton } from './customPcsScripts.js';
 import {isMobile} from '../../../../index.js';
-import LoginPopup from '../../account/loginPopup.jsx';
-import AddressPopup from '../../basket/addressPopup.jsx';
+import LoginPopup from '../../../multiPageComponents/popups/login/loginPopup.jsx';
+import AddressPopup from '../../../multiPageComponents/popups/address/addressPopup.jsx';
 import CustomSpecForm from './customSpecForm.jsx';
 import AutoNav from '../../../multiPageComponents/autoNav.jsx';
 

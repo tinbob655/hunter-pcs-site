@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './loginStyles.scss';
-import {isMobile} from '../../../index.js';
+import {isMobile} from '../../../../index.js';
 
 //firebase modules for accounts
 import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';

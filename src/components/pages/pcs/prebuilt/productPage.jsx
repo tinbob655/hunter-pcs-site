@@ -5,7 +5,7 @@ import { getDoc, doc, getFirestore } from 'firebase/firestore';
 import { firebaseInit } from '../../../../firebase.js';
 
 import { renderIfLoaded, isMobile } from '../../../../index.js';
-import LoginPopup from '../../account/loginPopup.jsx';
+import LoginPopup from '../../../multiPageComponents/popups/login/loginPopup.jsx';
 import GenericMarkupSection from '../../../multiPageComponents/genericMarkupSection.jsx';
 import '../pcsStyles.scss';
 

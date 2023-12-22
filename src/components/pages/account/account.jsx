@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import LoginPopup from './loginPopup';
+import LoginPopup from '../../multiPageComponents/popups/login/loginPopup.jsx';
 
 class Account extends Component {
 

@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import { convertOutOfCamelCase, isMobile } from '../../../index.js';
 import { Link } from 'react-router-dom';
-import LoginPopup from '../account/loginPopup.jsx';
+import LoginPopup from '../../multiPageComponents/popups/login/loginPopup.jsx';
 import { getDoc, doc, getFirestore } from 'firebase/firestore';
 import StripeCheckout from './mountedStripeCheckout.jsx';
-import AddressPopup from './addressPopup.jsx';
+import AddressPopup from '../../multiPageComponents/popups/address/addressPopup.jsx';
 
 //defining basketArray here not later beause it is to be used in multiple processes
 var basketArray = [];
