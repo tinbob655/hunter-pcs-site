@@ -25,11 +25,6 @@ class PaymentSucsessful extends Component {
         
         //send the message
         request.send(JSON.stringify(messageJSON));
-    
-        //after rendering this page, the user is not allowed to render the page again
-        setTimeout(() => {
-            sessionStorage.setItem('currentPage', 'home');
-        }, 1000);
     };
 
     render() {
