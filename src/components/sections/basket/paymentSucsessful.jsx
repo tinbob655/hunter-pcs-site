@@ -3,7 +3,7 @@ import { isMobile } from '../../../index.js';
 
 class PaymentSucsessful extends Component {
 
-    async componentDidMount() {
+    componentDidMount() {
 
         //get the purchase information
         const addressVar = sessionStorage.getItem('address');
