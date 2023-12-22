@@ -142,6 +142,8 @@ class CustomPcs extends Component {
                         </button>
                     </div>
 
+                    <div className="dividerLine"></div>
+
                     {/*button and content for after a pc is purchased*/}
                     <div>
                         <h1>
