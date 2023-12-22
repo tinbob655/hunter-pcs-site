@@ -13,6 +13,7 @@ import Support from './sections/support/support.jsx';
 import ProductPage from './sections/pcs/prebuilt/productPage.jsx';
 import PaymentSucsessful from './sections/basket/paymentSucsessful.jsx';
 import PrivacyPolicy from './sections/support/privacyPolicy.jsx';
+import CustomPcPurchaseSucsessful from './sections/pcs/custom/customPcPurchaseSucsessful.jsx';
 
 class Content extends Component {
 
@@ -44,6 +45,7 @@ class Content extends Component {
             productPage: <ProductPage/>,
             paymentSucsessful: <PaymentSucsessful/>,
             privacyPolicy: <PrivacyPolicy/>,
+            customPcPurchaseSucsessful: <CustomPcPurchaseSucsessful/>,
         };
         let routeHTML = [];
 

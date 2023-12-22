@@ -1,8 +1,23 @@
 import React, {Component} from 'react';
 import { clickGetStartedButton } from './customPcsScripts.js';
 import {isMobile} from '../../../../index.js';
+import LoginPopup from '../../account/loginPopup.jsx';
+import AddressPopup from '../../basket/addressPopup.jsx';
+import CustomSpecForm from './customSpecForm.jsx';
+import AutoNav from '../../multiPageComponents/autoNav.jsx';
 
 class CustomPcs extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            loginPopup: <></>,
+            addressPopup: <></>,
+            customSpecPopup: <></>,
+            redirector: <></>,
+        };
+    };
 
     render() {
 
@@ -63,7 +78,7 @@ class CustomPcs extends Component {
                                              will also be charged.
                                         </p>
                                         <button type="button" onClick={() => {
-                                            //custom pc purchase sequence
+                                            this.purchaseButtonClicked();
                                         }}>
                                             <h3>
                                                 Get your custom pc delivered straight to you ⟶
@@ -73,6 +88,19 @@ class CustomPcs extends Component {
                                 </tr>
                             </thead>
                         </table>
+                    </div>
+
+                    <div id="customPcsLoginPopupWrapper">
+                        {this.state.loginPopup}
+                    </div>
+                    <div id="customPcsAddressPopupWrapper" className="popupWrapper">
+                        {this.state.addressPopup}
+                    </div>
+                    <div id="customPcsCustomSpecFormWrapper" className="popupWrapper">
+                        {this.state.customSpecPopup}
+                    </div>
+                    <div id="redirector">
+                        {this.state.redirector}
                     </div>
                 </React.Fragment>
             );
@@ -139,15 +167,137 @@ class CustomPcs extends Component {
                                 will also be charged.
                         </p>
                         <button type="button" onClick={() => {
-                            //custom pc purchase sequence
+                            this.purchaseButtonClicked();
                         }}>
                             <h3>
                                 Get your custom pc delivered straight to you ⟶
                             </h3>
                         </button>
                     </div>
+
+                    <div id="customPcsLoginPopupWrapper" className="popupWrapper">
+                        {this.state.loginPopup}
+                    </div>
+                    <div id="customPcsAddressPopupWrapper" className="popupWrapper">
+                        {this.state.addressPopup}
+                    </div>
+                    <div id="customPcsCustomSpecFormWrapper" className="popupWrapper">
+                        {this.state.customSpecPopup}
+                    </div>
                 </React.Fragment>
             );
+        };
+    };
+
+    purchaseButtonClicked() {
+
+        const openCustomPcSpecForm = () => {
+
+            //first, animate the closing of the address form
+            document.getElementById('customPcsAddressPopupWrapper').classList.remove('shown');
+
+            setTimeout(() => {
+                this.setState({customSpecPopup: <CustomSpecForm />});
+    
+                setTimeout(() => {
+                    document.getElementById('customPcsCustomSpecFormWrapper').classList.add('shown');
+                    document.getElementById('customSpecForm').addEventListener('submit', customPcSpecFormSubmitted);
+                }, 100);
+            }, 751);
+        };
+
+        const customPcSpecFormSubmitted = (event) => {
+            event.preventDefault();
+            const currentTarget = event.currentTarget;
+
+            //make sure that all fields were filled in
+            const pcParts = ['GPU', 'CPU', 'Memory (RAM)', 'Storage', 'Motherboard', 'Cooler(s)', 'Case', 'Power Supply', 'Operating System'];
+            let validInput = true;
+            pcParts.forEach((part) => {
+                if (!currentTarget[part].value) {
+                    validInput = false;
+                };
+            });
+
+            //if the user did not fill all of the fields in the custom pc spec form
+            if (!validInput) {
+                document.getElementById('customPcFormFillAllFieldsPopup').style.visibility = 'visible';
+                document.getElementById('customPcFormFillAllFieldsPopup').style.height = 'auto';
+                document.getElementById('customPcsCustomSpecFormWrapper').scrollTop = 0;
+            }
+
+            //otherwise, if the user did fill in all of the form fields
+            else if (validInput) {
+
+                //close the popup
+                document.getElementById('customPcsCustomSpecFormWrapper').classList.remove('shown');
+
+                //save the custom pc spec to session storage
+                let customPcSpec = {};
+                pcParts.forEach((part) => {
+                    customPcSpec[part] = currentTarget[part].value;
+                });
+                sessionStorage.setItem('customPcSpec', JSON.stringify(customPcSpec));
+
+                //after all necessary purchase data was collected, navigate the user to the custom pc purchase sucsesful page
+                sessionStorage.setItem('purchaseValid', 'true');
+                setTimeout(() => {
+                    this.setState({redirector: <AutoNav destination='/customPcPurchaseSucsessful'/>});
+                }, 751);
+            };
+        };
+
+        function addressPopupSubmitted(event) {
+            event.preventDefault();
+
+            const currentTarget = event.currentTarget;
+
+            //make sure there are values in all fields
+            if ((!currentTarget.email.value || !currentTarget.addressLine1.value || !currentTarget.addressLine2.value || !currentTarget.townOrCity.value || !currentTarget.postcode.value)) {
+                document.getElementById('fillAllFieldsPopup').style.visibility = 'visible';
+                document.getElementById('fillAllFieldsPopup').style.height = 'auto';
+                document.getElementById('customPcsAddressPopupWrapper').scrollTop = 0;
+            }
+
+            //address was sucsessfully recieved, proceed to payment
+            else {
+
+                //now save the address and email to session storage
+                try {
+                    const address = {
+                        addressLine1: currentTarget.addressLine1.value,
+                        addressLine2: currentTarget.addressLine2.value,
+                        townOrCity: currentTarget.townOrCity.value,
+                        postcode: currentTarget.postcode.value,
+                    };
+                    sessionStorage.setItem('address', JSON.stringify(address));
+                    sessionStorage.setItem('email', event.currentTarget.email.value);
+
+                    //after saving that, prompt the user to enter the spec of the pc they bought
+                    openCustomPcSpecForm();
+                }
+
+                catch(error) {
+                    console.log('Error saving address info to session storage: '+error);
+                };
+            };
+        };
+
+        //first make sure the user is logged in
+        if (sessionStorage.getItem('loggedIn') != 'true') {
+
+            //not logged in, show the login popup
+            this.setState({loginPopup: <LoginPopup />});
+        }
+
+        //if the user was logged in, then show the address popup
+        else {
+            this.setState({addressPopup: <AddressPopup />});
+
+            setTimeout(() => {
+                document.getElementById('customPcsAddressPopupWrapper').classList.add('shown');
+                document.getElementById('addressForm').addEventListener('submit', addressPopupSubmitted);
+            }, 100);
         };
     };
 };

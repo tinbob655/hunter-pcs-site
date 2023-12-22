@@ -58,7 +58,7 @@ class AddressPopup extends Component {
                     <div className="dividerLine" style={{marginTop: '5vh'}}></div>
 
                     <label htmlFor="submit">Submit</label>
-                    <input type="submit" id="submit" name="submit" value="Submit" className="submit" style={{fontWeight: 900}}></input>
+                    <input type="submit" id="submit" name="submit" value="Submit" className="submit" style={{fontWeight: 900, paddingBottom: '2vh'}}></input>
                 </form>
             </React.Fragment>
         );
