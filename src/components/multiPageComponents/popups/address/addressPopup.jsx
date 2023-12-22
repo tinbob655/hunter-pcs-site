@@ -13,6 +13,22 @@ class AddressPopup extends Component {
                 <h2>
                     Where do you want us to drop it off?
                 </h2>
+
+                <div className="dividerLine"></div>
+                
+                {/*ONLY IN ENGLAND SECTION*/}
+                <div>
+                    <h1 style={{padding: 0, color: '#c74646'}}>
+                        Important:
+                    </h1>
+                    <p style={{maxWidth: '75%', margin: 'auto', color: '#d47979'}}>
+                        At the moment, we only deliver to England, UK. If that's not you then sorry; we are working hard to expand our shipping operation. Check back later
+                        for greater delivery options
+                    </p>
+                </div>
+
+                <div className="dividerLine"></div>
+
                 <form id="addressForm">
                     <p>
                         Address line 1:
