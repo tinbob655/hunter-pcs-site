@@ -5,26 +5,31 @@ class PaymentSucsessful extends Component {
 
     componentDidMount() {
 
-        //get the purchase information
-        const addressVar = sessionStorage.getItem('address');
-        const purchasedProducts = sessionStorage.getItem('purchasedProducts');
-        const emailVar = sessionStorage.getItem('email');
-
-        //create a discord webhook session
-        const request = new XMLHttpRequest();
-        request.open("POST", "https://discord.com/api/webhooks/1187071870407807027/RKqIEOQhwxXsrBMmL_SCqpuIlbSZvvmn4YJ-kypWkp4aT6x289XF7GMVbItLz4-Ja9eS");
-        
-        //define the data being sent to the discord bot
-        request.setRequestHeader('Content-Type', 'application/json');
-        const messageJSON = {
-            content: `New purchase with the following information:\n
-            Product: ${purchasedProducts}\n
-            Delivery address: ${addressVar}\n
-            Email: ${emailVar}`,
+        //only fire once to prevent multiple purchases if the user presses refresh
+        if (sessionStorage.getItem('purchaseValid') === 'true') {
+            sessionStorage.removeItem('purchaseValid');
+            
+            //get the purchase information
+            const addressVar = sessionStorage.getItem('address');
+            const purchasedProducts = sessionStorage.getItem('purchasedProducts');
+            const emailVar = sessionStorage.getItem('email');
+    
+            //create a discord webhook session
+            const request = new XMLHttpRequest();
+            request.open("POST", "https://discord.com/api/webhooks/1187071870407807027/RKqIEOQhwxXsrBMmL_SCqpuIlbSZvvmn4YJ-kypWkp4aT6x289XF7GMVbItLz4-Ja9eS");
+            
+            //define the data being sent to the discord bot
+            request.setRequestHeader('Content-Type', 'application/json');
+            const messageJSON = {
+                content: `New purchase with the following information:\n
+                Product: ${purchasedProducts}\n
+                Delivery address: ${addressVar}\n
+                Email: ${emailVar}`,
+            };
+            
+            //send the message
+            request.send(JSON.stringify(messageJSON));
         };
-        
-        //send the message
-        request.send(JSON.stringify(messageJSON));
     };
 
     render() {

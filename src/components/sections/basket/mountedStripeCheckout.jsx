@@ -15,6 +15,9 @@ export default function StripeCheckout() {
         for(let i = 0; i < 100; i++) {
             localStorage.removeItem('hunterPcsProduct'+i);
         };
+
+        //make sure the discord message can only be sent once
+        sessionStorage.setItem('purchaseValid', 'true');
     
         //change the page to the payment sucsessful page
         navigate('/paymentSucsessful');
