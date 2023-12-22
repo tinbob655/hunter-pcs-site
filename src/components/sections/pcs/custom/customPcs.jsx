@@ -4,7 +4,7 @@ import {isMobile} from '../../../../index.js';
 import LoginPopup from '../../account/loginPopup.jsx';
 import AddressPopup from '../../basket/addressPopup.jsx';
 import CustomSpecForm from './customSpecForm.jsx';
-import AutoNav from '../../multiPageComponents/autoNav.jsx';
+import AutoNav from '../../../multiPageComponents/autoNav.jsx';
 
 class CustomPcs extends Component {
 

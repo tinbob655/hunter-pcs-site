@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-import SlidingButton from '../multiPageComponents/slidingButton.jsx';
+import SlidingButton from '../../multiPageComponents/slidingButton.jsx';
 import {doc, getDoc, getFirestore} from 'firebase/firestore';
 import { firebaseInit } from '../../../firebase.js';
 import { isMobile } from '../../../index.js';
-import { Link } from 'react-router-dom';
-import GenericMarkupSection from '../multiPageComponents/genericMarkupSection.jsx';
+import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection.jsx';
 
 firebaseInit();
 

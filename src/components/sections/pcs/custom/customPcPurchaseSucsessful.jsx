@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection.jsx';
+import GenericMarkupSection from '../../../multiPageComponents/genericMarkupSection.jsx';
 
 //ss values are: customPcSpec address email
 

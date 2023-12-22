@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {isMobile} from '../../../index.js';
-import GenericMarkupSection from '../multiPageComponents/genericMarkupSection.jsx';
+import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection.jsx';
 import { Link } from 'react-router-dom';
 
 class Support extends Component {

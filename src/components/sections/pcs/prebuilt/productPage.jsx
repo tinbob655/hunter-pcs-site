@@ -6,7 +6,7 @@ import { firebaseInit } from '../../../../firebase.js';
 
 import { renderIfLoaded, isMobile } from '../../../../index.js';
 import LoginPopup from '../../account/loginPopup.jsx';
-import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection.jsx';
+import GenericMarkupSection from '../../../multiPageComponents/genericMarkupSection.jsx';
 import '../pcsStyles.scss';
 
 firebaseInit();

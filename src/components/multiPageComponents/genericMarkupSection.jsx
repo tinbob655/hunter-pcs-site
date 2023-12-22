@@ -1,5 +1,5 @@
 import React from 'react';
-import {isMobile} from '../../../index.js';
+import {isMobile} from '../../index.js';
 import {Link} from'react-router-dom';
 
 function GenericMarkupSection({headingText, subheadingText, paragraphText, linkContent, linkDestination, imgSrc,

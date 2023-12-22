@@ -1,7 +1,6 @@
 import React from 'react';
-import { buttonExpand } from '../../../index.js';
+import { buttonExpand, isMobile } from '../../index.js';
 import { useNavigate } from 'react-router-dom';
-import { isMobile } from '../../../index.js';
 
 function SlidingButton({id, imgSrc, linkLocation, textContent, ssIndex, ssValue}) {
 
