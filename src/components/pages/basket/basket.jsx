@@ -303,6 +303,14 @@ class Basket extends Component {
                 //add to total price
                 totalPrice += docSnap.data().price;
             };
+
+            //account for shipping
+            let shippingDocRef = doc(db, 'costs', 'shippingCost');
+            let shippingDocSnap = await getDoc(shippingDocRef);
+            const shippingCost = shippingDocSnap.data().value;
+
+            finalProudctNameString += ` + Shipping costs (£${shippingCost})`;
+            totalPrice += shippingCost;
     
             //total price must be in P not £
             totalPrice *= 100;
@@ -315,6 +323,9 @@ class Basket extends Component {
             const sk = docSnap.data().value;
     
             const stripe = require('stripe')(sk);
+
+
+            console.log(finalProudctNameString);
             const session = await stripe.checkout.sessions.create({
                 line_items: [{
                     price_data: {
