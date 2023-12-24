@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import SlidingButton from '../../multiPageComponents/slidingButton.jsx';
-import gamesCompilationVideo from '../../../media/allGamesCompilationVideo.mp4';
+import gamesCompilationVideo from '../../../media/HunterPcs all games compilation.mp4';
 import {isMobile} from '../../../index.js';
 
 class Home extends Component {
