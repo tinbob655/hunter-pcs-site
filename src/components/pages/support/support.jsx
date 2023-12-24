@@ -111,7 +111,7 @@ class Support extends Component {
                                             -Corsair for power supply units
                                         </p>
                                         <p className="alignLeft">
-                                            -Kingston and Crucial for SSDs
+                                            -Kingston and Samsung for SSDs
                                         </p>
                                     </td>
                                 </tr>
