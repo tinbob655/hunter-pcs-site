@@ -9,6 +9,8 @@ import LoginPopup from '../../../multiPageComponents/popups/login/loginPopup.jsx
 import GenericMarkupSection from '../../../multiPageComponents/genericMarkupSection.jsx';
 import '../pcsStyles.scss';
 
+isMobile() ? import('../mobilePcsStyles.scss') : <></>;
+
 firebaseInit();
 
 function ProductPage() {
@@ -200,6 +202,7 @@ function ProductPage() {
                             </tr>
                         </thead>
                     </table>
+                    <div className="dividerLine"></div>
                 </div>
 
                 {/*NO EXPENSES SPARED*/}
