@@ -71,18 +71,25 @@ function ProductPage() {
 
             const dataToFetch = ['frontendName', 'price', 'subheaderDescription', 'fullDescription', 'fullSystemSpec'];
 
-            //fetch all data and add it to state
+            //fetch the data from the dataToFetch array
             let fetchedData = [];
             dataToFetch.forEach((key) => {
                 fetchedData.push(docSnap.data()[key]);
             });
 
+            //also fetch the shipping cost (different firesore location so cannot use above loop)
+            let shippingCostDocRef = doc(database, 'costs', 'shippingCost');
+            let shippingCostDocSnap = await getDoc(shippingCostDocRef);
+            let shippingCost = shippingCostDocSnap.data().value;
+
+            //add the fetched data to state
             setState({frontendName: fetchedData[0],
                 price: fetchedData[1],
                 subheaderDescription: fetchedData[2],
                 fullDescription: fetchedData[3],
                 fullSystemSpec: fetchedData[4],
                 productImageURL: 'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8',
+                shippingCost: shippingCost,
                 //for now this is just a stock image until product images are available
                 product: sessionStorage.getItem('product'),
             });
@@ -171,11 +178,14 @@ function ProductPage() {
                         </td>
 
                         <td>
-                            {/*PRODUCT IMAGE*/}
+                            {/*PRODUCT IMAGE + PRODUCT PRICE*/}
                             <img src={state.productImageURL} style={{width: '75%'}}  className="mainImage centered" alt="loading..."/>
-                            <h2>
+                            <h2 style={{paddingBottom: 0, marginBottom: 0}}>
                                 {renderIfLoaded("£ "+state.price)}
                             </h2>
+                            <p style={{padding: 0, marginTop: 0}}>
+                                {state.shippingCost ? `(+£${state.shippingCost} shipping)` : 'loading shipping...'}
+                            </p>
                         </td>
                     </tr>
                 </table>
@@ -236,7 +246,7 @@ function ProductPage() {
                     {renderIfLoaded('Hunter '+state.frontendName)}
                 </h1>
 
-                {/*product name and description */}
+                {/*product name, price and description */}
                 <table>
                     <thead>
                         <tr>
@@ -247,8 +257,11 @@ function ProductPage() {
                             </td>
                             <td>
                                 <img src={state.productImageURL} className="mainImage centered" alt="loading..."/>
-                                <p>
+                                <h2 style-={{marginBottom: 0, paddingBottom: 0}}>
                                     £{state.price}
+                                </h2>
+                                <p style={{padding: 0, marginTop: 0}}>
+                                    {state.shippingCost ? `(+£${state.shippingCost} shipping)` : 'loading...'}
                                 </p>
                             </td>
                         </tr>
