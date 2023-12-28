@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { getDoc, doc, getFirestore } from 'firebase/firestore';
+import {getStorage, getDownloadURL, ref} from 'firebase/storage';
 import { firebaseInit } from '../../../../firebase.js';
 
 import { renderIfLoaded, isMobile } from '../../../../index.js';
@@ -56,6 +57,7 @@ function ProductPage() {
     };
 
     const [state, setState] = useState('');
+    const [productImage, setProductImage] = useState('');
 
     const [purchaseButtonContent, setPurchaseButtonContent] = useState("Buy it now, we'll build it tomorrow ⟶");
 
@@ -77,7 +79,7 @@ function ProductPage() {
                 fetchedData.push(docSnap.data()[key]);
             });
 
-            //also fetch the shipping cost (different firesore location so cannot use above loop)
+            //fetch the shipping cost (different firesore location so cannot use above loop)
             let shippingCostDocRef = doc(database, 'costs', 'shippingCost');
             let shippingCostDocSnap = await getDoc(shippingCostDocRef);
             let shippingCost = shippingCostDocSnap.data().value;
@@ -88,21 +90,27 @@ function ProductPage() {
                 subheaderDescription: fetchedData[2],
                 fullDescription: fetchedData[3],
                 fullSystemSpec: fetchedData[4],
-                productImageURL: 'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8',
                 shippingCost: shippingCost,
                 //for now this is just a stock image until product images are available
                 product: sessionStorage.getItem('product'),
             });
 
-            //now get the product image from firebase storage
-            // const storage = getStorage();
-            // getDownloadURL(ref(storage, 'images/productImages/'+sessionStorage.getItem('product')))
-            //     .then((url) => {
-            //         setState({
-            //             productImageURL: url,
-            //         });
-            //     });
-            //UNCOMMENT THE ABOVE CODE WHEN PRODUCT IMAGES ARE READY (it has not been tested
+            //also get the product image from firebase storage if it exists
+            const storage = getStorage()
+            getDownloadURL(ref(storage, `images/productImages/${sessionStorage.getItem('product')}.png`))
+                .then((url) => {
+                        setProductImage({productImageURL: url});
+                    })
+                .catch((error) => {
+                    if (error.code == 'storage/object-not-found') {
+
+                        //this means the image was not available, so set a stock image
+                        setProductImage({productImageURL: 'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8' })
+                    }
+                    else {
+                        throw(error);
+                    };
+            });
         };
 
         getProduct();
@@ -179,7 +187,7 @@ function ProductPage() {
 
                         <td>
                             {/*PRODUCT IMAGE + PRODUCT PRICE*/}
-                            <img src={state.productImageURL} style={{width: '75%'}}  className="mainImage centered" alt="loading..."/>
+                            <img src={productImage.productImageURL} style={{width: '75%'}}  className="mainImage centered" alt="loading..."/>
                             <h2 style={{paddingBottom: 0, marginBottom: 0}}>
                                 {renderIfLoaded("£ "+state.price)}
                             </h2>
@@ -256,7 +264,7 @@ function ProductPage() {
                                 </h2>
                             </td>
                             <td>
-                                <img src={state.productImageURL} className="mainImage centered" alt="loading..."/>
+                                <img src={productImage.productImageURL} className="mainImage centered" alt="loading..."/>
                                 <h2 style-={{marginBottom: 0, paddingBottom: 0}}>
                                     £{state.price}
                                 </h2>
