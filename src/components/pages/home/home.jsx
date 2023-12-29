@@ -140,7 +140,7 @@ class Home extends Component {
                                 <tr>
                                     <td>
                                         <p className="alignLeft">
-                                            Need that specific pc you've always wanted? Well you're in luck: here at Hunter Pcs, you can design your own cusom pc
+                                            Need that specific pc you've always wanted? Well you're in luck: here at Hunter Pcs, you can design your own custom pc
                                              and have one of our experts assemble it for you. We'll even deliver it straight to your door as well
                                         </p>
                                         <Link to='/customPcs'>
@@ -173,7 +173,7 @@ class Home extends Component {
                                             Quality guaranteed
                                         </h1>
                                         <p className="alignRight">
-                                            We guarantee no expenses spared. That means every one of your pc's components is made from branded and trusted manufacturers.
+                                            We guarantee no expenses spared. That means every one of your pc's components is made by branded and trusted manufacturers.
                                             And not just that, we will also thoroughly test your build to make sure you get the maximum performance possible
                                         </p>
                                         <Link to='/support'>
@@ -337,7 +337,7 @@ class Home extends Component {
                             </thead>
                         </table>
                         <p>
-                            Need that specific pc you've always wanted? Well you're in luck: here at Hunter Pcs, you can design your own cusom pc
+                            Need that specific pc you've always wanted? Well you're in luck: here at Hunter Pcs, you can design your own custom pc
                             and have one of our experts assemble it for you. We'll even deliver it straight to your door as well
                         </p>
                         <Link to='/customPcs'>
@@ -370,7 +370,7 @@ class Home extends Component {
                             </thead>
                         </table>
                         <p>
-                            We guarantee no expenses spared. That means every one of your pc's components is made from branded and trusted manufacturers.
+                            We guarantee no expenses spared. That means every one of your pc's components is made by branded and trusted manufacturers.
                             And not just that, we will also thoroughly test your build to make sure you get the maximum performance possible
                         </p>
                         <Link to='/support'>

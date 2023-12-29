@@ -46,7 +46,7 @@ class About extends Component {
                     <div>
                         <GenericMarkupSection
                         headingText='Why Hunter PCs?'
-                        subheadingText="Becase we're the best"
+                        subheadingText="Because we're the best"
                         paragraphText={`Choose Hunter Pcs because here, we guarantee that all our products are thoroughly tested. Not only that, but each and every
                         pc we ship to you will come fitted with components exclusivley from brands we can all trust such as corsair, AMD and NVIDIA.
                         \n\n
@@ -74,7 +74,7 @@ class About extends Component {
                                             We're here for you
                                         </h2>
                                         <p className="alignLeft">
-                                            You can contact us, anytime. One of our trained support officers will contact you within 0-5 buisiness days will the full intent
+                                            You can contact us, anytime. One of our trained support officers will contact you within 0-5 business days with the full intent
                                             of making your life easier. Here at Hunter Pcs, we pride ourselves on the quality of our customer support.
                                         </p>
                                         <a href="mailto:huterpcs@gmail.com" target="_blank">
@@ -93,7 +93,7 @@ class About extends Component {
                         <GenericMarkupSection
                         headingText='We deliver'
                         subheadingText='From us to your doorstep'
-                        paragraphText="Not able to come and pick up your pc? Don't want to? We got you sorted. We'll deliver anything to you provided you tell us where
+                        paragraphText="Not able to come and pick up your pc? Don't want to? We've got you sorted. We'll deliver anything to you provided you tell us where
                         to drop it off. If it gets damaged in the post, that's on us and we'll come to collect your pc and repair it fully free of charge.
                         Its all just part of the Hunter Pcs quality guarantee"
                         linkContent='More on our quality guarantee'
@@ -149,11 +149,12 @@ class About extends Component {
                         paragraphText={`Choose Hunter Pcs because here, we guarantee that all our products are thoroughly tested. Not only that, but each and every
                         pc we ship to you will come fitted with components exclusivley from brands we can all trust such as corsair, AMD and NVIDIA.
                         \n\n
-                        That's the Hunter Pcs no expenses spared gurantee`}
+                        That's the Hunter Pcs no expenses spared guarantee`}
                         linkContent='Read more on our no expenses spared guarantee'
                         linkDestination='/support'
                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8'
-                        leftBool={false} />
+                        leftBool={false}
+                        DontShowDividerLineBool={true} />
                     </div>
 
                     <div className="dividerLine"></div>
@@ -177,7 +178,7 @@ class About extends Component {
                             </tr>
                         </table>
                         <p>
-                            You can contact us, anytime. One of our trained support officers will contact you within 0-5 buisiness days will the full intent
+                            You can contact us, anytime. One of our trained support officers will contact you within 0-5 business days with the full intent
                             of making your life easier. Here at Hunter Pcs, we pride ourselves on the quality of our customer support.
                         </p>
                         <a href="mailto:huterpcs@gmail.com" target="_blank">
@@ -194,7 +195,7 @@ class About extends Component {
                         <GenericMarkupSection
                             headingText='We deliver'
                             subheadingText='From us to your doorstep'
-                            paragraphText="Not able to come and pick up your pc? Don't want to? We got you sorted. We'll deliver anything to you provided you tell us where
+                            paragraphText="Not able to come and pick up your pc? Don't want to? We've got you sorted. We'll deliver anything to you provided you tell us where
                             to drop it off. If it gets damaged in the post, that's on us and we'll come to collect your pc and repair it fully free of charge.
                             Its all just part of the Hunter Pcs quality guarantee"
                             linkContent='More on our quality guarantee'

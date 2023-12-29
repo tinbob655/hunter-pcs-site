@@ -41,7 +41,7 @@ class Support extends Component {
                                         </h2>
                                         <p className="alignLeft" style={{maxWidth: '85%'}}>
                                             Ever bought some tech only for it not to work? We have and we know it can be infuriating. That's why we can promise you that your
-                                            gaming pc will be thoroughly tested for any chinks its armour. What's more, we make sure that we only use trusted manufacturers
+                                            gaming pc will be thoroughly tested for any chinks in its armour. What's more, we make sure that we only use trusted manufacturers
                                             for each of the components in your pc. More on that later
                                         </p>
                                     </td>
@@ -98,8 +98,8 @@ class Support extends Component {
                                             Trusted brands only
                                         </h2>
                                         <p className="alignLeft">
-                                            Here at Hunter Pcs, we know that quality is vital to high-performance pcs like ours. That's why we only ship pcs them with components
-                                            from trusted manufacturers you can trust, like these:
+                                            Here at Hunter Pcs, we know that quality is vital to high-performance pcs like ours. That's why we only ship pcs with components
+                                            from trusted manufacturers, like these:
                                         </p>
                                         <p className="alignLeft">
                                             -AMD and Intel for CPUs 
@@ -185,7 +185,7 @@ class Support extends Component {
                         paragraphText={`We HATE fraud, so we may request to see any customer's photo id as well as an image of the bank card used to purchase a pc. This is to 
                         make sure that our real customers can get their pc faster, and to stop you dirty AI startups taking everyone else's GPUs
                         <br/><br/>
-                        If you don't send us images on reuest then we may revoke access to your HunterPcs account and refuse to send you any gaming pcs
+                        If you don't send us images on request then we may revoke access to your HunterPcs account and refuse to send you any gaming pcs
                         <br/><br/>
                         By purchasing any product from HunterPcs, you agree to our fraud prevention program`}
                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%204.jpeg?alt=media&token=fc2925fe-3d55-47ca-adc8-42bcf4a8b025'
@@ -207,7 +207,7 @@ class Support extends Component {
                                                 Privacy policy
                                             </h2>
                                             <p className="alignRight">
-                                                We collect the minimal ammount of information possible, and store it in a safe place
+                                                We collect the minimal amount of information possible, and store it in a safe place
                                             </p>
                                             <Link to='/privacyPolicy'>
                                                 <h3>
@@ -239,8 +239,8 @@ class Support extends Component {
                         <GenericMarkupSection
                         headingText='Delivery Information'
                         subheadingText='We deliver'
-                        paragraphText="We only use the highest quality services for delivery. All Hunter PCs are delivered using Royal Mail: the UK's highest quality delivery
-                        service. We therefore only deliver our PCs to England."
+                        paragraphText="We only use the highest quality services for delivery. All Hunter PCs are delivered using DPD, one of the world's leading parcel delivery networks.
+                         At current, we only deliver to England."
                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetup5.jpeg?alt=media&token=ae0b17a9-63c4-4632-89c4-265c75e1a2bd'
                         leftBool={true} 
                         customImageCellStyles={{width: '60%'}}/>
@@ -274,7 +274,7 @@ class Support extends Component {
                         </table>
                         <p className="alignRight">
                             Ever bought some tech only for it not to work? We have and we know it can be infuriating. That's why we can promise you that your
-                            gaming pc will be thoroughly tested for any chinks its armour. What's more, we make sure that we only use trusted manufacturers
+                            gaming pc will be thoroughly tested for any chinks in its armour. What's more, we make sure that we only use trusted manufacturers
                             for each of the components in your pc. More on that later
                         </p>
                     </div>
@@ -335,8 +335,8 @@ class Support extends Component {
                             </thead>
                         </table>
                         <p className="alignLeft">
-                            Here at Hunter Pcs, we know that quality is vital to high-performance pcs like ours. That's why we only ship pcs them with components
-                             from trusted manufacturers you can trust, like these:
+                            Here at Hunter Pcs, we know that quality is vital to high-performance pcs like ours. That's why we only ship pcs with components
+                             from trusted manufacturers, like these:
                              <br/><br/>
                              -AMD and Intel for CPUs 
                              <br/><br/>
@@ -403,7 +403,7 @@ class Support extends Component {
                         subheadingText="Fraud is illegal, don't do it"
                         paragraphText={`We HATE fraud, so we may request to see any customer's photo id as well as an image of the bank card used to purchase a pc. This is to 
                         make sure that our real customers can get their pc faster, and to stop you dirty AI startups taking everyone else's GPUs.
-                        If you don't send us images on reuest then we may revoke access to your HunterPcs account and refuse to send you any gaming pcs.
+                        If you don't send us images on request then we may revoke access to your HunterPcs account and refuse to send you any gaming pcs.
                         By purchasing any product from HunterPcs, you agree to our fraud prevention program`}
                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%204.jpeg?alt=media&token=fc2925fe-3d55-47ca-adc8-42bcf4a8b025'
                         leftBool={true} />
@@ -420,7 +420,7 @@ class Support extends Component {
                                 Privacy Policy
                             </h2>
                             <p>
-                                We collect the minimal ammount of information possible, and store it in a safe place
+                                We collect the minimal amount of information possible, and store it in a safe place
                             </p>
                             <Link to='/privacyPolicy'>
                                 <h3>
@@ -446,8 +446,8 @@ class Support extends Component {
                         <GenericMarkupSection
                         headingText='Delivery Information'
                         subheadingText='We deliver'
-                        paragraphText="We only use the highest quality services for delivery. All Hunter PCs are delivered using Royal Mail: the UK's highest quality delivery
-                        service. We therefore only deliver our PCs to England."
+                        paragraphText="We only use the highest quality services for delivery. All Hunter PCs are delivered using DPD, one of the world's leading parcel delivery networks.
+                         At current, we only deliver to England."
                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetup5.jpeg?alt=media&token=ae0b17a9-63c4-4632-89c4-265c75e1a2bd'
                         leftBool={false}
                         DontShowDividerLineBool={true} />
