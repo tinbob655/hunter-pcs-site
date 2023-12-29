@@ -3,7 +3,7 @@ import {isMobile} from '../../index.js';
 import {Link} from'react-router-dom';
 
 function GenericMarkupSection({headingText, subheadingText, paragraphText, linkContent, linkDestination, imgSrc,
-     leftBool, customImageStyles, customImageCellStyles, DontShowDividerLineBool}) {
+     leftBool, customImageStyles, customImageCellStyles, DontShowDividerLineBool, customHeaderClassName}) {
 
     //make each noteworthy element its own constant
     let heading;
@@ -39,7 +39,7 @@ function GenericMarkupSection({headingText, subheadingText, paragraphText, linkC
     if (!isMobile()) {
         return (
             <React.Fragment>
-                <h1 className={leftBool ? 'alignLeft' : 'alignRight'}>
+                <h1 className={customHeaderClassName ? customHeaderClassName : leftBool ? 'alignLeft' : 'alignRight'}>
                     {headingText}
                 </h1>
                 {leftBool ? (
