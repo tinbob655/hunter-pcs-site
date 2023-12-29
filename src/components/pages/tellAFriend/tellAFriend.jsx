@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class ReferAFriend extends Component {
+class TellAFriend extends Component {
 
     render() {
         return (
@@ -10,4 +10,4 @@ class ReferAFriend extends Component {
     };
 };
 
-export default ReferAFriend;
+export default TellAFriend;

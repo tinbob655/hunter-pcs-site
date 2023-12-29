@@ -8,7 +8,7 @@ import Account from './pages/account/account.jsx';
 import Basket from './pages/basket/basket.jsx';
 import PcsMain from './pages/pcs/pcsMain.jsx';
 import CustomPcs from './pages/pcs/custom/customPcs.jsx';
-import ReferAFriend from './pages/referAFriend/referAFriend.jsx';
+import TellAFriend from './pages/tellAFriend/tellAFriend.jsx';
 import Support from './pages/support/support.jsx';
 import ProductPage from './pages/pcs/prebuilt/productPage.jsx';
 import PaymentSucsessful from './pages/basket/paymentSucsessful.jsx';
@@ -40,7 +40,7 @@ class Content extends Component {
             basket: <Basket/>,
             pcsMain: <PcsMain/>,
             customPcs: <CustomPcs/>,
-            referAFriend: <ReferAFriend/>,
+            tellAFriend: <TellAFriend/>,
             support: <Support/>,
             productPage: <ProductPage/>,
             paymentSucsessful: <PaymentSucsessful/>,
