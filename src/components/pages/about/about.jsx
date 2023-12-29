@@ -13,7 +13,7 @@ class About extends Component {
             return (
                 <React.Fragment>
                     <h1 className="alignRight">
-                        All about us at Hunter Pcs
+                        All about us at Hunter PCs
                     </h1>
     
                     {/*CUSTOMISABLE SECTION*/}
@@ -29,12 +29,12 @@ class About extends Component {
                                         Fully customisable
                                     </h2>
                                     <p className="alignLeft">
-                                        Each and every pc you find in our prebuilt gaming pcs section can be fully customised to your heart's content.
-                                        Just have a look over on our custom pcs page
+                                        Each and every PC you find in our prebuilt gaming PCs section can be fully customised to your heart's content.
+                                        Just have a look over on our custom PCs page
                                     </p>
                                     <Link to='/customPcs'>
                                         <h3>
-                                            Customise your own pc
+                                            Customise your own PC
                                         </h3>
                                     </Link>
                                 </td>
@@ -47,8 +47,8 @@ class About extends Component {
                         <GenericMarkupSection
                         headingText='Why Hunter PCs?'
                         subheadingText="Because we're the best"
-                        paragraphText={`Choose Hunter Pcs because here, we guarantee that all our products are thoroughly tested. Not only that, but each and every
-                        pc we ship to you will come fitted with components exclusivley from brands we can all trust such as corsair, AMD and NVIDIA.
+                        paragraphText={`Choose Hunter PCs because here, we guarantee that all our products are thoroughly tested. Not only that, but each and every
+                        PC we ship to you will come fitted with components exclusivley from brands we can all trust such as corsair, AMD and NVIDIA.
                         \n\n
                         That's the Hunter Pcs no expenses spared gurantee`}
                         linkContent='Read more on our no expenses spared guarantee'
@@ -75,7 +75,7 @@ class About extends Component {
                                         </h2>
                                         <p className="alignLeft">
                                             You can contact us, anytime. One of our trained support officers will contact you within 0-5 business days with the full intent
-                                            of making your life easier. Here at Hunter Pcs, we pride ourselves on the quality of our customer support.
+                                            of making your life easier. Here at Hunter PCs, we pride ourselves on the quality of our customer support.
                                         </p>
                                         <a href="mailto:huterpcs@gmail.com" target="_blank">
                                             <h3 className="limitedSize">
@@ -93,7 +93,7 @@ class About extends Component {
                         <GenericMarkupSection
                         headingText='We deliver'
                         subheadingText='From us to your doorstep'
-                        paragraphText="Not able to come and pick up your pc? Don't want to? We've got you sorted. We'll deliver anything to you provided you tell us where
+                        paragraphText="Not able to come and pick up your PC? Don't want to? We've got you sorted. We'll deliver anything to you provided you tell us where
                         to drop it off. If it gets damaged in the post, that's on us and we'll come to collect your pc and repair it fully free of charge.
                         Its all just part of the Hunter Pcs quality guarantee"
                         linkContent='More on our quality guarantee'
@@ -129,12 +129,12 @@ class About extends Component {
                             </tr>
                         </table>
                         <p>
-                            Each and every pc you find in our prebuilt gaming pcs section can be fully customised to your heart's content.
-                            Just have a look over on our custom pcs page
+                            Each and every PC you find in our prebuilt gaming pcs section can be fully customised to your heart's content.
+                            Just have a look over on our custom PCs page
                         </p>
                         <Link to='/customPcs'>
                             <h3>
-                                Customise your own pc
+                                Customise your own PC
                             </h3>
                         </Link>
                     </div>
@@ -146,10 +146,10 @@ class About extends Component {
                         <GenericMarkupSection
                         headingText='Why Hunter PCs?'
                         subheadingText="Becase we're the best"
-                        paragraphText={`Choose Hunter Pcs because here, we guarantee that all our products are thoroughly tested. Not only that, but each and every
-                        pc we ship to you will come fitted with components exclusivley from brands we can all trust such as corsair, AMD and NVIDIA.
+                        paragraphText={`Choose Hunter PCs because here, we guarantee that all our products are thoroughly tested. Not only that, but each and every
+                        PC we ship to you will come fitted with components exclusivley from brands we can all trust such as corsair, AMD and NVIDIA.
                         \n\n
-                        That's the Hunter Pcs no expenses spared guarantee`}
+                        That's the Hunter PCs no expenses spared guarantee`}
                         linkContent='Read more on our no expenses spared guarantee'
                         linkDestination='/support'
                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8'
@@ -179,7 +179,7 @@ class About extends Component {
                         </table>
                         <p>
                             You can contact us, anytime. One of our trained support officers will contact you within 0-5 business days with the full intent
-                            of making your life easier. Here at Hunter Pcs, we pride ourselves on the quality of our customer support.
+                            of making your life easier. Here at Hunter PCs, we pride ourselves on the quality of our customer support.
                         </p>
                         <a href="mailto:huterpcs@gmail.com" target="_blank">
                             <h3>
@@ -195,9 +195,9 @@ class About extends Component {
                         <GenericMarkupSection
                             headingText='We deliver'
                             subheadingText='From us to your doorstep'
-                            paragraphText="Not able to come and pick up your pc? Don't want to? We've got you sorted. We'll deliver anything to you provided you tell us where
-                            to drop it off. If it gets damaged in the post, that's on us and we'll come to collect your pc and repair it fully free of charge.
-                            Its all just part of the Hunter Pcs quality guarantee"
+                            paragraphText="Not able to come and pick up your PC? Don't want to? We've got you sorted. We'll deliver anything to you provided you tell us where
+                            to drop it off. If it gets damaged in the post, that's on us and we'll come to collect your PC and repair it fully free of charge.
+                            Its all just part of the Hunter PCs quality guarantee"
                             linkContent='More on our quality guarantee'
                             linkDestination='/support'
                             imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788'

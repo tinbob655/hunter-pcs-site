@@ -53,7 +53,7 @@ class PcsMain extends Component {
                     {/*HEADER SECTION*/}
                     <div>
                         <h1 className="alignRight">
-                            Hand crafted gaming pcs, ready to go
+                            Hand crafted gaming PCs, ready to go
                         </h1>
                         <table>
                             <thead>
@@ -78,7 +78,7 @@ class PcsMain extends Component {
                     {/*PREBUILT PRODUCTS SECTION*/}
                     <div className="purpleGrey">
                         <h1>
-                            For high quality pcs, you're in the right place
+                            For high quality PCs, you're in the right place
                         </h1>
     
                         <table style={{tableLayout: 'fixed'}}>
@@ -175,9 +175,9 @@ class PcsMain extends Component {
                     {/*CUSTOM PCS SECTION*/}
                     <div>
                         <GenericMarkupSection
-                        headingText='Design your own pc'
+                        headingText='Design your own PC'
                         subheadingText='Build your dreams'
-                        paragraphText='Using our custom pc creator, you can design the pc of your dreams online, right now.'
+                        paragraphText='Using our custom PC creator, you can design the PC of your dreams online, right now.'
                         linkContent='Click here to get started ⟶'
                         linkDestination='/customPcs'
                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=b7433866-5203-4cbb-9808-ca1d47ee1a48'
@@ -196,7 +196,7 @@ class PcsMain extends Component {
                     {/*header section*/}
                     <div>
                         <h1>
-                            Hand crafted gaming pcs, ready to go
+                            Hand crafted gaming PCs, ready to go
                         </h1>
                         <table>
                             <thead>
@@ -214,7 +214,7 @@ class PcsMain extends Component {
                             </thead>
                         </table>
                         <p>
-                            We sell pcs ranging from the highest performing to the most budget effective. Whatever your needs, satisfy them here
+                            We sell PCs ranging from the highest performing to the most budget effective. Whatever your needs, satisfy them here
                         </p>
                     </div>
 
@@ -223,10 +223,10 @@ class PcsMain extends Component {
                     {/*PREBUILT PRODUCTS SECTION*/}
                     <div className="purpleGrey">
                         <h1>
-                            Browse our pcs
+                            Browse our PCs
                         </h1>
                         <h2 className="alignRight">
-                            For high quality gaming pcs, you're in the right place
+                            For high quality gaming PCs, you're in the right place
                         </h2>
 
                         {/*solid pc button*/}
@@ -300,9 +300,9 @@ class PcsMain extends Component {
                     {/*CUSTOM PCS SECTION*/}
                     <div>
                         <GenericMarkupSection
-                            headingText='Design your own pc'
+                            headingText='Design your own PC'
                             subheadingText='Build your dreams'
-                            paragraphText='Using our custom pc creator, you can design the pc of your dreams online, right now.'
+                            paragraphText='Using our custom PC creator, you can design the PC of your dreams online, right now.'
                             linkContent='Click here to get started ⟶'
                             linkDestination='/customPcs'
                             imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=b7433866-5203-4cbb-9808-ca1d47ee1a48'

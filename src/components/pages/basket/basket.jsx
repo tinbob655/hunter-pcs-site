@@ -14,7 +14,7 @@ class Basket extends Component {
     state = {
         loginPopup: <></>,
         stripeCheckout: <></>,
-        loggedInPaymentButtonText: 'Click here to get your perfect pc delivered straight to you ⟶',
+        loggedInPaymentButtonText: 'Click here to get your perfectPC delivered straight to you ⟶',
         addressPopup: <></>,
 
     };
@@ -39,7 +39,7 @@ class Basket extends Component {
                                             Buy now
                                         </h2>
                                         <p className="alignRight">
-                                            Done browsing? Ready to buy? Then hit the purchase button: the final step between you and a quality gaming pc. All payments are 100% secure
+                                            Done browsing? Ready to buy? Then hit the purchase button: the final step between you and a quality gaming PC. All payments are 100% secure
                                             as per our privacy policy
                                         </p>
                                         {sessionStorage.getItem('loggedIn') == 'false' ? (
@@ -155,7 +155,7 @@ class Basket extends Component {
                             </thead>
                         </table>
                         <p>
-                            Done browsing? Ready to buy? Then hit the purchase button: the final step between you and a quality gaming pc. All payments are 100% secure
+                            Done browsing? Ready to buy? Then hit the purchase button: the final step between you and a quality gaming PC. All payments are 100% secure
                             as per our privacy policy
                         </p>
                         {sessionStorage.getItem('loggedIn') != 'true' ? (

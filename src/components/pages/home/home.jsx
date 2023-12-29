@@ -15,7 +15,7 @@ class Home extends Component {
                     {/*PAGE HEADER*/}
                     <div>
                         <h1 style={{marginLeft: '50%', textAlign: 'unset'}}>
-                            Pcs made to measure
+                            PCs made to measure
                         </h1>
     
                         <table>
@@ -101,12 +101,12 @@ class Home extends Component {
                                         Perfect for gaming
                                     </h1>
                                     <p style={{width: '75%', marginLeft: '15%', textAlign: 'right'}}>
-                                        Here at Hunter pcs, we know that the best pcs are designed to run games smooth as butter. That's why we've been working hard to deliver you the 
+                                        Here at Hunter PCs, we know that the best PCs are designed to run games smooth as butter. That's why we've been working hard to deliver you the 
                                         best gaming experience at the lowest price. <br/>We make all our computers with high end components from trusted manufacturers.
                                     </p>
                                     <Link to='/pcsMain'>
                                         <h3>
-                                            Browse all gaming pcs  ⟶
+                                            Browse all gaming PCs  ⟶
                                         </h3>
                                     </Link>
                                     </td>
@@ -140,12 +140,12 @@ class Home extends Component {
                                 <tr>
                                     <td>
                                         <p className="alignLeft">
-                                            Need that specific pc you've always wanted? Well you're in luck: here at Hunter Pcs, you can design your own custom pc
+                                            Need that specific PC you've always wanted? Well you're in luck: here at Hunter PCs, you can design your own custom PC
                                              and have one of our experts assemble it for you. We'll even deliver it straight to your door as well
                                         </p>
                                         <Link to='/customPcs'>
                                             <h3>
-                                                Design your dream pc ⟶
+                                                Design your dream PC ⟶
                                             </h3>
                                         </Link>
                                     </td>
@@ -173,7 +173,7 @@ class Home extends Component {
                                             Quality guaranteed
                                         </h1>
                                         <p className="alignRight">
-                                            We guarantee no expenses spared. That means every one of your pc's components is made by branded and trusted manufacturers.
+                                            We guarantee no expenses spared. That means every one of your PC's components is made by branded and trusted manufacturers.
                                             And not just that, we will also thoroughly test your build to make sure you get the maximum performance possible
                                         </p>
                                         <Link to='/support'>
@@ -199,7 +199,7 @@ class Home extends Component {
                     {/*PAGE HEADER*/}
                     <div>
                         <h1>
-                            Pcs Made to Measure
+                            PCs Made to Measure
                         </h1>
                         <table>
                             <tr>
@@ -292,12 +292,12 @@ class Home extends Component {
                             </tr>
                         </table>
                         <p>
-                            Here at Hunter pcs, we know that the best pcs are designed to run games smooth as butter. That's why we've been working hard to deliver you the 
+                            Here at Hunter PCs, we know that the best PCs are designed to run games smooth as butter. That's why we've been working hard to deliver you the 
                             best gaming experience at the lowest price. <br/>We make all our computers with high end components from trusted manufacturers.
                         </p>
                         <Link to='/pcsMain'>
                             <h3>
-                                Browse all gaming pcs  ⟶
+                                Browse all gaming PCs  ⟶
                             </h3>
                         </Link>
                     </div>
@@ -337,7 +337,7 @@ class Home extends Component {
                             </thead>
                         </table>
                         <p>
-                            Need that specific pc you've always wanted? Well you're in luck: here at Hunter Pcs, you can design your own custom pc
+                            Need that specific PC you've always wanted? Well you're in luck: here at Hunter PCs, you can design your own custom PC
                             and have one of our experts assemble it for you. We'll even deliver it straight to your door as well
                         </p>
                         <Link to='/customPcs'>
@@ -370,7 +370,7 @@ class Home extends Component {
                             </thead>
                         </table>
                         <p>
-                            We guarantee no expenses spared. That means every one of your pc's components is made by branded and trusted manufacturers.
+                            We guarantee no expenses spared. That means every one of your PC's components is made by branded and trusted manufacturers.
                             And not just that, we will also thoroughly test your build to make sure you get the maximum performance possible
                         </p>
                         <Link to='/support'>

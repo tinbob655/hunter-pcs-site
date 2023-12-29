@@ -25,7 +25,7 @@ class CustomPcPurchaseSucsessful extends Component {
             request.setRequestHeader('Content-Type', 'application/json');
             const messageJSON = {
                 content: `New purchase of a CUSTOM PC with the following information:\n
-                Custom pc spec: ${JSON.stringify(customPcSpec)}\n
+                Custom PC spec: ${JSON.stringify(customPcSpec)}\n
                 Delivery address: ${address}\n
                 Email: ${email}`,
             };

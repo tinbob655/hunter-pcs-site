@@ -118,7 +118,7 @@ class Header extends Component {
         };
 
         let headersHTML = [];
-        const frontendHeaders = ['Gaming Pcs', 'Home', 'About', 'Support', 'Tell a Friend', 'Account', 'Basket']
+        const frontendHeaders = ['Gaming PCs', 'Home', 'About', 'Support', 'Tell a Friend', 'Account', 'Basket']
         const backendHeaders = ['/pcsMain', '/', '/about', '/support', '/referAFriend', '/account', '/basket'];
 
         frontendHeaders.forEach((header) => {
@@ -153,7 +153,7 @@ class Header extends Component {
     };
 
     getMobileHeaders() {
-        const frontendHeaders = ['Gaming Pcs', 'Home', 'About', 'Support', 'Tell a Friend', 'Account', 'Basket']
+        const frontendHeaders = ['Gaming PCs', 'Home', 'About', 'Support', 'Tell a Friend', 'Account', 'Basket']
         const backendHeaders = ['/pcsMain', '/', '/about', '/support', '/referAFriend', '/account', '/basket'];
 
         let headersHTML = [];

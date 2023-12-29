@@ -53,7 +53,7 @@ function ProductPage() {
         }
     
         //if the database fails
-        else return "We're having trouble getting your pc components at the moment. Please try again by refreshing this page"
+        else return "We're having trouble getting your PC components at the moment. Please try again by refreshing this page"
     };
 
     const [state, setState] = useState('');
@@ -228,9 +228,9 @@ function ProductPage() {
                     <GenericMarkupSection
                     headingText='No expenses spared'
                     subheadingText='We guarantee quality'
-                    paragraphText="At hunter pcs, we understand how annoying it can be to purchase a new device only for it to fail and need returning. That's why we
-                    guarantee all pcs delivered to you are made with 100% brand new components. All our power supply units are heavily tested along with
-                    the pcs themselves."
+                    paragraphText="At hunter PCs, we understand how annoying it can be to purchase a new device only for it to fail and need returning. That's why we
+                    guarantee all PCs delivered to you are made with 100% brand new components. All our power supply units are heavily tested along with
+                    the PCs themselves."
                     linkContent='More on our quality guarantee ⟶'
                     linkDestination='/support'
                     imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
@@ -341,8 +341,8 @@ function ProductPage() {
                     headingText='No expenses spared'
                     subheadingText='We guarantee quality'
                     paragraphText="At hunter pcs, we understand how annoying it can be to purchase a new device only for it to fail and need returning. That's why we
-                    guarantee all pcs delivered to you are made with 100% brand new components. All our power supply units are heavily tested along with
-                    the pcs themselves."
+                    guarantee all PCs delivered to you are made with 100% brand new components. All our power supply units are heavily tested along with
+                    the PCs themselves."
                     linkContent='More on our quality guarantee ⟶'
                     linkDestination='/support'
                     imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'

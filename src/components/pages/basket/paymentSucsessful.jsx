@@ -51,7 +51,7 @@ class PaymentSucsessful extends Component {
                                         Congratulations!
                                     </h2>
                                     <p className='alignRight'>
-                                        Your payment was sucsessful! We'll get to work building your dream pc to get you in the game as soon as possible!
+                                        Your payment was sucsessful! We'll get to work building your dream PC to get you in the game as soon as possible!
                                     </p>
                                 </td>
                                 <td style={{width: '40%'}}>
@@ -88,7 +88,7 @@ class PaymentSucsessful extends Component {
                         </thead>
                     </table>
                     <p>
-                        Your payment was sucsessful! We'll get to work building your dream pc to get you in the game as soon as possible!
+                        Your payment was sucsessful! We'll get to work building your dream PC to get you in the game as soon as possible!
                     </p>
                 </React.Fragment>
             );

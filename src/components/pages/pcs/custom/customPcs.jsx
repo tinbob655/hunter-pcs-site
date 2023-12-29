@@ -26,7 +26,7 @@ class CustomPcs extends Component {
             return (
                 <React.Fragment>
                     <h1 className="alignRight">
-                        Design your custom pc
+                        Design your custom PC
                     </h1>
                     
                     {/*DESCRIPTION SECTION*/}
@@ -39,7 +39,7 @@ class CustomPcs extends Component {
                                             Build your dreams
                                         </h2>
                                         <p className="alignRight">
-                                            Below is the hunter pcs custom pc designer, so you can create your own custom rig with ease. We'll build it and ship it to you as 
+                                            Below is the hunter PCs custom PC designer, so you can create your own custom rig with ease. We'll build it and ship it to you as 
                                             usual
                                         </p>
                                         <button type="button" onClick={function() {clickGetStartedButton()}}>
@@ -74,14 +74,14 @@ class CustomPcs extends Component {
                                             Buy now
                                         </h2>
                                         <p className="alignLeft">
-                                            We will verify that the pc you have designed works and then build it and ship it to you as usual. A small build fee of 25%
+                                            We will verify that the PC you have designed works and then build it and ship it to you as usual. A small build fee of 15%
                                              will also be charged.
                                         </p>
                                         <button type="button" onClick={() => {
                                             this.purchaseButtonClicked();
                                         }}>
                                             <h3>
-                                                Get your custom pc delivered straight to you ⟶
+                                                Get your custom PC delivered straight to you ⟶
                                             </h3>
                                         </button>
                                     </td>
@@ -114,7 +114,7 @@ class CustomPcs extends Component {
                     {/*DESCRIPTION SECTION*/}
                     <div>
                         <h1>
-                            Design your custom pc
+                            Design your custom PC
                         </h1>
                         <table>
                             <thead>
@@ -132,7 +132,7 @@ class CustomPcs extends Component {
                             </thead>
                         </table>
                         <p>
-                            Below is the hunter pcs custom pc designer, so you can create your own custom rig with ease. We'll build it and ship it to you as 
+                            Below is the hunter PCs custom PC designer, so you can create your own custom rig with ease. We'll build it and ship it to you as 
                             usual
                         </p>
                         <button type="button" onClick={function() {clickGetStartedButton()}}>
@@ -165,14 +165,14 @@ class CustomPcs extends Component {
                             </thead>
                         </table>
                         <p>
-                            We will verify that the pc you have designed works and then build it and ship it to you as usual. A small build fee of 25%
+                            We will verify that the PC you have designed works and then build it and ship it to you as usual. A small build fee of 15%
                                 will also be charged.
                         </p>
                         <button type="button" onClick={() => {
                             this.purchaseButtonClicked();
                         }}>
                             <h3>
-                                Get your custom pc delivered straight to you ⟶
+                                Get your custom PC delivered straight to you ⟶
                             </h3>
                         </button>
                     </div>

@@ -70,7 +70,7 @@ class Footer extends Component {
             frontendMenuLinkName = frontendMenuLinkName.charAt(0).toUpperCase() + frontendMenuLinkName.slice(1);
 
             if (frontendMenuLinkName === 'Pcs Main') {
-                frontendMenuLinkName = 'Gaming Pcs';
+                frontendMenuLinkName = 'Gaming PCs';
             };
 
             //generate this row's HTML

@@ -39,4 +39,4 @@ module.exports = function override(config, env) {
 
 //it worked, IT WORKED. GOD IS REAL!!!!! YESSSSSS. I'm gonna burst rn
 
-//Note To Self: the next time you see a webpack > 5 error. Smash your pc, drop computer science and become a carpenter
+//Note To Self: the next time you see a webpack > 5 error. Smash your PC, drop computer science and become a carpenter

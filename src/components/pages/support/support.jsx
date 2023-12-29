@@ -41,8 +41,8 @@ class Support extends Component {
                                         </h2>
                                         <p className="alignLeft" style={{maxWidth: '85%'}}>
                                             Ever bought some tech only for it not to work? We have and we know it can be infuriating. That's why we can promise you that your
-                                            gaming pc will be thoroughly tested for any chinks in its armour. What's more, we make sure that we only use trusted manufacturers
-                                            for each of the components in your pc. More on that later
+                                            gaming PC will be thoroughly tested for any chinks in its armour. What's more, we make sure that we only use trusted manufacturers
+                                            for each of the components in your PC. More on that later
                                         </p>
                                     </td>
                                 </tr>
@@ -63,7 +63,7 @@ class Support extends Component {
                                             We're here for you
                                         </h2>
                                         <p className="alignRight">
-                                            We're dedicated to making sure that every step of the way between being here and owning a Hunter Pc is smooth sailing. That's why
+                                            We're dedicated to making sure that every step of the way between being here and owning a Hunter PC is smooth sailing. That's why
                                             you shouldn't hesitate to contact us
                                         </p>
                                         <a href="mailto:huterpcs@gmail.com" target="_blank">
@@ -84,7 +84,7 @@ class Support extends Component {
                     {/*BRANDS WE USE SECTION*/}
                     <div id="brandsWeUse" className="purpleGrey">
                         <h1 className="alignLeft">
-                            Only the best in a Hunter Pc
+                            Only the best in a Hunter PC
                         </h1>
                         <table>
                             <thead>
@@ -98,7 +98,7 @@ class Support extends Component {
                                             Trusted brands only
                                         </h2>
                                         <p className="alignLeft">
-                                            Here at Hunter Pcs, we know that quality is vital to high-performance pcs like ours. That's why we only ship pcs with components
+                                            Here at Hunter PCs, we know that quality is vital to high-performance PCs like ours. That's why we only ship PCs with components
                                             from trusted manufacturers, like these:
                                         </p>
                                         <p className="alignLeft">
@@ -142,13 +142,13 @@ class Support extends Component {
                                 <tr>
                                     <td style={{borderRight: '5px white solid'}}>
                                         <p className="alignLeft">
-                                            Faulty parts? Limited lifespan? Slow speeds? That's our fault: you can return the entire pc and we will fix it up like new 
+                                            Faulty parts? Short lifespan? Awful speeds? That's our fault: you can return the entire PC and we will fix it up like new 
                                             for you free of charge (minus delivery fees)
                                         </p>
                                     </td>
                                     <td>
                                         <p className="alignRight">
-                                            Spill some water? Loose power mid update? Drop the pc? Thats your fault but don't fear: we can still repair your pc for you 
+                                            Spill some water? Loose power mid update? Drop the PC? Thats your fault but don't fear: we can still repair your PC for you 
                                             but you'll need to cover the cost. You will be billed for each part we replace as well as a fixed cost of £149.99 for the repairs
                                         </p>
                                     </td>
@@ -170,7 +170,7 @@ class Support extends Component {
                         <GenericMarkupSection
                         headingText='Warranty Information'
                         subheadingText="Tinker to your heart's content"
-                        paragraphText={`Love tinkering with a pc? Us too: you can tinker and edit your pc all you want, however do so at your own risk.
+                        paragraphText={`Love tinkering with a pc? Us too: you can tinker and edit your PC all you want, however do so at your own risk.
                         If something breaks, that's on you. We can still fix it, but you'll be paying for the replacement parts`}
                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=1e13e531-cf90-4a64-953f-84e850755064'
                         leftBool={false}
@@ -182,12 +182,12 @@ class Support extends Component {
                         <GenericMarkupSection
                         headingText='Fraud Prevention'
                         subheadingText="Fraud is illegal, don't do it"
-                        paragraphText={`We HATE fraud, so we may request to see any customer's photo id as well as an image of the bank card used to purchase a pc. This is to 
-                        make sure that our real customers can get their pc faster, and to stop you dirty AI startups taking everyone else's GPUs
+                        paragraphText={`We HATE fraud, so we may request to see any customer's photo id as well as an image of the bank card used to purchase a PC. This is to 
+                        make sure that our real customers can get their PC faster, and to stop you dirty AI startups taking everyone else's GPUs
                         <br/><br/>
-                        If you don't send us images on request then we may revoke access to your HunterPcs account and refuse to send you any gaming pcs
+                        If you don't send us images on request then we may revoke access to your HunterPCs account and refuse to send you any gaming PCs
                         <br/><br/>
-                        By purchasing any product from HunterPcs, you agree to our fraud prevention program`}
+                        By purchasing any product from HunterPCs, you agree to our fraud prevention program`}
                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%204.jpeg?alt=media&token=fc2925fe-3d55-47ca-adc8-42bcf4a8b025'
                         leftBool={true} 
                         customImageCellStyles={{width: '45%'}}/>
@@ -267,15 +267,15 @@ class Support extends Component {
                                 </td>
                                 <td>
                                     <h2 className="alignLeft">
-                                        That's a guarantee
+                                        We guarantee no expenses spared
                                     </h2>
                                 </td>
                             </tr>
                         </table>
                         <p className="alignRight">
                             Ever bought some tech only for it not to work? We have and we know it can be infuriating. That's why we can promise you that your
-                            gaming pc will be thoroughly tested for any chinks in its armour. What's more, we make sure that we only use trusted manufacturers
-                            for each of the components in your pc. More on that later
+                            gaming PC will be thoroughly tested for any chinks in its armour. What's more, we make sure that we only use trusted manufacturers
+                            for each of the components in your PC. More on that later
                         </p>
                     </div>
 
@@ -302,7 +302,7 @@ class Support extends Component {
                             </thead>
                         </table>
                         <p className="alignLeft">
-                            We're dedicated to making sure that every step of the way between being here and owning a Hunter Pc is smooth sailing. That's why
+                            We're dedicated to making sure that every step of the way between being here and owning a Hunter PC is smooth sailing. That's why
                             you shouldn't hesitate to contact us
                         </p>
                         <a href="mailto:huterpcs@gmail.com" target="_blank">
@@ -317,7 +317,7 @@ class Support extends Component {
                     {/*BRANDS WE USE SECTION*/}
                     <div id="brandsWeUse" className="purpleGrey">
                         <h1>
-                            Only the best in a Hunter Pc
+                            Only the best in a Hunter PC
                         </h1>
                         <table>
                             <thead>
@@ -335,7 +335,7 @@ class Support extends Component {
                             </thead>
                         </table>
                         <p className="alignLeft">
-                            Here at Hunter Pcs, we know that quality is vital to high-performance pcs like ours. That's why we only ship pcs with components
+                            Here at Hunter PCs, we know that quality is vital to high-performance pcs like ours. That's why we only ship PCs with components
                              from trusted manufacturers, like these:
                              <br/><br/>
                              -AMD and Intel for CPUs 
@@ -360,7 +360,7 @@ class Support extends Component {
                             If its our fault
                         </h2>
                         <p className="alignRight">
-                            Faulty parts? Limited lifespan? Slow speeds? That's our fault: you can return the entire pc and we will fix it up like new 
+                            Faulty parts? Limited lifespan? Slow speeds? That's our fault: you can return the entire PC and we will fix it up like new 
                             for you free of charge (minus delivery fees)
                         </p>
 
@@ -368,7 +368,7 @@ class Support extends Component {
                             If its your fault
                         </h2>
                         <p className="alignLeft">
-                            Spill some water? Loose power mid update? Drop the pc? Thats your fault but don't fear: we can still repair your pc for you 
+                            Spill some water? Loose power mid update? Drop the PC? Thats your fault but don't fear: we can still repair your PC for you 
                             but you'll need to cover the cost. You will be billed for each part we replace as well as a fixed cost of £149.99 for the repairs
                         </p>
 
@@ -389,7 +389,7 @@ class Support extends Component {
                         <GenericMarkupSection
                         headingText='Warranty Information'
                         subheadingText="Tinker to your heart's content"
-                        paragraphText="Love tinkering with a pc? Us too: you can tinker and edit your pc all you want, however do so at your own risk.
+                        paragraphText="Love tinkering with a PC? Us too: you can tinker and edit your PC all you want, however do so at your own risk.
                         If something breaks, thats on you. We can still fix it, but you'll be paying for the replacement parts"
                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=1e13e531-cf90-4a64-953f-84e850755064'
                         leftBool={false} 
@@ -401,10 +401,10 @@ class Support extends Component {
                         <GenericMarkupSection
                         headingText='Fraud Prevention'
                         subheadingText="Fraud is illegal, don't do it"
-                        paragraphText={`We HATE fraud, so we may request to see any customer's photo id as well as an image of the bank card used to purchase a pc. This is to 
-                        make sure that our real customers can get their pc faster, and to stop you dirty AI startups taking everyone else's GPUs.
-                        If you don't send us images on request then we may revoke access to your HunterPcs account and refuse to send you any gaming pcs.
-                        By purchasing any product from HunterPcs, you agree to our fraud prevention program`}
+                        paragraphText={`We HATE fraud, so we may request to see any customer's photo id as well as an image of the bank card used to purchase a PC. This is to 
+                        make sure that our real customers can get their PC faster, and to stop you dirty AI startups taking everyone else's GPUs.
+                        If you don't send us images on request then we may revoke access to your HunterPCs account and refuse to send you any gaming PCs.
+                        By purchasing any product from HunterPCs, you agree to our fraud prevention program`}
                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%204.jpeg?alt=media&token=fc2925fe-3d55-47ca-adc8-42bcf4a8b025'
                         leftBool={true} />
                     </div>
