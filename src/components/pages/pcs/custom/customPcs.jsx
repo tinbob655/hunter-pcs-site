@@ -177,7 +177,7 @@ class CustomPcs extends Component {
                         </button>
                     </div>
 
-                    <div id="customPcsLoginPopupWrapper" className="popupWrapper">
+                    <div id="customPcsLoginPopupWrapper">
                         {this.state.loginPopup}
                     </div>
                     <div id="customPcsAddressPopupWrapper" className="popupWrapper">
