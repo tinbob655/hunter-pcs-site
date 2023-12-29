@@ -1,9 +1,18 @@
 import React, {Component} from 'react';
-import GenericMarkupSection from '../../../multiPageComponents/genericMarkupSection.jsx';
+import { isMobile } from '../../../../index.js';
+import EmailPopup from '../../../multiPageComponents/popups/email/emailPopup.jsx';
 
 //ss values are: customPcSpec address email
 
 class CustomPcPurchaseSucsessful extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            emailPopup: <></>,
+        };
+    };
 
     componentDidMount() {
 
@@ -36,18 +45,84 @@ class CustomPcPurchaseSucsessful extends Component {
     };
 
     render() {
-        return (
-            <React.Fragment>
-                <GenericMarkupSection
-                headingText='Congratulations!'
-                subheadingText='Your purchase is being processed'
-                paragraphText={`We've recieved your purchase and are now processing it. We will check that the parts work together and email you
-                 at ${sessionStorage.getItem('email')} with the results and our billing information.`}
-                imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49dfhttps://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
-                leftBool={true}
-                DontShowDividerLineBool={true} />
-            </React.Fragment>
-        );
+
+        //desktop custom pc purchase sucsessful page
+        if (!isMobile()) {
+            return (
+                <React.Fragment>
+                    <h1 className="alignRight">
+                        Congratulations!
+                    </h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>
+                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49dfhttps://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
+                                    className="mainImage centered" alt='loading...' />
+                                </td>
+                                <td>
+                                    <h2 className="alignRight">
+                                        Your purchase is being processed
+                                    </h2>
+                                    <p className="alignLeft">
+                                    We've recieved your purchase and are now processing it. We will check that the parts work together and email you
+                                    at {sessionStorage.getItem('email')} with the results and our billing information.
+                                    </p>
+                                    <button type="button" onClick={() => {this.setState({emailPopup: <EmailPopup/>})}}>
+                                        <h3 style={{maxWidth: '50%', margin: 'auto', color: 'red'}}>
+                                            If the above email is not correct, then click here to do something about that ASAP
+                                        </h3>
+                                    </button>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+
+                    <div id="emailPopupWrapper" className="popupWrapper">
+                        {this.state.emailPopup}
+                    </div>
+                </React.Fragment>
+            );
+        }
+
+        //mobile custom pc purchase sucsessful page
+        else {
+            return (
+                <React.Fragment>
+                    <h1>
+                        Congratulations!
+                    </h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td style={{width: '60%'}}>
+                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49dfhttps://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
+                                    className="mainImage centered" alt="loading..." />
+                                </td>
+                                <td>
+                                    <h2 className="alignLeft">
+                                        Your purchase is being processed
+                                    </h2>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                    <p>
+                    We've recieved your purchase and are now processing it. We will check that the parts work together and email you
+                        at {sessionStorage.getItem('email')} with the results and our billing information. 
+                    </p>
+                    <button type="button" onClick={() => {this.setState({emailPopup: <EmailPopup/>})}}>
+                        <h3 style={{maxWidth: '50%', margin: 'auto', color: 'red'}}>
+                            If the above email is not correct, then click here to do something about that ASAP
+                        </h3>
+                    </button>
+
+                    <div id="emailPopupWrapper" className="popupWrapper">
+                        {this.state.emailPopup}
+                    </div>
+                </React.Fragment>
+            );
+        };
     };
 };
 

@@ -1,7 +1,16 @@
 import React, {Component} from 'react';
 import { isMobile } from '../../../index.js';
+import EmailPopup from '../../multiPageComponents/popups/email/emailPopup.jsx';
 
 class PaymentSucsessful extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            emailPopup: <></>,
+        };
+    };
 
     componentDidMount() {
 
@@ -51,8 +60,15 @@ class PaymentSucsessful extends Component {
                                         Congratulations!
                                     </h2>
                                     <p className='alignRight'>
-                                        Your payment was sucsessful! We'll get to work building your dream PC to get you in the game as soon as possible!
+                                        Your payment was sucsessful! We'll get to work building your dream PC to get you in the game as soon as possible! 
+                                        <br/><br/>
+                                        We'll email you at {sessionStorage.getItem('email')} with your purchase progress
                                     </p>
+                                    <button onClick={() => {this.setState({emailPopup: <EmailPopup/>})}} type="button">
+                                        <h3 style={{maxWidth: '50%', margin: 'auto', color: 'red'}}>
+                                            If the above address is not your email, then click here to do something about that ASAP. 
+                                        </h3>
+                                    </button>
                                 </td>
                                 <td style={{width: '40%'}}>
                                     <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49dfhttps://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
@@ -60,6 +76,10 @@ class PaymentSucsessful extends Component {
                                 </td>
                             </tr>
                         </table>
+                    </div>
+
+                    <div id="emailPopupWrapper" className="popupWrapper">
+                        {this.state.emailPopup}
                     </div>
                 </React.Fragment>
             );
@@ -89,7 +109,18 @@ class PaymentSucsessful extends Component {
                     </table>
                     <p>
                         Your payment was sucsessful! We'll get to work building your dream PC to get you in the game as soon as possible!
+                        <br/><br/>
+                        We'll email you at {sessionStorage.getItem('email')} with your purchase progress
                     </p>
+                    <button onClick={() => {this.setState({emailPopup: <EmailPopup/>})}} type="button">
+                        <h3 style={{maxWidth: '50%', margin: 'auto', color: 'red'}}>
+                            If the above address is not your email, then click here to do something about that ASAP. 
+                        </h3>
+                    </button>
+
+                    <div id="emailPopupWrapper" className="popupWrapper">
+                        {this.state.emailPopup}
+                    </div>
                 </React.Fragment>
             );
         };
