@@ -171,7 +171,7 @@ class Support extends Component {
                         headingText='Warranty Information'
                         subheadingText="Tinker to your heart's content"
                         paragraphText={`Love tinkering with a pc? Us too: you can tinker and edit your PC all you want, however do so at your own risk.
-                        If something breaks, that's on you. We can still fix it, but you'll be paying for the replacement parts`}
+                        If something breaks and you removed your warranty sticker, then that's on you. We can still fix it, but you'll be paying for the replacement parts`}
                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=1e13e531-cf90-4a64-953f-84e850755064'
                         leftBool={false}
                         customImageStyles={{maxHeight: '400px', objectFit: 'cover'}} />
@@ -390,7 +390,7 @@ class Support extends Component {
                         headingText='Warranty Information'
                         subheadingText="Tinker to your heart's content"
                         paragraphText="Love tinkering with a PC? Us too: you can tinker and edit your PC all you want, however do so at your own risk.
-                        If something breaks, thats on you. We can still fix it, but you'll be paying for the replacement parts"
+                        If something breaks and you removed your warranty sticker, then thats on you. We can still fix it, but you'll be paying for the replacement parts"
                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=1e13e531-cf90-4a64-953f-84e850755064'
                         leftBool={false} 
                         customImageStyles={{maxHeight: '250px', objectFit: 'cover'}} />
