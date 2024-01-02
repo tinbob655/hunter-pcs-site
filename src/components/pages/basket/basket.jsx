@@ -14,7 +14,7 @@ class Basket extends Component {
     state = {
         loginPopup: <></>,
         stripeCheckout: <></>,
-        loggedInPaymentButtonText: 'Click here to get your perfectPC delivered straight to you ⟶',
+        loggedInPaymentButtonText: 'Click here to get your perfect PC delivered straight to you ⟶',
         addressPopup: <></>,
 
     };
