@@ -182,7 +182,7 @@ class PrivacyPolicy extends Component {
                 <h2>Contact Us</h2>
                 <p>If you have any questions about this Privacy Policy, You can contact us:</p>
                 <ul>
-                <p><li>By email: huterpcs@gmail.com</li></p>
+                <p><li>By email: hunterpcsuk@gmail.com</li></p>
                 </ul>
             </div>
         );

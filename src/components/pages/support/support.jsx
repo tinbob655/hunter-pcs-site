@@ -66,9 +66,9 @@ class Support extends Component {
                                             We're dedicated to making sure that every step of the way between being here and owning a Hunter PC is smooth sailing. That's why
                                             you shouldn't hesitate to contact us
                                         </p>
-                                        <a href="mailto:huterpcs@gmail.com" target="_blank">
+                                        <a href="mailto:hunterpcsuk@gmail.com" target="_blank">
                                             <h3 className="limitedSize">
-                                                Contact us at: huterpcs@gmail.com ⟶
+                                                Contact us at: hunterpcsuk@gmail.com ⟶
                                             </h3>
                                         </a>
                                     </td>
@@ -155,7 +155,7 @@ class Support extends Component {
                                 </tr>
                             </thead>
                         </table>
-                        <a href="mailto:huterpcs@gmail.com" target="_blank">
+                        <a href="mailto:hunterpcsuk@gmail.com" target="_blank">
                             <h2>
                                 Can't work out who's fault it is?
                             </h2>
@@ -305,9 +305,9 @@ class Support extends Component {
                             We're dedicated to making sure that every step of the way between being here and owning a Hunter PC is smooth sailing. That's why
                             you shouldn't hesitate to contact us
                         </p>
-                        <a href="mailto:huterpcs@gmail.com" target="_blank">
+                        <a href="mailto:hunterpcsuk@gmail.com" target="_blank">
                             <h3 className="limitedSize">
-                                Contact us at: huterpcs@gmail.com ⟶
+                                Contact us at: hunterpcsuk@gmail.com ⟶
                             </h3>
                         </a>
                     </div>
@@ -372,7 +372,7 @@ class Support extends Component {
                             but you'll need to cover the cost. You will be billed for each part we replace as well as a fixed cost of £149.99 for the repairs
                         </p>
 
-                        <a href="mailto:huterpcs@gmail.com" target="_blank">
+                        <a href="mailto:hunterpcsuk@gmail.com" target="_blank">
                             <h2 style={{marginTop: '3vh'}}>
                                 Can't work out who's fault it is?
                             </h2>

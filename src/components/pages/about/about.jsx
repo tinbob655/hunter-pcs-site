@@ -77,9 +77,9 @@ class About extends Component {
                                             You can contact us, anytime. One of our trained support officers will contact you within 0-5 business days with the full intent
                                             of making your life easier. Here at Hunter PCs, we pride ourselves on the quality of our customer support.
                                         </p>
-                                        <a href="mailto:huterpcs@gmail.com" target="_blank">
+                                        <a href="mailto:hunterpcsuk@gmail.com" target="_blank">
                                             <h3 className="limitedSize">
-                                                Just drop us a message at huterpcs@gmail.com
+                                                Just drop us a message at hunterpcsuk@gmail.com
                                             </h3>
                                         </a>
                                     </td>
@@ -181,9 +181,9 @@ class About extends Component {
                             You can contact us, anytime. One of our trained support officers will contact you within 0-5 business days with the full intent
                             of making your life easier. Here at Hunter PCs, we pride ourselves on the quality of our customer support.
                         </p>
-                        <a href="mailto:huterpcs@gmail.com" target="_blank">
+                        <a href="mailto:hunterpcsuk@gmail.com" target="_blank">
                             <h3>
-                                Just drop us a message at huterpcs@gmail.com
+                                Just drop us a message at hunterpcsuk@gmail.com
                             </h3>
                         </a>
                     </div>
