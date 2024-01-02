@@ -276,6 +276,25 @@ input {
     }
 }
 
+select {
+    margin: auto;
+    display: block;
+    border: 5px solid #202020;
+    border-radius: 5px;
+    background-color: #303030;
+    color: #d9ccd5;
+    min-width: 50%;
+    min-height: 5vh;
+
+    transition-property: background-color transform;
+    transition-duration: 0.5s;
+
+    &:focus {
+        background-color: #404040;
+        transform: scale(1.1, 1.1);
+    }
+}
+
 table {
     table-layout: fixed;
     width: 100%;

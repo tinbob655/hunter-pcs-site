@@ -8,6 +8,7 @@ import { firebaseInit } from '../../../../firebase.js';
 import { renderIfLoaded, isMobile } from '../../../../index.js';
 import LoginPopup from '../../../multiPageComponents/popups/login/loginPopup.jsx';
 import GenericMarkupSection from '../../../multiPageComponents/genericMarkupSection.jsx';
+import ChangeOperatingSystemPopup from './changeOperatingSystemPopup.jsx';
 import '../pcsStyles.scss';
 
 isMobile() ? import('../mobilePcsStyles.scss') : <></>;
@@ -62,6 +63,49 @@ function ProductPage() {
     const [purchaseButtonContent, setPurchaseButtonContent] = useState("Buy it now, we'll build it tomorrow ⟶");
 
     const [loginPopupState, setLoginPopupState] = useState('');
+    const [changeOperatingSystemPopupState, setChangeOperatingSystemPopupState] = useState(<></>);
+
+    function changeOperatingSystem() {
+        setChangeOperatingSystemPopupState(<ChangeOperatingSystemPopup/>);
+    };
+
+    function purchaseButtonClicked() {
+        if (sessionStorage.getItem('loggedIn') == 'false') {
+
+            //the user can only make a purcase if logged in, so make sure they are logged in
+            setLoginPopupState(<LoginPopup/>);
+        }
+
+        //if the user is logged in, allow them to purchase
+        if (sessionStorage.getItem('loggedIn') == 'true') {
+
+            //save the purchase to local broswer storage
+            //cannot store arrays in local storage, so iterate until a free variable name is found
+            var i = 0;
+            var productStorageName = ''
+            do {
+                productStorageName = 'hunterPcsProduct'+i;
+                i++;
+                if (i > 100) {
+                    throw('Value to store in local storage became too high')
+                }
+            } while (localStorage.getItem(productStorageName));
+
+            //free variable name has been found, store the product there
+            localStorage.setItem(productStorageName, state.product);
+
+            //NOTE: the local storage vars for products will be cleared upon purchase to optimise browser storage usage
+
+            //alter frontend
+            setPurchaseButtonContent('Added to basket! Visit your basket to buy now')
+            document.getElementById('purchaseButton').style.opacity = 0.5;
+
+            //change the page to the checkout page
+            setTimeout(() => {
+                navigate('/basket');
+            }, 1000);
+        };
+    };
 
     useEffect(() => {
         const getProduct = async () => {
@@ -126,6 +170,11 @@ function ProductPage() {
                     {loginPopupState}
                 </div>
 
+                {/*placeholder for if the change os popup is needed*/}
+                <div id="productPageOSPopupWrapper" className="popupWrapper" style={{overflowY: 'unset'}}>
+                    {changeOperatingSystemPopupState}
+                </div>
+
                 {/*PAGE TO ALLOW A USER TO PURCHACE A PRODUCT*/}
                 <h1 className="alignRight">
                     {renderIfLoaded('Hunter '+state.frontendName)}
@@ -143,44 +192,19 @@ function ProductPage() {
 
                             {/*PURCHASE BUTTON*/}
                             <button type="button" id="purchaseButton" onClick={() => {
-                                if (sessionStorage.getItem('loggedIn') == 'false') {
-
-                                    //the user can only make a purcase if logged in, so make sure they are logged in
-                                    setLoginPopupState(<LoginPopup/>);
-                                }
-
-                                //if the user is logged in, allow them to purchase
-                                if (sessionStorage.getItem('loggedIn') == 'true') {
-
-                                    //save the purchase to local broswer storage
-                                    //cannot store arrays in local storage, so iterate until a free variable name is found
-                                    var i = 0;
-                                    var productStorageName = ''
-                                    do {
-                                        productStorageName = 'hunterPcsProduct'+i;
-                                        i++;
-                                        if (i > 100) {
-                                            throw('Value to store in local storage became too high')
-                                        }
-                                    } while (localStorage.getItem(productStorageName));
-
-                                    //free variable name has been found, store the product there
-                                    localStorage.setItem(productStorageName, state.product);
-
-                                    //NOTE: the local storage vars for products will be cleared upon purchase to optimise browser storage usage
-
-                                    //alter frontend
-                                    setPurchaseButtonContent('Added to basket! Visit your basket to buy now')
-                                    document.getElementById('purchaseButton').style.opacity = 0.5;
-
-                                    //change the page to the checkout page
-                                    setTimeout(() => {
-                                        navigate('/basket');
-                                    }, 1000);
-                                }
+                                purchaseButtonClicked();
                             }}>
-                                <h3>
+                                <h3 className="alignLeft">
                                     {purchaseButtonContent}
+                                </h3>
+                            </button>
+
+                            {/*button to change the operating system of the prebuilt*/}
+                            <button onClick={() => {
+                                changeOperatingSystem();
+                            }}>
+                                <h3 className="alignRight">
+                                    Change the operating system of your PC ⟶
                                 </h3>
                             </button>
                         </td>
@@ -250,6 +274,11 @@ function ProductPage() {
                     {loginPopupState}
                 </div>
 
+                {/*placeholder for if the change os popup is needed*/}
+                <div id="productPageOSPopupWrapper" className="popupWrapper">
+                    {changeOperatingSystemPopupState}
+                </div>
+
                 <h1>
                     {renderIfLoaded('Hunter '+state.frontendName)}
                 </h1>
@@ -279,44 +308,18 @@ function ProductPage() {
                     {renderIfLoaded(state.fullDescription)}
                 </p>
                 <button type="button" id="purchaseButton" onClick={() => {
-                    if (sessionStorage.getItem('loggedIn') == 'false') {
-
-                        //the user can only make a purcase if logged in, so make sure they are logged in
-                        setLoginPopupState(<LoginPopup/>)
-                    }
-
-                    //if the user is logged in, allow them to purchase
-                    if (sessionStorage.getItem('loggedIn') == 'true') {
-
-                        //save the purchase to local broswer storage
-                        //cannot store arrays in local storage, so iterate until a free variable name is found
-                        var i = 0;
-                        var productStorageName = ''
-                        do {
-                            productStorageName = 'hunterPcsProduct'+i;
-                            i++;
-                            if (i > 100) {
-                                throw('Value to store in local storage became too high')
-                            }
-                        } while (localStorage.getItem(productStorageName));
-
-                        //free variable name has been found, store the product there
-                        localStorage.setItem(productStorageName, state.product);
-
-                        //NOTE: the local storage vars for products will be cleared upon purchase to optimise browser storage usage
-
-                        //alter frontend
-                        setPurchaseButtonContent('Added to basket! Visit your basket to buy now')
-                        document.getElementById('purchaseButton').style.opacity = 0.5;
-
-                        //change the page to the checkout page
-                        setTimeout(() => {
-                            navigate('/basket');
-                        }, 1000);
-                    }
+                    purchaseButtonClicked();
                 }}>
                     <h3>
                         {purchaseButtonContent}
+                    </h3>
+                </button>
+                {/*button to change the operating system of the prebuilt*/}
+                <button onClick={() => {
+                    changeOperatingSystem();
+                }}>
+                    <h3>
+                        Change the operating system of your PC ⟶
                     </h3>
                 </button>
 

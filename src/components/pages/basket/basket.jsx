@@ -6,7 +6,7 @@ import { getDoc, doc, getFirestore } from 'firebase/firestore';
 import StripeCheckout from './mountedStripeCheckout.jsx';
 import AddressPopup from '../../multiPageComponents/popups/address/addressPopup.jsx';
 
-//defining basketArray here not later beause it is to be used in multiple processes
+//defining here not later beause it is to be used in multiple processes (make global)
 var basketArray = [];
 
 class Basket extends Component {
@@ -308,24 +308,32 @@ class Basket extends Component {
             let shippingDocRef = doc(db, 'costs', 'shippingCost');
             let shippingDocSnap = await getDoc(shippingDocRef);
             const shippingCost = shippingDocSnap.data().value;
-
+            
             finalProudctNameString += ` + Shipping costs (£${shippingCost})`;
             totalPrice += shippingCost;
+
+            //account for if a custom operating system was selected
+            if (sessionStorage.getItem('customOperatingSystem')) {
+                let osDocRef = doc(db, 'operatingSystems', sessionStorage.getItem('customOperatingSystem'));
+                let osDocSnap = await getDoc(osDocRef);
+                const operatingSystemCost = osDocSnap.data().additionalCost;
+
+                //operating systems which cost less than windows 11 will be negative numbers, so will subtract from totalPrice
+                totalPrice = totalPrice + operatingSystemCost;
+            };
+
     
             //total price must be in P not £
             totalPrice *= 100;
+            //round to 2 dp
+            totalPrice = Math.round(totalPrice *100) / 100;
             sessionStorage.setItem('purchasedProducts', finalProudctNameString);
 
             //get the key from firebase
             let docRef = doc(db, 'keys', 'stripe_sk');
             let docSnap = await getDoc(docRef);
-
             const sk = docSnap.data().value;
-    
             const stripe = require('stripe')(sk);
-
-
-            console.log(finalProudctNameString);
             const session = await stripe.checkout.sessions.create({
                 line_items: [{
                     price_data: {
@@ -394,7 +402,7 @@ class Basket extends Component {
         //if the user has not added anything to their basket
         if (basketHTML.length == 0) {
             basketHTML.push(<React.Fragment>
-                <Link tp='/pcsMain'>
+                <Link to='/pcsMain'>
                     <h3>
                         Looks like you haven't added anything to your basket. Click here to do something about that ⟶
                     </h3>
@@ -407,10 +415,9 @@ class Basket extends Component {
 
     clearBasket() {
 
-        //once again, can't store arrays in session storage yada yada yada. AKA: gotta do for loop
+        //once again, can't store arrays in session storage yada yada yada. AKA: gotta do 'for' loop
         for(let i = 0; i < 100; i++) {
             localStorage.removeItem('hunterPcsProduct'+i);
-            console.log(localStorage.getItem('hunterPcsProduct'+i));
         };
 
         //refresh the page

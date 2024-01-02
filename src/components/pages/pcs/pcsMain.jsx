@@ -170,6 +170,9 @@ class PcsMain extends Component {
                                 </tr>
                             </thead>
                         </table>
+                        <p>
+                            Please note: all our PCs come with Windows 11 pre-installed. You can change that in the purchase menus
+                        </p>
                     </div>
     
                     {/*CUSTOM PCS SECTION*/}
@@ -293,6 +296,9 @@ class PcsMain extends Component {
                                         Dominant <br/><br/>{"£ "+this.state.prices.dominant}
                                     </React.Fragment>
                                 ) : 'loading...'} />
+                        <p>
+                            Please note: all our PCs come with Windows 11 pre-installed. You can change that in the purchase menus
+                        </p>
                     </div>
 
                     <div className="dividerLine"></div>
