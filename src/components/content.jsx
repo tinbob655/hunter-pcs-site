@@ -4,8 +4,8 @@ import { Route, Routes} from 'react-router-dom';
 //import all pages
 import Home from './pages/home/home.jsx';
 import About from './pages/about/about.jsx';
-import Account from './pages/account/account.jsx';
 import Basket from './pages/basket/basket.jsx';
+import LogIn from './pages/logIn/logIn.jsx';
 import PcsMain from './pages/pcs/pcsMain.jsx';
 import CustomPcs from './pages/pcs/custom/customPcs.jsx';
 import TellAFriend from './pages/tellAFriend/tellAFriend.jsx';
@@ -36,8 +36,8 @@ class Content extends Component {
     getRoutes() {
         const allPages = {
             about: <About/>,
-            account: <Account/>,
             basket: <Basket/>,
+            logIn: <LogIn/>,
             pcsMain: <PcsMain/>,
             customPcs: <CustomPcs/>,
             tellAFriend: <TellAFriend/>,

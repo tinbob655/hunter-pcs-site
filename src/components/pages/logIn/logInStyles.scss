@@ -1,0 +1,22 @@
+div#alreadyLoggedInMessage {
+    background-color: #101010;
+    border-radius: 20px;
+    border: 5px #303030 solid;
+    box-shadow: 0 0 5px 10px #050505;
+    width: 75%;
+    left: 12.5vw;
+    top: 40vh;
+    z-index: 2;
+    position: fixed;
+
+    visibility: hidden;
+
+    &.shown {
+        visibility: visible;
+    }
+}
+
+div#logInPage {
+    transition-property: opacity;
+    transition-duration: 1s;
+}

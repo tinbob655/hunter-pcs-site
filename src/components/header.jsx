@@ -6,7 +6,7 @@ import '../hamburgers.css';
 class Header extends Component {
 
     state = {
-        accountImage: sessionStorage.getItem('loggedIn') == 'true' ? 
+        logInImage: sessionStorage.getItem('loggedIn') == 'true' ? 
         'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2FloggedInSymbol.png?alt=media&token=94582489-6f5b-4204-84df-a7814b97b66a'
         :
         'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2FaccountIcon.png?alt=media&token=af8b312a-50d4-49cc-b874-010dd0b2201a',
@@ -84,7 +84,7 @@ class Header extends Component {
 
             //edit dtyles for the text (if present)
             const text = document.getElementById(headerId+'text');
-            if (headerId != 'Basket' && headerId != 'Account') {
+            if (headerId != 'Basket' && headerId != 'Log In') {
                 text.style.color = '#bb68a5'
             }
 
@@ -103,7 +103,7 @@ class Header extends Component {
                 divLine.classList.remove('hovered');
 
                 //reset styles for the text (if present)
-                if (headerId != 'Basket' && headerId != 'Account') {
+                if (headerId != 'Basket' && headerId != 'Log In') {
                     text.style.color = '#606060';
                 }
 
@@ -118,8 +118,8 @@ class Header extends Component {
         };
 
         let headersHTML = [];
-        const frontendHeaders = ['Gaming PCs', 'Home', 'About', 'Support', 'Tell a Friend', 'Account', 'Basket']
-        const backendHeaders = ['/pcsMain', '/', '/about', '/support', '/tellAFriend', '/account', '/basket'];
+        const frontendHeaders = ['Gaming PCs', 'Home', 'About', 'Support', 'Tell a Friend', 'Log In', 'Basket']
+        const backendHeaders = ['/pcsMain', '/', '/about', '/support', '/tellAFriend', '/logIn', '/basket'];
 
         frontendHeaders.forEach((header) => {
             headersHTML.push(
@@ -130,13 +130,13 @@ class Header extends Component {
                                 <h3 style={{padding: '0', marginTop: '0', marginBottom: '0', fontSize: '20px', whiteSpace: 'nowrap', color: '#606060'}} 
                                 onMouseOver={function() {headerHoveredOver(header)}} id={header+'text'} >
 
-                                    {/*RETURN TEXT FOR TEXT HEADRS, AND RESPECTIVE IMAGES FOR THE ACCOUNT AND BASKET PAGES*/}
-                                    {header != 'Basket' && header != 'Account' ? header : (
+                                    {/*RETURN TEXT FOR TEXT HEADRS, AND RESPECTIVE IMAGES FOR THE Log in AND BASKET PAGES*/}
+                                    {header != 'Basket' && header != 'Log In' ? header : (
                                         header == 'Basket' ? <img src={'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2FbasketIcon.png?alt=media&token=e2448ce8-e238-45d8-ba6a-f8b87f8b23ac'}
                                         style={{height: '50px', transitionProperty: 'background-color', transitionDuration: '1s'}}
                                         className="centered rounded" id={header+'image'} />
                                         :
-                                        <img src={this.state.accountImage}
+                                        <img src={this.state.logInImage}
                                         style={{height: '50px', transitionProperty: 'background-color', transitionDuration: '1s'}}
                                         className="centered rounded" id={header+'image'} alt="loading..."/>
                                     )}
@@ -153,8 +153,8 @@ class Header extends Component {
     };
 
     getMobileHeaders() {
-        const frontendHeaders = ['Gaming PCs', 'Home', 'About', 'Support', 'Tell a Friend', 'Account', 'Basket']
-        const backendHeaders = ['/pcsMain', '/', '/about', '/support', '/tellAFriend', '/account', '/basket'];
+        const frontendHeaders = ['Gaming PCs', 'Home', 'About', 'Support', 'Tell a Friend', 'Log In', 'Basket']
+        const backendHeaders = ['/pcsMain', '/', '/about', '/support', '/tellAFriend', '/logIn', '/basket'];
 
         let headersHTML = [];
 
