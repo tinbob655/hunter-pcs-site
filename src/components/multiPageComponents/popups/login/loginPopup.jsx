@@ -125,6 +125,14 @@ class LoginPopup extends Component {
                             //if the user entered the incorrect login details
                             console.log(error.message)
                             const errorText = document.createElement('p');
+                            if (document.querySelectorAll('.errorText').length > 0) {
+                                console.log(document.querySelectorAll('.errorText'))
+                                document.querySelectorAll('.errorText').forEach((paragraph) => {
+                                    document.getElementById('logInHeader').removeChild(paragraph);
+                                });
+                            };
+
+                            errorText.className = 'errorText';
                             errorText.innerText = 'Looks like your email or password is incorrect, have another go';
                             errorText.style.color = 'red';
                             document.getElementById('logInHeader').appendChild(errorText);
@@ -168,6 +176,13 @@ class LoginPopup extends Component {
                     else {
                         errorText.innerText = 'We encountered an error, please try again.';
                     }
+                    errorText.className = 'errorText';
+
+                    if (document.querySelectorAll('.errorText').length > 0) {
+                        document.querySelectorAll('.errorText').forEach((paragraph) => {
+                            document.getElementById('signInHeader').removeChild(paragraph);
+                        });
+                    };
                     document.getElementById('signInHeader').appendChild(errorText);
                 };
             };
