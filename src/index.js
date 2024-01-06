@@ -5,6 +5,7 @@ import './styles.scss';
 import { Analytics} from '@vercel/analytics/react';
 
 import {getStorage, ref, getDownloadURL} from 'firebase/storage';
+import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
 
 import Header from './components/header.jsx';
 import Content from './components/content.jsx';
@@ -97,6 +98,26 @@ window.onresize = function() {
     //change the site type
     window.location.reload();
   };
+};
+
+//attempt to log in the user
+if (localStorage.getItem('hunterPCsAccountCredentials') && sessionStorage.getItem('loggedIn') != 'true') {
+    const creds = JSON.parse(localStorage.getItem('hunterPCsAccountCredentials'));
+    console.log(creds)
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, creds.email, creds.password)
+      .then((userCreds) => {
+        sessionStorage.setItem('loggedIn', 'true');
+        setTimeout(() => {
+          window.location.reload();
+        },  100);
+    })
+  
+    .catch((error) => {
+  
+        //if the user entered the incorrect login details
+        console.log('Automatic login error: '+error.message);
+    });
 };
 
 //Now load the page header, footer and content

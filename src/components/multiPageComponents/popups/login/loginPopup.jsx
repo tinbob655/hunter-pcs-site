@@ -109,7 +109,13 @@ class LoginPopup extends Component {
                         .then((userCreds) => {
                             const user = userCreds.user;
         
-                            sessionStorage.setItem('user', user);
+                            //store credentials to the user's local storage
+                            const creds = {
+                                email: credentials.email,
+                                password: credentials.password,
+                            };
+                            localStorage.setItem('hunterPCsAccountCredentials', JSON.stringify(creds));
+
                             sessionStorage.setItem('loggedIn', 'true');
                             userSucessfullyLoggedIn();
                         })
@@ -146,9 +152,9 @@ class LoginPopup extends Component {
                         .then((userCredential) => {
                             const user = userCredential.user;
     
-                            sessionStorage.setItem('user', user);
+                            //save the user's email and password to their browser's storage
+                            localStorage.setItem('hunterPCsAccountCredentials', JSON.stringify(creds));
                             sessionStorage.setItem('loggedIn', 'true');
-                            localStorage.setItem('hunterPcsEmailAndPassword', {email: creds.email, password: creds.password});
     
                             userSucessfullyLoggedIn();
                         });
@@ -179,9 +185,7 @@ class LoginPopup extends Component {
     
                         //store user data
                         const userCredential = GoogleAuthProvider.credentialFromResult(res);
-                        const userAccessToken = userCredential.accessToken;
-                        const user = res.user;
-                        sessionStorage.setItem('user', user);
+
                         sessionStorage.setItem('loggedIn', 'true');
     
                         userSucessfullyLoggedIn();
@@ -191,7 +195,6 @@ class LoginPopup extends Component {
                         let text = error == 'passwordsNotEqual' ? 'Incorrect password, please try again.' : 'We encountered an error, please try again.';
                         const errorText = document.createElement('p');
                         errorText.innerText = text;
-    
                     });
             };
     
