@@ -171,7 +171,7 @@ class PcsMain extends Component {
                             </thead>
                         </table>
                         <p>
-                            Please note: all our PCs come with Windows 11 pre-installed. You can change that in the purchase menus
+                            Please note: all our PCs come with Windows 11 pre-installed. This can be changed in the purchase menus
                         </p>
                     </div>
     
@@ -297,7 +297,7 @@ class PcsMain extends Component {
                                     </React.Fragment>
                                 ) : 'loading...'} />
                         <p>
-                            Please note: all our PCs come with Windows 11 pre-installed. You can change that in the purchase menus
+                            Please note: all our PCs come with Windows 11 pre-installed. This can be changed in the purchase menus
                         </p>
                     </div>
 
