@@ -241,6 +241,7 @@ class Basket extends Component {
     };
 
     async revUpStripe() {
+        //stonks time!!!
 
         //will fire after the user submits the address form
         function afterAddressRecieved(event) {
@@ -349,6 +350,10 @@ class Basket extends Component {
                 ui_mode: 'embedded',
                 redirect_on_completion: 'never',
             });
+
+            //generate an order id
+            let orderId = String('#' + Math.round(Math.random() * 100000));
+            sessionStorage.setItem('orderId', orderId);
     
             sessionStorage.setItem('stripeSession', JSON.stringify(session));
 
@@ -362,7 +367,6 @@ class Basket extends Component {
 
         //render the address form
         try {
-            //stonks time
 
             //first, we gotta get a delivery address
             this.setState({addressPopup: (

@@ -22,6 +22,7 @@ class PaymentSucsessful extends Component {
             const addressVar = sessionStorage.getItem('address');
             const purchasedProducts = sessionStorage.getItem('purchasedProducts');
             const emailVar = sessionStorage.getItem('email');
+            const orderId = sessionStorage.getItem('orderId');
     
             //create a discord webhook session
             const request = new XMLHttpRequest();
@@ -33,7 +34,8 @@ class PaymentSucsessful extends Component {
                 content: `New purchase with the following information:\n
                 Product: ${purchasedProducts}\n
                 Delivery address: ${addressVar}\n
-                Email: ${emailVar}`,
+                Email: ${emailVar}\n
+                Order Id: ${orderId}`,
             };
             
             //send the message
