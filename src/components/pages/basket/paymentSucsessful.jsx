@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { isMobile } from '../../../index.js';
 import EmailPopup from '../../multiPageComponents/popups/email/emailPopup.jsx';
+import TrustpilotWidget from '../../multiPageComponents/trustpilotWidget/trustpilotWidget.jsx';
 
 class PaymentSucsessful extends Component {
 
@@ -79,6 +80,8 @@ class PaymentSucsessful extends Component {
                             </tr>
                         </table>
                     </div>
+
+                    <TrustpilotWidget />
 
                     <div id="emailPopupWrapper" className="popupWrapper">
                         {this.state.emailPopup}

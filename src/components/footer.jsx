@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import {isMobile} from '../index.js';
+import TrustpilotTrustBox from './multiPageComponents/trustpilotWidget/trustpilotWidget.jsx';
 
 class Footer extends Component {
 
@@ -46,8 +47,9 @@ class Footer extends Component {
                             </tr>
                         </thead>
                     </table>
+                    
+                    <TrustpilotTrustBox />
                 </div>
-
                 <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FhunterPcsLogo.png?alt=media&token=c7353b9c-aa81-4882-ac8f-cfdc9dcc61ea'
                     className="centered" style={{width: this.state.logoImageWidth}} alt='loading...' />
             </React.Fragment>

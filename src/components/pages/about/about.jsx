@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { isMobile } from '../../../index.js';
 import { Link } from 'react-router-dom';
 import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection.jsx';
+import TrustpilotTrustBox from '../../multiPageComponents/trustpilotWidget/trustpilotWidget.jsx';
 
 class About extends Component {
 
@@ -87,6 +88,33 @@ class About extends Component {
                             </thead>
                         </table>
                     </div>
+
+                    {/*LEAVE A REVIEW SECTION*/}
+                    <div>
+                        <h1 className="alignRight">
+                            Leave a Review
+                        </h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <h2 className="alignLeft">
+                                            Tell us what you think
+                                        </h2>
+                                        <p className="alignRight">
+                                            Please consider leaving us a review using the below button. It helps us out making sure other gamers get high quality PCs from us and 
+                                            gets the community in the game as soon as possible
+                                        </p>
+                                        <TrustpilotTrustBox />
+                                    </td>
+                                    <td>
+                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%203.jpeg?alt=media&token=94698dad-8a82-45fc-a076-171fd9c833af'
+                                        alt="loading..." className="mainImage centered" />
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
     
                     {/*DELIVERY SECTION*/}
                     <div>
@@ -99,7 +127,7 @@ class About extends Component {
                         linkContent='More on our quality guarantee'
                         linkDestination='/support'
                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788'
-                        leftBool={false} />
+                        leftBool={true} />
                     </div>
                 </React.Fragment>
             );
@@ -190,6 +218,35 @@ class About extends Component {
 
                     <div className="dividerLine"></div>
 
+                    {/*LEAVE A REVIEW SECTION*/}
+                    <div>
+                        <h1>
+                            Leave a Review
+                        </h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <h2 className="alignRight">
+                                            Tell us what you think
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%203.jpeg?alt=media&token=94698dad-8a82-45fc-a076-171fd9c833af'
+                                        alt="loading..." className="mainImage centered" />
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <p>
+                            Please consider leaving us a review using the below button. It helps us out making sure other gamers get high quality PCs from us and 
+                            gets the community in the game as soon as possible
+                        </p>
+                        <TrustpilotTrustBox />
+                    </div>
+
+                    <div className="dividerLine"></div>
+
                     {/*DELIVERY SECTION*/}
                     <div>
                         <GenericMarkupSection
@@ -202,7 +259,7 @@ class About extends Component {
                             linkDestination='/support'
                             imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788'
                             DontShowDividerLineBool={true}
-                            leftBool={false} />
+                            leftBool={true} />
                     </div>
                 </React.Fragment>
             );
