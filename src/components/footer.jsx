@@ -4,8 +4,12 @@ import {isMobile} from '../index.js';
 
 class Footer extends Component {
 
-    state = {
-        logoImageWidth: isMobile() ? '60%' : '25%',
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            logoImageWidth: isMobile() ? '60%' : '25%',
+        };
     };
 
     render() {

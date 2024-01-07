@@ -27,8 +27,12 @@ function userSucessfullyLoggedIn() {
 
 class LoginPopup extends Component {
     
-    state = {
-        panelContent: <></>
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            panelContent: <></>
+        };
     };
 
     async componentDidMount() {
