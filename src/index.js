@@ -103,7 +103,6 @@ window.onresize = function() {
 //attempt to log in the user
 if (localStorage.getItem('hunterPCsAccountCredentials') && sessionStorage.getItem('loggedIn') != 'true') {
     const creds = JSON.parse(localStorage.getItem('hunterPCsAccountCredentials'));
-    console.log(creds)
     const auth = getAuth();
     signInWithEmailAndPassword(auth, creds.email, creds.password)
       .then((userCreds) => {
