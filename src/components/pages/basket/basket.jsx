@@ -3,8 +3,9 @@ import { convertOutOfCamelCase, isMobile } from '../../../index.js';
 import { Link } from 'react-router-dom';
 import LoginPopup from '../../multiPageComponents/popups/login/loginPopup.jsx';
 import { getDoc, doc, getFirestore } from 'firebase/firestore';
-import StripeCheckout from './mountedStripeCheckout.jsx';
+import StripeCheckout from '../../multiPageComponents/checkout/mountedStripeCheckout.jsx';
 import AddressPopup from '../../multiPageComponents/popups/address/addressPopup.jsx';
+import {startStripeSession} from '../../multiPageComponents/checkout/checkoutFunctions.ts';
 
 //defining here not later beause it is to be used in multiple processes (make global)
 var basketArray = [];
@@ -330,39 +331,21 @@ class Basket extends Component {
             totalPrice = Math.round(totalPrice *100) / 100;
             sessionStorage.setItem('purchasedProducts', finalProudctNameString);
 
-            //get the key from firebase
-            let docRef = doc(db, 'keys', 'stripe_sk');
-            let docSnap = await getDoc(docRef);
-            const sk = docSnap.data().value;
-            const stripe = require('stripe')(sk);
-            const session = await stripe.checkout.sessions.create({
-                line_items: [{
-                    price_data: {
-                        currency: 'gbp',
-                        product_data: {
-                            name: finalProudctNameString,
-                        },
-                        unit_amount: totalPrice,
-                    },
-                    quantity: 1,
-                }],
-                mode: 'payment',
-                ui_mode: 'embedded',
-                redirect_on_completion: 'never',
-            });
-
             //generate an order id
             let orderId = String('#' + Math.round(Math.random() * 100000));
             sessionStorage.setItem('orderId', orderId);
-    
-            sessionStorage.setItem('stripeSession', JSON.stringify(session));
 
-            this.setState({stripeCheckout: <StripeCheckout/>});
-    
-            //now show the stripe popup
-            setTimeout(() => {
-                document.getElementById('stripeCheckoutWrapper').classList.add('shown');
-            }, 100);
+            //start a stripe session, then mount the checkout
+            startStripeSession(totalPrice, finalProudctNameString)
+            .then(() => {
+                this.setState({stripeCheckout: <StripeCheckout/>});
+                
+                //now show the stripe popup
+                setTimeout(() => {
+                    document.getElementById('stripeCheckoutWrapper').classList.add('shown');
+                }, 100);
+            });
+
         };
 
         //render the address form
