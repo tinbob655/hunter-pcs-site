@@ -184,10 +184,10 @@ class Support extends Component {
                         subheadingText="Fraud is illegal, don't do it"
                         paragraphText={`We HATE fraud, so we may request to see any customer's photo id as well as an image of the bank card used to purchase a PC. This is to 
                         make sure that our real customers can get their PC faster, and to stop you dirty AI startups taking everyone else's GPUs
-                        <br/><br/>
-                        If you don't send us images on request then we may revoke access to your HunterPCs account and refuse to send you any gaming PCs
-                        <br/><br/>
-                        By purchasing any product from HunterPCs, you agree to our fraud prevention program`}
+                       
+                        If you don't send us images on request then we may revoke access to your Hunter PCs account and refuse to send you any gaming PCs
+                        
+                        By purchasing any product from Hunter PCs, you agree to our fraud prevention program`}
                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%204.jpeg?alt=media&token=fc2925fe-3d55-47ca-adc8-42bcf4a8b025'
                         leftBool={true} 
                         customImageCellStyles={{width: '45%'}}/>
@@ -403,8 +403,8 @@ class Support extends Component {
                         subheadingText="Fraud is illegal, don't do it"
                         paragraphText={`We HATE fraud, so we may request to see any customer's photo id as well as an image of the bank card used to purchase a PC. This is to 
                         make sure that our real customers can get their PC faster, and to stop you dirty AI startups taking everyone else's GPUs.
-                        If you don't send us images on request then we may revoke access to your HunterPCs account and refuse to send you any gaming PCs.
-                        By purchasing any product from HunterPCs, you agree to our fraud prevention program`}
+                        If you don't send us images on request then we may revoke access to your Hunter PCs account and refuse to send you any gaming PCs.
+                        By purchasing any product from Hunter PCs, you agree to our fraud prevention program`}
                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%204.jpeg?alt=media&token=fc2925fe-3d55-47ca-adc8-42bcf4a8b025'
                         leftBool={true} />
                     </div>
