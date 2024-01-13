@@ -9,6 +9,7 @@ import { renderIfLoaded, isMobile } from '../../../../index.js';
 import LoginPopup from '../../../multiPageComponents/popups/login/loginPopup.jsx';
 import GenericMarkupSection from '../../../multiPageComponents/genericMarkupSection.jsx';
 import ChangeOperatingSystemPopup from './changeOperatingSystemPopup.jsx';
+import SlidingButton from '../../../multiPageComponents/slidingButton.jsx';
 import '../pcsStyles.scss';
 
 isMobile() ? import('../mobilePcsStyles.scss') : <></>;
@@ -60,7 +61,7 @@ function ProductPage() {
     const [state, setState] = useState('');
     const [productImage, setProductImage] = useState('');
 
-    const [purchaseButtonContent, setPurchaseButtonContent] = useState("Buy it now, we'll build it tomorrow ⟶");
+    const [purchaseButtonContent, setPurchaseButtonContent] = useState("Buy now");
 
     const [loginPopupState, setLoginPopupState] = useState('');
     const [changeOperatingSystemPopupState, setChangeOperatingSystemPopupState] = useState(<></>);
@@ -98,7 +99,7 @@ function ProductPage() {
 
             //alter frontend
             setPurchaseButtonContent('Added to basket! Visit your basket to buy now')
-            document.getElementById('purchaseButton').style.opacity = 0.5;
+            document.getElementById('purchaseButtonbutton').style.opacity = 0.5;
 
             //change the page to the checkout page
             setTimeout(() => {
@@ -176,51 +177,52 @@ function ProductPage() {
                 </div>
 
                 {/*PAGE TO ALLOW A USER TO PURCHACE A PRODUCT*/}
-                <h1 className="alignRight">
-                    {renderIfLoaded('Hunter '+state.frontendName)}
-                </h1>
-                <table>
-                    <tr>
-                        <td>
-                            {/*PRODUCT NAME AND DESCRIPTION */}
-                            <h2 className="alignRight">
-                                {renderIfLoaded(state.subheaderDescription)}
-                            </h2>
-                            <p className="alignLeft">
-                                {renderIfLoaded(state.fullDescription)}
-                            </p>
+                <div>
+                    <h1 className="alignRight">
+                        {renderIfLoaded('Hunter '+state.frontendName)}
+                    </h1>
+                    <table>
+                        <tr>
+                            <td>
+                                {/*PRODUCT NAME AND DESCRIPTION */}
+                                <h2 className="alignRight">
+                                    {renderIfLoaded(state.subheaderDescription)}
+                                </h2>
+                                <p className="alignLeft">
+                                    {renderIfLoaded(state.fullDescription)}
+                                </p>
 
-                            {/*PURCHASE BUTTON*/}
-                            <button type="button" id="purchaseButton" onClick={() => {
-                                purchaseButtonClicked();
-                            }}>
-                                <h3 className="alignLeft">
-                                    {purchaseButtonContent}
-                                </h3>
-                            </button>
+                                {/*PURCHASE BUTTON*/}
+                                    <SlidingButton
+                                    onClickFunction={purchaseButtonClicked}
+                                    id="purchaseButton"
+                                    imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788'
+                                    textContent={purchaseButtonContent}
+                                    />
 
-                            {/*button to change the operating system of the prebuilt*/}
-                            <button onClick={() => {
-                                changeOperatingSystem();
-                            }}>
-                                <h3 className="alignRight">
-                                    Change the operating system of your PC ⟶
-                                </h3>
-                            </button>
-                        </td>
+                                {/*button to change the operating system of the prebuilt*/}
+                                <button onClick={() => {
+                                    changeOperatingSystem();
+                                }}>
+                                    <h3 className="alignRight">
+                                        Change the operating system of your PC ⟶
+                                    </h3>
+                                </button>
+                            </td>
 
-                        <td>
-                            {/*PRODUCT IMAGE + PRODUCT PRICE*/}
-                            <img src={productImage.productImageURL} style={{width: '75%'}}  className="mainImage centered" alt="loading..."/>
-                            <h2 style={{paddingBottom: 0, marginBottom: 0}}>
-                                {renderIfLoaded("£ "+state.price)}
-                            </h2>
-                            <p style={{padding: 0, marginTop: 0}}>
-                                {state.shippingCost ? `(+£${state.shippingCost} shipping)` : 'loading shipping...'}
-                            </p>
-                        </td>
-                    </tr>
-                </table>
+                            <td>
+                                {/*PRODUCT IMAGE + PRODUCT PRICE*/}
+                                <img src={productImage.productImageURL} style={{width: '75%'}}  className="mainImage centered" alt="loading..."/>
+                                <h2 style={{paddingBottom: 0, marginBottom: 0}}>
+                                    {renderIfLoaded("£ "+state.price)}
+                                </h2>
+                                <p style={{padding: 0, marginTop: 0}}>
+                                    {state.shippingCost ? `(+£${state.shippingCost} shipping)` : 'loading shipping...'}
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
                 
                 {/*PRODUCT SPEC CONTENT*/}
                 <button type="button" onClick={function() {const specDiv = document.getElementById('fullSpecDiv');
@@ -307,13 +309,13 @@ function ProductPage() {
                 <p>
                     {renderIfLoaded(state.fullDescription)}
                 </p>
-                <button type="button" id="purchaseButton" onClick={() => {
-                    purchaseButtonClicked();
-                }}>
-                    <h3>
-                        {purchaseButtonContent}
-                    </h3>
-                </button>
+                <SlidingButton
+                    onClickFunction={purchaseButtonClicked}
+                    id="purchaseButton"
+                    imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788'
+                    textContent={purchaseButtonContent}
+                    />
+                    
                 {/*button to change the operating system of the prebuilt*/}
                 <button onClick={() => {
                     changeOperatingSystem();

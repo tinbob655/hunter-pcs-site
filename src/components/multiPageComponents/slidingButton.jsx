@@ -2,7 +2,7 @@ import React from 'react';
 import { buttonExpand, isMobile } from '../../index.js';
 import { useNavigate } from 'react-router-dom';
 
-function SlidingButton({id, imgSrc, linkLocation, textContent, ssIndex, ssValue}) {
+function SlidingButton({id, imgSrc, linkLocation, textContent, ssIndex, ssValue, onClickFunction}) {
 
     const navigate = useNavigate();
 
@@ -12,14 +12,29 @@ function SlidingButton({id, imgSrc, linkLocation, textContent, ssIndex, ssValue}
 
                 onMouseOver={function() {buttonExpand(id)}}
                 onClick={function() {ssValue ? (sessionStorage.setItem(ssIndex, ssValue)) : console.log('No value to store in session storage');
-                if (isMobile()) {
-                    setTimeout(() => {
+
+                //only navigate to new page if a link is provided
+                if (linkLocation) {
+                    if (isMobile()) {
+                        setTimeout(() => {
+                            navigate(linkLocation);
+                        }, 1500);
+                    }
+                    else {
                         navigate(linkLocation);
-                    }, 1500);
-                }
-                else {
-                    navigate(linkLocation);
-                }}}
+                    }}
+                else if (onClickFunction) {
+                    if (isMobile()) {
+                        setTimeout(() => {
+                            onClickFunction();
+                        });
+                    }
+                    else {
+                        onClickFunction();
+                    };
+                };
+                }}
+
                     >
 
                     <h2 id={id+'title'} className="linkButtonTitle">
