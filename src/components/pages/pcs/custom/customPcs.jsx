@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { clickGetStartedButton } from './customPcsScripts.js';
 import {isMobile} from '../../../../index.js';
 import LoginPopup from '../../../multiPageComponents/popups/login/loginPopup.jsx';
 import AddressPopup from '../../../multiPageComponents/popups/address/addressPopup.jsx';
@@ -42,7 +41,8 @@ class CustomPcs extends Component {
                                             Below is the hunter PCs custom PC designer, so you can create your own custom rig with ease. We'll build it and ship it to you as 
                                             usual
                                         </p>
-                                        <button type="button" onClick={function() {clickGetStartedButton()}}>
+                                        <button type="button" onClick={function() {alert('Leaving this website!\n\nThis is a link to an external site, proceed at own risk.');
+                                                                                    window.open('https://pcpartpicker.com/list/');}}>
                                             <h3>
                                                 Get started designing your very own rig ⟶
                                             </h3>
@@ -135,7 +135,8 @@ class CustomPcs extends Component {
                             Below is the hunter PCs custom PC designer, so you can create your own custom rig with ease. We'll build it and ship it to you as 
                             usual
                         </p>
-                        <button type="button" onClick={function() {clickGetStartedButton()}}>
+                        <button type="button" onClick={function() {alert('Leaving this website!\n\nThis is a link to an external site, proceed at own risk.');
+                                                                    window.open('https://pcpartpicker.com/list/');}}>
                             <h3>
                                 Get started designing your very own rig ⟶
                             </h3>
