@@ -121,6 +121,10 @@ button {
             max-height: 500px;
             background-color: #1a1619;
             box-shadow: 0 0 50px 1px #1a1619;
+
+            &.bigWhenExpanded {
+                max-height: 650px !important;
+            }
         }
     }
 }

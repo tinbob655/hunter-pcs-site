@@ -15,6 +15,9 @@ class PcsMain extends Component {
         this.state = {
             prices: {
             },
+            productImages: {
+                temporary: 'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8',
+            },
         };
     };
 
@@ -89,7 +92,7 @@ class PcsMain extends Component {
                                         {/*solid pc button*/}
                                         <SlidingButton 
                                             id="solidPcsButton"
-                                            imgSrc=""
+                                            imgSrc={this.state.productImages.temporary}
                                             linkLocation="productPage"
                                             ssIndex='product'
                                             ssValue='solidPc'
@@ -105,7 +108,7 @@ class PcsMain extends Component {
                                         {/*strong pc button*/}
                                         <SlidingButton
                                             id="strongPcsButton"
-                                            imgSrc=""
+                                            imgSrc={this.state.productImages.temporary}
                                             linkLocation="productPage"
                                             ssIndex="product"
                                             ssValue='strongPc'
@@ -123,7 +126,7 @@ class PcsMain extends Component {
                                         {/*powerful pc button*/}
                                         <SlidingButton 
                                             id="powerfulPcsButton"
-                                            imgSrc=""
+                                            imgSrc={this.state.productImages.temporary}
                                             linkLocation="productPage"
                                             ssIndex='product'
                                             ssValue='powerfulPc'
@@ -141,7 +144,7 @@ class PcsMain extends Component {
                                         {/*supreme pc button*/}
                                         <SlidingButton 
                                             id="supremePcsButton"
-                                            imgSrc=""
+                                            imgSrc={this.state.productImages.temporary}
                                             linkLocation="productPage"
                                             ssIndex='product'
                                             ssValue='supremePc'
@@ -157,7 +160,7 @@ class PcsMain extends Component {
                                         {/*dominant pc button*/}
                                         <SlidingButton 
                                             id="dominantPcsButton"
-                                            imgSrc=""
+                                            imgSrc={this.state.productImages.temporary}
                                             linkLocation="productPage"
                                             ssIndex='product'
                                             ssValue='dominantPc'
@@ -235,7 +238,7 @@ class PcsMain extends Component {
                         {/*solid pc button*/}
                         <SlidingButton 
                             id="solidPcsButton"
-                            imgSrc=""
+                            imgSrc={this.state.productImages.temporary}
                             linkLocation="/productPage"
                             ssIndex='product'
                             ssValue='solidPc'
@@ -248,7 +251,7 @@ class PcsMain extends Component {
                         {/*strong pc button*/}
                         <SlidingButton
                             id="strongPcsButton"
-                            imgSrc=""
+                            imgSrc={this.state.productImages.temporary}
                             linkLocation="/productPage"
                             ssIndex="product"
                             ssValue='strongPc'
@@ -261,7 +264,7 @@ class PcsMain extends Component {
                         {/*powerful pc button*/}
                         <SlidingButton 
                             id="powerfulPcsButton"
-                            imgSrc=""
+                            imgSrc={this.state.productImages.temporary}
                             linkLocation="/productPage"
                             ssIndex='product'
                             ssValue='powerfulPc'
@@ -274,7 +277,7 @@ class PcsMain extends Component {
                         {/*supreme pc button*/}
                         <SlidingButton 
                             id="supremePcsButton"
-                            imgSrc=""
+                            imgSrc={this.state.productImages.temporary}
                             linkLocation="/productPage"
                             ssIndex='product'
                             ssValue='supremePc'
@@ -287,7 +290,7 @@ class PcsMain extends Component {
                             {/*dominant pc button*/}
                             <SlidingButton 
                                 id="dominantPcsButton"
-                                imgSrc=""
+                                imgSrc={this.state.productImages.temporary}
                                 linkLocation="/productPage"
                                 ssIndex='product'
                                 ssValue='dominantPc'
