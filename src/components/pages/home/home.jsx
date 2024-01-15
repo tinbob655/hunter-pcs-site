@@ -3,8 +3,39 @@ import { Link } from 'react-router-dom';
 import SlidingButton from '../../multiPageComponents/slidingButton.jsx';
 import gamesCompilationVideo from '../../../media/HunterPcs all games compilation.mp4';
 import {isMobile} from '../../../index.js';
+import './homeStyles.scss';
 
 class Home extends Component {
+
+    componentDidMount() {
+        
+        //fancy animations for home page on load
+
+        async function animateParagraphs() {
+            const paragraphs = document.querySelectorAll('[id^="homePageParagraph"]');
+
+            for(let i = 0; i < paragraphs.length; i++) {
+                paragraphs[i].classList.add('startAnimation');
+                await new Promise(r => {setTimeout(r, 500)});
+            };
+        };
+        
+        function startAnimationForElement(elementId, delay) {
+            setTimeout(() => {
+                const element = document.getElementById(elementId);
+                element.classList.add('startAnimation');
+            }, delay);
+        };
+
+        startAnimationForElement('homePageHeader', 500);
+        startAnimationForElement('homePageSubheader', 750);
+        startAnimationForElement('homePageImage', 1000);
+        setTimeout(() => {
+            animateParagraphs();
+        }, 1500);
+
+
+    };
 
     render() {
 
@@ -14,7 +45,7 @@ class Home extends Component {
                 <React.Fragment>
                     {/*PAGE HEADER*/}
                     <div>
-                        <h1 style={{marginLeft: '50%', textAlign: 'unset'}}>
+                        <h1 style={{marginLeft: '50%', textAlign: 'unset'}} id="homePageHeader">
                             PCs made to measure
                         </h1>
     
@@ -23,29 +54,29 @@ class Home extends Component {
                                 <tr>
                                     <td style={{width: '60%'}}>
                                         <img src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Falt%20Logo.jpg?alt=media&token=83dd8d5d-16ec-4f74-bb00-0fb407d8e659"
-                                        style={{width: '50vw', height: '50vw', marginLeft: '7.5%', marginRight: 'unset', boxShadow: '0 0 50px 5px #222222', borderRadius: '10px'}}
-                                        alt="loading..."/>
+                                        style={{width: '50vw', height: '50vw', marginLeft: '7.5%', marginRight: 'unset', borderRadius: '10px'}}
+                                        alt="loading..." id="homePageImage"/>
                                     </td>
                                     <td style={{paddingRight: '5%'}}>
-                                        <h2 style={{marginRight: '1%', textAlign: 'right'}}>
+                                        <h2 style={{marginRight: '1%', textAlign: 'right'}} id="homePageSubheader">
                                             Packing a serious punch
                                         </h2>
-                                        <p className="alignRight">
+                                        <p className="alignRight homePageAnimatedParagraph" id="homePageParagraph0">
                                             Perfect for:
                                         </p>
-                                        <p style={{textAlign: 'right', marginRight: '15%'}}>
+                                        <p style={{textAlign: 'right', marginRight: '15%'}} id="homePageParagraph1" className="homePageAnimatedParagraph">
                                             -AAA gaming
                                         </p>
-                                        <p style={{textAlign: 'right', marginRight: '20%'}}>
+                                        <p style={{textAlign: 'right', marginRight: '20%'}} id="homePageParagraph2" className="homePageAnimatedParagraph">
                                             -Ultra low latency
                                         </p>
-                                        <p style={{textAlign: 'right', marginRight: '25%'}}>
+                                        <p style={{textAlign: 'right', marginRight: '25%'}} id="homePageParagraph3" className="homePageAnimatedParagraph">
                                             -Office and work
                                         </p>
-                                        <p style={{textAlign: 'right', marginRight: '30%'}}>
+                                        <p style={{textAlign: 'right', marginRight: '30%'}} id="homePageParagraph4" className="homePageAnimatedParagraph">
                                             -Streaming video
                                         </p>
-                                        <p style={{textAlign: 'right', marginRight: '40%'}}>
+                                        <p style={{textAlign: 'right', marginRight: '40%'}} id="homePageParagraph5" className="homePageAnimatedParagraph">
                                             -Just chilling
                                         </p>
                                     </td>
@@ -198,7 +229,7 @@ class Home extends Component {
 
                     {/*PAGE HEADER*/}
                     <div>
-                        <h1>
+                        <h1 id="homePageHeader">
                             PCs Made to Measure
                         </h1>
                         <table>
@@ -206,10 +237,10 @@ class Home extends Component {
                                 <td>
                                     <img src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Falt%20Logo.jpg?alt=media&token=83dd8d5d-16ec-4f74-bb00-0fb407d8e659"
                                     className="mainImage centered"
-                                    alt="loading..."/>
+                                    alt="loading..." id="homePageImage"/>
                                 </td>
                                 <td style={{width: '40%'}}>
-                                    <h2 className="alignLeft">
+                                    <h2 className="alignLeft" id="homePageSubheader">
                                         Packing a serious punch
                                     </h2>
                                 </td>
@@ -219,31 +250,31 @@ class Home extends Component {
                             <thead>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p id="homePageParagraph0" className="homePageAnimatedParagraph">
                                             -AAA gaming
                                         </p>
                                     </td>
                                     <td>
-                                        <p>
+                                        <p id="homePageParagraph1" className="homePageAnimatedParagraph">
                                             -Ultra low latency
                                         </p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p>
+                                        <p id="homePageParagraph2" className="homePageAnimatedParagraph"> 
                                             -Office and work
                                         </p>
                                     </td>
                                     <td>
-                                        <p>
+                                        <p id="homePageParagraph3" className="homePageAnimatedParagraph">
                                             -Streaming video
                                         </p>
                                     </td>
                                 </tr>
                             </thead>
                         </table>
-                        <p>
+                        <p id="homePageParagraph4" className="homePageAnimatedParagraph">
                             -Just chilling
                         </p>
                     </div>

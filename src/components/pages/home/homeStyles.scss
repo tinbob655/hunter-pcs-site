@@ -1,0 +1,50 @@
+//add animations when the page is first loaded
+h1#homePageHeader {
+    opacity: 0.0;
+    transform: translateX(15vw);
+    
+    transition-duration: 1s;
+    transition-property: opacity transform;
+
+    &.startAnimation {
+        opacity: 1.0;
+        transform: translateX(0);
+    }
+}
+
+img#homePageImage {
+    opacity: 0.0;
+    transform: translateY(50vh);
+    box-shadow: none;
+
+    transition-duration: 1.5s;
+    transition-property: opacity transform box-shadow;
+
+    &.startAnimation {
+        opacity: 1.0;
+        transform: translateY(0);
+        box-shadow: 0 0 50px 5px #222222;
+    }
+}
+
+h2#homePageSubheader {
+    transform: scale(0) translateY(50vh);
+    color: #020202;
+    transition-property: transform color opacity;
+    transition-duration: 1.5s;
+
+    &.startAnimation {
+        color: #f2e1ee;
+        transform: scale(1) translateY(0)
+    }
+}
+
+p.homePageAnimatedParagraph {
+    opacity: 0.0;
+    transition-property: opacity;
+    transition-duration: 0.75s;
+
+    &.startAnimation {
+        opacity: 1.0;
+    }
+}

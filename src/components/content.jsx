@@ -17,14 +17,6 @@ import CustomPcPurchaseSucsessful from './pages/pcs/custom/customPcPurchaseSucse
 
 class Content extends Component {
 
-    componentDidMount() {
-        setTimeout(() => {
-            window.scrollTo(0, 0);
-            document.body.style.visibility = 'visible';
-            document.body.style.opacity = 1.0;
-        }, 1000);
-    };
-
     render() {
         return (
             <Routes>
