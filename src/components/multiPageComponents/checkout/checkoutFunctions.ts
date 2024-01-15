@@ -30,6 +30,7 @@ export async function startStripeSession(amount:number, productString:string) {
             redirect_on_completion: 'never',
         });
     
+        //don't panik guys, this gets deleted within about 0.3 seconds
         sessionStorage.setItem('stripeSession', JSON.stringify(session));
 
     }catch(error) {

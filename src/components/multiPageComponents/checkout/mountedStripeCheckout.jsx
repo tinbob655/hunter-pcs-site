@@ -26,8 +26,10 @@ export default function StripeCheckout() {
     useEffect(() => {
 
         //create a stripe checkout the second the page loads
-
         const stripeSession = JSON.parse(sessionStorage.getItem('stripeSession'));
+        
+        //delete that session storage value (quick!
+        sessionStorage.removeItem('stripeSession');
         setClientSecret(stripeSession.client_secret);
     }, []);
 
