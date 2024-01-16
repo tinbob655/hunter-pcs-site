@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const stripePromise = loadStripe('pk_live_51OIsKCCzpWfV0Kwk7LPqpBIw0kMMQVd8SiMzIjsG8Iz6ofCJ7k1KCEPPd9Jkk5Sz1m0QumHcl7eQC3HjVBYJEeB200wMUMSheW');
 
 export default function StripeCheckout() {
-    const [clientSecret, setClientSecret] = useState('');
+    const [options, setOptions] = useState('')
 
     const navigate = useNavigate();
     function paymentCompleted(){
@@ -24,20 +24,15 @@ export default function StripeCheckout() {
     };
 
     useEffect(() => {
+        let sk = process.env.REACT_APP_STRIPE_SK;
+        setOptions({sk, onComplete: function() {paymentCompleted();}});
+        sk = undefined;
+    }, [])
 
-        //create a stripe checkout the second the page loads
-        const stripeSession = JSON.parse(sessionStorage.getItem('stripeSession'));
-        
-        //delete that session storage value (quick!
-        sessionStorage.removeItem('stripeSession');
-        setClientSecret(stripeSession.client_secret);
-    }, []);
-
-    const options = {clientSecret, onComplete: function() {paymentCompleted();}};
 
     return(
         <div id="checkout">
-            {clientSecret && (
+            {process.env.REACT_APP_STRIPE_SK && (
                 <EmbeddedCheckoutProvider stripe={stripePromise} options={options}>
                     <EmbeddedCheckout />
                 </EmbeddedCheckoutProvider>
