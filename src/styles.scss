@@ -46,7 +46,7 @@ h3 {
     }
 
     &:hover {
-        transform: scale(1.5);
+        transform: scale(1.25);
     }
 }
 
@@ -272,7 +272,7 @@ input {
         transition-duration: 0.5s;
 
         &:hover {
-            transform: scale(1.5);
+            transform: scale(1.25);
         }
     }
 }
