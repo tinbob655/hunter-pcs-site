@@ -119,6 +119,8 @@ if (localStorage.getItem('hunterPCsAccountCredentials') && sessionStorage.getIte
     });
 };
 
+console.log(process.env.REACT_APP_TEST_KEY);
+
 //Now load the page header, footer and content
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
