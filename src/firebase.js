@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAePSfz7GW9ZoRW8BiQHQef8OsuoOKmDn0",
+  apiKey: process.env.REACT_APP_FIREBASE_KEY,
   authDomain: "hunter-pcs-firebase.firebaseapp.com",
   projectId: "hunter-pcs-firebase",
   storageBucket: "hunter-pcs-firebase.appspot.com",
