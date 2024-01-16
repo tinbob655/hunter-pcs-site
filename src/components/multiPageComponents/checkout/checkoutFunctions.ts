@@ -1,4 +1,3 @@
-import {getFirestore, doc, getDoc, Firestore, DocumentReference, DocumentSnapshot} from 'firebase/firestore';
 import Stripe from 'stripe';
 
 
@@ -6,14 +5,8 @@ import Stripe from 'stripe';
 export async function startStripeSession(amount:number, productString:string) {
     try {
     
-        //get stripe sk securely (firestore)
-        const db:Firestore = getFirestore();
-        const docRef:DocumentReference = doc(db, 'keys', 'stripe_sk');
-        const docSnap:DocumentSnapshot = await getDoc(docRef);
-        const stripe_sk:string = docSnap.data()?.value;
-    
         //create a stripe session and save to session storage
-        const stripe:Stripe = require('stripe')(stripe_sk);
+        const stripe:Stripe = require('stripe')(process.env.REACT_APP_STRIPE_SK);
         const session = await stripe.checkout.sessions.create({
             line_items: [{
                 price_data: {
@@ -29,8 +22,7 @@ export async function startStripeSession(amount:number, productString:string) {
             ui_mode: 'embedded',
             redirect_on_completion: 'never',
         });
-    
-        //don't panik guys, this gets deleted within about 0.3 seconds
+
         sessionStorage.setItem('stripeSession', JSON.stringify(session));
 
     }catch(error) {
