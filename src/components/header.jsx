@@ -16,6 +16,16 @@ class Header extends Component {
         };
     };
 
+    componentDidMount() {
+
+        //only show the header after startup animations
+        if (isMobile()) {
+            setTimeout(() => {
+                document.getElementById('mobileHeader').style.visibility = 'visible';
+            }, 1500);
+        };
+    };
+
     render() {
 
         //desktop header
@@ -71,7 +81,7 @@ class Header extends Component {
                 </button>
 
                 {/*actual header content*/}
-                <div id="mobileHeader" className="hiddenScroll">
+                <div id="mobileHeader" className="hiddenScroll" style={{visibility: 'hidden'}}>
                     {this.getMobileHeaders()}
                 </div>
             </React.Fragment>
