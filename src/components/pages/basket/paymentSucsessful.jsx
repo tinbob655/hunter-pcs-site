@@ -27,7 +27,7 @@ class PaymentSucsessful extends Component {
     
             //create a discord webhook session
             const request = new XMLHttpRequest();
-            request.open("POST", "https://discord.com/api/webhooks/1187071870407807027/RKqIEOQhwxXsrBMmL_SCqpuIlbSZvvmn4YJ-kypWkp4aT6x289XF7GMVbItLz4-Ja9eS");
+            request.open("POST", process.env.REACT_APP_DISCORD_WEBHOOK_URL);
             
             //define the data being sent to the discord bot
             request.setRequestHeader('Content-Type', 'application/json');
