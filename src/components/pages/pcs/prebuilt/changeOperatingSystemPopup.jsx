@@ -72,7 +72,7 @@ class ChangeOperatingSystemPopup extends Component {
 
                 <form id="changeOperatingSystemForm">
                     <label htmlFor="selectOS">Select operating system</label>
-                    <select id="selectOS" name="selectOS" required>
+                    <select id="selectOS" name="selectOS" required style={{maxWidth: '85%'}}>
                         {this.state.options}
                     </select>
 
