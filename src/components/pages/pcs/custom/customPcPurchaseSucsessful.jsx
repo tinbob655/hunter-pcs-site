@@ -28,7 +28,6 @@ class CustomPcPurchaseSucsessful extends Component {
     
             //create a discord webhook session
             const request = new XMLHttpRequest();
-            console.log(process.env.REACT_APP_DISCORD_WEBHOOK_URL)
             request.open("POST", process.env.REACT_APP_DISCORD_WEBHOOK_URL);
             
             //define the data being sent to the discord bot
