@@ -2,13 +2,13 @@ import React from 'react';
 import { buttonExpand, isMobile } from '../../index.js';
 import { useNavigate } from 'react-router-dom';
 
-function SlidingButton({id, imgSrc, linkLocation, textContent, ssIndex, ssValue, onClickFunction}) {
+function SlidingButton({id, imgSrc, linkLocation, textContent, ssIndex, ssValue, onClickFunction, customButtonStyles}) {
 
     const navigate = useNavigate();
 
     return(
         <React.Fragment>
-            <button id={id+'button'} type="button" className={"linkButton " + (linkLocation === 'productPage' ? 'bigWhenExpanded' : '')}
+            <button id={id+'button'} style={customButtonStyles} type="button" className={"linkButton " + (linkLocation === 'productPage' ? 'bigWhenExpanded' : '')}
 
                 onMouseOver={function() {buttonExpand(id)}}
                 onClick={function() {ssValue ? (sessionStorage.setItem(ssIndex, ssValue)) : console.log('No value to store in session storage');

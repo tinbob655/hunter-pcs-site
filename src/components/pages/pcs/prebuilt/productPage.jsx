@@ -314,6 +314,7 @@ function ProductPage() {
                     id="purchaseButton"
                     imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788'
                     textContent={purchaseButtonContent}
+                    customButtonStyles={{backgroundColor: '#232020'}}
                     />
                     
                 {/*button to change the operating system of the prebuilt*/}
