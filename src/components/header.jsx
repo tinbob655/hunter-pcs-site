@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import { isMobile } from '../index.js';
 import '../hamburgers.css';
+import { convertOutOfCamelCase } from '../index.js';
 
 class Header extends Component {
 
@@ -13,6 +14,7 @@ class Header extends Component {
             'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2FloggedInSymbol.png?alt=media&token=94582489-6f5b-4204-84df-a7814b97b66a'
             :
             'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2FaccountIcon.png?alt=media&token=af8b312a-50d4-49cc-b874-010dd0b2201a',
+            basketImage: 'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2FbasketIcon.png?alt=media&token=e2448ce8-e238-45d8-ba6a-f8b87f8b23ac',
         };
     };
 
@@ -24,6 +26,17 @@ class Header extends Component {
                 document.getElementById('mobileHeader').style.visibility = 'visible';
             }, 1500);
         };
+
+        //check if there is anything in the basket
+        let basketArray = [];
+        for (let i = 0; i < 100; i++) {
+            if (localStorage.getItem('hunterPcsProduct'+i)) {
+                basketArray.push(convertOutOfCamelCase(localStorage.getItem('hunterPcsProduct'+i)));
+            };
+        };
+        if (basketArray.length > 0) {
+            this.setState({basketImage: 'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2FbasketIconExclamation.png?alt=media&token=4cf3a924-96ac-4b18-9ecf-e43a6e83201e'})
+        }
     };
 
     render() {
@@ -146,7 +159,7 @@ class Header extends Component {
 
                                     {/*RETURN TEXT FOR TEXT HEADRS, AND RESPECTIVE IMAGES FOR THE Log in AND BASKET PAGES*/}
                                     {header != 'Basket' && header != 'Log In' ? header : (
-                                        header == 'Basket' ? <img src={'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2FbasketIcon.png?alt=media&token=e2448ce8-e238-45d8-ba6a-f8b87f8b23ac'}
+                                        header == 'Basket' ? <img src={this.state.basketImage}
                                         style={{height: '50px', transitionProperty: 'background-color', transitionDuration: '1s'}}
                                         className="centered rounded" id={header+'image'} />
                                         :

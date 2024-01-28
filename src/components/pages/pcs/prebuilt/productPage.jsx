@@ -104,6 +104,9 @@ function ProductPage() {
             //change the page to the checkout page
             setTimeout(() => {
                 navigate('/basket');
+                setTimeout(() => {
+                    window.location.reload();
+                })
             }, 1000);
         };
     };
