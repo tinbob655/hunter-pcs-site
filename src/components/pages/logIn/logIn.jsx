@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {isMobile} from '../../../index.js';
 import LoginPopup from '../../multiPageComponents/popups/login/loginPopup.jsx';
 import './logInStyles.scss';
+import {getAuth, signOut} from 'firebase/auth';
 
 class LogIn extends Component {
 
@@ -70,9 +71,16 @@ class LogIn extends Component {
                     </div>
 
                     <div id="alreadyLoggedInMessage">
-                        <h2 style={{color: '#7d2323'}}>
+                        <h2 style={{color: '#7d2323', paddingBottom: 0, marginBottom: 0}}>
                             You are already logged into your Hunter PCs account!
                         </h2>
+                        <button type="button" onClick={() => {
+                            this.logOut();
+                        }}>
+                            <h3 style={{padding: 0, margin: 0}}>
+                                Log out
+                            </h3>
+                        </button>
                     </div>
                 </React.Fragment>
             );
@@ -116,9 +124,16 @@ class LogIn extends Component {
                     </div>
 
                     <div id="alreadyLoggedInMessage">
-                        <h2 style={{color: '#7d2323'}}>
+                        <h2 style={{color: '#7d2323', paddingBottom: 0, marginBottom: 0}}>
                             You are already logged into your Hunter PCs account!
                         </h2>
+                        <button type="button" onClick={() => {
+                            this.logOut();
+                        }}>
+                            <h3>
+                                Log out
+                            </h3>
+                        </button>
                     </div>
                 </React.Fragment>
             );
@@ -138,6 +153,24 @@ class LogIn extends Component {
         };
 
     };
+
+    logOut() {
+
+        //log the user out of firebase auth
+        const auth = getAuth();
+        signOut(auth)
+        .then(() => {
+
+            //set session storage values for log out
+            sessionStorage.removeItem('loggedIn');
+            window.location.reload();
+        })
+        .catch((error) => {
+
+            //either the user wasnt logged in in the first place, or it went wrong somehow
+            throw(error);
+        });
+    }
 };
 
 export default LogIn;
