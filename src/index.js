@@ -10,7 +10,7 @@ import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
 import Header from './components/header.jsx';
 import Content from './components/content.jsx';
 import Footer from './components/footer.jsx'
-import ScrollToTop from './components/scrollToTop.jsx';
+import ScrollToTop from './components/multiPageComponents/scrollToTop.jsx';
 
 
 //DEV FUNCTION to get firebase url
