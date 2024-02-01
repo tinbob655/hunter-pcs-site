@@ -17,6 +17,8 @@ class Footer extends Component {
         return (
             <React.Fragment>
                 <div id="footerContent" style={isMobile() ? {marginTop: '5vh'} : {marginTop: '20vh'}}>
+
+                    {/*list of all pages on one collumn and support page sections on the other collumn*/}
                     <div style={{width: '90%', backgroundColor: 'white', height: '5px', margin: 'auto'}}></div>
                     <table style={{width: '99vw', margin: 'auto'}}>
                         <thead>
@@ -47,9 +49,27 @@ class Footer extends Component {
                             </tr>
                         </thead>
                     </table>
-                    
-                    <TrustpilotTrustBox />
+
+                    {/*follow us and trustpilot box*/}
+                    <table style={{width: '50%', margin: 'auto'}}>
+                        <thead>
+                            <tr>
+                                <td>
+                                    <a href='https://www.instagram.com/hunterpcsuk/?igsh=MW1yYW5sb3o0N2tvYg%3D%3D&utm_source=qr' target="_blank">
+                                        <h3>
+                                            Follow us ⟶
+                                        </h3>
+                                    </a>
+                                </td>
+                                <td>
+                                    <TrustpilotTrustBox />
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
+
+                {/*final H logo*/}
                 <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FhunterPcsLogo.png?alt=media&token=c7353b9c-aa81-4882-ac8f-cfdc9dcc61ea'
                     className="centered" style={{width: this.state.logoImageWidth}} alt='loading...' />
             </React.Fragment>
@@ -57,6 +77,8 @@ class Footer extends Component {
     };
 
     getFooterLinks() {
+
+        {/*method to get the links for the linky section of the footer and return them to the DOM*/}
         let footerLinksHTML = [];
         const informationLinks = ['brandsWeUse', 'returns', 'fraudPrevention', 'warrantyInformation', 'termsOfService', 'privacyPolicy'];
         const menuLinks = ['pcsMain', 'home', 'about', 'support', 'tellAFriend', 'account', 'basket'];

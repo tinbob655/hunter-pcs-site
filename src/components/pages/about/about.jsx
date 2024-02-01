@@ -6,7 +6,6 @@ import TrustpilotTrustBox from '../../multiPageComponents/trustpilotWidget/trust
 
 class About extends Component {
 
-
     render() {
 
         //desktop about page
@@ -57,24 +56,50 @@ class About extends Component {
                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8'
                         leftBool={false} />
                     </div>
-    
-                    {/*GET IN TOUCH SECTION*/}
+
+                    {/*OUR SOCIALS SECTION*/}
                     <div className="purpleGrey">
                         <h1 className="alignLeft">
+                            Our socials
+                        </h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetup5.jpeg?alt=media&token=ae0b17a9-63c4-4632-89c4-265c75e1a2bd'
+                                        alt="loading..." className="mainImage centered" />
+                                    </td>
+                                    <td>
+                                        <h2 className="alignRight">
+                                            Drop us a follow
+                                        </h2>
+                                        <p className="alignLeft">
+                                            We work hard to provide high quality social media posts so you can have a better insight to what goes on at Hunter PCs.
+                                        </p>
+                                        <a href='https://www.instagram.com/hunterpcsuk/?igsh=MW1yYW5sb3o0N2tvYg%3D%3D&utm_source=qr' target="_blank">
+                                            <h3>
+                                                Follow us ⟶
+                                            </h3>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+    
+                    {/*GET IN TOUCH SECTION*/}
+                    <div>
+                        <h1 className="alignRight">
                             Get in touch
                         </h1>
                         <table>
                             <thead>
                                 <tr>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%202.jpeg?alt=media&token=c9e0128f-15ca-4595-bc92-15618109e0de'
-                                        className="mainImage centered" alt="loading..." />
-                                    </td>
-                                    <td>
-                                        <h2 className="alignRight">
+                                        <h2 className="alignLeft">
                                             We're here for you
                                         </h2>
-                                        <p className="alignLeft">
+                                        <p className="alignRight">
                                             You can contact us, anytime. One of our trained support officers will contact you within 0-5 business days with the full intent
                                             of making your life easier. Here at Hunter PCs, we pride ourselves on the quality of our customer support.
                                         </p>
@@ -84,6 +109,10 @@ class About extends Component {
                                             </h3>
                                         </a>
                                     </td>
+                                    <td>
+                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%202.jpeg?alt=media&token=c9e0128f-15ca-4595-bc92-15618109e0de'
+                                        className="mainImage centered" alt="loading..." />
+                                    </td>
                                 </tr>
                             </thead>
                         </table>
@@ -91,25 +120,25 @@ class About extends Component {
 
                     {/*LEAVE A REVIEW SECTION*/}
                     <div>
-                        <h1 className="alignRight">
+                        <h1 className="alignLeft">
                             Leave a Review
                         </h1>
                         <table>
                             <thead>
                                 <tr>
                                     <td>
-                                        <h2 className="alignLeft">
+                                    <   img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%203.jpeg?alt=media&token=94698dad-8a82-45fc-a076-171fd9c833af'
+                                        alt="loading..." className="mainImage centered" />
+                                    </td>
+                                    <td>
+                                        <h2 className="alignRight">
                                             Tell us what you think
                                         </h2>
-                                        <p className="alignRight">
+                                        <p className="alignLeft">
                                             Please consider leaving us a review using the below button. It helps us out making sure other gamers get high quality PCs from us and 
                                             gets the community in the game as soon as possible
                                         </p>
                                         <TrustpilotTrustBox />
-                                    </td>
-                                    <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%203.jpeg?alt=media&token=94698dad-8a82-45fc-a076-171fd9c833af'
-                                        alt="loading..." className="mainImage centered" />
                                     </td>
                                 </tr>
                             </thead>
@@ -117,7 +146,7 @@ class About extends Component {
                     </div>
     
                     {/*DELIVERY SECTION*/}
-                    <div>
+                    <div className="purpleGrey">
                         <GenericMarkupSection
                         headingText='We deliver'
                         subheadingText='From us to your doorstep'
@@ -127,7 +156,7 @@ class About extends Component {
                         linkContent='More on our quality guarantee'
                         linkDestination='/support'
                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788'
-                        leftBool={true} />
+                        leftBool={false} />
                     </div>
                 </React.Fragment>
             );
@@ -187,6 +216,38 @@ class About extends Component {
 
                     <div className="dividerLine"></div>
 
+                    {/*OUR SOCIALS SECTION*/}
+                    <div className="purpleGrey">
+                        <h1>
+                            Our socials
+                        </h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetup5.jpeg?alt=media&token=ae0b17a9-63c4-4632-89c4-265c75e1a2bd'
+                                        className="mainImage centered" alt="loading..." />
+                                    </td>
+                                    <td style={{width: '40%'}}>
+                                        <h2 className="alignLeft">
+                                            Drop us a follow
+                                        </h2>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <p>
+                            We work hard to provide high quality social media posts so you can have a better insight to what goes on at Hunter PCs.
+                        </p>
+                        <a href='https://www.instagram.com/hunterpcsuk/?igsh=MW1yYW5sb3o0N2tvYg%3D%3D&utm_source=qr' target="_blank">
+                            <h3>
+                                Follow us ⟶
+                            </h3>
+                        </a>
+                    </div>
+
+                    <div className="dividerLine"></div>
+
                     {/*GET IN TOUCH SECTION*/}
                     <div className="purpleGrey">
                         <h1>
@@ -195,13 +256,13 @@ class About extends Component {
                         <table>
                             <tr>
                                 <td>
-                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%202.jpeg?alt=media&token=c9e0128f-15ca-4595-bc92-15618109e0de'
-                                        className="mainImage centered" alt="loading..." />
-                                </td>
-                                <td style={{width: '40%'}}>
-                                    <h2 className="alignLeft">
+                                    <h2 className="alignRight">
                                         We're here for you
                                     </h2>
+                                </td>
+                                <td style={{width: '60%'}}>
+                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%202.jpeg?alt=media&token=c9e0128f-15ca-4595-bc92-15618109e0de'
+                                        className="mainImage centered" alt="loading..." />
                                 </td>
                             </tr>
                         </table>
@@ -227,13 +288,13 @@ class About extends Component {
                             <thead>
                                 <tr>
                                     <td>
-                                        <h2 className="alignRight">
-                                            Tell us what you think
-                                        </h2>
-                                    </td>
-                                    <td>
                                         <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%203.jpeg?alt=media&token=94698dad-8a82-45fc-a076-171fd9c833af'
                                         alt="loading..." className="mainImage centered" />
+                                    </td>
+                                    <td>
+                                        <h2 className="alignLeft">
+                                            Tell us what you think
+                                        </h2>
                                     </td>
                                 </tr>
                             </thead>
@@ -259,7 +320,7 @@ class About extends Component {
                             linkDestination='/support'
                             imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788'
                             DontShowDividerLineBool={true}
-                            leftBool={true} />
+                            leftBool={false} />
                     </div>
                 </React.Fragment>
             );
