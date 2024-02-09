@@ -51,7 +51,7 @@ class Footer extends Component {
                     </table>
 
                     {/*follow us and trustpilot box*/}
-                    <table style={{width: '50%', margin: 'auto'}}>
+                    <table style={isMobile? {width: '80%', margin: 'auto'} : {width: '50%', margin: 'auto'}}>
                         <thead>
                             <tr>
                                 <td>
@@ -61,8 +61,8 @@ class Footer extends Component {
                                         </h3>
                                     </a>
                                 </td>
-                                <td>
-                                    <TrustpilotTrustBox />
+                                <td style={isMobile? {width: '75%'} : {}}>
+                                    <TrustpilotTrustBox/>
                                 </td>
                             </tr>
                         </thead>
