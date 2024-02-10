@@ -51,7 +51,7 @@ class Support extends Component {
                     </div>
     
                     {/*CONTACT US SECTION*/ }
-                    <div id="contactUs">
+                    <div id="contactUs" className="intoPurple">
                         <h1 className="alignRight">
                             Contact us any time, anywhere
                         </h1>
@@ -120,7 +120,7 @@ class Support extends Component {
                     </div>
     
                     {/*RETURNS SECTION*/}
-                    <div id="returns">
+                    <div id="returns" className="outofPurple">
                         <h1>
                             Our return policy
                         </h1>
@@ -178,7 +178,7 @@ class Support extends Component {
                     </div>
     
                     {/*FRAUD PREVENTION SECTION*/}
-                    <div className="purpleGrey" id="fraudPrevention">
+                    <div className="intoPurple" id="fraudPrevention">
                         <GenericMarkupSection
                         headingText='Fraud Prevention'
                         subheadingText="Fraud is illegal, don't do it"
@@ -194,7 +194,7 @@ class Support extends Component {
                     </div>
     
                     {/*PRIVACY POLICY and TERMS OF SERVICE*/}
-                    <div>
+                    <div className="outofPurple">
                         <h1 className="alignRight">
                             Boring legal stuff
                         </h1>
@@ -282,7 +282,7 @@ class Support extends Component {
                     <div className="dividerLine"></div>
 
                     {/*CONTACT US SECTION*/}
-                    <div id="contactUs">
+                    <div id="contactUs" className="intoPurple">
                         <h1>
                             Contact us any time, anywhere
                         </h1>
@@ -351,7 +351,7 @@ class Support extends Component {
                     <div className="dividerLine"></div>
 
                     {/*RETURNS SECTION*/}
-                    <div id="returns">
+                    <div id="returns" className="outofPurple">
                         <h1>
                             Our Return Policy
                         </h1>
@@ -397,7 +397,7 @@ class Support extends Component {
                     </div>
 
                     {/*FRAUD PREVENTION SECTION*/}
-                    <div id="fraudPrevention" className="purpleGrey">
+                    <div id="fraudPrevention" className="intoPurple">
                         <GenericMarkupSection
                         headingText='Fraud Prevention'
                         subheadingText="Fraud is illegal, don't do it"
@@ -410,7 +410,7 @@ class Support extends Component {
                     </div>
 
                     {/*PRIVACY POLICY AND TERMS OF SERVICE*/}
-                    <div>
+                    <div className="purpleGrey">
                         <h1>
                             Boring legal stuff
                         </h1>
@@ -442,7 +442,7 @@ class Support extends Component {
                     <div className="dividerLine"></div>
 
                     {/*DELIVERY INFORMATION SECTION*/}
-                    <div id="deliveryInformation">
+                    <div id="deliveryInformation" className="outofPurple">
                         <GenericMarkupSection
                         headingText='Delivery Information'
                         subheadingText='We deliver'

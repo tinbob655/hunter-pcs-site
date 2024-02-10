@@ -130,6 +130,25 @@ div {
     border: none;
     display: block;
 
+    &.intoPurple {
+        background-image: linear-gradient(#000000, #30112c);
+        padding-bottom: 10vh;
+    }
+
+    &.purpleGrey {
+        background-color: #30112c;
+        box-shadow: 0 0 0 3vh #30112c;
+    }
+
+    &.outofPurple {
+        background-image: linear-gradient(#30112c, #000000);
+    }
+
+    &.intoPurple, .purpleGrey, .outofPurple {
+        display: inline-block;
+        width: 100%;
+    }
+
     &.hiddenScroll {
         overflow-y: hidden;
     }
@@ -137,12 +156,6 @@ div {
     &.withBackgroundImage {
         background-repeat: no-repeat;
         background-size: cover;
-    }
-
-    &.purpleGrey {
-        $backgroundColor: #30112c;
-        background-color: $backgroundColor;
-        box-shadow: 0 0 10000px 200px $backgroundColor;
     }
 
     &.linkButtonDivider {

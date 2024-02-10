@@ -43,8 +43,12 @@ button {
 
 div {
 
-    &.purpleGrey {
-        box-shadow: 0 0 200px 100px #30112c;
+    &.intoPurple {
+        padding-bottom: 0;
+    }
+
+    &.intoPurple, .purpleGrey, .outofPurple {
+        display: block;
     }
 
     &.footerContent {

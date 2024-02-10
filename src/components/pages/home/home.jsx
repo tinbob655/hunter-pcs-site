@@ -86,7 +86,7 @@ class Home extends Component {
                     </div>
     
                     {/*GAMING, PREBULIT, CUSTOM BUTTONS*/}
-                    <div className="purpleGrey">
+                    <div className="intoPurple">
                         <table style={{width: '100%'}}>
                             <thead>
                                 <tr>
@@ -123,7 +123,7 @@ class Home extends Component {
                     </div>
     
                     {/*PERFECT FOR GAMING SECTION*/}
-                    <div>
+                    <div className="purpleGrey">
                         <table>
                             <thead>
                                 <tr>
@@ -152,7 +152,7 @@ class Home extends Component {
                     </div>
     
                     {/*VIDEO FROM PC SECTION*/}
-                    <div>
+                    <div className="outofPurple">
                         <h1>
                             Play your favourite titles
                         </h1>
@@ -162,7 +162,7 @@ class Home extends Component {
                     </div>
     
                     {/*DESIGN YOUR OWN PC SECTION*/}
-                    <div className="purpleGrey" style={{ marginTop: '15vh'}}>
+                    <div style={{ marginTop: '15vh'}}>
                         <h1 className="alignRight">
                             Design your own, custom build
                         </h1>
@@ -282,7 +282,7 @@ class Home extends Component {
                     <div className="dividerLine"></div>
 
                     {/*GAMING, PREBUILT AND CUSTOM BUTTONS*/}
-                    <div className="purpleGrey">
+                    <div className="intoPurple">
                         <SlidingButton 
                         id="gamingPcs"
                         imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8'
@@ -305,7 +305,7 @@ class Home extends Component {
                     <div className="dividerLine"></div>
 
                     {/*PERFECT FOT GAMING SECTION*/}
-                    <div>
+                    <div className="purpleGrey">
                         <h1>
                             Perfect for gaming
                         </h1>
@@ -336,7 +336,7 @@ class Home extends Component {
                     <div className="dividerLine"></div>
 
                     {/*VIDEO OF GAMEPLAY SECTION*/}
-                    <div>
+                    <div className="outofPurple">
                         <h1>
                             Play your favourite titles, no sweat
                         </h1>
@@ -348,7 +348,7 @@ class Home extends Component {
                     <div className="dividerLine"></div>
 
                     {/*DESIGN YOUR OWN PC SECTION*/}
-                    <div className="purpleGrey">
+                    <div>
                         <h1>
                             Design your own, custom build
                         </h1>

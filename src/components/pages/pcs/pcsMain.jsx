@@ -54,7 +54,7 @@ class PcsMain extends Component {
             return (
                 <React.Fragment>
                     {/*HEADER SECTION*/}
-                    <div>
+                    <div className="intoPurple">
                         <h1 className="alignRight">
                             Hand crafted gaming PCs, ready to go
                         </h1>
@@ -179,7 +179,7 @@ class PcsMain extends Component {
                     </div>
     
                     {/*CUSTOM PCS SECTION*/}
-                    <div>
+                    <div className="outofPurple">
                         <GenericMarkupSection
                         headingText='Design your own PC'
                         subheadingText='Build your dreams'
@@ -200,7 +200,7 @@ class PcsMain extends Component {
                 <React.Fragment>
 
                     {/*header section*/}
-                    <div>
+                    <div className="intoPurple">
                         <h1>
                             Hand crafted gaming PCs, ready to go
                         </h1>
@@ -307,7 +307,7 @@ class PcsMain extends Component {
                     <div className="dividerLine"></div>
 
                     {/*CUSTOM PCS SECTION*/}
-                    <div>
+                    <div className="outofPurple">
                         <GenericMarkupSection
                             headingText='Design your own PC'
                             subheadingText='Build your dreams'

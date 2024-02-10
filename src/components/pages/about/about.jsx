@@ -43,7 +43,7 @@ class About extends Component {
                     </div>
     
                     {/*WHY HUNTER PCS SECTION*/}
-                    <div>
+                    <div className="intoPurple">
                         <GenericMarkupSection
                         headingText='Why Hunter PCs?'
                         subheadingText="Because we're the best"
@@ -88,7 +88,7 @@ class About extends Component {
                     </div>
     
                     {/*GET IN TOUCH SECTION*/}
-                    <div>
+                    <div className="outofPurple">
                         <h1 className="alignRight">
                             Get in touch
                         </h1>
@@ -146,7 +146,7 @@ class About extends Component {
                     </div>
     
                     {/*DELIVERY SECTION*/}
-                    <div className="purpleGrey">
+                    <div>
                         <GenericMarkupSection
                         headingText='We deliver'
                         subheadingText='From us to your doorstep'
@@ -199,7 +199,7 @@ class About extends Component {
                     <div className="dividerLine"></div>
 
                     {/*WHY HUNTER PCS SECTION*/}
-                    <div>
+                    <div className="intoPurple">
                         <GenericMarkupSection
                         headingText='Why Hunter PCs?'
                         subheadingText="Becase we're the best"
@@ -249,7 +249,7 @@ class About extends Component {
                     <div className="dividerLine"></div>
 
                     {/*GET IN TOUCH SECTION*/}
-                    <div className="purpleGrey">
+                    <div className="outofPurple">
                         <h1>
                             Get in Touch
                         </h1>
