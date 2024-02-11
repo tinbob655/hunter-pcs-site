@@ -220,9 +220,14 @@ class Support extends Component {
                                             <h2 className="alignLeft">
                                                 Terms of service
                                             </h2>
-                                            <p className="alignRight legalText">
-                                                ENTER_TERMS_OF_SERVICE_HERE
+                                            <p className="alignRight">
+                                                More on how we operate
                                             </p>
+                                            <Link to='/termsOfService'>
+                                                <h3>
+                                                    Read full terms of service ⟶
+                                                </h3>
+                                            </Link>
                                         </div>
                                     </td>
                                     <td>

@@ -13,6 +13,7 @@ import Support from './pages/support/support.jsx';
 import ProductPage from './pages/pcs/prebuilt/productPage.jsx';
 import PaymentSucsessful from './pages/basket/paymentSucsessful.jsx';
 import PrivacyPolicy from './pages/support/privacyPolicy.jsx';
+import TermsOfService from './pages/support/termsOfService.jsx';
 import CustomPcPurchaseSucsessful from './pages/pcs/custom/customPcPurchaseSucsessful.jsx';
 
 class Content extends Component {
@@ -37,6 +38,7 @@ class Content extends Component {
             productPage: <ProductPage/>,
             paymentSucsessful: <PaymentSucsessful/>,
             privacyPolicy: <PrivacyPolicy/>,
+            termsOfService: <TermsOfService/>,
             customPcPurchaseSucsessful: <CustomPcPurchaseSucsessful/>,
         };
         let routeHTML = [];
