@@ -3,6 +3,7 @@ import {isMobile} from '../../../index.js';
 import LoginPopup from '../../multiPageComponents/popups/login/loginPopup.jsx';
 import './logInStyles.scss';
 import {getAuth, signOut} from 'firebase/auth';
+import Image from '../../multiPageComponents/image.jsx';
 
 class LogIn extends Component {
 
@@ -45,8 +46,7 @@ class LogIn extends Component {
                             <thead>
                                 <tr>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetup1.jpeg?alt=media&token=b3e93b9f-2e13-4fa1-8442-cc05918e2b14'
-                                        alt="loading..." className="mainImage centered"/>
+                                        <Image imagePath="images/gamingSetup1.jpeg" imageClasses="mainImage centered" />
                                     </td>
                                     <td>
                                         <h2 className="alignRight">
@@ -98,8 +98,7 @@ class LogIn extends Component {
                             <thead>
                                 <tr>
                                     <td style={{width: '60%'}}>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetup1.jpeg?alt=media&token=b3e93b9f-2e13-4fa1-8442-cc05918e2b14'
-                                        alt="loading..." className="mainImage centered"/>
+                                        <Image imagePath="images/gamingSetup1.jpeg" imageClasses="mainImage centered" />
                                     </td>
                                     <td>
                                         <h2 className="alignLeft">

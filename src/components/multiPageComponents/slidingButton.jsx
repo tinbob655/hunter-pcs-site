@@ -1,6 +1,7 @@
 import React from 'react';
 import { buttonExpand, isMobile } from '../../index.js';
 import { useNavigate } from 'react-router-dom';
+import Image from './image.jsx';
 
 function SlidingButton({id, imgSrc, linkLocation, textContent, ssIndex, ssValue, onClickFunction, customButtonStyles}) {
 
@@ -43,8 +44,7 @@ function SlidingButton({id, imgSrc, linkLocation, textContent, ssIndex, ssValue,
 
                     <div className="linkButtonDivider" id={id+'divider'} ></div>
 
-                    <img src={imgSrc} alt="loading..."
-                    style={isMobile() ? {width: '30%', height: 'auto'} : {width: '25%', height: 'auto'}} className="centered"/>
+                    <Image imagePath={imgSrc} imageClasses="centered" imageStyles={isMobile? {width: '30%', height: 'auto'} : {width: '25%', height: 'auto'}} />
                 </button>
         </React.Fragment>
     );

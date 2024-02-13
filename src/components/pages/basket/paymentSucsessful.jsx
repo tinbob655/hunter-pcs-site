@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { isMobile } from '../../../index.js';
 import EmailPopup from '../../multiPageComponents/popups/email/emailPopup.jsx';
 import TrustpilotWidget from '../../multiPageComponents/trustpilotWidget/trustpilotWidget.jsx';
+import Image from '../../multiPageComponents/image.jsx';
 
 class PaymentSucsessful extends Component {
 
@@ -74,8 +75,7 @@ class PaymentSucsessful extends Component {
                                     </button>
                                 </td>
                                 <td style={{width: '40%'}}>
-                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49dfhttps://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
-                                    alt="loading..." className="mainImage centered" />
+                                    <Image imagePath="images/gamingSetupWIDE2.jpeg" imageClasses="mainImage centered" />
                                 </td>
                             </tr>
                         </table>
@@ -101,8 +101,7 @@ class PaymentSucsessful extends Component {
                         <thead>
                             <tr>
                                 <td>
-                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49dfhttps://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
-                                    alt="loading..." className="mainImage centered" />
+                                    <Image imagePath="images/gamingSetupWIDE2.jpeg" imageClasses="mainImage centered" />
                                 </td>
                                 <td style={{width: '40%'}}>
                                     <h2 className="alignLeft">

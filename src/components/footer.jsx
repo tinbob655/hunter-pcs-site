@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import {isMobile} from '../index.js';
 import TrustpilotTrustBox from './multiPageComponents/trustpilotWidget/trustpilotWidget.jsx';
+import Image from './multiPageComponents/image.jsx';
 
 class Footer extends Component {
 
@@ -43,8 +44,7 @@ class Footer extends Component {
                                     </table>
                                 </td>
                                 <td>
-                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupTall1.jpeg?alt=media&token=032bf5f9-4dc2-4697-bb8d-ee8fdf61aa77'
-                                     className="mainImage centered" style={{width: '80%', marginLeft: 0}} alt="loading..." />
+                                     <Image imagePath="images/gamingSetupTall1.jpeg" imageClasses="mainImage centered" imageStyles={{width: '80%', marginLeft: 0}} />
                                 </td>
                             </tr>
                         </thead>
@@ -70,8 +70,7 @@ class Footer extends Component {
                 </div>
 
                 {/*final H logo*/}
-                <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FhunterPcsLogo.png?alt=media&token=c7353b9c-aa81-4882-ac8f-cfdc9dcc61ea'
-                    className="centered" style={{width: this.state.logoImageWidth}} alt='loading...' />
+                <Image imagePath="images/hunterPcsLogo.png" imageClasses="centered" imageStyles={{width: this.state.logoImageWidth}} />
             </React.Fragment>
         );
     };

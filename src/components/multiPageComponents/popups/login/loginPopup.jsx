@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './loginStyles.scss';
 import {isMobile} from '../../../../index.js';
+import Image from '../../image.jsx';
 
 //firebase modules for accounts
 import {getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup} from 'firebase/auth';
@@ -261,8 +262,7 @@ class LoginPopup extends Component {
                                 <button type="button" onClick={function() {logInWithGoogle()}}>
                                     <h3 style={{marginBottom: 0, paddingBottom: 0}} >
                                         Or log in with:
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2Fgoogle%20logo.png?alt=media&token=e18829e4-9cba-4141-bb2e-385eb563e8f5'
-                                        style={{height: 'auto', width: '60px'}} className="centered"/>
+                                        <Image imagePath="images/interactiveElements/google logo.png" imageClasses="centered" imageStyles={{height: 'auto', width: '60px'}} />
                                     </h3>
                                 </button>
                             </React.Fragment>
@@ -300,8 +300,7 @@ class LoginPopup extends Component {
                                     <button type="button" onClick={function() {logInWithGoogle()}}>
                                         <h3>
                                             Or log in with:
-                                            <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2Fgoogle%20logo.png?alt=media&token=e18829e4-9cba-4141-bb2e-385eb563e8f5'
-                                        style={{height: 'auto', width: '40px'}} className="centered"/>
+                                            <Image imagePath="images/interactiveElements/google logo.png" imageClasses="centered" imageStyles={{height: 'auto', width: '40px'}} />
                                         </h3>
                                     </button>
                                 </form>
@@ -354,8 +353,7 @@ class LoginPopup extends Component {
                                 <button type="button" onClick={function() {logInWithGoogle()}}>
                                     <h3>
                                         Or log in with:
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2Fgoogle%20logo.png?alt=media&token=e18829e4-9cba-4141-bb2e-385eb563e8f5'
-                                        style={{height: 'auto', width: '60px'}} className="centered"/>
+                                        <Image imagePath="images/interactiveElements/google logo.png" imageClasses="centered" imageStyles={{height: 'auto', width: '60px'}} />
                                     </h3>
                                 </button>
                             </React.Fragment>
@@ -411,8 +409,7 @@ class LoginPopup extends Component {
                                 <button type="button" onClick={function() {logInWithGoogle()}}>
                                     <h3>
                                         Or log in with:
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FinteractiveElements%2Fgoogle%20logo.png?alt=media&token=e18829e4-9cba-4141-bb2e-385eb563e8f5'
-                                        style={{height: 'auto', width: '40px'}} className="centered"/>
+                                        <Image imagePath="images/interactiveElements/google logo.png" imageClasses="centered" imageStyles={{height: 'auto', width: '40px'}} />
                                     </h3>
                                 </button>
                             </React.Fragment>

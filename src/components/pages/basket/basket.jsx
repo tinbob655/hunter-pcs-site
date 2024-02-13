@@ -6,6 +6,7 @@ import { getDoc, doc, getFirestore } from 'firebase/firestore';
 import StripeCheckout from '../../multiPageComponents/checkout/mountedStripeCheckout.jsx';
 import AddressPopup from '../../multiPageComponents/popups/address/addressPopup.jsx';
 import {startStripeSession} from '../../multiPageComponents/checkout/checkoutFunctions.ts';
+import Image from '../../multiPageComponents/image.jsx';
 
 //defining here not later beause it is to be used in multiple processes (make global)
 var basketArray = [];
@@ -76,8 +77,7 @@ class Basket extends Component {
                                         )}
                                     </td>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
-                                        className="mainImage centered" alt="loading..." />
+                                        <Image imagePath="images/gamingSetupWIDE2.jpeg" imageClasses="mainImage centered" />
                                     </td>
                                 </tr>
                             </thead>
@@ -93,8 +93,7 @@ class Basket extends Component {
                             <thead>
                                 <tr>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788' 
-                                        className="mainImage centered" alt="loading..." />
+                                        <Image imagePath="images/image of pc 2.jpeg" imageClasses="mainImage centered" />
                                     </td>
                                     <td>
                                         <h2 className="alignRight">
@@ -144,8 +143,7 @@ class Basket extends Component {
                             <thead>
                                 <tr>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
-                                        className="mainImage centered" alt="loading..." />
+                                        <Image imagePath="images/gamingSetupWIDE2.jpeg" imageClasses="mainImage centered" />
                                     </td>
                                     <td style={{width: '40%'}}>
                                         <h2 className="alignLeft">
@@ -208,8 +206,7 @@ class Basket extends Component {
                                         </h2>
                                     </td>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788' 
-                                        className="mainImage centered" alt="loading..." />
+                                        <Image imagePath="images/image of pc 2.jpeg" imageClasses="mainImage centered" />
                                     </td>
                                 </tr>
                             </thead>

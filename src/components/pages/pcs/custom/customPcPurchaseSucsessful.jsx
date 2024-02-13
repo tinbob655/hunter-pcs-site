@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { isMobile } from '../../../../index.js';
 import EmailPopup from '../../../multiPageComponents/popups/email/emailPopup.jsx';
+import Image from '../../../multiPageComponents/image.jsx';
 
 //ss values are: customPcSpec address email
 
@@ -57,8 +58,7 @@ class CustomPcPurchaseSucsessful extends Component {
                         <thead>
                             <tr>
                                 <td>
-                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49dfhttps://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
-                                    className="mainImage centered" alt='loading...' />
+                                    <Image imagePath="images/gamingSetupWIDE2.jpeg" imageClasses="mainImage centered" />
                                 </td>
                                 <td>
                                     <h2 className="alignRight">
@@ -96,8 +96,7 @@ class CustomPcPurchaseSucsessful extends Component {
                         <thead>
                             <tr>
                                 <td style={{width: '60%'}}>
-                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49dfhttps://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
-                                    className="mainImage centered" alt="loading..." />
+                                    <Image imagePath="images/gamingSetupWIDE2.jpeg" imageClasses="mainImage centered" />
                                 </td>
                                 <td>
                                     <h2 className="alignLeft">

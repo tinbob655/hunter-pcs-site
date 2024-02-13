@@ -17,7 +17,7 @@ class TellAFriend extends Component {
                     linkDestination='/pcsMain'
                     DontShowDividerLineBool={true}
                     leftBool={true}
-                    imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%202.jpeg?alt=media&token=c9e0128f-15ca-4595-bc92-15618109e0de'
+                    imgSrc='images/rounded skull 2.jpeg'
                     customHeaderClassName='alignRight' />
                 </div>
             </React.Fragment>

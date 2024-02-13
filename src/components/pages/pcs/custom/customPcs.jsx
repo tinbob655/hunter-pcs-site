@@ -4,6 +4,7 @@ import LoginPopup from '../../../multiPageComponents/popups/login/loginPopup.jsx
 import AddressPopup from '../../../multiPageComponents/popups/address/addressPopup.jsx';
 import CustomSpecForm from './customSpecForm.jsx';
 import AutoNav from '../../../multiPageComponents/autoNav.jsx';
+import Image from '../../../multiPageComponents/image.jsx';
 
 class CustomPcs extends Component {
 
@@ -49,8 +50,7 @@ class CustomPcs extends Component {
                                         </button>
                                     </td>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
-                                        className="mainImage centered" alt="loading..." />
+                                        <Image imagePath="images/gamingSetupWIDE2.jpeg" imageClasses="mainImage centered" />
                                     </td>
                                 </tr>
                             </thead>
@@ -66,8 +66,7 @@ class CustomPcs extends Component {
                             <thead>
                                 <tr>
                                     <td style={{width: '40%'}}>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%203.jpeg?alt=media&token=94698dad-8a82-45fc-a076-171fd9c833af'
-                                        alt="loading..." className="mainImage centered" />
+                                        <Image imagePath="images/rounded skull 3.jpeg" imageClasses="mainImage centered" />
                                     </td>
                                     <td>
                                         <h2 className="alignRight">
@@ -120,8 +119,7 @@ class CustomPcs extends Component {
                             <thead>
                                 <tr>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
-                                        className="mainImage centered" alt="loading..." />
+                                        <Image imagePath="images/gamingSetupWIDE2.jpeg" imageClasses="mainImage centered" />
                                     </td>
                                     <td style={{width: '40%'}}>
                                         <h2 className="alignLeft">
@@ -159,8 +157,7 @@ class CustomPcs extends Component {
                                         </h2>
                                     </td>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%203.jpeg?alt=media&token=94698dad-8a82-45fc-a076-171fd9c833af'
-                                        alt="loading..." className="mainImage centered" />
+                                        <Image imagePath="images/rounded skull 3.jpeg" imageClasses="mainImage centered" />
                                     </td>
                                 </tr>
                             </thead>

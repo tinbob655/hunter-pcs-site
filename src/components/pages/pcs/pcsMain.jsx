@@ -4,6 +4,7 @@ import {doc, getDoc, getFirestore} from 'firebase/firestore';
 import { firebaseInit } from '../../../firebase.js';
 import { isMobile } from '../../../index.js';
 import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection.jsx';
+import Image from '../../multiPageComponents/image.jsx';
 
 firebaseInit();
 
@@ -16,7 +17,7 @@ class PcsMain extends Component {
             prices: {
             },
             productImages: {
-                temporary: 'https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8',
+                temporary: 'images/image of pc.jpeg',
             },
         };
     };
@@ -62,8 +63,7 @@ class PcsMain extends Component {
                             <thead>
                                 <tr>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE1.jpeg?alt=media&token=aa72a5f1-7adb-42cd-98d2-a0e8795822da' 
-                                        className="mainImage" alt="loading..."/>
+                                        <Image imagePath="images/gamingSetupWIDE1.jpeg" imageClasses="mainImage" />
                                     </td>
                                     <td>
                                         <h2 className="alignRight">
@@ -186,7 +186,7 @@ class PcsMain extends Component {
                         paragraphText='Using our custom PC creator, you can design the PC of your dreams online, right now.'
                         linkContent='Click here to get started ⟶'
                         linkDestination='/customPcs'
-                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=b7433866-5203-4cbb-9808-ca1d47ee1a48'
+                        imgSrc='images/motherboardTall.jpeg'
                         leftBool={false} 
                         customImageCellStyles={{width: '60%'}}/>
                     </div>
@@ -208,8 +208,7 @@ class PcsMain extends Component {
                             <thead>
                                 <tr>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE1.jpeg?alt=media&token=aa72a5f1-7adb-42cd-98d2-a0e8795822da' 
-                                        className="mainImage" alt="loading..."/>
+                                        <Image imagePath="images/gamingSetupWIDE1.jpeg" imageClasses="mainImage"/>
                                     </td>
                                     <td style={{width: '40%'}}>
                                         <h2 className="alignLeft">
@@ -314,7 +313,7 @@ class PcsMain extends Component {
                             paragraphText='Using our custom PC creator, you can design the PC of your dreams online, right now.'
                             linkContent='Click here to get started ⟶'
                             linkDestination='/customPcs'
-                            imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=b7433866-5203-4cbb-9808-ca1d47ee1a48'
+                            imgSrc='images/motherboardTall.jpeg'
                             leftBool={false} 
                             customImageCellStyles={{width: '60%'}}
                             DontShowDividerLineBool={true}/>

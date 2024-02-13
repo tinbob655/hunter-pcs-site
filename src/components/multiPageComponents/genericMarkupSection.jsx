@@ -1,6 +1,7 @@
 import React from 'react';
 import {isMobile} from '../../index.js';
 import {Link} from'react-router-dom';
+import Image from './image.jsx';
 
 function GenericMarkupSection({headingText, subheadingText, paragraphText, linkContent, linkDestination, imgSrc,
      leftBool, customImageStyles, customImageCellStyles, DontShowDividerLineBool, customHeaderClassName}) {
@@ -9,7 +10,7 @@ function GenericMarkupSection({headingText, subheadingText, paragraphText, linkC
     let heading;
     let subheading;
     let paragraph;
-    let image = <img className="mainImage centered" src={imgSrc} style={customImageStyles} />
+    let image = <Image imagePath={imgSrc} imageClasses="mainImage centered" imageStyles={customImageStyles? customImageStyles : {}} />
 
     if (!isMobile()) {
         heading = <h1 className={leftBool ? 'alignLeft' : 'alignRight'}>{headingText}</h1>

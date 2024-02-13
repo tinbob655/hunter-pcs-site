@@ -4,6 +4,7 @@ import SlidingButton from '../../multiPageComponents/slidingButton.jsx';
 import gamesCompilationVideo from '../../../media/HunterPcs all games compilation.mp4';
 import {isMobile} from '../../../index.js';
 import './homeStyles.scss';
+import Image from '../../multiPageComponents/image.jsx';
 
 class Home extends Component {
 
@@ -95,7 +96,7 @@ class Home extends Component {
                                     <td style={{width: '33.3%'}}>
                                         <SlidingButton 
                                         id="gamingPcs"
-                                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8'
+                                        imgSrc='images/image of pc.jpeg'
                                         linkLocation='/pcsMain'
                                         textContent='Gaming' />
                                     </td>
@@ -104,7 +105,7 @@ class Home extends Component {
                                     <td style={{width: '33.3%'}}>
                                         <SlidingButton
                                         id="preBuilt"
-                                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frainbow%20pc.png?alt=media&token=0e548201-b1c6-4ea6-8efb-bea42aea9bdb'
+                                        imgSrc='images/rainbow pc.png'
                                         linkLocation='/pcsMain'
                                         textContent='Prebuilt' />
                                     </td>
@@ -113,7 +114,7 @@ class Home extends Component {
                                     <td style={{width: '33.3%'}}>
                                         <SlidingButton 
                                         id="custom"
-                                        imgSrc="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fstock%20pc%20parts.png?alt=media&token=f920a622-e3cc-4e59-9df1-ee6cf27c9c7b"
+                                        imgSrc="images/stock pc parts.png"
                                         linkLocation='/customPcs'
                                         textContent='Custom' />
                                     </td>
@@ -143,8 +144,7 @@ class Home extends Component {
                                     </td>
     
                                     <td style={{width: '50%'}}>
-                                    <img src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%202.jpeg?alt=media&token=c9e0128f-15ca-4595-bc92-15618109e0de" 
-                                        style={{width: '85%'}} className="mainImage" alt="loading..."/>
+                                        <Image imagePath="images/rounded skull 2.jpeg" imageClasses="mainImage centered" imageStyles={{width: '85%'}} />
                                     </td>
                                 </tr>
                             </thead>
@@ -181,8 +181,7 @@ class Home extends Component {
                                         </Link>
                                     </td>
                                     <td style={{width: '50%'}}>
-                                        <img src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8"
-                                        className="mainImage" style={{marginRight: 'auto', width: '65%', marginLeft: '10%'}} alt="loading..." />
+                                        <Image imagePath="images/image of pc.jpeg" imageClasses="mainImage centered" imageStyles={{marginRight: 'auto', width: '65%', marginLeft: '10%'}} />
                                     </td>
                                 </tr>
                             </thead>
@@ -195,8 +194,7 @@ class Home extends Component {
                             <thead>
                                 <tr>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupTall2.jpeg?alt=media&token=fb61bf07-a94d-4b28-8285-eb866345f9e7' 
-                                        className="mainImage centered" style={{width: '85%'}} alt="loading..."/>
+                                        <Image imagePath="images/gamingSetupTall2.jpeg" imageClasses="mainImgae centered" imageStyles={{width: '85%'}} />
                                     </td>
     
                                     <td style={{width: '60%'}}>
@@ -285,19 +283,19 @@ class Home extends Component {
                     <div className="intoPurple">
                         <SlidingButton 
                         id="gamingPcs"
-                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8'
+                        imgSrc='images/image of pc.jpeg'
                         linkLocation='pcsMain'
                         textContent='Gaming' />
 
                         <SlidingButton
                         id="preBuilt"
-                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frainbow%20pc.png?alt=media&token=0e548201-b1c6-4ea6-8efb-bea42aea9bdb'
+                        imgSrc='images/rainbow pc.png'
                         linkLocation='pcsMain'
                         textContent='Prebuilt' />
 
                         <SlidingButton 
                         id="custom"
-                        imgSrc="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fstock%20pc%20parts.png?alt=media&token=f920a622-e3cc-4e59-9df1-ee6cf27c9c7b"
+                        imgSrc="images/stock pc parts.png"
                         linkLocation='customPcs'
                         textContent='Custom' />
                     </div>
@@ -317,8 +315,7 @@ class Home extends Component {
                                     </h2>
                                 </td>
                                 <td>
-                                    <img src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%202.jpeg?alt=media&token=c9e0128f-15ca-4595-bc92-15618109e0de" 
-                                    className="mainImage" alt="loading..."/>
+                                    <Image imagePath="images/rounded skull 2.jpeg" imageClasses="mainImage centered" />
                                 </td>
                             </tr>
                         </table>
@@ -356,8 +353,7 @@ class Home extends Component {
                             <thead>
                                 <tr>
                                     <td>
-                                        <img src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8"
-                                        className="mainImage" alt="loading..." />
+                                        <Image imagePath="images/image of pc.jpeg" imageClasses="mainImage centered" />
                                     </td>
                                     <td style={{width: '40%'}}>
                                         <h2 className="alignLeft">
@@ -394,8 +390,7 @@ class Home extends Component {
                                         </h2>
                                     </td>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupTall2.jpeg?alt=media&token=fb61bf07-a94d-4b28-8285-eb866345f9e7' 
-                                        className="mainImage centered" style={{width: '85%'}} alt="loading..."/>
+                                        <Image imagePath="images/gamingSetupTall2.jpeg" imageClasses="mainImage centered" imageStyles={{width: '85%'}} />
                                     </td>
                                 </tr>
                             </thead>

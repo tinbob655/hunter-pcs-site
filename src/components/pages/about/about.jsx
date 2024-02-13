@@ -3,6 +3,7 @@ import { isMobile } from '../../../index.js';
 import { Link } from 'react-router-dom';
 import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection.jsx';
 import TrustpilotTrustBox from '../../multiPageComponents/trustpilotWidget/trustpilotWidget.jsx';
+import Image from '../../multiPageComponents/image.jsx';
 
 class About extends Component {
 
@@ -21,8 +22,7 @@ class About extends Component {
                         <table>
                             <tr>
                                 <td>
-                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
-                                    className="mainImage centered" alt="loading..." />
+                                    <Image imagePath="images/gamingSetupWIDE2.jpeg" imageClasses="mainImage centered" />
                                 </td>
                                 <td style={{width: '40%'}}>
                                     <h2 className="alignRight">
@@ -53,7 +53,7 @@ class About extends Component {
                         That's the Hunter Pcs no expenses spared gurantee`}
                         linkContent='Read more on our no expenses spared guarantee'
                         linkDestination='/support'
-                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8'
+                        imgSrc='images/image of pc.jpeg'
                         leftBool={false} />
                     </div>
 
@@ -66,8 +66,7 @@ class About extends Component {
                             <thead>
                                 <tr>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetup5.jpeg?alt=media&token=ae0b17a9-63c4-4632-89c4-265c75e1a2bd'
-                                        alt="loading..." className="mainImage centered" />
+                                        <Image imagePath="images/gamingSetup5.jpeg" imageClasses="mainImage centered" />
                                     </td>
                                     <td>
                                         <h2 className="alignRight">
@@ -110,8 +109,7 @@ class About extends Component {
                                         </a>
                                     </td>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%202.jpeg?alt=media&token=c9e0128f-15ca-4595-bc92-15618109e0de'
-                                        className="mainImage centered" alt="loading..." />
+                                        <Image imagePath="images/rounded skull 2.jpeg" imageClasses="mainImage centered" />
                                     </td>
                                 </tr>
                             </thead>
@@ -127,8 +125,7 @@ class About extends Component {
                             <thead>
                                 <tr>
                                     <td>
-                                    <   img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%203.jpeg?alt=media&token=94698dad-8a82-45fc-a076-171fd9c833af'
-                                        alt="loading..." className="mainImage centered" />
+                                        <Image imagePath="images/rounded skull 3.jpeg" imageClasses="mainimage centered" />
                                     </td>
                                     <td>
                                         <h2 className="alignRight">
@@ -155,7 +152,7 @@ class About extends Component {
                         Its all just part of the Hunter Pcs quality guarantee"
                         linkContent='More on our quality guarantee'
                         linkDestination='/support'
-                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788'
+                        imgSrc='images/image of pc 2.jpeg'
                         leftBool={false} />
                     </div>
                 </React.Fragment>
@@ -175,8 +172,7 @@ class About extends Component {
                         <table>
                             <tr>
                                 <td>
-                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
-                                    className="mainImage centered" alt="loading..." />
+                                    <Image imagePath="images/gamingSetupWIDE2.jpeg" imageClasses="mainImage centered" />
                                 </td>
                                 <td style={{width: '40%'}}>
                                     <h2 className="alignLeft">
@@ -209,7 +205,7 @@ class About extends Component {
                         That's the Hunter PCs no expenses spared guarantee`}
                         linkContent='Read more on our no expenses spared guarantee'
                         linkDestination='/support'
-                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8'
+                        imgSrc='images/image of pc.jpeg'
                         leftBool={false}
                         DontShowDividerLineBool={true} />
                     </div>
@@ -225,8 +221,7 @@ class About extends Component {
                             <thead>
                                 <tr>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetup5.jpeg?alt=media&token=ae0b17a9-63c4-4632-89c4-265c75e1a2bd'
-                                        className="mainImage centered" alt="loading..." />
+                                        <Image imagePath="images/gamingSetup5.jpeg" imageClasses="mainImage centered" />
                                     </td>
                                     <td style={{width: '40%'}}>
                                         <h2 className="alignLeft">
@@ -261,8 +256,7 @@ class About extends Component {
                                     </h2>
                                 </td>
                                 <td style={{width: '60%'}}>
-                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%202.jpeg?alt=media&token=c9e0128f-15ca-4595-bc92-15618109e0de'
-                                        className="mainImage centered" alt="loading..." />
+                                    <Image imagePath="images/rounded skull 2.jpeg" imageClasses="mainImage centered" />
                                 </td>
                             </tr>
                         </table>
@@ -288,8 +282,7 @@ class About extends Component {
                             <thead>
                                 <tr>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%203.jpeg?alt=media&token=94698dad-8a82-45fc-a076-171fd9c833af'
-                                        alt="loading..." className="mainImage centered" />
+                                        <Image imagePath="images/rounded skull 3.jpeg" imageClasses="mainImage centered" />
                                     </td>
                                     <td>
                                         <h2 className="alignLeft">
@@ -318,7 +311,7 @@ class About extends Component {
                             Its all just part of the Hunter PCs quality guarantee"
                             linkContent='More on our quality guarantee'
                             linkDestination='/support'
-                            imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc%202.jpeg?alt=media&token=130b9cda-a29c-4e11-a752-d1e68ef07788'
+                            imgSrc='images/image of pc 2.jpeg'
                             DontShowDividerLineBool={true}
                             leftBool={false} />
                     </div>

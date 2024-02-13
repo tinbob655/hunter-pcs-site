@@ -10,6 +10,7 @@ import LoginPopup from '../../../multiPageComponents/popups/login/loginPopup.jsx
 import GenericMarkupSection from '../../../multiPageComponents/genericMarkupSection.jsx';
 import ChangeOperatingSystemPopup from './changeOperatingSystemPopup.jsx';
 import SlidingButton from '../../../multiPageComponents/slidingButton.jsx';
+import Image from '../../../multiPageComponents/image.jsx';
 import '../pcsStyles.scss';
 
 isMobile() ? import('../mobilePcsStyles.scss') : <></>;
@@ -239,8 +240,7 @@ function ProductPage() {
                         <thead>
                             <tr>
                                 <td>
-                                <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=1e13e531-cf90-4a64-953f-84e850755064'
-                                className="mainImage" style={{width: '75%', marginLeft: '5%', maxHeight: 'unset'}} alt="loading..."/>
+                                    <Image imagePath="images/motherboardTall.jpeg" imageClasses="mainImage" imageStyles={{width: '75%', marginLeft: '5%', maxHeight: 'unset'}} />
                                 </td>
 
                                 <td>
@@ -262,7 +262,7 @@ function ProductPage() {
                     the PCs themselves."
                     linkContent='More on our quality guarantee ⟶'
                     linkDestination='/support'
-                    imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
+                    imgSrc='images/gamingSetupWIDE2.jpeg'
                     customImageCellStyles={{width: '60%'}} 
                     leftBool={true}/>
                 </div>
@@ -354,7 +354,7 @@ function ProductPage() {
                     the PCs themselves."
                     linkContent='More on our quality guarantee ⟶'
                     linkDestination='/support'
-                    imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupWIDE2.jpeg?alt=media&token=f45440e7-bb17-4e56-9213-6bb178ed49df'
+                    imgSrc='images/gamingSetupWIDE2.jpeg'
                     DontShowDividerLineBool={true}
                     leftBool={true}/>
                 </div>

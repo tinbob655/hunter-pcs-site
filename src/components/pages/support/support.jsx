@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {isMobile} from '../../../index.js';
 import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection.jsx';
 import { Link } from 'react-router-dom';
+import Image from '../../multiPageComponents/image.jsx';
 
 class Support extends Component {
 
@@ -32,8 +33,7 @@ class Support extends Component {
                             <thead>
                                 <tr>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetup3.jpeg?alt=media&token=14f48700-0317-41ad-8a46-723bdc52bc5c'
-                                        className="mainImage centered" style={{width: '85%'}} alt="loading..." />
+                                        <Image imagePath="images/gamingSetup3.jpeg" imageClasses="mainImage centered" imageStyles={{width: '85%'}} />
                                     </td>
                                     <td style={{width: '40%'}}>
                                         <h2 className="alignRight">
@@ -73,8 +73,7 @@ class Support extends Component {
                                         </a>
                                     </td>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%202.jpeg?alt=media&token=c9e0128f-15ca-4595-bc92-15618109e0de'
-                                        className="mainImage centered" style={{width: '85%'}} alt="loading..." />
+                                        <Image imagePath="images/rounded skull 2.jpeg" imageClasses="mainImage centered" imageStyles={{width: '85%'}} />
                                     </td>
                                 </tr>
                             </thead>
@@ -90,8 +89,7 @@ class Support extends Component {
                             <thead>
                                 <tr>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8' 
-                                        className="mainImage centered" style={{width: '85%'}} alt="loading..." />
+                                        <Image imagePath="images/image of pc.jpeg" imageClasses="mainImage centered" imageStyles={{width: '85%'}} />
                                     </td>
                                     <td>
                                         <h2 className="alignRight">
@@ -172,7 +170,7 @@ class Support extends Component {
                         subheadingText="Tinker to your heart's content"
                         paragraphText={`Love tinkering with a pc? Us too: you can tinker and edit your PC all you want, however do so at your own risk.
                         If something breaks and you removed your warranty sticker, then that's on you. We can still fix it, but you'll be paying for the replacement parts`}
-                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=1e13e531-cf90-4a64-953f-84e850755064'
+                        imgSrc='images/motherboardTall.jpeg'
                         leftBool={false}
                         customImageStyles={{maxHeight: '400px', objectFit: 'cover'}} />
                     </div>
@@ -188,7 +186,7 @@ class Support extends Component {
                         If you don't send us images on request then we may revoke access to your Hunter PCs account and refuse to send you any gaming PCs
                         
                         By purchasing any product from Hunter PCs, you agree to our fraud prevention program`}
-                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%204.jpeg?alt=media&token=fc2925fe-3d55-47ca-adc8-42bcf4a8b025'
+                        imgSrc='images/rounded skull 4.jpeg'
                         leftBool={true} 
                         customImageCellStyles={{width: '45%'}}/>
                     </div>
@@ -231,8 +229,7 @@ class Support extends Component {
                                         </div>
                                     </td>
                                     <td>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetupTall3.jpeg?alt=media&token=2aa1cc21-dfdf-44aa-b228-e1de4cc45337'
-                                        className="mainImage centered" style={{width: '85%'}} alt="loading..." />
+                                        <Image imagePath="images/gamingSetupTall3.jpeg" imageClasses="mainImage centered" imageStyles={{width: '85%'}} />
                                     </td>
                                 </tr>
                             </thead>
@@ -246,7 +243,7 @@ class Support extends Component {
                         subheadingText='We deliver'
                         paragraphText="We only use the highest quality services for delivery. All Hunter PCs are delivered using DPD, one of the world's leading parcel delivery networks.
                          At current, we only deliver to England."
-                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetup5.jpeg?alt=media&token=ae0b17a9-63c4-4632-89c4-265c75e1a2bd'
+                        imgSrc='images/gamingSetup5.jpeg'
                         leftBool={true} 
                         customImageCellStyles={{width: '60%'}}/>
                     </div>
@@ -267,8 +264,7 @@ class Support extends Component {
                         <table>
                             <tr>
                                 <td style={{width: '60%'}}>
-                                    <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetup3.jpeg?alt=media&token=14f48700-0317-41ad-8a46-723bdc52bc5c'
-                                            className="mainImage centered" alt="loading..." /> 
+                                    <Image imagePath="images/gamingSetup3.jpeg" imageClasses="mainImage centered"/>
                                 </td>
                                 <td>
                                     <h2 className="alignLeft">
@@ -300,8 +296,7 @@ class Support extends Component {
                                         </h2>
                                     </td>
                                     <td style={{width: '60%'}}>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%202.jpeg?alt=media&token=c9e0128f-15ca-4595-bc92-15618109e0de'
-                                        className="mainImage centered" alt="loading..." />
+                                        <Image imagePath="images/rounded skull 2.jpeg" imageClasses="mainImage centered" />
                                     </td>
                                 </tr>
                             </thead>
@@ -328,8 +323,7 @@ class Support extends Component {
                             <thead>
                                 <tr>
                                     <td style={{width: '60%'}}>
-                                        <img src='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Fimage%20of%20pc.jpeg?alt=media&token=057583b8-036a-4ffd-9657-58e010d7e8e8' 
-                                        className="mainImage centered" alt="loading..." />
+                                        <Image imagePath="images/image of pc.jpeg" imageClasses="mainImage centered" />
                                     </td>
                                     <td>
                                         <h2 className="alignLeft">
@@ -396,7 +390,7 @@ class Support extends Component {
                         subheadingText="Tinker to your heart's content"
                         paragraphText="Love tinkering with a PC? Us too: you can tinker and edit your PC all you want, however do so at your own risk.
                         If something breaks and you removed your warranty sticker, then thats on you. We can still fix it, but you'll be paying for the replacement parts"
-                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FmotherboardTall.jpeg?alt=media&token=1e13e531-cf90-4a64-953f-84e850755064'
+                        imgSrc='images/motherboardTall.jpeg'
                         leftBool={false} 
                         customImageStyles={{maxHeight: '250px', objectFit: 'cover'}} />
                     </div>
@@ -410,7 +404,7 @@ class Support extends Component {
                         make sure that our real customers can get their PC faster, and to stop you dirty AI startups taking everyone else's GPUs.
                         If you don't send us images on request then we may revoke access to your Hunter PCs account and refuse to send you any gaming PCs.
                         By purchasing any product from Hunter PCs, you agree to our fraud prevention program`}
-                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Frounded%20skull%204.jpeg?alt=media&token=fc2925fe-3d55-47ca-adc8-42bcf4a8b025'
+                        imgSrc='images/rounded skull 4.jpeg'
                         leftBool={true} />
                     </div>
 
@@ -438,9 +432,11 @@ class Support extends Component {
                             <h2 className="alignLeft">
                                 Terms of Service
                             </h2>
-                            <p className="alignLeft">
-                                ENTER_TERMS_OF_SERVICE_HERE
-                            </p>
+                            <Link to='/termsOfService'>
+                                <h3>
+                                    Read full terms of service ⟶
+                                </h3>
+                            </Link>
                         </div>
                     </div>
 
@@ -453,7 +449,7 @@ class Support extends Component {
                         subheadingText='We deliver'
                         paragraphText="We only use the highest quality services for delivery. All Hunter PCs are delivered using DPD, one of the world's leading parcel delivery networks.
                          At current, we only deliver to England."
-                        imgSrc='https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2FgamingSetup5.jpeg?alt=media&token=ae0b17a9-63c4-4632-89c4-265c75e1a2bd'
+                        imgSrc='images/gamingSetup5.jpeg'
                         leftBool={false}
                         DontShowDividerLineBool={true} />
                     </div>
