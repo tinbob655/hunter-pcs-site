@@ -10,7 +10,7 @@ class TellAFriend extends Component {
                 <div>
                     <GenericMarkupSection
                     headingText='Tell a Friend All About Us'
-                    subheadingText='Get your bestie a discount on any of our PCs'
+                    subheadingText='Get your buddy a discount on any of our PCs'
                     paragraphText={`Our tell a friend system is currently in development. Check back later to see if its out yet! For now you can browse some high quality
                     gaming PCs whilst your friend awaits their free discount`}
                     linkContent='Browse gaming PCs ⟶'
