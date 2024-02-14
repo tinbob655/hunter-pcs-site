@@ -105,7 +105,7 @@ class Basket extends Component {
                                             this.clearBasket();
                                         }}>
                                             <h3>
-                                                Click here to empty your basket
+                                                Click here to empty your basket ⟶
                                             </h3>
                                         </button>
                                     </td>
@@ -217,7 +217,7 @@ class Basket extends Component {
                             this.clearBasket();
                         }}>
                             <h3>
-                                Click here to empty your basket
+                                Click here to empty your basket ⟶
                             </h3>
                         </button>
                     </div>

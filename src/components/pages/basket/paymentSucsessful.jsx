@@ -118,7 +118,7 @@ class PaymentSucsessful extends Component {
                     </p>
                     <button onClick={() => {this.setState({emailPopup: <EmailPopup/>})}} type="button">
                         <h3 style={{maxWidth: '50%', margin: 'auto', color: 'red'}}>
-                            If the above address is not your email, then click here to do something about that ASAP. 
+                            If the above address is not your email, then click here to do something about that ASAP. ⟶
                         </h3>
                     </button>
 

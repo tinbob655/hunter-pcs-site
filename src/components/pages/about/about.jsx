@@ -51,7 +51,7 @@ class About extends Component {
                         PC we ship to you will come fitted with components exclusivley from brands we can all trust such as corsair, AMD and NVIDIA.
                         \n\n
                         That's the Hunter Pcs no expenses spared gurantee`}
-                        linkContent='Read more on our no expenses spared guarantee'
+                        linkContent='Read more on our no expenses spared guarantee ⟶'
                         linkDestination='/support'
                         imgSrc='images/image of pc.jpeg'
                         leftBool={false} />
@@ -104,7 +104,7 @@ class About extends Component {
                                         </p>
                                         <a href="mailto:hunterpcsuk@gmail.com" target="_blank">
                                             <h3 className="limitedSize">
-                                                Just drop us a message at hunterpcsuk@gmail.com
+                                                Just drop us a message at hunterpcsuk@gmail.com ⟶
                                             </h3>
                                         </a>
                                     </td>
@@ -150,7 +150,7 @@ class About extends Component {
                         paragraphText="Not able to come and pick up your PC? Don't want to? We've got you sorted. We'll deliver anything to you provided you tell us where
                         to drop it off. If it gets damaged in the post, that's on us and we'll come to collect your pc and repair it fully free of charge.
                         Its all just part of the Hunter Pcs quality guarantee"
-                        linkContent='More on our quality guarantee'
+                        linkContent='More on our quality guarantee ⟶'
                         linkDestination='/support'
                         imgSrc='images/image of pc 2.jpeg'
                         leftBool={false} />
@@ -187,7 +187,7 @@ class About extends Component {
                         </p>
                         <Link to='/customPcs'>
                             <h3>
-                                Customise your own PC
+                                Customise your own PC ⟶
                             </h3>
                         </Link>
                     </div>
@@ -203,7 +203,7 @@ class About extends Component {
                         PC we ship to you will come fitted with components exclusivley from brands we can all trust such as corsair, AMD and NVIDIA.
                         \n\n
                         That's the Hunter PCs no expenses spared guarantee`}
-                        linkContent='Read more on our no expenses spared guarantee'
+                        linkContent='Read more on our no expenses spared guarantee ⟶'
                         linkDestination='/support'
                         imgSrc='images/image of pc.jpeg'
                         leftBool={false}
@@ -266,7 +266,7 @@ class About extends Component {
                         </p>
                         <a href="mailto:hunterpcsuk@gmail.com" target="_blank">
                             <h3>
-                                Just drop us a message at hunterpcsuk@gmail.com
+                                Just drop us a message at hunterpcsuk@gmail.com ⟶
                             </h3>
                         </a>
                     </div>
@@ -309,7 +309,7 @@ class About extends Component {
                             paragraphText="Not able to come and pick up your PC? Don't want to? We've got you sorted. We'll deliver anything to you provided you tell us where
                             to drop it off. If it gets damaged in the post, that's on us and we'll come to collect your PC and repair it fully free of charge.
                             Its all just part of the Hunter PCs quality guarantee"
-                            linkContent='More on our quality guarantee'
+                            linkContent='More on our quality guarantee ⟶'
                             linkDestination='/support'
                             imgSrc='images/image of pc 2.jpeg'
                             DontShowDividerLineBool={true}
