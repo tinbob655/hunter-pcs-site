@@ -311,7 +311,7 @@ class PcsMain extends Component {
                             headingText='Design your own PC'
                             subheadingText='Build your dreams'
                             paragraphText='Using our custom PC creator, you can design the PC of your dreams online, right now.'
-                            linkContent='Click here to get started ⟶'
+                            linkContent='Tap here to get started ⟶'
                             linkDestination='/customPcs'
                             imgSrc='images/motherboardTall.jpeg'
                             leftBool={false} 

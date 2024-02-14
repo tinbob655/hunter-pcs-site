@@ -112,7 +112,7 @@ class CustomPcPurchaseSucsessful extends Component {
                     </p>
                     <button type="button" onClick={() => {this.setState({emailPopup: <EmailPopup/>})}}>
                         <h3 style={{maxWidth: '50%', margin: 'auto', color: 'red'}}>
-                            If the above email is not correct, then click here to do something about that ASAP
+                            If the above email is not correct, then tap here to do something about that ASAP
                         </h3>
                     </button>
 

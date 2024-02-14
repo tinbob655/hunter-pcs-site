@@ -16,7 +16,7 @@ class Basket extends Component {
     state = {
         loginPopup: <></>,
         stripeCheckout: <></>,
-        loggedInPaymentButtonText: 'Click here to get your perfect PC delivered straight to you ⟶',
+        loggedInPaymentButtonText: (isMobile() ? 'Tap' : 'Click') + ' here to get your perfect PC delivered straight to you ⟶',
         addressPopup: <></>,
 
     };
@@ -217,7 +217,7 @@ class Basket extends Component {
                             this.clearBasket();
                         }}>
                             <h3>
-                                Click here to empty your basket ⟶
+                                Tap here to empty your basket ⟶
                             </h3>
                         </button>
                     </div>
@@ -388,7 +388,7 @@ class Basket extends Component {
             basketHTML.push(<React.Fragment>
                 <Link to='/pcsMain'>
                     <h3>
-                        Looks like you haven't added anything to your basket. Click here to do something about that ⟶
+                        Looks like you haven't added anything to your basket. {isMobile() ? 'Tap' : 'Click'} here to do something about that ⟶
                     </h3>
                 </Link>
             </React.Fragment>)
