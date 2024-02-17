@@ -3,6 +3,8 @@ import { startStripeSession, sanitiseStripePrice } from '../../multiPageComponen
 import StripeCheckout from '../../multiPageComponents/checkout/mountedStripeCheckout.jsx';
 import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection';
 
+//This page allows url-based payments. The ammount is specified in the url variable "amount". Page can only be accessed by typing the specific url: there are no links to it
+
 class CustomStripePayer extends Component {
 
     constructor(props) {
