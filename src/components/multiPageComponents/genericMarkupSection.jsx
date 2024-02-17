@@ -4,7 +4,7 @@ import {Link} from'react-router-dom';
 import Image from './image.jsx';
 
 function GenericMarkupSection({headingText, subheadingText, paragraphText, linkContent, linkDestination, imgSrc,
-     leftBool, customImageStyles, customImageCellStyles, DontShowDividerLineBool, customHeaderClassName}) {
+     leftBool, customImageStyles, customImageCellStyles, DontShowDividerLineBool, customHeaderClassName, linkLogic}) {
 
     //make each noteworthy element its own constant
     let heading;
@@ -25,12 +25,19 @@ function GenericMarkupSection({headingText, subheadingText, paragraphText, linkC
 
     //only make the link if requested
     let link
-    if (linkContent) {
+    if (linkDestination) {
         link = <Link to={linkDestination}>
             <h3>
                 {linkContent}
             </h3>
         </Link>
+    }
+    else if (linkLogic) {
+        link = <button onClick={() => linkLogic()} type="button">
+            <h3>
+                {linkContent}
+            </h3>
+        </button>
     }
     else {
         link = <></>
