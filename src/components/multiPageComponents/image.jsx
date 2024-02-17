@@ -4,7 +4,6 @@ import {getDownloadURL, ref, getStorage} from 'firebase/storage';
 export default function Image({imagePath, imageClasses, imageStyles}) {
 
     const [URL, setURL] = useState('');
-    console.log('rendering')
 
     useEffect(() => {
         //get the image url
