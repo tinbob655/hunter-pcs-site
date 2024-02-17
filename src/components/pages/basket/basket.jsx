@@ -5,7 +5,7 @@ import LoginPopup from '../../multiPageComponents/popups/login/loginPopup.jsx';
 import { getDoc, doc, getFirestore } from 'firebase/firestore';
 import StripeCheckout from '../../multiPageComponents/checkout/mountedStripeCheckout.jsx';
 import AddressPopup from '../../multiPageComponents/popups/address/addressPopup.jsx';
-import {startStripeSession} from '../../multiPageComponents/checkout/checkoutFunctions.ts';
+import {startStripeSession, sanitiseStripePrice} from '../../multiPageComponents/checkout/checkoutFunctions.ts';
 import Image from '../../multiPageComponents/image.jsx';
 
 //defining here not later beause it is to be used in multiple processes (make global)
@@ -323,9 +323,8 @@ class Basket extends Component {
 
     
             //total price must be in P not £
-            totalPrice *= 100;
-            //round to 2 dp
-            totalPrice = Math.round(totalPrice *100) / 100;
+            totalPrice = sanitiseStripePrice(totalPrice);
+            
             sessionStorage.setItem('purchasedProducts', finalProudctNameString);
 
             //generate an order id
