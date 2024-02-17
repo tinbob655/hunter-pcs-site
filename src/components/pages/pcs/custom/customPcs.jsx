@@ -5,6 +5,7 @@ import AddressPopup from '../../../multiPageComponents/popups/address/addressPop
 import CustomSpecForm from './customSpecForm.jsx';
 import AutoNav from '../../../multiPageComponents/autoNav.jsx';
 import Image from '../../../multiPageComponents/image.jsx';
+import GenericMarkupSection from '../../../multiPageComponents/genericMarkupSection.jsx';
 
 class CustomPcs extends Component {
 
@@ -59,34 +60,15 @@ class CustomPcs extends Component {
                     
                     {/*button and content for after a pc is purchased*/}
                     <div>
-                        <h1 className="alignLeft">
-                            All finished?
-                        </h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td style={{width: '40%'}}>
-                                        <Image imagePath="images/rounded skull 3.jpeg" imageClasses="mainImage centered" />
-                                    </td>
-                                    <td>
-                                        <h2 className="alignRight">
-                                            Buy now
-                                        </h2>
-                                        <p className="alignLeft">
-                                            We will verify that the PC you have designed works and then build it and ship it to you as usual. A small build fee of 15%
-                                             will also be charged.
-                                        </p>
-                                        <button type="button" onClick={() => {
-                                            this.purchaseButtonClicked();
-                                        }}>
-                                            <h3>
-                                                Get your custom PC delivered straight to you ⟶
-                                            </h3>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
+                        <GenericMarkupSection
+                        headingText="All finished?"
+                        subheadingText="Buy now"
+                        paragraphText="We will verify that the PV you have designed works and then build it and ship it to you as usual. A small build fee will be charged"
+                        linkLogic={() => {this.purchaseButtonClicked()}}
+                        linkContent="Get your custom PC delivered straight to you ⟶"
+                        imgSrc="images/rounded skull 3.jpeg"
+                        leftBool={true}
+                        DontShowDividerLineBool={true} />
                     </div>
 
                     <div id="customPcsLoginPopupWrapper">
@@ -145,34 +127,15 @@ class CustomPcs extends Component {
 
                     {/*button and content for after a pc is purchased*/}
                     <div>
-                        <h1>
-                            All finished?
-                        </h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td style={{width: '40%'}}>
-                                        <h2 className="alignRight">
-                                            Buy now
-                                        </h2>
-                                    </td>
-                                    <td>
-                                        <Image imagePath="images/rounded skull 3.jpeg" imageClasses="mainImage centered" />
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
-                        <p>
-                            We will verify that the PC you have designed works and then build it and ship it to you as usual. A small build fee of 15%
-                                will also be charged.
-                        </p>
-                        <button type="button" onClick={() => {
-                            this.purchaseButtonClicked();
-                        }}>
-                            <h3>
-                                Get your custom PC delivered straight to you ⟶
-                            </h3>
-                        </button>
+                        <GenericMarkupSection
+                        headingText="All finished?"
+                        subheadingText="Buy now"
+                        paragraphText="We will verify that the PV you have designed works and then build it and ship it to you as usual. A small build fee will be charged"
+                        linkLogic={() => {this.purchaseButtonClicked()}}
+                        linkContent="Get your custom PC delivered straight to you ⟶"
+                        imgSrc="images/rounded skull 3.jpeg"
+                        leftBool={true}
+                        DontShowDividerLineBool={true} />
                     </div>
 
                     <div id="customPcsLoginPopupWrapper">

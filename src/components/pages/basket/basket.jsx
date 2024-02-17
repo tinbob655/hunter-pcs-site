@@ -6,6 +6,7 @@ import { getDoc, doc, getFirestore } from 'firebase/firestore';
 import StripeCheckout from '../../multiPageComponents/checkout/mountedStripeCheckout.jsx';
 import AddressPopup from '../../multiPageComponents/popups/address/addressPopup.jsx';
 import {startStripeSession, sanitiseStripePrice} from '../../multiPageComponents/checkout/checkoutFunctions.ts';
+import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection.jsx';
 import Image from '../../multiPageComponents/image.jsx';
 
 //defining here not later beause it is to be used in multiple processes (make global)
@@ -86,32 +87,16 @@ class Basket extends Component {
     
                     {/*list of products the user has in their basket*/}
                     <div>
-                        <h1 className="alignLeft">
-                            Your stuff
-                        </h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>
-                                        <Image imagePath="images/image of pc 2.jpeg" imageClasses="mainImage centered" />
-                                    </td>
-                                    <td>
-                                        <h2 className="alignRight">
-                                            All the stuff you've added, right here:
-                                        </h2>
-                                        {this.getBasket()}
-
-                                        <button type="button" onClick={() => {
-                                            this.clearBasket();
-                                        }}>
-                                            <h3>
-                                                Click here to empty your basket ⟶
-                                            </h3>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
+                        <GenericMarkupSection
+                        headingText="Your stuff"
+                        subheadingText="All the stuff you've added, right here:"
+                        paragraphText={this.getBasket()}
+                        linkLogic={() => {this.clearBasket();}}
+                        linkContent="Click here to empty your basket ⟶"
+                        imgSrc='images/image of pc 2.jpeg'
+                        leftBool={true}
+                        DontShowDividerLineBool={true}
+                        />
                     </div>
     
                     <div id="outerLoginPopupWrapper">
@@ -194,32 +179,15 @@ class Basket extends Component {
 
                     {/*list of all the products the user has in their basket*/}
                     <div>
-                        <h1>
-                            Your stuff
-                        </h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td style={{width: '40%'}}>
-                                        <h2 className="alignRight">
-                                            All the stuff you've added, right here
-                                        </h2>
-                                    </td>
-                                    <td>
-                                        <Image imagePath="images/image of pc 2.jpeg" imageClasses="mainImage centered" />
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
-                        {this.getBasket()}
-
-                        <button type="button" onClick={() => {
-                            this.clearBasket();
-                        }}>
-                            <h3>
-                                Tap here to empty your basket ⟶
-                            </h3>
-                        </button>
+                        <GenericMarkupSection
+                        headingText="Your stuff"
+                        subheadingText="All the stuff you've added, right here:"
+                        paragraphText={this.getBasket()}
+                        linkLogic={() => {this.clearBasket();}}
+                        linkContent="Tap here to empty your basket ⟶"
+                        imgSrc='images/image of pc 2.jpeg'
+                        leftBool={true}
+                        DontShowDividerLineBool={true} />
                     </div>
 
                     <div id="outerLoginPopupWrapper">
