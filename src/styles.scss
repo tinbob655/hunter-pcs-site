@@ -81,6 +81,13 @@ h1, h2, h3, p {
         text-align: right;
         max-width: 75%;
     }
+
+    &.glow {
+        $glowColor: #f8d3ee;
+        color: #fff;
+        text-shadow:
+        0 0 15px $glowColor;
+    }
 }
 
 a {
