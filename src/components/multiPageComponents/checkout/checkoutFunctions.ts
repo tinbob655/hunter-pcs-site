@@ -6,7 +6,6 @@ export async function startStripeSession(amount:number, productString:string) {
     
         //create a stripe session and save to session storage
         const stripe:Stripe = require('stripe')(process.env.REACT_APP_STRIPE_SK);
-        console.log(amount)
         const session = await stripe.checkout.sessions.create({
             line_items: [{
                 price_data: {

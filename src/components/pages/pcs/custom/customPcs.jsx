@@ -241,7 +241,7 @@ class CustomPcs extends Component {
                 }
 
                 catch(error) {
-                    console.log('Error saving address info to session storage: '+error);
+                    console.error('Error saving address info to session storage: '+error);
                 };
             };
         };

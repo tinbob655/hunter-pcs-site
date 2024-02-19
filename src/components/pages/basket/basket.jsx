@@ -239,7 +239,7 @@ class Basket extends Component {
                     openPaymentPopup();
     
                 } catch(error) {
-                    console.log(error);
+                    console.error(error);
                 };
             }
         };
@@ -328,7 +328,7 @@ class Basket extends Component {
                 document.getElementById('addressPopupWrapper').classList.add('shown');
             });
         } catch (error) {
-            console.log(error);
+            console.error(error);
         };
 
     };

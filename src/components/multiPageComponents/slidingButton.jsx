@@ -12,7 +12,7 @@ function SlidingButton({id, imgSrc, linkLocation, textContent, ssIndex, ssValue,
             <button id={id+'button'} style={customButtonStyles} type="button" className={"linkButton " + (linkLocation === 'productPage' ? 'bigWhenExpanded' : '')}
 
                 onMouseOver={function() {buttonExpand(id)}}
-                onClick={function() {ssValue ? (sessionStorage.setItem(ssIndex, ssValue)) : console.log('No value to store in session storage');
+                onClick={function() {ssValue ? (sessionStorage.setItem(ssIndex, ssValue)) : console.error('No value to store in session storage');
 
                 //only navigate to new page if a link is provided
                 if (linkLocation) {

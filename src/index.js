@@ -115,7 +115,7 @@ if (localStorage.getItem('hunterPCsAccountCredentials') && sessionStorage.getIte
     .catch((error) => {
   
         //if the user entered the incorrect login details
-        console.log('Automatic login error: '+error.message);
+        console.error('Automatic login error: '+error.message);
     });
 };
 

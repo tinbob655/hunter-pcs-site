@@ -128,10 +128,9 @@ class LoginPopup extends Component {
                         .catch((error) => {
         
                             //if the user entered the incorrect login details
-                            console.log(error.message)
+                            console.error(error.message)
                             const errorText = document.createElement('p');
                             if (document.querySelectorAll('.errorText').length > 0) {
-                                console.log(document.querySelectorAll('.errorText'))
                                 document.querySelectorAll('.errorText').forEach((paragraph) => {
                                     document.getElementById('logInHeader').removeChild(paragraph);
                                 });
@@ -144,7 +143,7 @@ class LoginPopup extends Component {
                         });
                 }
                 catch(error) {
-                    console.log(error);
+                    console.error(error);
                 };
             };
     
@@ -211,7 +210,7 @@ class LoginPopup extends Component {
                         userSucessfullyLoggedIn();
                     })
                     .catch((error) => {
-                        console.log(error);
+                        console.error(error);
                         let text = error == 'passwordsNotEqual' ? 'Incorrect password, please try again.' : 'We encountered an error, please try again.';
                         const errorText = document.createElement('p');
                         errorText.innerText = text;
