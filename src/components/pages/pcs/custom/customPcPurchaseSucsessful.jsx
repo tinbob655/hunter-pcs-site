@@ -5,7 +5,7 @@ import Image from '../../../multiPageComponents/image.jsx';
 
 //ss values are: customPcSpec address email
 
-class CustomPcPurchaseSucsessful extends Component {
+class CustomPcPurchaseSuccessful extends Component {
 
     constructor(props) {
         super(props);
@@ -17,7 +17,7 @@ class CustomPcPurchaseSucsessful extends Component {
 
     componentDidMount() {
 
-        //will fire when a custom pc purchase was made sucsessfully send the message to discord
+        //will fire when a custom pc purchase was made successfully send the message to discord
         //only go once to prevent firing 2 times if the user refreshes
         if (sessionStorage.getItem('purchaseValid') === 'true') {
             sessionStorage.removeItem('purchaseValid');
@@ -47,7 +47,7 @@ class CustomPcPurchaseSucsessful extends Component {
 
     render() {
 
-        //desktop custom pc purchase sucsessful page
+        //desktop custom pc purchase successful page
         if (!isMobile()) {
             return (
                 <React.Fragment>
@@ -85,7 +85,7 @@ class CustomPcPurchaseSucsessful extends Component {
             );
         }
 
-        //mobile custom pc purchase sucsessful page
+        //mobile custom pc purchase successful page
         else {
             return (
                 <React.Fragment>
@@ -125,4 +125,4 @@ class CustomPcPurchaseSucsessful extends Component {
     };
 };
 
-export default CustomPcPurchaseSucsessful;
+export default CustomPcPurchaseSuccessful;

@@ -11,10 +11,10 @@ import CustomPcs from './pages/pcs/custom/customPcs.jsx';
 import TellAFriend from './pages/tellAFriend/tellAFriend.jsx';
 import Support from './pages/support/support.jsx';
 import ProductPage from './pages/pcs/prebuilt/productPage.jsx';
-import PaymentSucsessful from './pages/basket/paymentSucsessful.jsx';
+import PaymentSuccessful from './pages/basket/paymentSucsessful.jsx';
 import PrivacyPolicy from './pages/support/privacyPolicy.jsx';
 import TermsOfService from './pages/support/termsOfService.jsx';
-import CustomPcPurchaseSucsessful from './pages/pcs/custom/customPcPurchaseSucsessful.jsx';
+import CustomPcPurchaseSuccessful from './pages/pcs/custom/customPcPurchaseSucsessful.jsx';
 import CustomStripePayer from './pages/customStripePayer/customStripePayer.jsx';
 
 class Content extends Component {
@@ -37,10 +37,10 @@ class Content extends Component {
             tellAFriend: <TellAFriend/>,
             support: <Support/>,
             productPage: <ProductPage/>,
-            paymentSucsessful: <PaymentSucsessful/>,
+            paymentSuccessful: <PaymentSuccessful/>,
             privacyPolicy: <PrivacyPolicy/>,
             termsOfService: <TermsOfService/>,
-            customPcPurchaseSucsessful: <CustomPcPurchaseSucsessful/>,
+            customPcPurchaseSuccessful: <CustomPcPurchaseSuccessful/>,
             customStripePayer: <CustomStripePayer/>,
         };
         let routeHTML = [];

@@ -205,7 +205,7 @@ class CustomPcs extends Component {
                 //after all necessary purchase data was collected, navigate the user to the custom pc purchase sucsesful page
                 sessionStorage.setItem('purchaseValid', 'true');
                 setTimeout(() => {
-                    this.setState({redirector: <AutoNav destination='/customPcPurchaseSucsessful'/>});
+                    this.setState({redirector: <AutoNav destination='/customPcPurchasesuccessful'/>});
                 }, 751);
             };
         };
@@ -222,7 +222,7 @@ class CustomPcs extends Component {
                 document.getElementById('customPcsAddressPopupWrapper').scrollTop = 0;
             }
 
-            //address was sucsessfully recieved, proceed to payment
+            //address was successfully recieved, proceed to payment
             else {
 
                 //now save the address and email to session storage

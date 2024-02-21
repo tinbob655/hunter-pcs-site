@@ -19,8 +19,8 @@ export default function StripeCheckout() {
         //make sure the discord message can only be sent once
         sessionStorage.setItem('purchaseValid', 'true');
     
-        //change the page to the payment sucsessful page
-        navigate('/paymentSucsessful');
+        //change the page to the payment successful page
+        navigate('/paymentsuccessful');
     };
 
     useEffect(() => {

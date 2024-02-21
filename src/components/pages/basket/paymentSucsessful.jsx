@@ -4,7 +4,7 @@ import EmailPopup from '../../multiPageComponents/popups/email/emailPopup.jsx';
 import TrustpilotWidget from '../../multiPageComponents/trustpilotWidget/trustpilotWidget.jsx';
 import Image from '../../multiPageComponents/image.jsx';
 
-class PaymentSucsessful extends Component {
+class PaymentSuccessful extends Component {
 
     constructor(props) {
         super(props);
@@ -47,15 +47,15 @@ class PaymentSucsessful extends Component {
 
     render() {
 
-        //desktop payment sucsessful page
+        //desktop payment successful page
         if (!isMobile()) {
             return (
                 <React.Fragment>
                     <h1 className="alignRight">
-                        Payment Sucsessful
+                        Payment successful
                     </h1>
     
-                    {/*payment sucsessful div*/}
+                    {/*payment successful div*/}
                     <div>
                         <table>
                             <tr>
@@ -64,7 +64,7 @@ class PaymentSucsessful extends Component {
                                         Congratulations!
                                     </h2>
                                     <p className='alignRight'>
-                                        Your payment was sucsessful! We'll get to work building your dream PC to get you in the game as soon as possible! 
+                                        Your payment was successful! We'll get to work building your dream PC to get you in the game as soon as possible! 
                                         <br/><br/>
                                         We'll email you at {sessionStorage.getItem('email')} with your purchase progress
                                     </p>
@@ -90,12 +90,12 @@ class PaymentSucsessful extends Component {
             );
         }
 
-        //mobile payment sucsessful page
+        //mobile payment successful page
         else {
             return (
                 <React.Fragment>
                     <h1>
-                        Payment sucsessful
+                        Payment successful
                     </h1>
                     <table>
                         <thead>
@@ -112,7 +112,7 @@ class PaymentSucsessful extends Component {
                         </thead>
                     </table>
                     <p>
-                        Your payment was sucsessful! We'll get to work building your dream PC to get you in the game as soon as possible!
+                        Your payment was successful! We'll get to work building your dream PC to get you in the game as soon as possible!
                         <br/><br/>
                         We'll email you at {sessionStorage.getItem('email')} with your purchase progress
                     </p>
@@ -131,4 +131,4 @@ class PaymentSucsessful extends Component {
     };
 };
 
-export default PaymentSucsessful;
+export default PaymentSuccessful;
