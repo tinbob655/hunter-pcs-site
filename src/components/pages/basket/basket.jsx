@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { convertOutOfCamelCase, isMobile } from '../../../index.js';
 import { Link } from 'react-router-dom';
 import LoginPopup from '../../multiPageComponents/popups/login/loginPopup.jsx';
-import { getDoc, doc, getFirestore } from 'firebase/firestore';
+import { getDoc, getDocs, doc, getFirestore, collection, query, where, deleteDoc } from 'firebase/firestore';
 import StripeCheckout from '../../multiPageComponents/checkout/mountedStripeCheckout.jsx';
 import AddressPopup from '../../multiPageComponents/popups/address/addressPopup.jsx';
 import {startStripeSession, sanitiseStripePrice} from '../../multiPageComponents/checkout/checkoutFunctions.ts';
@@ -289,9 +289,17 @@ class Basket extends Component {
                 totalPrice = totalPrice + operatingSystemCost;
             };
 
+            //account for a potential discount code applied
+            if (sessionStorage.getItem('discountMultiplyer')) {
+                totalPrice  = Math.round(totalPrice * sessionStorage.getItem('discountMultiplyer'));
+                finalProudctNameString += ` (+${100 - (sessionStorage.getItem('discountMultiplyer')*100)}% reduction)`
+                sessionStorage.removeItem('discountMultiplyer');
+                sessionStorage.removeItem('doNotGetAddress');
+            };
     
             //total price must be in P not £
             totalPrice = sanitiseStripePrice(totalPrice);
+            this.setState({totalPrice: totalPrice, productName: finalProudctNameString});
             
             sessionStorage.setItem('purchasedProducts', finalProudctNameString);
 
@@ -302,10 +310,37 @@ class Basket extends Component {
             //start a stripe session, then mount the checkout
             startStripeSession(totalPrice, finalProudctNameString)
             .then(() => {
-                this.setState({stripeCheckout: <StripeCheckout/>});
-                
-                //now show the stripe popup
+                this.setState({stripeCheckout: <React.Fragment>
+                    <StripeCheckout/>
+
+                    {/*support for discount codes*/}
+                    <div>
+                        <form id="discountCodeForm">
+                            <p>
+                                Or enter a discount code:
+                            <p id="pleaseTryAgainParagraph" style={{visibility: 'hidden', color: 'red', maxHeight: 0}}>
+                                That wasn't right, please try again
+                            </p>
+                            </p>
+                            <label htmlFor="discountCode">Discount Code</label>
+                            <input id="discountCode" name="discountCode" type="text" placeholder="Enter a discount code..." style={{maxWidth: '75%'}}></input>
+
+                            <label htmlFor="submit">Submit</label>
+                            <input type="submit" id="submit" name="submit" value="Submit" className="submit" style={{fontWeight: 900, paddingBottom: '2vh'}}></input>
+                        </form>
+                    </div>
+                </React.Fragment>});
+
+
                 setTimeout(() => {
+
+                    //add event listener for if a discount code is inputted
+                    document.getElementById('discountCodeForm').addEventListener('submit', (event) => {
+                        event.preventDefault();
+                        this.applyDiscountCode(event.currentTarget.discountCode.value);
+                    });
+
+                    //now show the stripe popup
                     document.getElementById('stripeCheckoutWrapper').classList.add('shown');
                 }, 100);
             });
@@ -313,24 +348,26 @@ class Basket extends Component {
         };
 
         //render the address form
-        try {
-
-            //first, we gotta get a delivery address
-            this.setState({addressPopup: (
-                <React.Fragment>
-                    <AddressPopup/>
-                </React.Fragment>
-            )});
-
-            //wait until the assress form is submitted into the DOM
-            setTimeout(() => {
-                document.getElementById('addressForm').addEventListener("submit", afterAddressRecieved);
-                document.getElementById('addressPopupWrapper').classList.add('shown');
-            });
-        } catch (error) {
-            console.error(error);
-        };
-
+        if (!sessionStorage.getItem('doNotGetAddress')) {
+            try {
+    
+                //first, we gotta get a delivery address
+                this.setState({addressPopup: (
+                    <React.Fragment>
+                        <AddressPopup/>
+                    </React.Fragment>
+                )});
+    
+                //wait until the assress form is submitted into the DOM
+                setTimeout(() => {
+                    document.getElementById('addressForm').addEventListener("submit", afterAddressRecieved);
+                    document.getElementById('addressPopupWrapper').classList.add('shown');
+                });
+            } catch (error) {
+                console.error(error);
+            };
+        }
+        else openPaymentPopup();
     };
 
     getBasket() {
@@ -375,6 +412,53 @@ class Basket extends Component {
         setTimeout(() => {
             window.location.reload();
         }, 100);
+    };
+
+    async applyDiscountCode(code) {
+
+        if (!code) {
+            document.getElementById('pleaseTryAgainParagraph').style = {visibility: 'visible', maxHeight: 'unset'}
+            throw new Error('No code provided');
+        };
+
+        //query firebase for the code provided
+        const db = getFirestore();
+        const discountCodeRef = collection(db, 'discountCodes');
+        const allCodes = query(discountCodeRef, where('code', '==', code));
+        const discountCodeSnap = await getDocs(allCodes);
+
+        //firstly, throw an error if there are more than one codes matching
+        if (discountCodeSnap.docs.length > 1) {
+
+            //if there were too many codes which matched
+            document.getElementById('pleaseTryAgainParagraph').style = {visibility: 'visible', maxHeight: 'unset'};
+            throw new Error('Multiple valid codes found');
+        }
+        else  if (discountCodeSnap.docs.length === 0) {
+
+            //the code entered was incorrect
+            document.getElementById('pleaseTryAgainParagraph').style = {visibility: 'visible', maxHeight: 'unset'}
+        }
+        else {
+
+            //the code entered was valid
+            //get the percentage discount, and then calculate the new price
+            const discountMultiplier = (100 - discountCodeSnap.docs[0].data().percentageReduction) / 100;
+
+            //delete the code from firestore (so it cannot be used twice)
+            await deleteDoc(doc(db, 'discountCodes', discountCodeSnap.docs[0].id));
+
+            //notify the user that the code has been applied
+            alert('Discount code applied!');
+
+            //refresh the checkout
+            sessionStorage.setItem('doNoGetAddress', true);
+            sessionStorage.setItem('discountMultiplyer', discountMultiplier);
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 100);
+        };
     };
 };
 

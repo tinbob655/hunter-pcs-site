@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import { isMobile } from '../../../index.js';
 import EmailPopup from '../../multiPageComponents/popups/email/emailPopup.jsx';
 import TrustpilotWidget from '../../multiPageComponents/trustpilotWidget/trustpilotWidget.jsx';
+import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection.jsx';
 import Image from '../../multiPageComponents/image.jsx';
+import {collection, addDoc, getFirestore} from 'firebase/firestore';
 
 class PaymentSuccessful extends Component {
 
@@ -11,6 +13,8 @@ class PaymentSuccessful extends Component {
 
         this.state = {
             emailPopup: <></>,
+            codePopup: <></>,
+            orderId: sessionStorage.getItem('orderId'),
         };
     };
 
@@ -81,10 +85,27 @@ class PaymentSuccessful extends Component {
                         </table>
                     </div>
 
-                    <TrustpilotWidget />
+                    {/*friend discount section*/}
+                    <div>
+                        <GenericMarkupSection
+                        headingText="Friend Discount"
+                        subheadingText="Get you and your friend 10% off"
+                        paragraphText="Click on the button below to share a code with your buddy. When they purchase their PC, you will recieve 10% back on this purchase, and they will recieve 10% off their purchase. Sounds like a win-win to us."
+                        linkContent="Click here to get your code ⟶"
+                        linkLogic={() => {this.codeButtonClicked()}}
+                        DontShowDividerLineBool={true}
+                        leftBool={true}
+                        imgSrc='images/2 skulls.png' />
+                    </div>
+
+                    <TrustpilotWidget/>
 
                     <div id="emailPopupWrapper" className="popupWrapper">
                         {this.state.emailPopup}
+                    </div>
+
+                    <div id="codePopupWrapper" className="popupWrapper">
+                        {this.state.codePopup}
                     </div>
                 </React.Fragment>
             );
@@ -122,11 +143,116 @@ class PaymentSuccessful extends Component {
                         </h3>
                     </button>
 
+                    <div className="dividerLine"></div>
+
+                    {/*friend discount section*/}
+                    <div>
+                        <GenericMarkupSection
+                        headingText="Friend Discount"
+                        subheadingText="Get you and your friend 10% off"
+                        paragraphText="Tap on the button below to share a code with your buddy. When they purchase their PC, you will recieve 10% back on this purchase, and they will recieve 10% off their purchase. Sounds like a win-win to us."
+                        linkContent="Tap here to get your code ⟶"
+                        linkLogic={() => {this.codeButtonClicked()}}
+                        DontShowDividerLineBool={true}
+                        leftBool={true}
+                        imgSrc='images/2 skulls.png' />
+                    </div>
+
                     <div id="emailPopupWrapper" className="popupWrapper">
                         {this.state.emailPopup}
                     </div>
+
+                    <div id="codePopupWrapper" className="popupWrapper">
+                        {this.state.codePopup}
+                    </div>
                 </React.Fragment>
             );
+        };
+    };
+
+    codeButtonClicked() {
+
+        function giveRandom(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+        };
+
+        function getCode() {
+
+            let code = '';
+            const allCharacters=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+            let thisCode = [];
+
+            //repeat to get 5 blocks of 4 characters separated by '-'
+            for (let block = 0; block < 5; block++) {
+                for (let char = 0; char < 4; char++) {
+
+                    thisCode.push(allCharacters[giveRandom(0, allCharacters.length)]);
+    
+                    //make ~ every other letter upper case
+                    if (allCharacters.includes(thisCode[thisCode.length - 1]) && giveRandom(0, 2) % 2 === 0) {
+                        thisCode[thisCode.length - 1] = thisCode[thisCode.length - 1].toUpperCase();
+                    };
+                };
+
+                //separate each block with '-'
+                thisCode.push('-');
+            };
+
+            //remove the '-' added at the end
+            thisCode.pop();
+
+            code = thisCode.toString().replaceAll(',', '')
+
+            return code;
+        };
+
+        //get a random code in format XXXX-XXXX-XXXX-XXXX-XXXX
+        const code = getCode();
+
+        //make sure an order id exists
+        if (!this.state.orderId) {
+            throw('Could not find an order id');
+        }
+        else {
+
+            //save the code and the user's email to firestore
+            const db = getFirestore();
+            addDoc(collection(db, 'discountCodes'), {
+                code: code,
+                orderId: this.state.orderId,
+                percentageReduction: 10,
+            });
+
+            //show a popup with the user's code on the frontend
+            this.setState({codePopup: <React.Fragment>
+                <h1>
+                    We've got your code
+                </h1>
+
+                <div className="dividerLine"></div>
+
+                <h2>
+                    Your code is:
+                </h2>
+                <p className="legalText glow" style={isMobile() ? {textShadow: '0 0 0 0 #fffff'} : {fontSize: '25px'}}>
+                    {code}
+                </p>
+
+                <button type="button" onClick={() => {navigator.clipboard.writeText(code)}} style={{padding: 0}}>
+                    <h3>
+                        Copy code to clipboard ⟶
+                    </h3>
+                </button>
+                <p>
+                    When your friend makes their purchase using this code, both you and your friend can get 10% off your purchases!
+                </p>
+
+            </React.Fragment>});
+
+            //show the popup
+            setTimeout(() => {
+                document.getElementById('codePopupWrapper').classList.add('shown');
+            }, 100);
         };
     };
 };
