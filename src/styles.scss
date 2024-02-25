@@ -297,6 +297,11 @@ input {
     }
 }
 
+label {
+    font-size: 0;
+    color: transparent;
+}
+
 select {
     margin: auto;
     display: block;
