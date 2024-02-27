@@ -243,7 +243,7 @@ class PaymentSuccessful extends Component {
                         Copy code to clipboard ⟶
                     </h3>
                 </button>
-                <p>
+                <p style={{maxWidth: '75%'}}>
                     When your friend makes their purchase using this code, both you and your friend can get 10% off your purchases!
                 </p>
 
