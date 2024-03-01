@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { isMobile } from '../../../../index.js';
+import { isMobile, sendToDiscord } from '../../../../index.js';
 import EmailPopup from '../../../multiPageComponents/popups/email/emailPopup.jsx';
 import Image from '../../../multiPageComponents/image.jsx';
 
@@ -26,22 +26,12 @@ class CustomPcPurchaseSuccessful extends Component {
             const customPcSpec = sessionStorage.getItem('customPcSpec');
             const address = sessionStorage.getItem('address');
             const email = sessionStorage.getItem('email');
-    
-            //create a discord webhook session
-            const request = new XMLHttpRequest();
-            request.open("POST", process.env.REACT_APP_DISCORD_WEBHOOK_URL);
-            
-            //define the data being sent to the discord bot
-            request.setRequestHeader('Content-Type', 'application/json');
-            const messageJSON = {
-                content: `New purchase of a CUSTOM PC with the following information:\n
-                Custom PC spec: ${JSON.stringify(customPcSpec)}\n
-                Delivery address: ${address}\n
-                Email: ${email}`,
-            };
-            
-            //send the message
-            request.send(JSON.stringify(messageJSON));
+
+            //notify discord
+            sendToDiscord(`New purchase of a CUSTOM PC with the following information:\n
+            Custom PC spec: ${JSON.stringify(customPcSpec)}\n
+            Delivery address: ${address}\n
+            Email: ${email}`);
         };
     };
 

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { sendToDiscord } from '../../../../index.js';
 
 class EmailPopup extends Component {
 
@@ -25,19 +26,7 @@ class EmailPopup extends Component {
                     sessionStorage.setItem('email', email);
 
                     //send new email to discord
-            
-                    //create a discord webhook session
-                    const request = new XMLHttpRequest();
-                    request.open("POST", process.env.REACT_APP_DISCORD_WEBHOOK_URL);
-                    
-                    //define the data being sent to the discord bot
-                    request.setRequestHeader('Content-Type', 'application/json');
-                    const messageJSON = {
-                        content: `The user with old email address: ${oldEmail} has requested for their email to be updated to ${email}.`
-                    };
-                    
-                    //send the message
-                    request.send(JSON.stringify(messageJSON));
+                    sendToDiscord(`The user with old email address: ${oldEmail} has requested for their email to be updated to ${email}.`)
 
                     //finally, close the popup
                     document.getElementById('emailPopupWrapper').classList.remove('shown');

@@ -84,6 +84,23 @@ export function convertOutOfCamelCase(stringToConvert) {
   return str;
 };
 
+//function for sending a message to the payment discord
+export function sendToDiscord(message) {
+
+  //create a discord webhook session
+  const request = new XMLHttpRequest();
+  request.open("POST", process.env.REACT_APP_DISCORD_WEBHOOK_URL);
+  
+  //define the data being sent to the discord bot
+  request.setRequestHeader('Content-Type', 'application/json');
+  const messageJSON = {
+      content: message
+  };
+  
+  //send the message
+  request.send(JSON.stringify(messageJSON));
+};
+
 //conditionally import the mobile styles
 isMobile() === true ? import('./mobileStyles.scss') : <></>;
 

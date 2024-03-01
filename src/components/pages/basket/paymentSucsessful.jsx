@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { isMobile } from '../../../index.js';
+import { isMobile, sendToDiscord } from '../../../index.js';
 import EmailPopup from '../../multiPageComponents/popups/email/emailPopup.jsx';
 import TrustpilotWidget from '../../multiPageComponents/trustpilotWidget/trustpilotWidget.jsx';
 import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection.jsx';
@@ -29,23 +29,13 @@ class PaymentSuccessful extends Component {
             const purchasedProducts = sessionStorage.getItem('purchasedProducts');
             const emailVar = sessionStorage.getItem('email');
             const orderId = sessionStorage.getItem('orderId');
-    
-            //create a discord webhook session
-            const request = new XMLHttpRequest();
-            request.open("POST", process.env.REACT_APP_DISCORD_WEBHOOK_URL);
-            
-            //define the data being sent to the discord bot
-            request.setRequestHeader('Content-Type', 'application/json');
-            const messageJSON = {
-                content: `New purchase with the following information:\n
-                Product: ${purchasedProducts}\n
-                Delivery address: ${addressVar}\n
-                Email: ${emailVar}\n
-                Order Id: ${orderId}`,
-            };
-            
-            //send the message
-            request.send(JSON.stringify(messageJSON));
+
+            //notify discord
+            sendToDiscord(`New purchase with the following information\n
+            Product: ${purchasedProducts}\n
+            Delivery address: ${addressVar}\n
+            Email: ${emailVar}\n
+            Order Id: ${orderId}`);
         };
     };
 
