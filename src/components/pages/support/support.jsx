@@ -37,7 +37,7 @@ class Support extends Component {
                                     </td>
                                     <td style={{width: '40%'}}>
                                         <h2 className="alignRight">
-                                            We guarantee no expenses spared
+                                            We guarantee no expense spared
                                         </h2>
                                         <p className="alignLeft" style={{maxWidth: '85%'}}>
                                             Ever bought some tech only for it not to work? We have and we know it can be infuriating. That's why we can promise you that your
@@ -268,7 +268,7 @@ class Support extends Component {
                                 </td>
                                 <td>
                                     <h2 className="alignLeft">
-                                        We guarantee no expenses spared
+                                        We guarantee no expense spared
                                     </h2>
                                 </td>
                             </tr>

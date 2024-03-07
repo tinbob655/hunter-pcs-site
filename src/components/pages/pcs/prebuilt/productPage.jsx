@@ -255,7 +255,7 @@ function ProductPage() {
                 {/*NO EXPENSES SPARED*/}
                 <div>
                     <GenericMarkupSection
-                    headingText='No expenses spared'
+                    headingText='No expense spared'
                     subheadingText='We guarantee quality'
                     paragraphText="At hunter PCs, we understand how annoying it can be to purchase a new device only for it to fail and need returning. That's why we
                     guarantee all PCs delivered to you are made with 100% brand new components. All our power supply units are heavily tested along with
@@ -347,7 +347,7 @@ function ProductPage() {
                 {/*NO EXPENSES SPARED SECTION*/}
                 <div>
                 <GenericMarkupSection
-                    headingText='No expenses spared'
+                    headingText='No expense spared'
                     subheadingText='We guarantee quality'
                     paragraphText="At hunter pcs, we understand how annoying it can be to purchase a new device only for it to fail and need returning. That's why we
                     guarantee all PCs delivered to you are made with 100% brand new components. All our power supply units are heavily tested along with

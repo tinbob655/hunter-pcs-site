@@ -202,12 +202,12 @@ class Home extends Component {
                                             Quality guaranteed
                                         </h1>
                                         <p className="alignRight">
-                                            We guarantee no expenses spared. That means every one of your PC's components is made by branded and trusted manufacturers.
+                                            We guarantee no expense spared. That means every one of your PC's components is made by branded and trusted manufacturers.
                                             And not just that, we will also thoroughly test your build to make sure you get the maximum performance possible
                                         </p>
                                         <Link to='/support'>
                                             <h3>
-                                                Learn more about our no expenses spared guarantee ⟶
+                                                Learn more about our no expense spared guarantee ⟶
                                             </h3>
                                         </Link>
                                     </td>
@@ -386,7 +386,7 @@ class Home extends Component {
                                 <tr>
                                     <td style={{width: '40%'}}>
                                         <h2 className="alignRight">
-                                            No expenses spared
+                                            No expense spared
                                         </h2>
                                     </td>
                                     <td>
@@ -396,12 +396,12 @@ class Home extends Component {
                             </thead>
                         </table>
                         <p>
-                            We guarantee no expenses spared. That means every one of your PC's components is made by branded and trusted manufacturers.
+                            We guarantee no expense spared. That means every one of your PC's components is made by branded and trusted manufacturers.
                             And not just that, we will also thoroughly test your build to make sure you get the maximum performance possible
                         </p>
                         <Link to='/support'>
                             <h3>
-                                Learn more about our no expenses spared guarantee ⟶
+                                Learn more about our no expense spared guarantee ⟶
                             </h3>
                         </Link>
                     </div>

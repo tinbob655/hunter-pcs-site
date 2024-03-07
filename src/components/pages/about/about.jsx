@@ -50,8 +50,8 @@ class About extends Component {
                         paragraphText={`Choose Hunter PCs because here, we guarantee that all our products are thoroughly tested. Not only that, but each and every
                         PC we ship to you will come fitted with components exclusivley from brands we can all trust such as corsair, AMD and NVIDIA.
                         \n\n
-                        That's the Hunter Pcs no expenses spared gurantee`}
-                        linkContent='Read more on our no expenses spared guarantee ⟶'
+                        That's the Hunter Pcs no expense spared gurantee`}
+                        linkContent='Read more on our no expense spared guarantee ⟶'
                         linkDestination='/support'
                         imgSrc='images/image of pc.jpeg'
                         leftBool={false} />
@@ -202,8 +202,8 @@ class About extends Component {
                         paragraphText={`Choose Hunter PCs because here, we guarantee that all our products are thoroughly tested. Not only that, but each and every
                         PC we ship to you will come fitted with components exclusivley from brands we can all trust such as corsair, AMD and NVIDIA.
                         \n\n
-                        That's the Hunter PCs no expenses spared guarantee`}
-                        linkContent='Read more on our no expenses spared guarantee ⟶'
+                        That's the Hunter PCs no expense spared guarantee`}
+                        linkContent='Read more on our no expense spared guarantee ⟶'
                         linkDestination='/support'
                         imgSrc='images/image of pc.jpeg'
                         leftBool={false}
