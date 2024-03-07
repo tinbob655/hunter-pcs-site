@@ -127,13 +127,13 @@ class Support extends Component {
                                 <tr>
                                     <td style={{borderRight: '5px white solid'}}>
                                         <h2 className="alignRight">
-                                            If its our fault
+                                            If it's our fault
                                         </h2>
                                     </td>
     
                                     <td>
                                         <h2 className="alignLeft">
-                                            If its your fault
+                                            If it's your fault
                                         </h2>
                                     </td>
                                 </tr>
@@ -146,7 +146,7 @@ class Support extends Component {
                                     </td>
                                     <td>
                                         <p className="alignRight">
-                                            Spill some water? Loose power mid update? Drop the PC? Thats your fault but don't fear: we can still repair your PC for you 
+                                            Spill some water? Loose power mid update? Drop the PC? That's your fault but don't fear: we can still repair your PC for you 
                                             but you'll need to cover the cost. You will be billed for each part we replace as well as a fixed cost of £149.99 for the repairs
                                         </p>
                                     </td>
@@ -356,7 +356,7 @@ class Support extends Component {
                         </h1>
 
                         <h2 className="alignRight">
-                            If its our fault
+                            If it's our fault
                         </h2>
                         <p className="alignRight">
                             Faulty parts? Limited lifespan? Slow speeds? That's our fault: you can return the entire PC and we will fix it up like new 
@@ -364,10 +364,10 @@ class Support extends Component {
                         </p>
 
                         <h2 className="alignLeft" style={{marginTop: '3vh'}}>
-                            If its your fault
+                            If it's your fault
                         </h2>
                         <p className="alignLeft">
-                            Spill some water? Loose power mid update? Drop the PC? Thats your fault but don't fear: we can still repair your PC for you 
+                            Spill some water? Loose power mid update? Drop the PC? That's your fault but don't fear: we can still repair your PC for you 
                             but you'll need to cover the cost. You will be billed for each part we replace as well as a fixed cost of £149.99 for the repairs
                         </p>
 

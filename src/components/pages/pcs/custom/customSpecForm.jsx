@@ -6,7 +6,7 @@ class CustomSpecForm extends Component {
         return (
             <React.Fragment>
                 <h2>
-                    Enter your Pc's custom spec
+                    Enter your PC's custom spec
                 </h2>
                 <div style={{visibility: 'hidden', height: 0}} id="customPcFormFillAllFieldsPopup">
                     <h2 style={{color: 'red'}}>
