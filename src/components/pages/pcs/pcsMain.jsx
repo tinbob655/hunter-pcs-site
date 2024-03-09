@@ -92,15 +92,14 @@ class PcsMain extends Component {
                                         {/*solid pc button*/}
                                         <SlidingButton 
                                             id="solidPcsButton"
-                                            imgSrc={this.state.productImages.temporary}
                                             linkLocation="productPage"
                                             ssIndex='product'
                                             ssValue='solidPc'
-                                            textContent={this.state.prices.solid ? (
-                                                <React.Fragment>
-                                                    Solid <br/><br/>{"£ "+this.state.prices.solid}
-                                                </React.Fragment>
-                                            ) : 'loading...'} />
+                                            textContent='Solid'
+                                            textAfterArrow={<React.Fragment>
+                                                <br/><br/>
+                                                {this.state.prices.solid ? '£ '+this.state.prices.solid : 'loading...'}
+                                            </React.Fragment>} />
                                     </td>
                                     <td style={{width: '0'}}></td>
                                     <td colSpan="2">
@@ -108,15 +107,14 @@ class PcsMain extends Component {
                                         {/*strong pc button*/}
                                         <SlidingButton
                                             id="strongPcsButton"
-                                            imgSrc={this.state.productImages.temporary}
                                             linkLocation="productPage"
                                             ssIndex="product"
                                             ssValue='strongPc'
-                                            textContent={this.state.prices.strong ? (
-                                                <React.Fragment>
-                                                    Strong <br/><br/>{"£ "+this.state.prices.strong}
-                                                </React.Fragment>
-                                            ) : 'loading...'} />
+                                            textContent='Strong'
+                                            textAfterArrow={<React.Fragment>
+                                                <br/><br/>
+                                                {this.state.prices.strong ? '£ '+this.state.prices.strong : 'loading...'}
+                                            </React.Fragment>} />
                                     </td>
                                 </tr>
                                 <tr>
@@ -126,15 +124,14 @@ class PcsMain extends Component {
                                         {/*powerful pc button*/}
                                         <SlidingButton 
                                             id="powerfulPcsButton"
-                                            imgSrc={this.state.productImages.temporary}
                                             linkLocation="productPage"
                                             ssIndex='product'
                                             ssValue='powerfulPc'
-                                            textContent={this.state.prices.powerful ? (
-                                                <React.Fragment>
-                                                    Powerful <br/><br/>{"£ "+this.state.prices.powerful}
-                                                </React.Fragment>
-                                            ) : 'loading...'} />
+                                            textContent='Powerful'
+                                            textAfterArrow={<React.Fragment>
+                                                <br/><br/>
+                                                {this.state.prices.powerful ? '£ '+this.state.prices.powerful : 'loading...'}
+                                            </React.Fragment>} />
                                     </td>
                                     <td></td>
                                 </tr>
@@ -144,15 +141,14 @@ class PcsMain extends Component {
                                         {/*supreme pc button*/}
                                         <SlidingButton 
                                             id="supremePcsButton"
-                                            imgSrc={this.state.productImages.temporary}
                                             linkLocation="productPage"
                                             ssIndex='product'
                                             ssValue='supremePc'
-                                            textContent={this.state.prices.supreme? (
-                                                <React.Fragment>
-                                                    Supreme <br/><br/>{"£ "+this.state.prices.supreme}
-                                                </React.Fragment>
-                                            ) : 'loading...'} />
+                                            textContent='Supreme'
+                                            textAfterArrow={<React.Fragment>
+                                                <br/><br/>
+                                                {this.state.prices.supreme ? '£ '+this.state.prices.supreme : 'loading...'}
+                                            </React.Fragment>} />
                                     </td>
                                     <td></td>
                                     <td colSpan="2">
@@ -160,15 +156,14 @@ class PcsMain extends Component {
                                         {/*dominant pc button*/}
                                         <SlidingButton 
                                             id="dominantPcsButton"
-                                            imgSrc={this.state.productImages.temporary}
                                             linkLocation="productPage"
                                             ssIndex='product'
                                             ssValue='dominantPc'
-                                            textContent={this.state.prices.dominant ? (
-                                                <React.Fragment>
-                                                    Dominant <br/><br/>{"£ "+this.state.prices.dominant}
-                                                </React.Fragment>
-                                            ) : 'loading...'} />
+                                            textContent='Dominant'
+                                            textAfterArrow={<React.Fragment>
+                                                <br/><br/>
+                                                {this.state.prices.dominant ? '£ '+this.state.prices.dominant : 'loading...'}
+                                            </React.Fragment>} />
                                     </td>
                                 </tr>
                             </thead>
@@ -237,67 +232,67 @@ class PcsMain extends Component {
                         {/*solid pc button*/}
                         <SlidingButton 
                             id="solidPcsButton"
-                            imgSrc={this.state.productImages.temporary}
-                            linkLocation="/productPage"
+                            linkLocation="productPage"
                             ssIndex='product'
                             ssValue='solidPc'
-                            textContent={this.state.prices.solid ? (
-                                <React.Fragment>
-                                    Solid <br/><br/>{"£ "+this.state.prices.solid}
-                                </React.Fragment>
-                            ) : 'loading...'} />
+                            imgSrc={this.state.productImages.temporary}
+                            textContent='Solid'
+                            textAfterArrow={<React.Fragment>
+                                <br/><br/>
+                                {this.state.prices.solid ? '£ '+this.state.prices.solid : 'loading...'}
+                            </React.Fragment>} />
 
                         {/*strong pc button*/}
                         <SlidingButton
                             id="strongPcsButton"
-                            imgSrc={this.state.productImages.temporary}
-                            linkLocation="/productPage"
+                            linkLocation="productPage"
                             ssIndex="product"
                             ssValue='strongPc'
-                            textContent={this.state.prices.strong ? (
-                                <React.Fragment>
-                                    Strong <br/><br/>{"£ "+this.state.prices.strong}
-                                </React.Fragment>
-                            ) : 'loading...'} />
+                            imgSrc={this.state.productImages.temporary}
+                            textContent='Strong'
+                            textAfterArrow={<React.Fragment>
+                                <br/><br/>
+                                {this.state.prices.strong ? '£ '+this.state.prices.strong : 'loading...'}
+                            </React.Fragment>} />
 
                         {/*powerful pc button*/}
                         <SlidingButton 
                             id="powerfulPcsButton"
-                            imgSrc={this.state.productImages.temporary}
-                            linkLocation="/productPage"
+                            linkLocation="productPage"
                             ssIndex='product'
                             ssValue='powerfulPc'
-                            textContent={this.state.prices.powerful ? (
-                                <React.Fragment>
-                                    Powerful <br/><br/>{"£ "+this.state.prices.powerful}
-                                </React.Fragment>
-                            ) : 'loading...'} />
+                            imgSrc={this.state.productImages.temporary}
+                            textContent='Powerful'
+                            textAfterArrow={<React.Fragment>
+                                <br/><br/>
+                                {this.state.prices.powerful ? '£ '+this.state.prices.powerful : 'loading...'}
+                            </React.Fragment>} />
 
                         {/*supreme pc button*/}
                         <SlidingButton 
                             id="supremePcsButton"
-                            imgSrc={this.state.productImages.temporary}
-                            linkLocation="/productPage"
+                            linkLocation="productPage"
                             ssIndex='product'
                             ssValue='supremePc'
-                            textContent={this.state.prices.supreme? (
-                                <React.Fragment>
-                                    Supreme <br/><br/>{"£ "+this.state.prices.supreme}
-                                </React.Fragment>
-                            ) : 'loading...'} />
+                            imgSrc={this.state.productImages.temporary}
+                            textContent='Supreme'
+                            textAfterArrow={<React.Fragment>
+                                <br/><br/>
+                                {this.state.prices.supreme ? '£ '+this.state.prices.supreme : 'loading...'}
+                            </React.Fragment>} />
 
                             {/*dominant pc button*/}
                             <SlidingButton 
                                 id="dominantPcsButton"
-                                imgSrc={this.state.productImages.temporary}
-                                linkLocation="/productPage"
+                                linkLocation="productPage"
                                 ssIndex='product'
                                 ssValue='dominantPc'
-                                textContent={this.state.prices.dominant ? (
-                                    <React.Fragment>
-                                        Dominant <br/><br/>{"£ "+this.state.prices.dominant}
-                                    </React.Fragment>
-                                ) : 'loading...'} />
+                                imgSrc={this.state.productImages.temporary}
+                                textContent='Dominant'
+                                textAfterArrow={<React.Fragment>
+                                    <br/><br/>
+                                    {this.state.prices.dominant ? '£ '+this.state.prices.dominant : 'loading...'}
+                                </React.Fragment>} />
                         <p>
                             Please note: all our PCs come with Windows 11 pre-installed. This can be changed in the purchase menus
                         </p>

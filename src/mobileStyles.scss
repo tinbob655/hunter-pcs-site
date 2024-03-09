@@ -6,6 +6,13 @@ h1 {
 
 h2 {
     font-size: 25px;
+
+    &.linkButtonTitle {
+        margin-left: 25%;
+        margin-bottom: 2vh;
+        transition-property: margin-left !important;
+        transition-duration: 0.75s;
+    }
 }
 
 h3 {

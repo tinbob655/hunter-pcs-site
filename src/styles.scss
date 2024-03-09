@@ -22,11 +22,19 @@ h2 {
     font-size: 50px;
 
     &.linkButtonTitle {
-        margin-left: 1px;
-        margin-right: 0;
+        white-space: nowrap;
+        margin-top: 0;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 0;
         width: 50%;
-        transition-property: margin-left margin-right;
+        transition-property: transform;
+        transform: translateX(-50%);
         transition-duration: 0.75s;
+
+        &.inMiddle {
+            transform: translateX(-11%);
+        }
     }
 }
 
@@ -102,31 +110,27 @@ button {
     margin: auto;
     width: 100%;
     border: none;
-
+    
     &.linkButton {
         width: 75% !important;
         margin: 50px !important;
         padding-bottom: 25px;
         border-radius: 10px;
         overflow-x: hidden;
+        min-height: 200px;
 
         background-color: rgba(50, 50, 50, .25);
         box-shadow: 0 0 100px 1px #050505;
 
         transition-duration: 0.75s;
-        transition-property: max-height background-color box-shadow;
+        transition-property: transform background-color box-shadow;
         transition-timing-function: ease-out;
-        max-height: 200px;
         overflow-y: hidden;
         
         &.expanded {
-            max-height: 500px;
+            transform: scale(1.1);
             background-color: #1a1619;
             box-shadow: 0 0 50px 1px #1a1619;
-
-            &.bigWhenExpanded {
-                max-height: 650px !important;
-            }
         }
     }
 }
@@ -258,6 +262,41 @@ img {
 
     &.linkButtonImage {
         margin-top: 20px;
+    }
+}
+
+span {
+
+    &.linkButtonArrow{
+        padding: 0;
+        margin-top: 10px;
+        display: inline;
+        position: absolute;
+
+        opacity: 0;
+        transform: rotate(-180deg);
+        transition-property: opacity transform;
+        transition-duration: 0.75s;
+
+        @keyframes showAnimation {
+            0% {
+                transform: rotate(-180deg); 
+            }
+            10% {
+                transform: rotate(-172deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        &.shown {
+            opacity: 1.0;
+            transform: rotate(0deg);
+            
+            animation-name: showAnimation;
+            animation-duration: 0.75s;
+        }
     }
 }
 

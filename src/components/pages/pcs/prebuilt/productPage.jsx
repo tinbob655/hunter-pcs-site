@@ -62,7 +62,7 @@ function ProductPage() {
     const [state, setState] = useState('');
     const [productImage, setProductImage] = useState('');
 
-    const [purchaseButtonContent, setPurchaseButtonContent] = useState("Buy now ⟶");
+    const [purchaseButtonContent, setPurchaseButtonContent] = useState("Buy now");
 
     const [loginPopupState, setLoginPopupState] = useState('');
     const [changeOperatingSystemPopupState, setChangeOperatingSystemPopupState] = useState(<></>);
