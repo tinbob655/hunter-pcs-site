@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {isMobile} from '../../../../index.js';
-import LoginPopup from '../../../multiPageComponents/popups/login/loginPopup.jsx';
 import AddressPopup from '../../../multiPageComponents/popups/address/addressPopup.jsx';
 import CustomSpecForm from './customSpecForm.jsx';
 import AutoNav from '../../../multiPageComponents/autoNav.jsx';
@@ -17,6 +16,17 @@ class CustomPcs extends Component {
             addressPopup: <></>,
             customSpecPopup: <></>,
             redirector: <></>,
+        };
+    };
+
+    componentDidMount() {
+
+        //if specified, the page may need to open with the popup sequence already active
+        if (sessionStorage.getItem('openCustomPCForm') == 'true') {
+            sessionStorage.removeItem('openCustomPCForm');
+            setTimeout(() => {
+                this.purchaseButtonClicked();
+            }, 200);
         };
     };
 
@@ -246,22 +256,13 @@ class CustomPcs extends Component {
             };
         };
 
-        //first make sure the user is logged in
-        if (sessionStorage.getItem('loggedIn') != 'true') {
+        //first, show the address popup
+        this.setState({addressPopup: <AddressPopup />});
 
-            //not logged in, show the login popup
-            this.setState({loginPopup: <LoginPopup />});
-        }
-
-        //if the user was logged in, then show the address popup
-        else {
-            this.setState({addressPopup: <AddressPopup />});
-
-            setTimeout(() => {
-                document.getElementById('customPcsAddressPopupWrapper').classList.add('shown');
-                document.getElementById('addressForm').addEventListener('submit', addressPopupSubmitted);
-            }, 100);
-        };
+        setTimeout(() => {
+            document.getElementById('customPcsAddressPopupWrapper').classList.add('shown');
+            document.getElementById('addressForm').addEventListener('submit', addressPopupSubmitted);
+        }, 100);
     };
 };
 

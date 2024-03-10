@@ -252,6 +252,24 @@ function ProductPage() {
                     <div className="dividerLine"></div>
                 </div>
 
+                {/*ALTER THE BUILD SECTION*/}
+                <div>
+                    <GenericMarkupSection
+                    headingText="Fully customisable"
+                    subheadingText="Put your own spin on it"
+                    paragraphText="All of our prebuilt models are 100% customisable. That means you can swap out parts as you please. Bear in mind that using more expensive parts will increase the cost of your PC."
+                    linkContent="Customise this model ⟶"
+                    imgSrc='images/motherboardVTall.jpeg'
+                    leftBool={true}
+                    linkLogic={() => {
+                        sessionStorage.setItem('openCustomPCForm', 'true');
+                        sessionStorage.setItem('customPCFormData', JSON.stringify(state.fullSystemSpec));
+                        setTimeout(() => {
+                            navigate('/customPCs');
+                        }, 100);
+                    }} />
+                </div>
+
                 {/*NO EXPENSES SPARED*/}
                 <div>
                     <GenericMarkupSection
@@ -264,7 +282,7 @@ function ProductPage() {
                     linkDestination='/support'
                     imgSrc='images/gamingSetupWIDE2.jpeg'
                     customImageCellStyles={{width: '60%'}} 
-                    leftBool={true}/>
+                    leftBool={false}/>
                 </div>
                 </React.Fragment>
             );
@@ -344,6 +362,25 @@ function ProductPage() {
 
                 <div className="dividerLine"></div>
 
+                {/*ALTER THE BUILD SECTION*/}
+                <div>
+                    <GenericMarkupSection
+                    headingText="Fully customisable"
+                    subheadingText="Put your own spin on it"
+                    paragraphText="All of our prebuilt models are 100% customisable. That means you can swap out parts as you please. Bear in mind that using more expensive parts will increase the cost of your PC."
+                    linkContent="Customise this model ⟶"
+                    imgSrc='images/motherboardVTall.jpeg'
+                    customImageStyles={{maxHeight: '40vh'}}
+                    leftBool={true}
+                    linkLogic={() => {
+                        sessionStorage.setItem('openCustomPCForm', 'true');
+                        sessionStorage.setItem('customPCFormData', JSON.stringify(state.fullSystemSpec));
+                        setTimeout(() => {
+                            navigate('/customPCs');
+                        }, 100);
+                    }} />
+                </div>
+
                 {/*NO EXPENSES SPARED SECTION*/}
                 <div>
                 <GenericMarkupSection
@@ -356,7 +393,7 @@ function ProductPage() {
                     linkDestination='/support'
                     imgSrc='images/gamingSetupWIDE2.jpeg'
                     DontShowDividerLineBool={true}
-                    leftBool={true}/>
+                    leftBool={false}/>
                 </div>
             </React.Fragment>
         );
