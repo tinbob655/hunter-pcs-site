@@ -5,6 +5,7 @@ import TrustpilotWidget from '../../multiPageComponents/trustpilotWidget/trustpi
 import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection.jsx';
 import Image from '../../multiPageComponents/image.jsx';
 import {collection, addDoc, getFirestore} from 'firebase/firestore';
+import ChangeCasePopup from './changeCasePopup.jsx';
 
 class PaymentSuccessful extends Component {
 
@@ -14,6 +15,7 @@ class PaymentSuccessful extends Component {
         this.state = {
             emailPopup: <></>,
             codePopup: <></>,
+            changeCasePopup: <></>,
             orderId: sessionStorage.getItem('orderId'),
         };
     };
@@ -76,7 +78,7 @@ class PaymentSuccessful extends Component {
                     </div>
 
                     {/*friend discount section*/}
-                    <div>
+                    <div className="intoPurple">
                         <GenericMarkupSection
                         headingText="Friend Discount"
                         subheadingText="Get you and your friend 10% off"
@@ -88,7 +90,21 @@ class PaymentSuccessful extends Component {
                         imgSrc='images/2 skulls.png' />
                     </div>
 
-                    <TrustpilotWidget/>
+                    {/*change your case section*/}
+                    <div className="outofPurple">
+                        <GenericMarkupSection
+                        headingText="Change the case"
+                        subheadingText="We'll build with any case you want"
+                        paragraphText="Here, we understand that for many, the way a PC looks is just as important as how it performs. All our PCs are guaranteed to perform well, and you can customise how yours looks with any case you can dream off."
+                        linkContent="Choose the case of your dreams ⟶"
+                        linkLogic={() => {this.setState({changeCasePopup: <ChangeCasePopup/>})}}
+                        imgSrc='images/image of pc 2.jpeg'
+                        leftBool={true} />
+                    </div>
+
+                    <div style={{marginTop: '75px'}}>
+                        <TrustpilotWidget/>
+                    </div>
 
                     <div id="emailPopupWrapper" className="popupWrapper">
                         {this.state.emailPopup}
@@ -96,6 +112,10 @@ class PaymentSuccessful extends Component {
 
                     <div id="codePopupWrapper" className="popupWrapper">
                         {this.state.codePopup}
+                    </div>
+
+                    <div id="changeCasePopupWrapper" className="popupWrapper">
+                        {this.state.changeCasePopup}
                     </div>
                 </React.Fragment>
             );
@@ -114,7 +134,7 @@ class PaymentSuccessful extends Component {
                                 <td>
                                     <Image imagePath="images/gamingSetupWIDE2.jpeg" imageClasses="mainImage centered" />
                                 </td>
-                                <td style={{width: '40%'}}>
+                                <td style={{width: '50%'}}>
                                     <h2 className="alignLeft">
                                         Congratulations!
                                     </h2>
@@ -143,9 +163,22 @@ class PaymentSuccessful extends Component {
                         paragraphText="Tap on the button below to share a code with your buddy. When they purchase their PC, you will recieve 10% back on this purchase, and they will recieve 10% off their purchase. Sounds like a win-win to us."
                         linkContent="Tap here to get your code ⟶"
                         linkLogic={() => {this.codeButtonClicked()}}
-                        DontShowDividerLineBool={true}
-                        leftBool={true}
+                        DontShowDividerLineBool={false}
+                        leftBool={false}
                         imgSrc='images/2 skulls.png' />
+                    </div>
+
+                    {/*change your case section*/}
+                    <div>
+                        <GenericMarkupSection
+                        headingText="Change the case"
+                        subheadingText="We'll build with any case you want"
+                        paragraphText="Here, we understand that for many, the way a PC looks is just as important as how it performs. All our PCs are guaranteed to perform well, and you can customise how yours looks with any case you can dream off."
+                        linkContent="Choose the case of your dreams ⟶"
+                        linkLogic={() => {this.setState({changeCasePopup: <ChangeCasePopup/>})}}
+                        imgSrc='images/image of pc 2.jpeg'
+                        leftBool={true}
+                        DontShowDividerLineBool={true} />
                     </div>
 
                     <div id="emailPopupWrapper" className="popupWrapper">
@@ -154,6 +187,10 @@ class PaymentSuccessful extends Component {
 
                     <div id="codePopupWrapper" className="popupWrapper">
                         {this.state.codePopup}
+                    </div>
+
+                    <div id="changeCasePopupWrapper" className="popupWrapper">
+                        {this.state.changeCasePopup}
                     </div>
                 </React.Fragment>
             );
