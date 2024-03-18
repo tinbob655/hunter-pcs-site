@@ -247,6 +247,70 @@ class Support extends Component {
                         leftBool={true} 
                         customImageCellStyles={{width: '60%'}}/>
                     </div>
+
+                    {/*FIND YOUR MODEL SECTION*/}
+                    <div id="findYourModel">
+                        <h1 className="alignRight">
+                            Find your model
+                        </h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <h2 className="alignLeft">
+                                            We'll help you pick your perfect model
+                                        </h2>
+                                        <p>
+                                            We understand it can be hard to select the ideal PC from our range of prebuilt PCs. Need help? Look no further:
+                                        </p>
+
+                                        {/*solid*/}
+                                        <h2 style={{paddingBottom: 0, marginBottom: 0}} className="alignRight">
+                                            Solid:
+                                        </h2>
+                                        <p style={{marginTop: 0, paddingTop: 0}} className="alignRight">
+                                            Our solid model is aimed at gamers who wish to play most games in 1080p with high FPS.
+                                        </p>
+
+                                        {/*strong*/}
+                                        <h2 style={{paddingBottom: 0, marginBottom: 0}} className="alignLeft">
+                                            Strong:
+                                        </h2>
+                                        <p style={{marginTop: 0, paddingTop: 0}} className="alignLeft">
+                                            Our strong model is for gamers who wish to play all games easily in 1080p with very high FPS, and many single-player games in 1440p with lower FPS.
+                                        </p>
+
+                                        {/*powerful*/}
+                                        <h2 style={{paddingBottom: 0, marginBottom: 0}} className="alignRight">
+                                            Powerful:
+                                        </h2>
+                                        <p style={{marginTop: 0, paddingTop: 0}} className="alignRight">
+                                            Our powerful model is aimed at those who wish to easily play all games in 1440p with high FPS as well as have high aesthetic build quality.
+                                        </p>
+
+                                        {/*supreme*/}
+                                        <h2 style={{paddingBottom: 0, marginBottom: 0}} className="alignLeft">
+                                            Supreme:
+                                        </h2>
+                                        <p style={{paddingTop: 0, marginTop: 0}} className="alignLeft">
+                                            Our supreme model is designed with gamers who want to play games in 4K with an RGB flair as well as never have to worry about storage space or cooling in mind.
+                                        </p>
+
+                                        {/*dominant*/}
+                                        <h2 style={{paddingBottom: 0, marginBottom: 0}} className="alignRight">
+                                            Dominant:
+                                        </h2>
+                                        <p style={{paddingTop: 0, marginTop: 0}} className="alignRight">
+                                            Our dominant model is curated for gamers with a passion for quality, easily running any game on max settings in 4K resolution without breaking a sweat. For dominanting the competition, this is the perfect solution.
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <Image imagePath="images/gamingPcVTall.png" imageClasses="mainImage centered" imageStyles={{maxHeight: 'unset'}} />
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
                 </React.Fragment>
             );
         }
@@ -450,8 +514,71 @@ class Support extends Component {
                         paragraphText="We only use the highest quality services for delivery. All Hunter PCs are delivered using DPD, one of the world's leading parcel delivery networks.
                          At current, we only deliver to England."
                         imgSrc='images/gamingSetup5.jpeg'
-                        leftBool={false}
-                        DontShowDividerLineBool={true} />
+                        leftBool={false} />
+                    </div>
+
+                    {/*FIND YOUR MODEL SECTION*/}
+                    <div id="findYourModel">
+                        <h1>
+                            Find your model
+                        </h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <Image imagePath="images/gamingSetup3.jpeg" imageClasses="mainImage centered" />
+                                    </td>
+                                    <td>
+                                        <h2 className="alignLeft">
+                                            We'll help you pick your perfect model
+                                        </h2>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <p>
+                            We understand it can be hard to select the ideal PC from our range of prebuilt PCs. Need help? Look no further:
+                        </p>
+
+                        {/*solid*/}
+                        <h2 style={{paddingBottom: 0, marginBottom: 0}} className="alignRight">
+                            Solid:
+                        </h2>
+                        <p style={{marginTop: 0, paddingTop: 0}} className="alignRight">
+                            Our solid model is aimed at gamers who wish to play most games in 1080p with high FPS.
+                        </p>
+
+                        {/*strong*/}
+                        <h2 style={{paddingBottom: 0, marginBottom: 0}} className="alignLeft">
+                            Strong:
+                        </h2>
+                        <p style={{marginTop: 0, paddingTop: 0}} className="alignLeft">
+                            Our strong model is for gamers who wish to play all games easily in 1080p with very high FPS, and many single-player games in 1440p with lower FPS.
+                        </p>
+
+                        {/*powerful*/}
+                        <h2 style={{paddingBottom: 0, marginBottom: 0}} className="alignRight">
+                            Powerful:
+                        </h2>
+                        <p style={{marginTop: 0, paddingTop: 0}} className="alignRight">
+                            Our powerful model is aimed at those who wish to easily play all games in 1440p with high FPS as well as have high aesthetic build quality.
+                        </p>
+
+                        {/*supreme*/}
+                        <h2 style={{paddingBottom: 0, marginBottom: 0}} className="alignLeft">
+                            Supreme:
+                        </h2>
+                        <p style={{paddingTop: 0, marginTop: 0}} className="alignLeft">
+                            Our supreme model is designed with gamers who want to play games in 4K with an RGB flair as well as never have to worry about storage space or cooling in mind.
+                        </p>
+
+                        {/*dominant*/}
+                        <h2 style={{paddingBottom: 0, marginBottom: 0}} className="alignRight">
+                            Dominant:
+                        </h2>
+                        <p style={{paddingTop: 0, marginTop: 0}} className="alignRight">
+                            Our dominant model is curated for gamers with a passion for quality, easily running any game on max settings in 4K resolution without breaking a sweat. For dominanting the competition, this is the perfect solution.
+                        </p>
                     </div>
                 </React.Fragment>
             );
