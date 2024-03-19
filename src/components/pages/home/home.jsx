@@ -194,7 +194,7 @@ class Home extends Component {
                             <thead>
                                 <tr>
                                     <td>
-                                        <Image imagePath="images/gamingSetupTall2.jpeg" imageClasses="mainImgae centered" imageStyles={{width: '85%'}} />
+                                        <Image imagePath="images/gamingSetupTall2.jpeg" imageClasses="mainImage centered" imageStyles={{width: '85%'}} />
                                     </td>
     
                                     <td style={{width: '60%'}}>
