@@ -97,7 +97,7 @@ class PcsMain extends Component {
                                             ssValue='solidPc'
                                             textContent='Solid'
                                             textAfterArrow={<React.Fragment>
-                                                <br/><br/>
+                                                <br/>
                                                 {this.state.prices.solid ? '£ '+this.state.prices.solid : 'loading...'}
                                             </React.Fragment>} />
                                     </td>
@@ -112,7 +112,7 @@ class PcsMain extends Component {
                                             ssValue='strongPc'
                                             textContent='Strong'
                                             textAfterArrow={<React.Fragment>
-                                                <br/><br/>
+                                                <br/>
                                                 {this.state.prices.strong ? '£ '+this.state.prices.strong : 'loading...'}
                                             </React.Fragment>} />
                                     </td>
@@ -129,7 +129,7 @@ class PcsMain extends Component {
                                             ssValue='powerfulPc'
                                             textContent='Powerful'
                                             textAfterArrow={<React.Fragment>
-                                                <br/><br/>
+                                                <br/>
                                                 {this.state.prices.powerful ? '£ '+this.state.prices.powerful : 'loading...'}
                                             </React.Fragment>} />
                                     </td>
@@ -146,7 +146,7 @@ class PcsMain extends Component {
                                             ssValue='supremePc'
                                             textContent='Supreme'
                                             textAfterArrow={<React.Fragment>
-                                                <br/><br/>
+                                                <br/>
                                                 {this.state.prices.supreme ? '£ '+this.state.prices.supreme : 'loading...'}
                                             </React.Fragment>} />
                                     </td>
@@ -161,7 +161,7 @@ class PcsMain extends Component {
                                             ssValue='dominantPc'
                                             textContent='Dominant'
                                             textAfterArrow={<React.Fragment>
-                                                <br/><br/>
+                                                <br/>
                                                 {this.state.prices.dominant ? '£ '+this.state.prices.dominant : 'loading...'}
                                             </React.Fragment>} />
                                     </td>

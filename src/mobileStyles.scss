@@ -9,9 +9,8 @@ h2 {
 
     &.linkButtonTitle {
         margin-left: 25%;
+        margin-left: auto !important;
         margin-bottom: 2vh;
-        transition-property: margin-left !important;
-        transition-duration: 0.75s;
     }
 }
 

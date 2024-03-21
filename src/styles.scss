@@ -22,18 +22,17 @@ h2 {
     font-size: 50px;
 
     &.linkButtonTitle {
-        white-space: nowrap;
         margin-top: 0;
         margin-left: auto;
         margin-right: auto;
-        padding-bottom: 0;
-        width: 50%;
+        margin-bottom: 0;
+        padding: 0;
+        transform: translateX(-15%);
         transition-property: transform;
-        transform: translateX(-50%);
         transition-duration: 0.75s;
 
         &.inMiddle {
-            transform: translateX(-11%);
+            transform: translatex(0);
         }
     }
 }
@@ -270,8 +269,8 @@ span {
     &.linkButtonArrow{
         padding: 0;
         margin-top: 10px;
-        display: inline;
-        position: absolute;
+        display: block;
+        margin-bottom: 0;
 
         opacity: 0;
         transform: rotate(-180deg);

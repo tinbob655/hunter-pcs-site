@@ -24,66 +24,6 @@ function getFromFirebase(path) {
     });
 };
 
-//function for when a button is hovered over
-export function buttonExpand(id) {
-  
-  //desktop button
-  if (!isMobile()) {
-
-    //edit the styles of the button
-    const button = document.getElementById(id+'button');
-    button.classList.add('expanded');
-  
-    //make the text slide in from the left
-    const text = document.getElementById(id+'title');
-    text.classList.add('inMiddle')
-  
-    //make the arrow spin in
-    const arrow = document.getElementById(id+'arrow');
-    arrow.classList.add('shown')
-  
-    //wait until the mouse is no longer over the button and then reset all styles
-    button.onmouseleave = () => {
-      button.classList.remove('expanded');
-      text.classList.remove('inMiddle');
-      arrow.classList.remove('shown');
-    };
-  }
-
-  //mobile button
-  else {
-    //edit the styles of the button
-    const button = document.getElementById(id+'button');
-    button.classList.add('expanded');
-
-    //make the text slide in from the left
-    const text = document.getElementById(id+'title');
-    text.style.marginLeft = '50%';
-
-    //make the dividor line spin in
-    const dividor = document.getElementById(id+'divider');
-    setTimeout(() => {
-      dividor.style.opacity = 1.0;
-      setTimeout(() => {
-        dividor.style.transform = 'scale(10, 5)';
-      }, 250)
-    }, 500);
-
-    //wait until the mouse is no longer over the button and then reset all styles
-    button.onmouseleave = () => {
-      button.classList.remove('expanded');
-      text.style.marginLeft = '25%';
-      setTimeout(() => {
-        dividor.style.visibility = 'hidden';
-        dividor.style.transform = 'unset';
-        setTimeout(() => {
-          dividor.style.visibility = 'visible';
-        }, 400);
-      }, 750);
-    };
-  }
-};
-
 //function to show "loading..." if content has not yet loaded
 export function renderIfLoaded(content) {
   return content ? content : 'loading...';
