@@ -125,7 +125,7 @@ class About extends Component {
                             <thead>
                                 <tr>
                                     <td>
-                                        <Image imagePath="images/rounded skull 3.jpeg" imageClasses="mainimage centered" />
+                                        <Image imagePath="images/rounded skull 3.jpeg" imageClasses="mainImage centered" />
                                     </td>
                                     <td>
                                         <h2 className="alignRight">
