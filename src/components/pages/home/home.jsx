@@ -3,10 +3,19 @@ import { Link } from 'react-router-dom';
 import SlidingButton from '../../multiPageComponents/slidingButton.jsx';
 import gamesCompilationVideo from '../../../media/HunterPcs all games compilation.mp4';
 import {isMobile} from '../../../index.js';
+import AutoNav from '../../multiPageComponents/autoNav.jsx';
 import './homeStyles.scss';
 import Image from '../../multiPageComponents/image.jsx';
 
 class Home extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            navigator: <></>,
+        };
+    };
 
     componentDidMount() {
         
@@ -205,17 +214,22 @@ class Home extends Component {
                                             We guarantee no expense spared. That means every one of your PC's components is made by branded and trusted manufacturers.
                                             And not just that, we will also thoroughly test your build to make sure you get the maximum performance possible
                                         </p>
-                                        <Link to='/support'>
+                                        <button type="button" onClick={() => {
+                                            sessionStorage.setItem('supportPageScroll', 'noExpensesSpared');
+                                            this.setState({navigator: <AutoNav destination='/support' randomHash={Math.random()}/>})
+                                        }}>
                                             <h3>
                                                 Learn more about our no expense spared guarantee ⟶
                                             </h3>
-                                        </Link>
+                                        </button>
                                     </td>
     
                                 </tr>
                             </thead>
                         </table>
                     </div>
+
+                    {this.state.navigator}
                 </React.Fragment>
             );
         }
@@ -399,12 +413,17 @@ class Home extends Component {
                             We guarantee no expense spared. That means every one of your PC's components is made by branded and trusted manufacturers.
                             And not just that, we will also thoroughly test your build to make sure you get the maximum performance possible
                         </p>
-                        <Link to='/support'>
+                        <button type="button" onClick={() => {
+                            sessionStorage.setItem('supportPageScroll', 'noExpensesSpared');
+                            this.setState({navigator: <AutoNav destination='/support' randomHash={Math.random()} />});
+                        }}>
                             <h3>
                                 Learn more about our no expense spared guarantee ⟶
                             </h3>
-                        </Link>
+                        </button>
                     </div>
+
+                    {this.state.navigator}
                 </React.Fragment>
             );
         };

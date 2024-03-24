@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import {isMobile} from '../index.js';
+import AutoNav from './multiPageComponents/autoNav.jsx';
 import TrustpilotTrustBox from './multiPageComponents/trustpilotWidget/trustpilotWidget.jsx';
 import Image from './multiPageComponents/image.jsx';
 
@@ -11,6 +12,7 @@ class Footer extends Component {
 
         this.state = {
             logoImageWidth: isMobile() ? '60%' : '25%',
+            navigator: <></>,
         };
     };
 
@@ -71,6 +73,8 @@ class Footer extends Component {
 
                 {/*final H logo*/}
                 <Image imagePath="images/hunterPcsLogo.png" imageClasses="centered" imageStyles={{width: this.state.logoImageWidth}} />
+
+                {this.state.navigator}
             </React.Fragment>
         );
     };
@@ -107,11 +111,15 @@ class Footer extends Component {
                         {/*INFORMATION SECTION*/}
                         {infoLink? (
                             <td>
-                                <Link to='/support' state={{targetLocation: infoLink}}>
+                                <button type="button" onClick={() => {
+                                    sessionStorage.setItem('supportPageScroll', infoLink);
+                                    this.setState({navigator: null});
+                                    this.setState({navigator: <AutoNav destination='/support' randomHash={Math.random()}/>});
+                                }}>
                                     <h3 style={{padding: 0}}>
                                         {frontendLinkName}
                                     </h3>
-                                </Link>
+                                </button>
                             </td>
                         ) : <td></td>}
 
