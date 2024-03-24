@@ -275,7 +275,7 @@ function ProductPage() {
                     <GenericMarkupSection
                     headingText='No expense spared'
                     subheadingText='We guarantee quality'
-                    paragraphText="At hunter PCs, we understand how annoying it can be to purchase a new device only for it to fail and need returning. That's why we
+                    paragraphText="At Hunter PCs, we understand how annoying it can be to purchase a new device only for it to fail and need returning. That's why we
                     guarantee all PCs delivered to you are made with 100% brand new components. All our power supply units are heavily tested along with
                     the PCs themselves."
                     linkContent='More on our quality guarantee ⟶'
@@ -386,7 +386,7 @@ function ProductPage() {
                 <GenericMarkupSection
                     headingText='No expense spared'
                     subheadingText='We guarantee quality'
-                    paragraphText="At hunter pcs, we understand how annoying it can be to purchase a new device only for it to fail and need returning. That's why we
+                    paragraphText="At Hunter pcs, we understand how annoying it can be to purchase a new device only for it to fail and need returning. That's why we
                     guarantee all PCs delivered to you are made with 100% brand new components. All our power supply units are heavily tested along with
                     the PCs themselves."
                     linkContent='More on our quality guarantee ⟶'

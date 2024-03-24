@@ -50,7 +50,7 @@ class CustomPcs extends Component {
                                             Build your dreams
                                         </h2>
                                         <p className="alignRight">
-                                            Below is the hunter PCs custom PC designer, so you can create your own custom rig with ease. We'll build it and ship it to you as 
+                                            Below is the Hunter PCs custom PC designer, so you can create your own custom rig with ease. We'll build it and ship it to you as 
                                             usual
                                         </p>
                                         <button type="button" onClick={function() {alert('Leaving this website!\n\nThis is a link to an external site, proceed at own risk.');
@@ -122,7 +122,7 @@ class CustomPcs extends Component {
                             </thead>
                         </table>
                         <p>
-                            Below is the hunter PCs custom PC designer, so you can create your own custom rig with ease. We'll build it and ship it to you as 
+                            Below is the Hunter PCs custom PC designer, so you can create your own custom rig with ease. We'll build it and ship it to you as 
                             usual
                         </p>
                         <button type="button" onClick={function() {alert('Leaving this website!\n\nThis is a link to an external site, proceed at own risk.');
