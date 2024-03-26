@@ -73,7 +73,7 @@ class CustomPcs extends Component {
                         <GenericMarkupSection
                         headingText="All finished?"
                         subheadingText="Buy now"
-                        paragraphText="We will verify that the PV you have designed works and then build it and ship it to you as usual. A small build fee will be charged"
+                        paragraphText="We will verify that the PC you have designed works and then build it and ship it to you as usual. A small build fee will be charged"
                         linkLogic={() => {this.purchaseButtonClicked()}}
                         linkContent="Get your custom PC delivered straight to you ⟶"
                         imgSrc="images/rounded skull 3.jpeg"
@@ -140,7 +140,7 @@ class CustomPcs extends Component {
                         <GenericMarkupSection
                         headingText="All finished?"
                         subheadingText="Buy now"
-                        paragraphText="We will verify that the PV you have designed works and then build it and ship it to you as usual. A small build fee will be charged"
+                        paragraphText="We will verify that the PC you have designed works and then build it and ship it to you as usual. A small build fee will be charged"
                         linkLogic={() => {this.purchaseButtonClicked()}}
                         linkContent="Get your custom PC delivered straight to you ⟶"
                         imgSrc="images/rounded skull 3.jpeg"
