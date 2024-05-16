@@ -126,26 +126,26 @@ class Support extends Component {
                             <thead>
                                 <tr>
                                     <td style={{borderRight: '5px white solid'}}>
-                                        <h2 className="alignRight">
+                                        <h2 className="alignLeft">
                                             If it's our fault
                                         </h2>
                                     </td>
     
                                     <td>
-                                        <h2 className="alignLeft">
+                                        <h2 className="alignRight">
                                             If it's your fault
                                         </h2>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style={{borderRight: '5px white solid'}}>
-                                        <p className="alignLeft">
+                                        <p className="alignRight">
                                             Faulty parts? Short lifespan? Awful speeds? That's our fault: you can return the entire PC and we will fix it up like new 
                                             for you free of charge (minus delivery fees)
                                         </p>
                                     </td>
                                     <td>
-                                        <p className="alignRight">
+                                        <p className="alignLeft">
                                             Spill some water? Loose power mid update? Drop the PC? That's your fault but don't fear: we can still repair your PC for you 
                                             but you'll need to cover the cost. You will be billed for each part we replace as well as a fixed cost of £149.99 for the repairs
                                         </p>
