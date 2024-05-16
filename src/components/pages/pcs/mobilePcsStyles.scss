@@ -1,7 +1,7 @@
 div#fullSpecDiv{
-    overflow-y: hidden !important;
+    overflow-y: scroll !important;
 
     &.shown {
-        max-height: 750px;
+        max-height: 50vh;
     }
 }
