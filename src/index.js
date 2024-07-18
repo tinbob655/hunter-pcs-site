@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import './styles.scss';
 import { Analytics} from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 import {getStorage, ref, getDownloadURL} from 'firebase/storage';
 import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
@@ -121,6 +122,7 @@ root.render(
       </div>
 
       <Analytics/>
+      <SpeedInsights />
     </React.Fragment>
   </BrowserRouter>
 );
