@@ -1,3 +1,1 @@
-The official Hunter PCs Site
-
-Created by tinbob655
+The new version the Hunter PCs site

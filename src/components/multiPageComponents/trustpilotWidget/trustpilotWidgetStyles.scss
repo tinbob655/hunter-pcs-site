@@ -1,9 +1,0 @@
-div.trustpilot-widget {
-    transition-property: transform;
-    transition-duration: 0.5s;
-    transform: scale(1);
-
-    &:hover {
-        transform: scale(1.15);
-    }
-}
