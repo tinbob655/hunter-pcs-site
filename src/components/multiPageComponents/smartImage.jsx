@@ -23,28 +23,20 @@ class SmartImage extends Component {
         else if (this.props.imageURL && this.props.imagePath) {
             throw new Error('Only one of imageURL or imagePath can be specified.');
         };
+
+        //if an imagePath was provided, fetch the image url from firebase
+        if (this.props.imagePath) {
+            const storage = firebaseInstance.getFirebaseStorage();
+            getDownloadURL(ref(storage, this.props.imagePath)).then((url) => {
+                this.setState({imageURL: url});
+            });
+        };
     };
 
     render() {
         return (
-            <img src={this.fetchImage()} className={this.state.imageClasses || null} style={this.state.imageStyles || null} id={this.state.imageId || null} />
+            <img src={this.state.imageURL} className={this.state.imageClasses || null} style={this.state.imageStyles || null} id={this.state.imageId || null} />
         );
-    };
-
-    fetchImage() {
-
-        //method to either return the image url if it already exists, or fetch one from firebase
-        if (this.state.imageURL) {
-            return this.state.imageURL;
-        }
-        else {
-
-            //get image url from image page and firestore
-            const storage = firebaseInstance.getFirebaseStorage();
-            getDownloadURL(ref(storage, this.state.imagePath)).then((url) => {
-                return url;
-            });
-        };
     };
 };
 
