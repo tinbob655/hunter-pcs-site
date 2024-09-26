@@ -1,8 +1,17 @@
 import React, {Component} from 'react';
 import PageHeader from '../../multiPageComponents/pageHeader.jsx';
 import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection.jsx';
+import LoginPopup from '../../multiPageComponents/popups/loginPopup.jsx';
 
 class Account extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            loginPopupShown: false,
+        };
+    };
 
     render() {
         return (
@@ -22,6 +31,9 @@ class Account extends Component {
                             this.startLogInSignUp();
                         }} />
                 </div>
+
+                {/*login popup*/}
+                <LoginPopup shown={this.state.loginPopupShown} />
             </React.Fragment>
         );
     };
@@ -29,6 +41,7 @@ class Account extends Component {
     startLogInSignUp() {
         
         //method to show the login popup
+        this.setState({loginPopupShown: true});
     };
 };
 
