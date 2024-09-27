@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './loginPopupStyles.scss';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import firebaseInstance from '../../../classes/firebase.js';
 
 class LoginPopup extends Component {
@@ -98,13 +98,6 @@ class LoginPopup extends Component {
                         </form>
                     </div>
                 </div>
-
-                {/*TEMPORARY*/}
-                <button onClick={() => {signOut(firebaseInstance.getFirebaseAuth())}} type="button">
-                    <h3>
-                        Temp sign out
-                    </h3>
-                </button>
             </React.Fragment>
         );
     };
