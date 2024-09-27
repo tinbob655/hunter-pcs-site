@@ -14,8 +14,11 @@ class AuthProvider extends Component {
         this.state = {
             user: null,
         };
+    };
 
-        //when the auth state changes, update state
+    componentDidMount() {
+
+        //when the firebase auth state changes, update this class' state and the global context
         onAuthStateChanged(auth, (user) => {
             this.setState({
                 user: user,
