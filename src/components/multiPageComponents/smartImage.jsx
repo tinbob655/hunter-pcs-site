@@ -23,7 +23,10 @@ class SmartImage extends Component {
         else if (this.props.imageURL && this.props.imagePath) {
             throw new Error('Only one of imageURL or imagePath can be specified.');
         };
+    };
 
+    componentDidMount() {
+        
         //if an imagePath was provided, fetch the image url from firebase
         if (this.props.imagePath) {
             const storage = firebaseInstance.getFirebaseStorage();
