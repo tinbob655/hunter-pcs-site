@@ -10,9 +10,9 @@ class AuthProvider extends Component {
     constructor(props) {
         super(props);
 
-        //this will store the firebase auth state
+        //this will store the firebase auth state, if there is a previous auth state saved in session storage, retrieve it
         this.state = {
-            user: null,
+            user: sessionStorage.getItem('auth') ? JSON.parse(sessionStorage.getItem('auth')) : null,
         };
     };
 
@@ -23,6 +23,9 @@ class AuthProvider extends Component {
             this.setState({
                 user: user,
             });
+
+            //save the auth state to session storage (in case of page refresh)
+            sessionStorage.setItem('auth', JSON.stringify(user));
         });
     };
 
