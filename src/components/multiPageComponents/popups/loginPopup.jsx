@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import './loginPopupStyles.scss';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
+import firebaseInstance from '../../../classes/firebase.js';
 
 class LoginPopup extends Component {
 
@@ -16,20 +18,19 @@ class LoginPopup extends Component {
 
     componentDidUpdate() {
 
-        //only fire if states do not match to prevent infinite loop
-        if (this.props.shown != this.state.shown ) {
-            this.setState({shown: this.props.shown});
-
-            //play either the popup show or popup hide animation
-            this.setState({popupWrapperClass: this.props.shown ? 'shown' : ''});
+        //if the popup is to be shown or hidden
+        if (this.props.shown != this.state.shown && !this.state.forceClose ) {
+            this.setState({
+                shown: this.props.shown,
+                popupWrapperClass: this.props.shown ? 'shown' : ''
+            });
         };
-
     };
 
     render() {
         return(
             <React.Fragment>
-                <div className={`popupWrapper ${this.state.popupWrapperClass}`} style={this.state.shown ? {} : {opacity: 0}} >
+                <div className={`popupWrapper ${this.state.popupWrapperClass}`} id="loginPopupWrapper" style={this.state.shown ? {} : {opacity: 0}} >
                     <h1 style={{marginBottom: 0, marginTop: '5px'}}>
                         Join us
                     </h1>
@@ -97,6 +98,13 @@ class LoginPopup extends Component {
                         </form>
                     </div>
                 </div>
+
+                {/*TEMPORARY*/}
+                <button onClick={() => {signOut(firebaseInstance.getFirebaseAuth())}} type="button">
+                    <h3>
+                        Temp sign out
+                    </h3>
+                </button>
             </React.Fragment>
         );
     };
@@ -129,14 +137,25 @@ class LoginPopup extends Component {
         };
     };
 
-    logInFormSubmitted(event) {
+    async logInFormSubmitted(event) {
         event.preventDefault();
+        const auth = firebaseInstance.getFirebaseAuth();
+
+        //email validation is not required here as the <input /> tag is of type="email", so validation is already done
         const email = event.currentTarget.email.value;
         const password = event.currentTarget.password.value;
+
+        await signInWithEmailAndPassword(auth, email, password);
+
+        //if there were no errors, refresh the page
+        window.location.reload();
     };
 
-    signUpFormSubmitted(event) {
+    async signUpFormSubmitted(event) {
         event.preventDefault();
+        const auth = firebaseInstance.getFirebaseAuth();
+
+        //email validation is not required here as the <input /> tag is of type="email", so validation is already done
         const email = event.currentTarget.email.value;
         const password1 = event.currentTarget.password.value;
         const password2 = event.currentTarget.confirmPassword.value;
@@ -145,6 +164,12 @@ class LoginPopup extends Component {
         if (password1 != password2) {
             throw new Error('Passwords do not match, please try again');
         };
+
+        //create the user's account
+        await createUserWithEmailAndPassword(auth, email, password1);
+
+        //if there were no errors, refresh the page
+        window.location.reload();
     };
 };
 

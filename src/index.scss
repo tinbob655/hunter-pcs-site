@@ -126,7 +126,7 @@ div {
         border: 5px solid #333333;
         box-shadow: 0 0 50px 5px #09010f;
         opacity: 0.975;
-        z-index: -1;
+        z-index: 99;
         overflow-y: scroll;
         overflow-x: hidden;
 
@@ -137,7 +137,6 @@ div {
 
         &.shown {
             transform: translateY(0) scale(1);
-            z-index: 99;
         }
     }
 }
