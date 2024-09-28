@@ -18,7 +18,7 @@ class PageHeader extends Component {
                 <h1 className="alignLeft noVerticalSpacing" style={{marginLeft: '12.5%'}}>
                     {this.state.heading}
                 </h1>
-                <p className="alignLeft noVerticalSpacing" style={{marginLeft: '17%'}}>
+                <p className="alignLeft noVerticalSpacing" style={{marginLeft: '17%', color: '#c5abbe'}}>
                     {this.state.subheading}
                 </p>
                 <div className="dividerLine"></div>
