@@ -4,6 +4,7 @@ import './index.scss';
 import AllRoutes from './routes.jsx';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './context/authContext.jsx';
+import Header from './components/multiPageComponents/header.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -11,7 +12,10 @@ root.render(
     <BrowserRouter>
     <AuthProvider>
 
+      <Header />
+      <div style={{marginTop: '125px'}}>
       <AllRoutes />
+      </div>
       
     </AuthProvider>
     </BrowserRouter>

@@ -37,6 +37,19 @@ h3 {
     &:hover {
         transform: scale(1.1, 1.1);
     }
+
+    &.headerButton {
+        transition-duration: 0.5s;
+        color: white;
+        transition-property: transform color;
+        font-weight: 10;
+        font-size: 20px;
+
+        &:hover {
+            transform: scale(1.4);
+            color: #bd9bb4;
+        }
+    }
 }
 
 p {
@@ -139,6 +152,42 @@ div {
             transform: translateY(0) scale(1);
         }
     }
+
+    &#headerWrapper {
+        height: 100px;
+        background-color: #070707;
+        z-index: 98;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+
+        opacity: 0.8;
+        transition-property: opacity;
+        transition-duration: 0.5s;
+        transition-timing-function: ease;
+
+        &:hover {
+            opacity: 1.0;
+        }
+    }
+
+    &.headerCellWhiteLine {
+        width: 75%;
+        height: 5px;
+        background-color: white;
+        margin-left: auto;
+        margin-right: auto;
+
+        transform: scale(0, 1);
+        transition-property: transform;
+        transition-duration: 0.5s;
+        transition-timing-function: ease;
+
+        &.shown {
+            transform: scale(1);
+        }
+    }
 }
 
 img {
@@ -216,6 +265,21 @@ input {
 table {
     table-layout: fixed;
     width: 100%;
+}
+
+td {
+
+    &.headerCell{
+        background-color: #070707;
+        border-radius: 10px;
+        transition-property: background-color;
+        transition-duration: 0.5s;
+        transition-timing-function: ease;
+
+        &.hovered {
+            background-color: #302a30;
+        }
+    }
 }
 
 video {
