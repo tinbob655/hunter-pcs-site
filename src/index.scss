@@ -131,14 +131,6 @@ div {
     border: none;
     display: block;
 
-    &.dividerLine {
-        width: 80%;
-        background-color: white;
-        height: 5px;
-        margin: 25px auto;
-        position: relative;
-    }
-
     &.popupWrapper {
         $width: 80vw;
         width: $width;
@@ -208,44 +200,38 @@ div {
         width: 75%;
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 1vh;
         padding-bottom: 25px;
         padding-top: 50px;
         border-radius: 10px;
         overflow-x: hidden;
 
         background-color: rgba(50, 50, 50, .25);
-        box-shadow: 0 0 100px 1px #050505;
+        box-shadow: 1px 1px 10px 2px rgba(8, 8, 8, 0.9);
 
         transition-duration: 0.75s;
-        transition-property: transform background-color box-shadow;
+        transition-property: transform background-color;
         transition-timing-function: ease-out;
         overflow-y: hidden;
         
         &.hovered {
             transform: scale(1.1);
-            $hoveredBackgroundColor: #2b1b28;
-            background-color: $hoveredBackgroundColor;
-            box-shadow: 0 0 50px 1px $hoveredBackgroundColor;
+            background-color: #2b1b28;
         }
     }
 
+    $purpleBackgroundColor: #30112c;
+
     &.intoPurple {
-        background-image: linear-gradient(#000000, #30112c);
-        padding-bottom: 10vh;
+        background-image: linear-gradient(#000000, $purpleBackgroundColor);
     }
 
     &.purple {
-        background-color: #30112c;
-        box-shadow: 0 0 0 3vh #30112c;
+        background-color: $purpleBackgroundColor;
     }
 
     &.outOfPurple {
-        background-image: linear-gradient(#30112c, #000000);
-    }
-
-    &.intoPurple, .purple, .outOfPurple {
-        display: inline-block;
-        width: 100%;
+        background-image: linear-gradient($purpleBackgroundColor, #000000);
     }
 }
 
