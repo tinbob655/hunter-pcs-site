@@ -2,6 +2,14 @@ import React, {Component} from 'react';
 import firebaseInstance from '../../classes/firebase.js';
 import {getDownloadURL, ref} from 'firebase/storage';
 
+/**
+ * @param {string} imageURL the URL of the image
+ * @param {string} imagePath the path of the image
+ * @param {string} imageClasses optional image classes
+ * @param {string} imageId optional image id
+ * @param {object} imageStyles optional image styles 
+ */
+
 class SmartImage extends Component {
 
     constructor(props) {

@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
 
+/**
+ * @param {string} heading the heading of the page
+ * @param {string} subheading the subheading of the page
+ */
+
 class PageHeader extends Component {
 
     constructor(props) {

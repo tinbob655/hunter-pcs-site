@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 
+/**
+ * @param {string} title the main text of the button
+ * @param {string} destination the destination for the button starting '/' (if wanted)
+ * @param {function} action the action for the button to do (if wanted)
+ */
+
 class FancyButton extends Component {
 
     constructor(props) {
