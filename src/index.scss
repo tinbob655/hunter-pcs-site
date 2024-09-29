@@ -20,6 +20,21 @@ h2 {
     font-family: 'Overpass';
     font-weight: 800;
     font-size: 50px;
+
+    &.fancyButtonTitle {
+        margin-top: 0;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0;
+        padding: 0;
+        transform: translateX(-15%);
+        transition-property: transform;
+        transition-duration: 0.75s;
+
+        &.hovered {
+            transform: translateX(0);
+        }
+    }
 }
 
 h3 {
@@ -188,6 +203,50 @@ div {
             transform: scale(1);
         }
     }
+
+    &.fancyButtonWrapper {
+        width: 75%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 25px;
+        padding-top: 50px;
+        border-radius: 10px;
+        overflow-x: hidden;
+
+        background-color: rgba(50, 50, 50, .25);
+        box-shadow: 0 0 100px 1px #050505;
+
+        transition-duration: 0.75s;
+        transition-property: transform background-color box-shadow;
+        transition-timing-function: ease-out;
+        overflow-y: hidden;
+        
+        &.hovered {
+            transform: scale(1.1);
+            $hoveredBackgroundColor: #2b1b28;
+            background-color: $hoveredBackgroundColor;
+            box-shadow: 0 0 50px 1px $hoveredBackgroundColor;
+        }
+    }
+
+    &.intoPurple {
+        background-image: linear-gradient(#000000, #30112c);
+        padding-bottom: 10vh;
+    }
+
+    &.purple {
+        background-color: #30112c;
+        box-shadow: 0 0 0 3vh #30112c;
+    }
+
+    &.outOfPurple {
+        background-image: linear-gradient(#30112c, #000000);
+    }
+
+    &.intoPurple, .purple, .outOfPurple {
+        display: inline-block;
+        width: 100%;
+    }
 }
 
 img {
@@ -278,6 +337,41 @@ td {
 
         &.hovered {
             background-color: #302a30;
+        }
+    }
+}
+
+span {
+
+    &.fancyButtonArrow{
+        padding: 0;
+        margin-top: 10px;
+        display: block;
+        margin-bottom: 0;
+
+        opacity: 0;
+        transform: rotate(-180deg);
+        transition-property: opacity transform;
+        transition-duration: 0.75s;
+
+        @keyframes showAnimation {
+            0% {
+                transform: rotate(-180deg);
+            }
+            10% {
+                transform: rotate(-172deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        &.hovered {
+            opacity: 1.0;
+            transform: rotate(0deg);
+            
+            animation-name: showAnimation;
+            animation-duration: 0.75s;
         }
     }
 }
