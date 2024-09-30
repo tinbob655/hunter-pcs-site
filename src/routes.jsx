@@ -4,6 +4,8 @@ import {Route, Routes} from 'react-router-dom';
 //import all pages
 import Home from './components/pages/home/home.jsx';
 import Account from './components/pages/account/account.jsx';
+import PcsMain from './components/pages/pcs/pcsMain.jsx';
+import ProductPage from './components/pages/pcs/productPage/productPage.jsx';
 
 
 class AllRoutes extends Component {
@@ -22,6 +24,8 @@ class AllRoutes extends Component {
         const pages = {
             home: <Home />,
             account: <Account />,
+            pcsMain: <PcsMain />,
+            productPage: <ProductPage />,
         };
         let routeHTML = [];
 
