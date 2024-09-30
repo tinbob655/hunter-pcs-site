@@ -39,7 +39,7 @@ class FancyButton extends Component {
                         <React.Fragment>
 
                             {/*if an action was provided, wrap the code in a button which does that action on click*/}
-                            <button type="button" onClick={() => {this.state.action()}}>
+                            <button type="button" onClick={() => {this.state.action()}} style={{width: '100%'}}>
                                 <h2 className="fancyButtonTitle" id={`${this.state.uniqueId}Title`}>
                                     {this.state.title}
                                     <span className="fancyButtonArrow" id={`${this.state.uniqueId}Arrow`}>⟶</span>
