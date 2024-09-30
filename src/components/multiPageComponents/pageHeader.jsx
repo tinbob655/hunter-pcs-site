@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import DividerLine from './dividerLine.jsx';
 
 /**
  * @param {string} heading the heading of the page
@@ -26,7 +27,8 @@ class PageHeader extends Component {
                 <p className="alignLeft noVerticalSpacing" style={{marginLeft: '17%', color: '#c5abbe'}}>
                     {this.state.subheading}
                 </p>
-                <div className="dividerLine"></div>
+                
+                <DividerLine />
             </React.Fragment>
         );
     };
