@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
  * @param {string} heading main section heading
  * @param {string} paragraph section paragraph
  * @param {boolean} left true if the image is on the left
- * @param {boolean} dividerLine true if a divider line is wanted at the bottom
  * @param {string} imageURL the url of the image
  * @param {string} imagePath the firebase storage path of the image
  * @param {string} buttonText the text to be displayed if there is a button
@@ -25,7 +24,6 @@ class GenericMarkupSection extends Component {
             heading: this.props.heading,
             paragraph: this.props.paragraph,
             left: this.props.left,
-            dividerLine: this.props.dividerLine,
             imageURL: this.props.imageURL,
             imagePath: this.props.imagePath,
             buttonText: this.props.buttonText,

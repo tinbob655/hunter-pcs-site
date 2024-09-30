@@ -32,7 +32,6 @@ class Account extends Component {
                             heading="Make your account"
                             paragraph="Create an account with us and unlock the full potential of Hunter PCs. We do not collect any of your personal information as privacy is one of our core values here."
                             left={true}
-                            dividerLine={true}
                             imagePath="images/gamingSetupWIDE2.jpeg"
                             buttonText="Click here to sign up"
                             buttonAction={() => {
@@ -57,7 +56,6 @@ class Account extends Component {
                             heading={`Hello, ${this.context.email}`}
                             paragraph="Welcome back to your Hunter PCs account and thanks for being a member. You'll get special perks like discounts after checkout and more payment options. If you want to sign out or log into a different account, please use the below button."
                             left={true}
-                            dividerLine={true}
                             imagePath="images/gamingSetupWIDE2.jpeg"
                             buttonText="Sign out"
                             buttonAction={() => {
