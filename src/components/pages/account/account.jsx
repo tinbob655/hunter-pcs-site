@@ -59,7 +59,7 @@ class Account extends Component {
                             imagePath="images/gamingSetupWIDE2.jpeg"
                             buttonText="Sign out"
                             buttonAction={() => {
-                                const auth = firebaseInstance.getFirebaseAuth();
+                                const auth = firebaseInstance.getFirebaseAuth;
                                 signOut(auth).then(() => {
                                     window.location.reload();
                                 });

@@ -132,7 +132,7 @@ class LoginPopup extends Component {
 
     async logInFormSubmitted(event) {
         event.preventDefault();
-        const auth = firebaseInstance.getFirebaseAuth();
+        const auth = firebaseInstance.getFirebaseAuth;
 
         //email validation is not required here as the <input /> tag is of type="email", so validation is already done
         const email = event.currentTarget.email.value;
@@ -146,7 +146,7 @@ class LoginPopup extends Component {
 
     async signUpFormSubmitted(event) {
         event.preventDefault();
-        const auth = firebaseInstance.getFirebaseAuth();
+        const auth = firebaseInstance.getFirebaseAuth;
 
         //email validation is not required here as the <input /> tag is of type="email", so validation is already done
         const email = event.currentTarget.email.value;

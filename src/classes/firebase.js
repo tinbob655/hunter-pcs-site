@@ -28,15 +28,15 @@ class Firebase {
         this.#firebaseFirestore = getFirestore();
     };
 
-    getFirebaseAuth() {
+    get getFirebaseAuth() {
         return this.#firebaseAuth;
     };
 
-    getFirebaseStorage() {
+    get getFirebaseStorage() {
         return this.#firebaseStorage;
     };
 
-    getFirebaseFirestore() {
+    get getFirebaseFirestore() {
         return this.#firebaseFirestore;
     };
 };

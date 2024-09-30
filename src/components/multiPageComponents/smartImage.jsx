@@ -37,7 +37,7 @@ class SmartImage extends Component {
         
         //if an imagePath was provided, fetch the image url from firebase
         if (this.props.imagePath) {
-            const storage = firebaseInstance.getFirebaseStorage();
+            const storage = firebaseInstance.getFirebaseStorage;
             getDownloadURL(ref(storage, this.props.imagePath)).then((url) => {
                 this.setState({imageURL: url});
             });

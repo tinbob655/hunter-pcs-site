@@ -181,7 +181,7 @@ class Home extends Component {
                     
                     //the element is visible
                     //fetch the video from firebase storage
-                    const storage = firebaseInstance.getFirebaseStorage();
+                    const storage = firebaseInstance.getFirebaseStorage;
                     getDownloadURL(ref(storage, 'gameplayVideos/HunterPcs all games compilation.mp4')).then((url) => {
                         this.setState({gameplayVideoURL: url});
                     });

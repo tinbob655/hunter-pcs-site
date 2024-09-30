@@ -26,7 +26,7 @@ class PcsMain extends Component {
         //fetch the price of each product from firestore
         let productSubheadings = {};
 
-        const firestore = firebaseInstance.getFirebaseFirestore();
+        const firestore = firebaseInstance.getFirebaseFirestore;
         const docQuery = query(collection(firestore, 'products'));
         getDocs(docQuery).then((docSnap) => {
             docSnap.forEach((doc) => {

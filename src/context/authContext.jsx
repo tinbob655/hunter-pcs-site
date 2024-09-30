@@ -3,7 +3,7 @@ import firebaseInstance from '../classes/firebase.js';
 import { onAuthStateChanged } from 'firebase/auth';
 
 const AuthContext = React.createContext(false);
-const auth = firebaseInstance.getFirebaseAuth();
+const auth = firebaseInstance.getFirebaseAuth;
 
 class AuthProvider extends Component {
 
