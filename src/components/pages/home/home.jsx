@@ -1,31 +1,196 @@
 import React, {Component} from 'react';
-import AutoNav from '../../multiPageComponents/autoNav.jsx';
+import PageHeader from '../../multiPageComponents/pageHeader.jsx';
+import SmartImage from '../../multiPageComponents/smartImage.jsx';
+import './homeStyles.scss';
+import FancyButton from '../../multiPageComponents/fancyButton.jsx';
+import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection.jsx';
+import DividerLine from '../../multiPageComponents/dividerLine.jsx';
+import firebaseInstance from '../../../classes/firebase.js';
+import {getDownloadURL, ref} from 'firebase/storage';
 
 class Home extends Component {
 
     constructor(props) {
         super(props);
 
-        //setup state
         this.state = {
-            temporaryNav: <React.Fragment></React.Fragment>,
+            gameplayVideoURL: '',
         };
     };
 
-    componentDidMount() {
+    async componentDidMount() {
 
-        //temporary for development of other pages before the home page. When the user goes here, redirect them
-        this.setState({
-            temporaryNav: <AutoNav destination="/account" />,
-        });
+        this.loadVideo();
+
+        //play page rendering animations
+        const animatedImage = document.getElementById('animatedHomePageImage');
+        const animatedParagraphs = document.querySelectorAll('.homePageAnimatedParagraph');
+        const animatedHeader = document.getElementById('homePageAnimatedHeader');
+
+        //function for delays rather that setTimeouts to reduce callback hell
+        async function delay(amount) { 
+            return new Promise(resolve => setTimeout(resolve, amount));
+        };
+
+        //show the main image
+        await delay(500);
+        animatedImage.classList.add('shown');
+
+        //show the subheading
+        await delay(100);
+        animatedHeader.classList.add('shown');
+
+        //gradually show the paragraphs
+        await delay(500);
+        let index = 0;
+        while (index <= animatedParagraphs.length -1) {
+            animatedParagraphs[index].classList.add('shown');
+            await delay(500);
+            index++;
+        };
     };
 
     render() {
         return (
             <React.Fragment>
-                {this.state.temporaryNav}
+                <PageHeader heading="Hunter PCs" subheading="Made to measure gaming PCs" />
+                
+                {/*packing a serious punch section*/}
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <td style={{width: '45%'}}>
+                                    <SmartImage imageId="animatedHomePageImage" imageClasses="mainImage" imagePath="images/alt Logo.jpg" />
+                                </td>
+                                <td>
+                                    <h2 className="alignRight" id="homePageAnimatedHeader">
+                                        Packing a serious punch
+                                    </h2>
+
+                                    {/*separate paragraphs required so they can be gradually faded in*/}
+                                    <p className="homePageAnimatedParagraph" style={{marginLeft: '70%'}}>
+                                        Perfect for:
+                                    </p>
+                                    <p className="homePageAnimatedParagraph" style={{marginLeft: '56%'}}>
+                                        -AAA gaming
+                                    </p>
+                                    <p className="homePageAnimatedParagraph" style={{marginLeft: '42%'}}>
+                                        -Ultra low latency
+                                    </p>
+                                    <p className="homePageAnimatedParagraph" style={{marginLeft: '28%'}}>
+                                        -Office and work
+                                    </p>
+                                    <p className="homePageAnimatedParagraph" style={{marginLeft: '16%'}}>
+                                        -Streaming video
+                                    </p>
+                                    <p className="homePageAnimatedParagraph" style={{marginLeft: '0'}}>
+                                        -Just chilling
+                                    </p>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <DividerLine />
+
+                {/*three fancy buttons section*/}
+                <div className="intoPurple">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>
+                                    <FancyButton title="Gaming" destination="/pcsMain" />
+                                </td>
+                                <td>
+                                    <FancyButton title="Prebuilt" destination="/pcsMain" />
+                                </td>
+                                <td>
+                                    <FancyButton title="Custom" destination='/customPcs' />
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <DividerLine purple={true} />
+
+                {/*perfect for gaming section*/}
+                <div className="purple">
+                    <GenericMarkupSection
+                     heading="Perfect for gaming"
+                     paragraph="Here at Hunter PCs, we know that the best PCs are designed to run games smooth as butter. That's why we've been working hard to deliver you the best gaming experience at the lowest price. We make all our computers with high end components from trusted manufacturers."
+                     left={false}
+                     imagePath="images/rounded skull 2.jpeg"
+                     linkText="Browse all gaming PCs ⟶"
+                     linkDestination="/pcsMain" />
+                </div>
+
+                <DividerLine purple={true} />
+
+                {/*video of gameplay section*/}
+                <div className="outOfPurple">
+                    <h2 style={{marginTop: 0, marginBottom: 0, paddingBottom: 0}}>
+                        Play your favourite titles
+                    </h2>
+                    <p className="noVerticalSpacing" style={{marginBottom: '10px'}}>
+                        Minecraft, Starfield, Red Dead, Sea of Thieves and many more run easily on Hunter PCs.
+                    </p>
+                    <video autoPlay loop loading="lazy" alt="loading..." controls id="gameplayVideo" key={this.state.gameplayVideoURL}>
+                        <source src={this.state.gameplayVideoURL} type="video/mp4"/>
+                    </video>
+                </div>
+
+                <DividerLine purple={false} />
+
+                {/*design your own pc section*/}
+                <div>
+                    <GenericMarkupSection
+                        heading="Design your own, custom build"
+                        paragraph="Need that specific PC you've always wanted? Well you're in luck: here at Hunter PCs, you can design your own custom PC and have one of our experts assemble it for you. We'll even deliver it straight to your door as well"
+                        left={false}
+                        linkText="Design your dream PC ⟶"
+                        linkDestination="/customPcs"
+                        imagePath="images/image of pc.jpeg" />
+                </div>
+
+                <DividerLine purple={false} />
+
+                {/*no expense spared guarantee*/}
+                <div>
+                    <GenericMarkupSection
+                    heading="Quality guaranteed"
+                    paragraph="We guarantee no expense spared. That means every one of your PC's components is made by branded and trusted manufacturers. And not just that, we will also thoroughly test your build to make sure you get the maximum performance possible."
+                    linkText="Learn more about our no expense spared guarantee ⟶"
+                    linkDestination="/support"
+                    left={true}
+                    imagePath="images/gamingSetupTall2.jpeg" />
+                </div>
             </React.Fragment>
         );
+    };
+
+    loadVideo() {
+
+        //by using an intersection observer, we can detect when the gameplay video is actually seen by the user.
+        //This means we are able to only load the video once it is visible and thus reduce firebase storage usage.
+        new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.intersectionRatio > 0) {
+                    
+                    //the element is visible
+                    //fetch the video from firebase storage
+                    const storage = firebaseInstance.getFirebaseStorage();
+                    getDownloadURL(ref(storage, 'gameplayVideos/HunterPcs all games compilation.mp4')).then((url) => {
+                        this.setState({gameplayVideoURL: url});
+                    });
+
+                    //destroy the observer so it does not fire unless page is changed
+                    observer.disconnect();
+                };
+            });
+        }).observe(document.getElementById('gameplayVideo'));
     };
 };
 

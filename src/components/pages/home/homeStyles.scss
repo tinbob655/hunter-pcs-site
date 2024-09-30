@@ -1,0 +1,42 @@
+img#animatedHomePageImage {
+    max-height: unset;
+    
+    transform: translate(0, 5vw);
+    opacity: 0.0;
+    transition-property: transform opacity;
+    transition-timing-function: ease;
+    transition-duration: 1.5s;
+
+    &.shown {
+        transform: translate(0, 0);
+        opacity: 1.0;
+    }
+}
+
+p.homePageAnimatedParagraph {
+    margin-top: calc(30% / 6);
+
+    opacity: 0.0;
+    transition-property: opacity;
+    transition-duration: 0.75s;
+    transition-timing-function: ease;
+
+    &.shown {
+        opacity: 1.0;
+    }
+}
+
+h2#homePageAnimatedHeader {
+    margin-right: 20%;
+
+    opacity: 0;
+    transform: translateX(20vw);
+    transition-property: translate opacity;
+    transition-duration: 1.5s;
+    transition-timing-function: ease;
+
+    &.shown {
+        opacity: 1.0;
+        transform: translateX(0);
+    }
+}
