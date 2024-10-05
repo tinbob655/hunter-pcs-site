@@ -7,6 +7,9 @@ import Account from './components/pages/account/account.jsx';
 import PcsMain from './components/pages/pcs/pcsMain.jsx';
 import ProductPage from './components/pages/pcs/productPage/productPage.jsx';
 import About from './components/pages/about/about.jsx';
+import Support from './components/pages/support/support.jsx';
+import PrivacyPolicy from './components/pages/support/privacyPolicy.jsx';
+import TermsOfService from './components/pages/support/termsOfService.jsx';
 
 class AllRoutes extends Component {
 
@@ -27,6 +30,9 @@ class AllRoutes extends Component {
             pcsMain: <PcsMain />,
             productPage: <ProductPage />,
             about: <About />,
+            support: <Support />,
+            privacyPolicy: <PrivacyPolicy />,
+            termsOfService: <TermsOfService />,
         };
         let routeHTML = [];
 
