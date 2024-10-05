@@ -6,7 +6,7 @@ import Home from './components/pages/home/home.jsx';
 import Account from './components/pages/account/account.jsx';
 import PcsMain from './components/pages/pcs/pcsMain.jsx';
 import ProductPage from './components/pages/pcs/productPage/productPage.jsx';
-
+import About from './components/pages/about/about.jsx';
 
 class AllRoutes extends Component {
 
@@ -26,6 +26,7 @@ class AllRoutes extends Component {
             account: <Account />,
             pcsMain: <PcsMain />,
             productPage: <ProductPage />,
+            about: <About />,
         };
         let routeHTML = [];
 
