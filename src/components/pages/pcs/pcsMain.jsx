@@ -6,6 +6,7 @@ import FancyButton from '../../multiPageComponents/fancyButton.jsx';
 import AutoNav from '../../multiPageComponents/autoNav.jsx';
 import firebaseInstance from '../../../classes/firebase.js';
 import {getDocs, query, collection} from 'firebase/firestore';
+import SmartImage from '../../multiPageComponents/smartImage.jsx';
 
 class PcsMain extends Component {
 
@@ -125,14 +126,77 @@ class PcsMain extends Component {
 
                 <DividerLine purple={true} />
 
-                {/*custom pcs section*/}
+                {/*pick your perfect model section*/}
                 <div className="outOfPurple">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td style={{width: '55%'}}>
+                                    <h2 className="alignLeft">
+                                        Pick your perfect model
+                                    </h2>
+                                    <p>
+                                        We understand it can be hard to select the ideal PC from our range of prebuilt PCs. Need help? Look no further:
+                                    </p>
+                                    
+                                    {/*solid*/}
+                                    <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignRight">
+                                        Solid:
+                                    </h2>
+                                    <p style={{marginTop: 0, marginBottom: '20px'}} className="alignRight">
+                                        Our solid model is aimed at gamers who wish to play most games in 1080p with high FPS.
+                                    </p>
+
+                                    {/*strong*/}
+                                    <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignLeft">
+                                        Strong:
+                                    </h2>
+                                    <p style={{marginTop: 0, marginBottom: '20px'}} className="alignLeft">
+                                        Our strong model is for gamers who wish to play all games easily in 1080p with very high FPS, and many single-player games in 1440p with lower FPS.
+                                    </p>
+
+                                    {/*powerful*/}
+                                    <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignRight">
+                                        Powerful:
+                                    </h2>
+                                    <p style={{marginTop: 0, marginBottom: '20px'}} className="alignRight">
+                                        Our powerful model is aimed at those who wish to easily play all games in 1440p  with high FPS as well as have high aesthetic build quality.
+                                    </p>
+
+                                    {/*supreme*/}
+                                    <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignLeft">
+                                        Supreme:
+                                    </h2>
+                                    <p style={{marginTop: 0, marginBottom: '20px'}} className="alignLeft">
+                                        Our supreme model is designed with gamers who want to play games in 4K with an RGB flair as well as never have to worry about storage space or cooling whatsoever.
+                                    </p>
+
+                                    {/*dominant*/}
+                                    <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignRight">
+                                        Dominant:
+                                    </h2>
+                                    <p style={{marginTop: 0, marginBottom: '20px'}} className="alignRight">
+                                        Our dominant model is curated for gamers with a passion for quality, easily running any game on max settings in 4K resolution without breaking a sweat. For dominating the competition, this is the perfect solution.
+                                    </p>
+                                </td>
+                                <td>
+                                    <SmartImage imageClasses="mainImage" imagePath="images/gamingPcVTall.png" imageStyles={{maxHeight: 'unset'}} />
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <DividerLine purple={false} />
+
+                {/*custom pcs section*/}
+                <div>
                     <GenericMarkupSection
                         heading="Build your dreams"
                         paragraph="Using our custom PC creator, you can design the PC of your dreams online, right now. Choose from a massive range of available parts and we'll be in touch to verify whether your build works, giving you peace of mind and and easy purchase."
                         linkText="Click here to get started ⟶"
                         linkDestination="/customPcs"
-                        left={false}
+                        left={true}
                         imagePath="images/motherboardTall.jpeg" />
                 </div>
 
