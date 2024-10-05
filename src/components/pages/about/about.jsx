@@ -15,8 +15,13 @@ class About extends Component {
                     <GenericMarkupSection heading="Why Hunter PCs?"
                     paragraph="Because we're the best. We guarantee that all of our products are thoroughly tested. Not only that, but each and every PC we ship to you will come fully fitted with components exclusively from brands we trust such as NVIDIA, AMD and Corsair. That's the Hunter PCs no expense spared guarantee."
                     left={true}
-                    linkDestination="/support"
-                    linkText="Read more on our no expense spared guarantee ⟶" 
+                    buttonText="Read more on our no expense spared guarantee ⟶"
+                    buttonAction={() => {
+
+                        //button required to enable support page scrolling
+                        sessionStorage.setItem('supportPageScroll', 'noExpenseSpared');
+                        window.location.href = window.location.href.replace('about', 'support');
+                    }}
                     imagePath="images/image of pc.jpeg" />
                 </div>
 

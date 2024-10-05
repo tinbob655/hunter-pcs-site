@@ -162,8 +162,13 @@ class Home extends Component {
                     <GenericMarkupSection
                     heading="Quality guaranteed"
                     paragraph="We guarantee no expense spared. That means every one of your PC's components is made by branded and trusted manufacturers. And not just that, we will also thoroughly test your build to make sure you get the maximum performance possible."
-                    linkText="Learn more about our no expense spared guarantee ⟶"
-                    linkDestination="/support"
+                    buttonText="Learn more about our no expense spared guarantee ⟶"
+                    buttonAction={() => {
+                        
+                        //button is required to enable support page scrolling
+                        sessionStorage.setItem('supportPageScroll', 'noExpenseSpared');
+                        window.location.href += 'support';
+                    }}
                     left={true}
                     imagePath="images/gamingSetupTall2.jpeg" />
                 </div>
