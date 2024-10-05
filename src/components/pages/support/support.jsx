@@ -7,13 +7,41 @@ import SmartImage from '../../multiPageComponents/smartImage.jsx';
 
 class Support extends Component {
 
+    componentDidMount() {
+
+        //if there was a place to scroll to, scroll to it in this method
+        const target = sessionStorage.getItem('supportPageScroll');
+        if (target) {
+            //there was a place to scroll to
+            //check if the place to scroll to actually exists
+            if (!document.querySelector('#'+target)) {
+
+                //if the place to scroll does not exist, throw an error
+                throw new Error('The scroll target does not exist');
+            }
+            else {
+
+                //if the place to scroll exists, scroll there
+                setTimeout(() => {
+                    document.getElementById(target).scrollIntoView(true);
+
+                    //-150 to account for header
+                    window.scrollBy(0, -150);
+                }, 1000);
+            };
+        };
+
+        //remove the request for scrolling
+        sessionStorage.removeItem('supportPageScroll');
+    };
+
     render() {
         return (
             <React.Fragment>
                 <PageHeader heading="Support" subheading="Ready and waiting, 24 / 7" />
 
                 {/*no expense spared section*/}
-                <div>
+                <div id="noExpenseSpared">
                     <GenericMarkupSection heading="No expense spared"
                     paragraph="Ever bought some tech only for it to not work properly? Us too and we know it can be infuriating. That's why we can guarantee that your gaming PC will be thoroughly tested for any chinks in its armour. What's more, we make sure that we only use trusted manufacturers for each of your PCs components. More on that later."
                     left={true}
@@ -25,7 +53,7 @@ class Support extends Component {
                 <DividerLine purple={false} />
 
                 {/*contact us section*/}
-                <div className="intoPurple">
+                <div id="contactUs" className="intoPurple">
                     <GenericMarkupSection heading="Contact us anytime, anywhere"
                     paragraph="We're here for you and are dedicated to making sure that every step between now and owning a Hunter PC is plain sailing. That's why you shouldn't hesitate to contact us for any enquiries, big or small."
                     left={false}
@@ -39,7 +67,7 @@ class Support extends Component {
                 <DividerLine purple={true} />
 
                 {/*our brands section*/}
-                <div className="purple">
+                <div id="ourBrands" className="purple">
                     <GenericMarkupSection heading="Trusted brands only"
                     paragraph="Only the best hardware makes it into a Hunter PC. Here, we know that quality is vital to performance. That's why we only ship PCs with components from trusted manufacturers like NVIDIA for GPUs, AMD for CPUs and Corsair for PSUs."
                     left={true}
@@ -51,7 +79,7 @@ class Support extends Component {
                 <DividerLine purple={true} />
 
                 {/*return policy section*/}
-                <div className="outOfPurple">
+                <div id="returnPolicy" className="outOfPurple">
                     <h1 style={{marginTop: 0}}>
                         Our return policy
                     </h1>
@@ -91,7 +119,7 @@ class Support extends Component {
                 <DividerLine purple={false} />
 
                 {/*warranty information*/}
-                <div>
+                <div id="warrantyInformation">
                     <GenericMarkupSection heading="Warranty information"
                     paragraph="Love tinkering with a PC? Us too, so tinker to your heart's content... at your own risk. If something breaks and you removed your warranty sticker then that's on you. We can still fix it, but you'll be paying for the replacement parts."
                     left={false}
@@ -101,7 +129,7 @@ class Support extends Component {
                 <DividerLine purple={false} />
 
                 {/*fraud prevention section*/}
-                <div className="intoPurple">
+                <div id="fraudPrevention" className="intoPurple">
                     <GenericMarkupSection heading="Fraud prevention"
                     paragraph="Fraud is illegal, so don't do it. We HATE fraud, so we may request to see any customer's photo id as well as an image of the bank card used to purchase a PC. This is to make sure that our real customers can get their PC faster, and to stop you dirty AI startups from taking everyone else's GPUs. If you don't send us images on request, then we reserve the right to revoke access to your Hunter PCs account and refuse to send you can gaming PCs. By purchasing any product from us, you agree to our fraud prevention program."
                     left={true}
@@ -111,7 +139,7 @@ class Support extends Component {
                 <DividerLine purple={true} />
 
                 {/*boring legal stuff section*/}
-                <div className="purple">
+                <div id="boringLegalStuff" className="purple">
                     <table>
                         <thead>
                             <tr>
@@ -154,7 +182,7 @@ class Support extends Component {
                 <DividerLine purple={true} />
 
                 {/*we deliver section*/}
-                <div className="outOfPurple">
+                <div id="weDeliver" className="outOfPurple">
                     <GenericMarkupSection heading="We deliver"
                     paragraph="We only use the highest quality services for delivery. All Hunter PCs are delivered using DPD, one of the world's leading parcel delivery networks. At current, we only deliver to England."
                     left={true}
