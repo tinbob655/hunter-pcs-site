@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import PageHeader from '../../multiPageComponents/pageHeader';
-import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection';
-import DividerLine from '../../multiPageComponents/dividerLine';
+import PageHeader from '../../multiPageComponents/pageHeader.jsx';
+import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection.jsx';
+import DividerLine from '../../multiPageComponents/dividerLine.jsx';
 
 class About extends Component {
 
