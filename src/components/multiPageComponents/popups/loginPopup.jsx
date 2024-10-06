@@ -3,6 +3,10 @@ import './loginPopupStyles.scss';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import firebaseInstance from '../../../classes/firebase.js';
 
+/**
+ * @param {boolean} shown whether the popup is displayed or not
+ */
+
 class LoginPopup extends Component {
 
     constructor(props) {
