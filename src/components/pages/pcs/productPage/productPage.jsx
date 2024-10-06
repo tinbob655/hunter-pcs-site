@@ -3,8 +3,14 @@ import DividerLine from '../../../multiPageComponents/dividerLine.jsx';
 import SmartImage from '../../../multiPageComponents/smartImage.jsx';
 import FancyButton from '../../../multiPageComponents/fancyButton.jsx';
 import Product from '../../../../classes/product.js';
+import firebaseInstance from '../../../../classes/firebase.js';
+import {updateDoc, doc, increment} from 'firebase/firestore';
+import AuthContext from '../../../../context/authContext.jsx';
+import AutoNav from '../../../multiPageComponents/autoNav.jsx';
 
 class ProductPage extends Component {
+
+    static contextType = AuthContext;
 
     constructor(props) {
         super(props);
@@ -16,7 +22,9 @@ class ProductPage extends Component {
 
         this.state = {
             productName: sessionStorage.getItem('product'),
-            productData: null
+            productData: null,
+            authUID: null,
+            autoNav: <></>,
         };
     };
 
@@ -27,7 +35,10 @@ class ProductPage extends Component {
         thisProduct.getProductDetails().then((details) => {
             
             //save product data to state
-            this.setState({productData: details});
+            this.setState({
+                productData: details,
+                authUID: this.context?.uid, //also add the user's auth state
+            });
         });
     };
 
@@ -57,9 +68,9 @@ class ProductPage extends Component {
                                         {this.state.productData?.fullDescription || 'loading...'}
                                     </p>
 
-                                    {/*purchase button*/}
+                                    {/*add to basket button*/}
                                     <div style={{maxWidth: '75%', marginTop: '50px', marginLeft: 'auto', marginRight: 'auto'}}>
-                                        <FancyButton title="Buy now" action={() => {this.purchaseButtonPressed()}} />
+                                        <FancyButton title="Add to basket" action={() => {this.addToBasketButtonPressed()}} />
                                     </div>
                                 </td>
                                 <td style={{width: '40%'}}>
@@ -72,13 +83,31 @@ class ProductPage extends Component {
                         </thead>
                     </table>
                 </div>
+
+                {this.state.autoNav}
             </React.Fragment>
         );
     };
 
-    purchaseButtonPressed() {
-        
-        //will fire when the user clicks the 'buy now' button
+    async addToBasketButtonPressed() {
+
+        //only add to the basket if the user is logged in
+        if (this.state.authUID) {
+
+            //the user was logged in, add the item to their basket
+            const firestore = firebaseInstance.getFirebaseFirestore;
+            await updateDoc(doc(firestore, 'baskets', this.state.authUID), {
+                [this.state.productName + 'Pc']: increment(1),
+            });
+
+            //add a delay before navigation to the user's basket so that they do not get confused
+            setTimeout(() => {
+                this.setState({autoNav: <AutoNav destination='/basket' />});
+            }, 500);
+        }
+        else {
+            throw new Error('Log in before adding to basket');
+        };
     };
 };
 
