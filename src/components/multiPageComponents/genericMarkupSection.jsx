@@ -59,7 +59,7 @@ class GenericMarkupSection extends Component {
                                     <h2 className="alignLeft">
                                         {this.state.heading}
                                     </h2>
-                                    <p className="alignRight">
+                                    <p className="alignRight" style={{whiteSpace: 'pre-wrap'}}>
                                         {this.state.paragraph}
                                     </p>
 
@@ -103,7 +103,7 @@ class GenericMarkupSection extends Component {
                                     <h2 className="alignRight">
                                         {this.state.heading}
                                     </h2>
-                                    <p className="alignLeft">
+                                    <p className="alignLeft" style={{whiteSpace: 'pre-wrap'}}>
                                         {this.state.paragraph}
                                     </p>
 
