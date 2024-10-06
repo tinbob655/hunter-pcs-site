@@ -10,6 +10,7 @@ import About from './components/pages/about/about.jsx';
 import Support from './components/pages/support/support.jsx';
 import PrivacyPolicy from './components/pages/support/privacyPolicy.jsx';
 import TermsOfService from './components/pages/support/termsOfService.jsx';
+import Basket from './components/pages/basket/basket.jsx';
 
 class AllRoutes extends Component {
 
@@ -33,6 +34,7 @@ class AllRoutes extends Component {
             support: <Support />,
             privacyPolicy: <PrivacyPolicy />,
             termsOfService: <TermsOfService />,
+            basket: <Basket />,
         };
         let routeHTML = [];
 
