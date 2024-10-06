@@ -11,6 +11,7 @@ import Support from './components/pages/support/support.jsx';
 import PrivacyPolicy from './components/pages/support/privacyPolicy.jsx';
 import TermsOfService from './components/pages/support/termsOfService.jsx';
 import Basket from './components/pages/basket/basket.jsx';
+import PurchaseCompleted from './components/pages/basket/purchaseCompleted.jsx';
 
 class AllRoutes extends Component {
 
@@ -35,6 +36,7 @@ class AllRoutes extends Component {
             privacyPolicy: <PrivacyPolicy />,
             termsOfService: <TermsOfService />,
             basket: <Basket />,
+            purchaseCompleted: <PurchaseCompleted />,
         };
         let routeHTML = [];
 

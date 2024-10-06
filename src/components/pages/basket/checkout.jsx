@@ -14,7 +14,10 @@ class StripeCheckout extends Component {
         const stripePromise = loadStripe('pk_live_51OIsKCCzpWfV0Kwk7LPqpBIw0kMMQVd8SiMzIjsG8Iz6ofCJ7k1KCEPPd9Jkk5Sz1m0QumHcl7eQC3HjVBYJEeB200wMUMSheW')
 
         //navigates to the /paymentCompleted page after the checkout is done
-        const options = {clientSecret, onComplete: () => {this.setState({autoNav: <AutoNav destination='/purchaseCompleted' />})}};
+        const options = {clientSecret, onComplete: () => {
+            sessionStorage.setItem('newPurchase', 'true');
+            this.setState({autoNav: <AutoNav destination='/purchaseCompleted' />})
+        }};
 
         this.state = {
             clientSecret: clientSecret,
