@@ -38,7 +38,6 @@ class LoginPopup extends Component {
                     <h1 style={{marginBottom: 0, marginTop: '5px'}}>
                         Join us
                     </h1>
-                    <div className="dividerLine" style={{marginTop: '5px'}}></div>
 
                     {/*log in or sign up buttons*/}
                     <table>
