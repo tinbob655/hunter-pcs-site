@@ -130,7 +130,7 @@ class Basket extends Component {
 
                                                     {/*total basket cost*/}
                                                     <p>
-                                                        Total cost: £{this.state.basketObject.getTotalBasketCost}
+                                                        Total cost: £{Math.ceil(this.state.basketObject.getTotalBasketCost * 100) / 100}
                                                     </p>
 
                                                     {/*button to empty the basket*/}
@@ -222,7 +222,7 @@ class Basket extends Component {
         });
 
         //calculate the total price (in pence)
-        const totalPrice = this.state.basketObject.getTotalBasketCost * 100;
+        const totalPrice = Math.ceil(this.state.basketObject.getTotalBasketCost * 100);
 
         //make a stripe session
         const stripe = require('stripe')(process.env.REACT_APP_STRIPE_SK);
