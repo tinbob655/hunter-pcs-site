@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PageHeader from '../../multiPageComponents/pageHeader.jsx';
+import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection.jsx';
 
 class TellAFriend extends Component {
 
@@ -7,6 +8,17 @@ class TellAFriend extends Component {
         return (
             <React.Fragment>
                 <PageHeader heading="Tell a Friend" subheading="Spread the good news" />
+
+                {/*explanation of system section*/}
+                <div>
+                    <GenericMarkupSection
+                    heading="Get your buddy a discount on any of our PCs"
+                    paragraph="After purchasing one of our Gaming PCs, you will have the option to claim a discount code for your friend. When they make a purchase using this code, they will receive a 10% discount on their purchase and you will receive a 10% refund on your purchase. Sounds like a win-win situation."
+                    linkText="Browse gaming PCs ⟶"
+                    linkDestination="/pcsMain"
+                    left={true}
+                    imagePath="images/2 skulls.png" />
+                </div>
             </React.Fragment>
         );
     };
