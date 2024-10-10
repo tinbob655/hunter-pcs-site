@@ -12,6 +12,7 @@ import PrivacyPolicy from './components/pages/support/privacyPolicy.jsx';
 import TermsOfService from './components/pages/support/termsOfService.jsx';
 import Basket from './components/pages/basket/basket.jsx';
 import PurchaseCompleted from './components/pages/basket/purchaseCompleted.jsx';
+import TellAFriend from './components/pages/tellAFriend/tellAFriend.jsx';
 
 class AllRoutes extends Component {
 
@@ -37,6 +38,7 @@ class AllRoutes extends Component {
             termsOfService: <TermsOfService />,
             basket: <Basket />,
             purchaseCompleted: <PurchaseCompleted />,
+            tellAFriend: <TellAFriend />,
         };
         let routeHTML = [];
 
