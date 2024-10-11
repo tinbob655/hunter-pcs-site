@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import LoginPopup from '../../multiPageComponents/popups/loginPopup.jsx';
 import AddressPopup from '../../multiPageComponents/popups/addressPopup.jsx';
 import StripeCheckout from './checkout.jsx';
+import SecureLS from 'secure-ls';
 
 class Basket extends Component {
 
@@ -16,6 +17,23 @@ class Basket extends Component {
 
     constructor(props) {
         super(props);
+
+        //fetch discount (if available)
+        const ls = new SecureLS();
+        let discount = 1;   //default discount value is 1 (no effect)
+        try {
+            const fetchedDiscount = ls.get('discount');
+            if (fetchedDiscount) {
+                discount = fetchedDiscount.data;
+                console.log(discount)
+            };
+        }
+        catch(error) {
+
+            //prevent full error logging if the discount was not available
+            console.error(error);
+        };
+
         this.state = {
             authUID: null,
             basketData: null,
@@ -25,6 +43,7 @@ class Basket extends Component {
             addressPopupShown: false,
             stripeCheckoutShown: false,
             stripeCheckout: <></>,
+            discountMultiplier: discount,
         };
     };
 
@@ -221,8 +240,20 @@ class Basket extends Component {
             };
         });
 
-        //calculate the total price (in pence)
-        const totalPrice = Math.ceil(this.state.basketObject.getTotalBasketCost * 100);
+        //fetch price from basket, then apply discount
+        let price = this.state.basketObject.getTotalBasketCost;
+        price = price * this.state.discountMultiplier;
+
+        //price must be in pence for stripe to be happy
+        price = Math.ceil(price * 100);
+
+        //if a discount was applied, add it to the name of what the user is purchasing
+        if (this.state.discountMultiplier != 1) {
+            
+            //get discount as a percentage
+            let percentageDiscount = 100 - (this.state.discountMultiplier * 100);
+            purchaseName += ` (${percentageDiscount}% discount applied)`;
+        };
 
         //make a stripe session
         const stripe = require('stripe')(process.env.REACT_APP_STRIPE_SK);
@@ -233,7 +264,7 @@ class Basket extends Component {
                     product_data: {
                         name: purchaseName
                     },
-                    unit_amount: totalPrice,
+                    unit_amount: price,
                 },
                 quantity: 1,
             }],
