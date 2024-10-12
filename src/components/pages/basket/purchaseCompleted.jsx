@@ -81,7 +81,7 @@ class PurchaseCompleted extends Component {
                 {/*tell-a-friend section*/}
                 <div>
                     <GenericMarkupSection heading="Tell a friend"
-                    paragraph="Now that you've completed your purchase, you can get a 10% refund as well as get your friend 10% off his purchase. Just click the button below, then send your friend the code. Once they make a purchase using the code, they'll get their discount and you'll get your partial refund!"
+                    paragraph="Now that you've completed your purchase, you can get your friend 10% off their purchase. Just click the button below, then send your friend the code. Once they make a purchase using the code, they'll get their discount and you'll get your partial refund!"
                     left={false}
                     imagePath="images/2 skulls.png"
                     buttonText="Get your code ⟶"
@@ -104,7 +104,7 @@ class PurchaseCompleted extends Component {
                         </h3>
                     </button>
                     <p>
-                        Send it to your friend and they'll get 10% off whilst you get a 10% refund!
+                        Send it to your friend and they'll get 10% off!
                     </p>
                 </div>
             </React.Fragment>
