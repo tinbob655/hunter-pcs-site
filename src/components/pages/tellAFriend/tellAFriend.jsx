@@ -22,8 +22,6 @@ class TellAFriend extends Component {
             </React.Fragment>
         );
     };
-
-    //NEED TO REMOVE EVERYWHERE THE SITE SAYS THAT THE CREATOR OF THE CODE WILL GET A PARTIAL REFUND AS THIS IS NO LONGER THE CASE
 };
 
 export default TellAFriend;
