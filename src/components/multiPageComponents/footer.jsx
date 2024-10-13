@@ -14,21 +14,32 @@ export default function Footer() {
         //first step is to get the last element of the page content (not header or footer)
         const pageContent = document.getElementById('pageContentWrapper');
         const lastDiv = pageContent.children[pageContent.children.length - 1];
-    
-        //check what background color the last element has
         let color;
-        const lastDivClasses = lastDiv.classList.toString();
-        const purpleClasses = ['purple', 'intoPurple'];
-    
-        //if the last div has any of the classes in the array, then it's bottom is purple
-        if (purpleClasses.includes(lastDivClasses)) {
-    
-            //bottom of the last div of the page is purple
-            color = 'purple';
+
+        //only run if the page has content
+        if (pageContent && lastDiv) {
+
+            //the page does have content
+        
+            //check what background color the last element has
+            const lastDivClasses = lastDiv.classList.toString();
+            const purpleClasses = ['purple', 'intoPurple'];
+        
+            //if the last div has any of the classes in the array, then it's bottom is purple
+            if (purpleClasses.includes(lastDivClasses)) {
+        
+                //bottom of the last div of the page is purple
+                color = 'purple';
+            }
+            else {
+        
+                //bottom of the last div of the page is black
+                color = 'black';
+            };
         }
         else {
-    
-            //bottom of the last div of the page is black
+
+            //the page does not have content so assume the footer should be black
             color = 'black';
         };
     
