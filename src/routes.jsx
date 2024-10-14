@@ -13,6 +13,8 @@ import TermsOfService from './components/pages/support/termsOfService.jsx';
 import Basket from './components/pages/basket/basket.jsx';
 import PurchaseCompleted from './components/pages/basket/purchaseCompleted.jsx';
 import TellAFriend from './components/pages/tellAFriend/tellAFriend.jsx';
+import CustomPCs from './components/pages/pcs/custom/custom.jsx';
+import CustomPCPurchaseCompleted from './components/pages/pcs/custom/customPCPurchaseCompleted.jsx';
 
 class AllRoutes extends Component {
 
@@ -39,6 +41,8 @@ class AllRoutes extends Component {
             basket: <Basket />,
             purchaseCompleted: <PurchaseCompleted />,
             tellAFriend: <TellAFriend />,
+            customPCs: <CustomPCs />,
+            customPCPurchaseCompleted: <CustomPCPurchaseCompleted />,
         };
         let routeHTML = [];
 

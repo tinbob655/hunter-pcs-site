@@ -195,7 +195,7 @@ class PcsMain extends Component {
                         heading="Build your dreams"
                         paragraph="Using our custom PC creator, you can design the PC of your dreams online, right now. Choose from a massive range of available parts and we'll be in touch to verify whether your build works, giving you peace of mind and and easy purchase."
                         linkText="Click here to get started ⟶"
-                        linkDestination="/customPcs"
+                        linkDestination="/customPCs"
                         left={true}
                         imagePath="images/motherboardTall.jpeg" />
                 </div>

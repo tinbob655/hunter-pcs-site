@@ -107,7 +107,7 @@ class Home extends Component {
                                     <FancyButton title="Prebuilt" destination="/pcsMain" />
                                 </td>
                                 <td>
-                                    <FancyButton title="Custom" destination='/customPcs' />
+                                    <FancyButton title="Custom" destination='/customPCs' />
                                 </td>
                             </tr>
                         </thead>
@@ -151,7 +151,7 @@ class Home extends Component {
                         paragraph="Need that specific PC you've always wanted? Well you're in luck: here at Hunter PCs, you can design your own custom PC and have one of our experts assemble it for you. We'll even deliver it straight to your door as well"
                         left={false}
                         linkText="Design your dream PC ⟶"
-                        linkDestination="/customPcs"
+                        linkDestination="/customPCs"
                         imagePath="images/image of pc.jpeg" />
                 </div>
 
