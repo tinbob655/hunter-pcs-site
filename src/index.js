@@ -9,23 +9,31 @@ import Footer from './components/multiPageComponents/footer.jsx';
 import ScrollToTop from './components/multiPageComponents/scrollToTop.jsx';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import {MobileProvider} from './context/mobileContext.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+
     <Analytics/>
     <SpeedInsights/>
-    <BrowserRouter>
-    <ScrollToTop />
-    <AuthProvider>
 
-      <Header />
-      <div style={{marginTop: '125px'}} id="pageContentWrapper">
-      <AllRoutes />
-      </div>
-      <Footer />
-      
+    <BrowserRouter>
+    
+    <ScrollToTop />
+
+    <AuthProvider>
+      <MobileProvider>
+
+        <Header />
+        <div style={{marginTop: '125px'}} id="pageContentWrapper">
+        <AllRoutes />
+        </div>
+        <Footer />
+
+      </MobileProvider>
     </AuthProvider>
+
     </BrowserRouter>
   </React.StrictMode>
 );
