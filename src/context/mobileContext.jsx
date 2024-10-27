@@ -24,20 +24,8 @@ class MobileProvider extends Component {
         //update the mobile state when the window is resized
         window.onresize = () => {
 
-            if (window.innerWidth >= window.innerHeight) {
-
-                if (this.state.isMobile) {
-
-                    //width was greater than height, and current state is mobile
-                    window.location.reload();
-                };
-            }
-
-            else if (!this.state.isMobile) {
-
-                //width was less than height, and current state is desktop
-                this.setState({isMobile: true});
-                import('../mobileStyles.scss');
+            if ((window.innerWidth >= window.innerHeight && this.state.isMobile) || (window.innerWidth < window.innerHeight && !this.state.isMobile)) {
+                window.location.reload();
             };
         };
     };
