@@ -40,3 +40,17 @@ h2#homePageAnimatedHeader {
         transform: translateX(0);
     }
 }
+
+div#animatedParagraphsWrapperDiv {
+    transition-property: transform opacity;
+    transition-duration: 1.5s;
+    transition-timing-function: ease;
+
+    transform: translateX(-20vw);
+    opacity: 0.0;
+
+    &.shown {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
