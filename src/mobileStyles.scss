@@ -16,3 +16,30 @@ h3 {
 p {
     font-size: 15px;
 }
+
+h1, h2, h3, p {
+    max-width: 85%;
+}
+
+div {
+
+    &.fancyButtonWrapper {
+        max-width: 60vw;
+        margin-top: 2vh;
+        margin-bottom: 0;
+    }
+}
+
+span {
+
+    &.fancyButtonArrow {
+        display: unset;
+        transform: unset;
+        opacity: 1;
+        margin-left: 10%;
+    }
+}
+
+video {
+    max-width: 90%;
+}

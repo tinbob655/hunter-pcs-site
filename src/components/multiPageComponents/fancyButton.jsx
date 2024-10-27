@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
+import MobileProvider from '../../context/mobileContext';
 
 /**
  * @param {string} title the main text of the button
@@ -8,6 +9,8 @@ import { Link } from 'react-router-dom';
  */
 
 class FancyButton extends Component {
+
+    static contextType = MobileProvider;
 
     constructor(props) {
         super(props);
@@ -18,6 +21,7 @@ class FancyButton extends Component {
             destination: this.props.destination || null,
             action: this.props.action || null,
             uniqueId: Math.random()*Math.random().toString(),
+            isMobile: this.context || undefined,
         };
 
         //if neither an action not a destination was supplied, throw an error
@@ -29,6 +33,15 @@ class FancyButton extends Component {
         else if (this.props.action && this.props.destination) {
             throw new Error('Only one of action or destination can be provided.');
         };
+    };
+
+    componentDidMount() {
+        this.setState({isMobile: this.context});
+
+        //if mobile, add a delay to the beginning of the action function
+        if (this.context && this.state.action) {
+
+        }
     };
 
     render() {
