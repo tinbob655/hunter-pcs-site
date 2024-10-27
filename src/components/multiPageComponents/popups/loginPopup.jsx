@@ -62,7 +62,7 @@ class LoginPopup extends Component {
                     </table>
 
                     {/*log in form section*/}
-                    <div id="logInFormWrapper">
+                    <div id="logInFormWrapper" className="shown">
                         <h2>
                             Log in
                         </h2>
