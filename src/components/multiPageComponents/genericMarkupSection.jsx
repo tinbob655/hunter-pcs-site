@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import SmartImage from './smartImage.jsx';
 import { Link } from 'react-router-dom';
+import MobileProvider from '../../context/mobileContext.jsx';
 
 /**
  * @param {string} heading main section heading
@@ -16,6 +17,8 @@ import { Link } from 'react-router-dom';
 
 class GenericMarkupSection extends Component {
 
+    static contextType = MobileProvider;
+
     constructor(props) {
         super(props);
 
@@ -30,6 +33,7 @@ class GenericMarkupSection extends Component {
             buttonAction: this.props.buttonAction,
             linkText: this.props.linkText,
             linkDestination: this.props.linkDestination,
+            isMobile: this.context,
         };
 
         //throw an error if neither an imageURL nor an imagePath is provided
@@ -43,6 +47,10 @@ class GenericMarkupSection extends Component {
         };
     };
 
+    componentDidMount() {
+        this.setState({isMobile: this.context});
+    };
+
     render() {
         if (this.state.left) {
 
@@ -52,19 +60,23 @@ class GenericMarkupSection extends Component {
                     <table>
                         <thead>
                             <tr>
-                                <td style={{width: '45%'}}>
+                                <td style={{width: this.state.isMobile ? '60%' : '45%'}}>
                                     <SmartImage imagePath={this.state.imagePath || undefined} imageURL={this.props.imageURL || undefined} imageClasses="mainImage centered" alt="IMAGE" />
                                 </td>
                                 <td>
                                     <h2 className="alignLeft">
                                         {this.state.heading}
                                     </h2>
-                                    <p className="alignRight" style={{whiteSpace: 'pre-wrap'}}>
-                                        {this.state.paragraph}
-                                    </p>
+                                    {this.state.isMobile ? (
+                                        <></>
+                                    ) : (
+                                        <p className="alignRight" style={{whiteSpace: 'pre-wrap'}}>
+                                            {this.state.paragraph}
+                                        </p>
+                                    )}
 
                                     {/*if there was a button, add it*/}
-                                    {this.state.buttonText ? (
+                                    {this.state.buttonText && !this.state.isMobile ? (
                                         <React.Fragment>
                                             <button onClick={() => {this.state.buttonAction()}} type="button">
                                                 <h3>
@@ -75,7 +87,7 @@ class GenericMarkupSection extends Component {
                                     ) : <React.Fragment></React.Fragment>}
 
                                     {/*if there was a link, add it*/}
-                                    {this.state.linkText ? (
+                                    {this.state.linkText && !this.state.isMobile ? (
                                         <React.Fragment>
                                             <Link to={this.state.linkDestination}>
                                                 <h3>
@@ -88,6 +100,38 @@ class GenericMarkupSection extends Component {
                             </tr>
                         </thead>
                     </table>
+
+                    {/*paragraph for mobile*/}
+                    {this.state.isMobile ? (
+                        <React.Fragment>
+                            <p style={{whiteSpace: 'pre-wrap'}}>
+                                {this.state.paragraph}
+                            </p>
+                        </React.Fragment>
+                    ) : <></>}
+
+                    {/*button and link for mobile */}
+                    {this.state.isMobile && this.state.buttonText ? (
+                        <React.Fragment>
+                            <button onClick={() => {this.state.buttonAction()}} type="button">
+                                <h3>
+                                    {this.state.buttonText}
+                                </h3>
+                            </button>
+                        </React.Fragment>
+                    ) : (
+                        <React.Fragment></React.Fragment>
+                    )}
+
+                    {this.state.isMobile && this.state.linkText ? (
+                        <React.Fragment>
+                            <Link to={this.state.linkDestination}>
+                                <h3>
+                                    {this.state.linkText}
+                                </h3>
+                            </Link>
+                        </React.Fragment>
+                    ) : <></>}
                 </React.Fragment>
             );
         }
@@ -103,12 +147,14 @@ class GenericMarkupSection extends Component {
                                     <h2 className="alignRight">
                                         {this.state.heading}
                                     </h2>
-                                    <p className="alignLeft" style={{whiteSpace: 'pre-wrap'}}>
-                                        {this.state.paragraph}
-                                    </p>
+                                    {this.state.isMobile ? <></> : (
+                                        <p className="alignLeft" style={{whiteSpace: 'pre-wrap'}}>
+                                            {this.state.paragraph}
+                                        </p>
+                                    )}
 
                                     {/*if there was a button, add it*/}
-                                    {this.state.buttonText ? (
+                                    {this.state.buttonText && !this.state.isMobile ? (
                                         <React.Fragment>
                                             <button onClick={() => {this.state.buttonAction()}} type="button">
                                                 <h3>
@@ -119,7 +165,7 @@ class GenericMarkupSection extends Component {
                                     ) : <React.Fragment></React.Fragment>}
 
                                     {/*if there was a link, add it*/}
-                                    {this.state.linkText ? (
+                                    {this.state.linkText && !this.state.isMobile ? (
                                         <React.Fragment>
                                             <Link to={this.state.linkDestination}>
                                                 <h3>
@@ -129,12 +175,35 @@ class GenericMarkupSection extends Component {
                                         </React.Fragment>
                                     ) : <React.Fragment></React.Fragment>}
                                 </td>
-                                <td style={{width: '45%'}}>
+                                <td style={{width: this.state.isMobile ? '60%' : '45%'}}>
                                     <SmartImage imagePath={this.state.imagePath || undefined} imageURL={this.state.imageURL || undefined} imageClasses="mainImage centered" alt="IMAGE"/>
                                 </td>
                             </tr>
                         </thead>
                     </table>
+
+                    {/*mobile paragraph*/}
+                    {this.state.isMobile ? (
+                        <p style={{whiteSpace: 'pre-wrap'}}>
+                            {this.state.paragraph}
+                        </p>
+                    ) : <></>}
+
+                    {/*mobile button and link*/}
+                    {this.state.isMobile && this.state.buttonText ? (
+                        <button type="button" onClick={() => {this.state.buttonAction()}}>
+                            <h3>
+                                {this.state.buttonText}
+                            </h3>
+                        </button>
+                    ) : <></>}
+                    {this.state.isMobile && this.state.linkText ? (
+                        <Link to={this.state.linkDestination}>
+                            <h3>
+                                {this.state.linkText}
+                            </h3>
+                        </Link>
+                    ) : <></>}
                 </React.Fragment>
             );
         };
