@@ -9,7 +9,7 @@ import Footer from './components/multiPageComponents/footer.jsx';
 import ScrollToTop from './components/multiPageComponents/scrollToTop.jsx';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
-import {MobileProvider} from './context/mobileContext.jsx';
+import { MobileProvider } from './context/mobileContext.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -26,7 +26,7 @@ root.render(
       <MobileProvider>
 
         <Header />
-        <div style={{marginTop: '125px'}} id="pageContentWrapper">
+        <div style={{marginTop: window.innerWidth >= window.innerHeight ? '125px' : '70px'}} id="pageContentWrapper">
         <AllRoutes />
         </div>
         <Footer />
