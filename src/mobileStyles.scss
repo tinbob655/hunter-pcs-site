@@ -28,6 +28,42 @@ div {
         margin-top: 2vh;
         margin-bottom: 0;
     }
+
+    $headerWidth: 40vw;
+
+    &#headerWrapper {
+        background-color: #000000;
+        width: $headerWidth;
+        height: 100vh;
+        opacity: 0.85 !important;
+        border-right: white solid 5px;
+
+        transform: translateX(-($headerWidth + 3vw));
+
+        &.headerOpen {
+            transform: translateX(0);
+        }
+    }
+
+    &#hamburgerWrapper {
+        background-color: transparent;
+        position: fixed;
+        left: 2vw;
+        top: 0.5vh;
+        z-index: 99;
+
+        transform: translateX(0);
+
+        &.headerOpen {
+            transform: translateX($headerWidth + 3vw)
+        }
+    }
+
+    &#hamburgerWrapper, &#headerWrapper {
+        transition-property: transform;
+        transition-duration: 0.75s;
+        transition-timing-function: ease;
+    }
 }
 
 span {
