@@ -7,8 +7,11 @@ import AutoNav from '../../multiPageComponents/autoNav.jsx';
 import firebaseInstance from '../../../classes/firebase.js';
 import {getDocs, query, collection} from 'firebase/firestore';
 import SmartImage from '../../multiPageComponents/smartImage.jsx';
+import MobileProvider from '../../../context/mobileContext.jsx';
 
 class PcsMain extends Component {
+
+    static contextType = MobileProvider;
 
     constructor(props) {
         super(props);
@@ -18,11 +21,16 @@ class PcsMain extends Component {
             autoNav: <></>,
             products: ['solid', 'strong', 'powerful', 'supreme', 'dominant'],
             fancyButtonsHTML: [<></>]*5,
+            isMobile: this.context,
         };
-
     };
 
     componentDidMount() {
+
+        //set isMobile
+        this.setState({
+            isMobile: this.context,
+        });
 
         //fetch the price of each product from firestore
         let productSubheadings = {};
@@ -56,7 +64,7 @@ class PcsMain extends Component {
                                 autoNav: <AutoNav destination={'/productPage'} />
                             });
                         }} />
-                        <p className="noVerticalSpacing" style={{marginBottom: '45px', marginTop: '15px', fontSize: '17px'}}>
+                        <p className="noVerticalSpacing" style={{marginBottom: this.context ? '60px' : '45px', marginTop: '15px', fontSize: '17px'}}>
                             {productSubheadings[product]}
                         </p>
                     </React.Fragment>
@@ -72,138 +80,252 @@ class PcsMain extends Component {
     };
 
     render() {
-        return (
-            <React.Fragment>
-                <PageHeader heading="Gaming PCs" subheading="Hand crafted and ready to go" />
 
-                {/*get your dream setup section*/}
-                <div>
-                    <GenericMarkupSection
-                        heading="Get your dream setup"
-                        paragraph="Our gaming pcs are designed with a passion for quality, meaning whatever you choose, you can be sure that your PC will get you in the game. We have models ranging from the highest performing, to the most budget effective. Whatever your needs, satisfy them here."
-                        left={true}
-                        imagePath="images/gamingSetupWIDE1.jpeg" />
-                </div>
+        //desktop pcsMain page
+        if (!this.state.isMobile) {
+            return (
+                <React.Fragment>
+                    <PageHeader heading="Gaming PCs" subheading="Hand crafted and ready to go" />
+    
+                    {/*get your dream setup section*/}
+                    <div>
+                        <GenericMarkupSection
+                            heading="Get your dream setup"
+                            paragraph="Our gaming pcs are designed with a passion for quality, meaning whatever you choose, you can be sure that your PC will get you in the game. We have models ranging from the highest performing, to the most budget effective. Whatever your needs, satisfy them here."
+                            left={true}
+                            imagePath="images/gamingSetupWIDE1.jpeg" />
+                    </div>
+    
+                    <DividerLine purple={false} />
+    
+                    {/*buttons for each model section*/}
+                    <div className="intoPurple">
+                        <h2>
+                            For high quality Gaming PCs, you're in the right place!
+                        </h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        {this.state.fancyButtonsHTML[0]}
+                                    </td>
+                                    <td>
+                                        {this.state.fancyButtonsHTML[1]}
+                                    </td>
+                                    <td>
+                                        {this.state.fancyButtonsHTML[2]}
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <table style={{width: '66%', marginLeft: 'auto', marginRight: 'auto'}}>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        {this.state.fancyButtonsHTML[3]}
+                                    </td>
+                                    <td>
+                                        {this.state.fancyButtonsHTML[4]}
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <p style={{marginBottom: 0}}>
+                            Please note: all our PCs come with Windows 11. This can be changed in the purchase menus.
+                        </p>
+                    </div>
+    
+                    <DividerLine purple={true} />
+    
+                    {/*pick your perfect model section*/}
+                    <div className="outOfPurple">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td style={{width: '55%'}}>
+                                        <h2 className="alignLeft">
+                                            Pick your perfect model
+                                        </h2>
+                                        <p>
+                                            We understand it can be hard to select the ideal PC from our range of prebuilt PCs. Need help? Look no further:
+                                        </p>
+                                        
+                                        {/*solid*/}
+                                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignRight">
+                                            Solid:
+                                        </h2>
+                                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignRight">
+                                            Our solid model is aimed at gamers who wish to play most games in 1080p with high FPS.
+                                        </p>
+    
+                                        {/*strong*/}
+                                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignLeft">
+                                            Strong:
+                                        </h2>
+                                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignLeft">
+                                            Our strong model is for gamers who wish to play all games easily in 1080p with very high FPS, and many single-player games in 1440p with lower FPS.
+                                        </p>
+    
+                                        {/*powerful*/}
+                                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignRight">
+                                            Powerful:
+                                        </h2>
+                                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignRight">
+                                            Our powerful model is aimed at those who wish to easily play all games in 1440p  with high FPS as well as have high aesthetic build quality.
+                                        </p>
+    
+                                        {/*supreme*/}
+                                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignLeft">
+                                            Supreme:
+                                        </h2>
+                                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignLeft">
+                                            Our supreme model is designed with gamers who want to play games in 4K with an RGB flair as well as never have to worry about storage space or cooling whatsoever.
+                                        </p>
+    
+                                        {/*dominant*/}
+                                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignRight">
+                                            Dominant:
+                                        </h2>
+                                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignRight">
+                                            Our dominant model is curated for gamers with a passion for quality, easily running any game on max settings in 4K resolution without breaking a sweat. For dominating the competition, this is the perfect solution.
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <SmartImage imageClasses="mainImage" imagePath="images/gamingPcVTall.png" imageStyles={{maxHeight: 'unset'}} />
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+    
+                    <DividerLine purple={false} />
+    
+                    {/*custom pcs section*/}
+                    <div>
+                        <GenericMarkupSection
+                            heading="Build your dreams"
+                            paragraph="Using our custom PC creator, you can design the PC of your dreams online, right now. Choose from a massive range of available parts and we'll be in touch to verify whether your build works, giving you peace of mind and and easy purchase."
+                            linkText="Click here to get started ⟶"
+                            linkDestination="/customPCs"
+                            left={true}
+                            imagePath="images/motherboardTall.jpeg" />
+                    </div>
+    
+                    {/*for programmatic navigation*/}
+                    {this.state.autoNav}
+                </React.Fragment>
+            );
+        }
 
-                <DividerLine purple={false} />
+        //mobile pcsMain page
+        else {
+            return (
+                <React.Fragment>
+                    <PageHeader heading="Gaming PCs" subheading="Hand crafted and ready to go" />
 
-                {/*buttons for each model section*/}
-                <div className="intoPurple">
-                    <h2>
-                        For high quality Gaming PCs, you're in the right place!
-                    </h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>
-                                    {this.state.fancyButtonsHTML[0]}
-                                </td>
-                                <td>
-                                    {this.state.fancyButtonsHTML[1]}
-                                </td>
-                                <td>
-                                    {this.state.fancyButtonsHTML[2]}
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
-                    <table style={{width: '66%', marginLeft: 'auto', marginRight: 'auto'}}>
-                        <thead>
-                            <tr>
-                                <td>
-                                    {this.state.fancyButtonsHTML[3]}
-                                </td>
-                                <td>
-                                    {this.state.fancyButtonsHTML[4]}
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
-                    <p style={{marginBottom: 0}}>
-                        Please note: all our PCs come with Windows 11. This can be changed in the purchase menus.
-                    </p>
-                </div>
+                    {/*get your dream setup section*/}
+                    <div>
+                        <GenericMarkupSection
+                            heading="Get your dream setup"
+                            paragraph="Our gaming pcs are designed with a passion for quality, meaning whatever you choose, you can be sure that your PC will get you in the game. We have models ranging from the highest performing, to the most budget effective. Whatever your needs, satisfy them here."
+                            left={true}
+                            imagePath="images/gamingSetupWIDE1.jpeg" />
+                    </div>
 
-                <DividerLine purple={true} />
+                    <DividerLine purple={false} />
 
-                {/*pick your perfect model section*/}
-                <div className="outOfPurple">
-                    <table>
-                        <thead>
-                            <tr>
-                                <td style={{width: '55%'}}>
-                                    <h2 className="alignLeft">
-                                        Pick your perfect model
-                                    </h2>
-                                    <p>
-                                        We understand it can be hard to select the ideal PC from our range of prebuilt PCs. Need help? Look no further:
-                                    </p>
-                                    
-                                    {/*solid*/}
-                                    <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignRight">
-                                        Solid:
-                                    </h2>
-                                    <p style={{marginTop: 0, marginBottom: '20px'}} className="alignRight">
-                                        Our solid model is aimed at gamers who wish to play most games in 1080p with high FPS.
-                                    </p>
+                    {/*button for each model section*/}
+                    <div className="intoPurple">
+                        <h2>
+                            For high quality Gaming PCs, you're in the right place!
+                        </h2>
+                        {this.state.fancyButtonsHTML}
+                        <p style={{marginBottom: 0}}>
+                            Please note: all our PCs come with Windows 11. This can be changed in the purchase menus.
+                        </p>
+                    </div>
 
-                                    {/*strong*/}
-                                    <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignLeft">
-                                        Strong:
-                                    </h2>
-                                    <p style={{marginTop: 0, marginBottom: '20px'}} className="alignLeft">
-                                        Our strong model is for gamers who wish to play all games easily in 1080p with very high FPS, and many single-player games in 1440p with lower FPS.
-                                    </p>
+                    <DividerLine purple={true} />
 
-                                    {/*powerful*/}
-                                    <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignRight">
-                                        Powerful:
-                                    </h2>
-                                    <p style={{marginTop: 0, marginBottom: '20px'}} className="alignRight">
-                                        Our powerful model is aimed at those who wish to easily play all games in 1440p  with high FPS as well as have high aesthetic build quality.
-                                    </p>
+                    {/*pick your perfect model section*/}
+                    <div className="outOfPurple">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td style={{width: '40%'}}>
+                                        <h2 className="alignRight">
+                                            Pick your perfect model
+                                        </h2>
+                                    </td>
+                                    <td>
+                                        <SmartImage imageClasses="mainImage" imagePath="images/gamingPcVTall.png" />
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                        <p>
+                            We understand it can be hard to select the ideal PC from our range of prebuilt PCs. Need help? Look no further:
+                        </p>
 
-                                    {/*supreme*/}
-                                    <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignLeft">
-                                        Supreme:
-                                    </h2>
-                                    <p style={{marginTop: 0, marginBottom: '20px'}} className="alignLeft">
-                                        Our supreme model is designed with gamers who want to play games in 4K with an RGB flair as well as never have to worry about storage space or cooling whatsoever.
-                                    </p>
+                        {/*solid*/}
+                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignRight">
+                            Solid:
+                        </h2>
+                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignRight">
+                            Our solid model is aimed at gamers who wish to play most games in 1080p with high FPS.
+                        </p>
 
-                                    {/*dominant*/}
-                                    <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignRight">
-                                        Dominant:
-                                    </h2>
-                                    <p style={{marginTop: 0, marginBottom: '20px'}} className="alignRight">
-                                        Our dominant model is curated for gamers with a passion for quality, easily running any game on max settings in 4K resolution without breaking a sweat. For dominating the competition, this is the perfect solution.
-                                    </p>
-                                </td>
-                                <td>
-                                    <SmartImage imageClasses="mainImage" imagePath="images/gamingPcVTall.png" imageStyles={{maxHeight: 'unset'}} />
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
+                        {/*strong*/}
+                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignLeft">
+                            Strong:
+                        </h2>
+                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignLeft">
+                            Our strong model is for gamers who wish to play all games easily in 1080p with very high FPS, and many single-player games in 1440p with lower FPS.
+                        </p>
 
-                <DividerLine purple={false} />
+                        {/*powerful*/}
+                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignRight">
+                            Powerful:
+                        </h2>
+                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignRight">
+                            Our powerful model is aimed at those who wish to easily play all games in 1440p  with high FPS as well as have high aesthetic build quality.
+                        </p>
 
-                {/*custom pcs section*/}
-                <div>
-                    <GenericMarkupSection
-                        heading="Build your dreams"
-                        paragraph="Using our custom PC creator, you can design the PC of your dreams online, right now. Choose from a massive range of available parts and we'll be in touch to verify whether your build works, giving you peace of mind and and easy purchase."
-                        linkText="Click here to get started ⟶"
-                        linkDestination="/customPCs"
-                        left={true}
-                        imagePath="images/motherboardTall.jpeg" />
-                </div>
+                        {/*supreme*/}
+                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignLeft">
+                            Supreme:
+                        </h2>
+                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignLeft">
+                            Our supreme model is designed with gamers who want to play games in 4K with an RGB flair as well as never have to worry about storage space or cooling whatsoever.
+                        </p>
 
-                {/*for programmatic navigation*/}
-                {this.state.autoNav}
-            </React.Fragment>
-        );
+                        {/*dominant*/}
+                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignRight">
+                            Dominant:
+                        </h2>
+                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignRight">
+                            Our dominant model is curated for gamers with a passion for quality, easily running any game on max settings in 4K resolution without breaking a sweat. For dominating the competition, this is the perfect solution.
+                        </p>
+                    </div>
+
+                    <DividerLine purple={false} />
+
+                    {/*custom pcs section*/}
+                    <div>
+                        <GenericMarkupSection
+                            heading="Build your dreams"
+                            paragraph="Using our custom PC creator, you can design the PC of your dreams online, right now. Choose from a massive range of available parts and we'll be in touch to verify whether your build works, giving you peace of mind and and easy purchase."
+                            linkText="Click here to get started ⟶"
+                            linkDestination="/customPCs"
+                            left={true}
+                            imagePath="images/motherboardTall.jpeg" />
+                    </div>
+
+                    {/*for programmatic navigation*/}
+                    {this.state.autoNav}
+                </React.Fragment>
+            );
+        };
     };
 };
 
