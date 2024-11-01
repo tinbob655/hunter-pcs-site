@@ -4,10 +4,23 @@ import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection
 import DividerLine from '../../multiPageComponents/dividerLine.jsx';
 import { Link } from 'react-router-dom';
 import SmartImage from '../../multiPageComponents/smartImage.jsx';
+import MobileProvider from '../../../context/mobileContext.jsx';
 
 class Support extends Component {
 
+    static contextType = MobileProvider;
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isMobile: this.context,
+        };
+    };
+
     componentDidMount() {
+
+        this.setState({isMobile: this.context});
 
         //if there was a place to scroll to, scroll to it in this method
         const target = sessionStorage.getItem('supportPageScroll');
@@ -67,7 +80,7 @@ class Support extends Component {
                 <DividerLine purple={true} />
 
                 {/*our brands section*/}
-                <div id="ourBrands" className="purple">
+                <div id="ourBrands" className="purple" style={this.state.isMobile ? {paddingBottom: '10px'} : {}}>
                     <GenericMarkupSection heading="Trusted brands only"
                     paragraph="Only the best hardware makes it into a Hunter PC. Here, we know that quality is vital to performance. That's why we only ship PCs with components from trusted manufacturers like NVIDIA for GPUs, AMD for CPUs and Corsair for PSUs."
                     left={true}
@@ -80,40 +93,66 @@ class Support extends Component {
 
                 {/*return policy section*/}
                 <div id="returnPolicy" className="outOfPurple">
-                    <h1 style={{marginTop: 0}}>
-                        Our return policy
-                    </h1>
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>
-                                    <h2 className="alignLeft">
-                                        If it's our fault
-                                    </h2>
-                                    <p className="alignRight">
-                                        Faulty parts? Short lifespan? Awful speeds? That's our fault: you can return the entire PC and we will fix it up like new for you, free of charge (minus delivery fees)
-                                    </p>
-                                </td>
-                                <td style={{width: '3px', backgroundColor: 'white'}}></td>
-                                <td>
-                                    <h2 className="alignRight">
-                                        If it's your fault
-                                    </h2>
-                                    <p className="alignLeft">
-                                        Spill some water? Loose power mid update? Drop the PC? That's your fault but don't fear: we can still repair your PC for you, however you'll need to cover the cost. You will be billed for each part we replace as well as a fixed repair cost of £149.99
-                                    </p>
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
-                    <h1 style={{marginTop: '40px'}} className="noVerticalSpacing">
-                        Can't work our who's fault it is?
-                    </h1>
-                    <a href="mailto:hunterpcsuk@gmail.com" target="_blank" className="noVerticalSpacing">
-                        <h3 style={{marginTop: 0, paddingTop: 0}}>
-                            Then just message us and we'll try to get you in the game as soon as possible ⟶
-                        </h3>
-                    </a>
+                    {!this.state.isMobile ? (
+                        <React.Fragment>
+
+                            {/*desktop return policy section*/}
+                            <h1 style={{marginTop: 0}}>
+                                Our return policy
+                            </h1>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            <h2 className="alignLeft">
+                                                If it's our fault
+                                            </h2>
+                                            <p className="alignRight">
+                                                Faulty parts? Short lifespan? Awful speeds? That's our fault: you can return the entire PC and we will fix it up like new for you, free of charge (minus delivery fees)
+                                            </p>
+                                        </td>
+                                        <td style={{width: '3px', backgroundColor: 'white'}}></td>
+                                        <td>
+                                            <h2 className="alignRight">
+                                                If it's your fault
+                                            </h2>
+                                            <p className="alignLeft">
+                                                Spill some water? Loose power mid update? Drop the PC? That's your fault but don't fear: we can still repair your PC for you, however you'll need to cover the cost. You will be billed for each part we replace as well as a fixed repair cost of £149.99
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <h1 style={{marginTop: '40px'}} className="noVerticalSpacing">
+                                Can't work our who's fault it is?
+                            </h1>
+                            <a href="mailto:hunterpcsuk@gmail.com" target="_blank" className="noVerticalSpacing">
+                                <h3 style={{marginTop: 0, paddingTop: 0}}>
+                                    Then just message us and we'll try to get you in the game as soon as possible ⟶
+                                </h3>
+                            </a>
+                        </React.Fragment>
+                    ) : (
+                        <React.Fragment>
+
+                            {/*mobile return policy section*/}
+                            <h1 style={{marginTop: 0}}>
+                                Our return policy
+                            </h1>
+                            <h2 className="alignLeft">
+                                If it's our fault
+                            </h2>
+                            <p className="alignLeft">
+                                Faulty parts? Short lifespan? Awful speeds? That's our fault: you can return the entire PC and we will fix it up like new for you, free of charge (minus delivery fees)
+                            </p>
+                            <h2 className="alignRight" style={{marginTop: '20px'}}>
+                                If it's your fault
+                            </h2>
+                            <p className="alignRight">
+                                Spill some water? Loose power mid update? Drop the PC? That's your fault but don't fear: we can still repair your PC for you, however you'll need to cover the cost. You will be billed for each part we replace as well as a fixed repair cost of £149.99
+                            </p>
+                        </React.Fragment>
+                    )}
                 </div>
 
                 <DividerLine purple={false} />
@@ -129,7 +168,7 @@ class Support extends Component {
                 <DividerLine purple={false} />
 
                 {/*fraud prevention section*/}
-                <div id="fraudPrevention" className="intoPurple">
+                <div id="fraudPrevention" className="intoPurple" style={this.state.isMobile ? {paddingBottom: '10px'} : {}}>
                     <GenericMarkupSection heading="Fraud prevention"
                     paragraph="Fraud is illegal, so don't do it. We HATE fraud, so we may request to see any customer's photo id as well as an image of the bank card used to purchase a PC. This is to make sure that our real customers can get their PC faster, and to stop you dirty AI startups from taking everyone else's GPUs. If you don't send us images on request, then we reserve the right to revoke access to your Hunter PCs account and refuse to send you can gaming PCs. By purchasing any product from us, you agree to our fraud prevention program."
                     left={true}
@@ -139,44 +178,83 @@ class Support extends Component {
                 <DividerLine purple={true} />
 
                 {/*boring legal stuff section*/}
-                <div id="boringLegalStuff" className="purple">
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>
-                                    <h2 className="alignLeft">
-                                        Boring legal stuff
-                                    </h2>
-                                    <p className="alignRight">
-                                        Our privacy policy and terms of service are linked below. To summarise them, we collect the minimum amount of information possible, and don't store it.
-                                    </p>
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <td>
-                                                    <Link to='/privacyPolicy'>
-                                                        <h3>
-                                                            Our privacy policy ⟶
-                                                        </h3>
-                                                    </Link>
-                                                </td>
-                                                <td>
-                                                    <Link to='/termsOfService'>
-                                                        <h3>
-                                                            Our terms of service ⟶
-                                                        </h3>
-                                                    </Link>
-                                                </td>
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                </td>
-                                <td style={{width: '45%'}}>
-                                    <SmartImage imageClasses="mainImage" imagePath="images/gamingSetupTall3.jpeg" />
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
+                <div id="boringLegalStuff" className="purple" style={this.state.isMobile ? {paddingBottom: '10px'} : {}}>
+
+                    {!this.state.isMobile ? (
+                        <React.Fragment>
+
+                            {/*desktop boring legal stuff section*/}
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            <h2 className="alignLeft">
+                                                Boring legal stuff
+                                            </h2>
+                                            <p className="alignRight">
+                                                Our privacy policy and terms of service are linked below. To summarise them, we collect the minimum amount of information possible, and don't store it.
+                                            </p>
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <td>
+                                                            <Link to='/privacyPolicy'>
+                                                                <h3>
+                                                                    Our privacy policy ⟶
+                                                                </h3>
+                                                            </Link>
+                                                        </td>
+                                                        <td>
+                                                            <Link to='/termsOfService'>
+                                                                <h3>
+                                                                    Our terms of service ⟶
+                                                                </h3>
+                                                            </Link>
+                                                        </td>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </td>
+                                        <td style={{width: '45%'}}>
+                                            <SmartImage imageClasses="mainImage" imagePath="images/gamingSetupTall3.jpeg" />
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </React.Fragment>
+                    ) : (
+                        <React.Fragment>
+
+                            {/*mobile boring legal stuff section*/}
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            <h2 className="alignRight">
+                                                Boring legal stuff
+                                            </h2>
+                                        </td>
+                                        <td style={{width: '60%'}}>
+                                            <SmartImage imageClasses="mainImage" imagePath="images/gamingSetupTall3.jpeg" />
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                            <p>
+                                Our privacy policy and terms of service are linked below. To summarise them, we collect the minimum amount of information possible, and don't store it.
+                            </p>
+                            <Link to='/privacyPolicy'>
+                                <h3>
+                                    View our privacy policy ⟶
+                                </h3>
+                            </Link>
+                            <Link to='/termsOfService'>
+                                <h3 style={{marginTop: '25px'}}>
+                                    View our terms of service ⟶
+                                </h3>
+                            </Link>
+                        </React.Fragment>
+                    )}
                 </div>
 
                 <DividerLine purple={true} />
