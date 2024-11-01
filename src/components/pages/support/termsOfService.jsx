@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import { isMobile } from '../../../index.js';
 
 class TermsOfService extends Component {
 
     render() {
         return (
             <React.Fragment>
-                <div style={isMobile ? {width: '90%', margin: 'auto', display: 'block'} : {width: '75%', margin: 'auto'}}>
+                <div>
                     <h1 style={{wordBreak: 'break-all'}}>
                         Terms of service
                     </h1>

@@ -1,318 +1,322 @@
 import React, {Component} from 'react';
-import SlidingButton from '../../multiPageComponents/slidingButton.jsx';
-import {doc, getDoc, getFirestore} from 'firebase/firestore';
-import { firebaseInit } from '../../../firebase.js';
-import { isMobile } from '../../../index.js';
+import PageHeader from '../../multiPageComponents/pageHeader.jsx';
 import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection.jsx';
-import Image from '../../multiPageComponents/image.jsx';
-
-firebaseInit();
+import DividerLine from '../../multiPageComponents/dividerLine.jsx';
+import FancyButton from '../../multiPageComponents/fancyButton.jsx';
+import AutoNav from '../../multiPageComponents/autoNav.jsx';
+import firebaseInstance from '../../../classes/firebase.js';
+import {getDocs, query, collection} from 'firebase/firestore';
+import SmartImage from '../../multiPageComponents/smartImage.jsx';
+import MobileProvider from '../../../context/mobileContext.jsx';
 
 class PcsMain extends Component {
 
-    constructor (props) {
-        super(props);
+    static contextType = MobileProvider;
 
+    constructor(props) {
+        super(props);
+        
+        //an auto nav is required for navigation to the product page as params are required to be passed in (and it is not being used in the usual sense of a component, rather a page)
         this.state = {
-            prices: {
-            },
-            productImages: {
-                temporary: 'images/image of pc.jpeg',
-            },
+            autoNav: <></>,
+            products: ['solid', 'strong', 'powerful', 'supreme', 'dominant'],
+            fancyButtonsHTML: [<></>]*5,
+            isMobile: this.context,
         };
     };
 
-    async componentDidMount() {
+    componentDidMount() {
 
-        //fetch all the prices from database
-        let fetchedPrices = [];
-        const pcTypes = ['solidPc', 'strongPc', 'powerfulPc', 'supremePc', 'dominantPc'];
+        //set isMobile
+        this.setState({
+            isMobile: this.context,
+        });
 
-        //repeat for each product
-        for (let pc = 0; pc < pcTypes.length; pc++) {
-            const database = getFirestore();
-            let docRef = doc(database, 'products', pcTypes[pc]);
-            let docSnap = await getDoc(docRef);
+        //fetch the price of each product from firestore
+        let productSubheadings = {};
 
-            //append the fetched price to the array of prices
-            fetchedPrices.push(docSnap.data().price)
-        };
+        const firestore = firebaseInstance.getFirebaseFirestore;
+        const docQuery = query(collection(firestore, 'products'));
+        getDocs(docQuery).then((docSnap) => {
+            docSnap.forEach((doc) => {
+                
+                //repeating for each document found in the 'products' collection in firestore
+                //get the name of the document
+                const name = doc.id.replace('Pc', '');
+                
+                //save the prices of each product to the productSubheadings map
+                productSubheadings[name] = doc.data().subheaderDescription;
+            });
 
-        //now add the fetched prices to state
-        this.setState({prices: {
-            solid: fetchedPrices[0],
-            strong: fetchedPrices[1],
-            powerful: fetchedPrices[2],
-            supreme: fetchedPrices[3],
-            dominant: fetchedPrices[4],
-        }});
+            //generate html for each fancy button
+            let fancyButtonsHTML = [];
+            this.state.products.forEach((product) => {
+    
+                //capitalise the first letter of the product name for the frontend
+                const frontendProductName = product.substring(0, 1).toUpperCase() + product.substring(1);
+    
+                //add the HTML to the array
+                fancyButtonsHTML.push(
+                    <React.Fragment>
+                        <FancyButton title={frontendProductName} action={() => {
+                            sessionStorage.setItem('product', product);
+                            this.setState({
+                                autoNav: <AutoNav destination={'/productPage'} />
+                            });
+                        }} />
+                        <p className="noVerticalSpacing" style={{marginBottom: this.context ? '60px' : '45px', marginTop: '15px', fontSize: '17px'}}>
+                            {productSubheadings[product]}
+                        </p>
+                    </React.Fragment>
+                );
+    
+                //save the html array to state
+                this.setState({
+                    fancyButtonsHTML: fancyButtonsHTML,
+                });
+            });
+        });
+
     };
 
     render() {
 
-        //desktop gaming pcs page
-        if (!isMobile()) {
+        //desktop pcsMain page
+        if (!this.state.isMobile) {
             return (
                 <React.Fragment>
-                    {/*HEADER SECTION*/}
+                    <PageHeader heading="Gaming PCs" subheading="Hand crafted and ready to go" />
+    
+                    {/*get your dream setup section*/}
+                    <div>
+                        <GenericMarkupSection
+                            heading="Get your dream setup"
+                            paragraph="Our gaming pcs are designed with a passion for quality, meaning whatever you choose, you can be sure that your PC will get you in the game. We have models ranging from the highest performing, to the most budget effective. Whatever your needs, satisfy them here."
+                            left={true}
+                            imagePath="images/gamingSetupWIDE1.jpeg" />
+                    </div>
+    
+                    <DividerLine purple={false} />
+    
+                    {/*buttons for each model section*/}
                     <div className="intoPurple">
-                        <h1 className="alignRight">
-                            Hand crafted gaming PCs, ready to go
-                        </h1>
+                        <h2>
+                            For high quality Gaming PCs, you're in the right place!
+                        </h2>
                         <table>
                             <thead>
                                 <tr>
                                     <td>
-                                        <Image imagePath="images/gamingSetupWIDE1.jpeg" imageClasses="mainImage" />
+                                        {this.state.fancyButtonsHTML[0]}
                                     </td>
                                     <td>
-                                        <h2 className="alignRight">
-                                            Get your dream setup
-                                        </h2>
-                                        <p className="alignLeft">
-                                            We sell pcs ranging from the highest performing to the most budget effective. Whatever your needs, satisfy them here
-                                        </p>
+                                        {this.state.fancyButtonsHTML[1]}
+                                    </td>
+                                    <td>
+                                        {this.state.fancyButtonsHTML[2]}
                                     </td>
                                 </tr>
                             </thead>
                         </table>
-                    </div>
-    
-                    {/*PREBUILT PRODUCTS SECTION*/}
-                    <div className="purpleGrey">
-                        <h1>
-                            For high quality PCs, you're in the right place
-                        </h1>
-    
-                        <table style={{tableLayout: 'fixed'}}>
+                        <table style={{width: '66%', marginLeft: 'auto', marginRight: 'auto'}}>
                             <thead>
                                 <tr>
-                                    <td colSpan='2'>
-    
-                                        {/*solid pc button*/}
-                                        <SlidingButton 
-                                            id="solidPcsButton"
-                                            linkLocation="productPage"
-                                            ssIndex='product'
-                                            ssValue='solidPc'
-                                            textContent='Solid'
-                                            textAfterArrow={<React.Fragment>
-                                                <br/>
-                                                {this.state.prices.solid ? '£ '+this.state.prices.solid : 'loading...'}
-                                            </React.Fragment>} />
+                                    <td>
+                                        {this.state.fancyButtonsHTML[3]}
                                     </td>
-                                    <td style={{width: '0'}}></td>
-                                    <td colSpan="2">
-    
-                                        {/*strong pc button*/}
-                                        <SlidingButton
-                                            id="strongPcsButton"
-                                            linkLocation="productPage"
-                                            ssIndex="product"
-                                            ssValue='strongPc'
-                                            textContent='Strong'
-                                            textAfterArrow={<React.Fragment>
-                                                <br/>
-                                                {this.state.prices.strong ? '£ '+this.state.prices.strong : 'loading...'}
-                                            </React.Fragment>} />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td colSpan="3">
-    
-                                        {/*powerful pc button*/}
-                                        <SlidingButton 
-                                            id="powerfulPcsButton"
-                                            linkLocation="productPage"
-                                            ssIndex='product'
-                                            ssValue='powerfulPc'
-                                            textContent='Powerful'
-                                            textAfterArrow={<React.Fragment>
-                                                <br/>
-                                                {this.state.prices.powerful ? '£ '+this.state.prices.powerful : 'loading...'}
-                                            </React.Fragment>} />
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td colSpan="2">
-    
-                                        {/*supreme pc button*/}
-                                        <SlidingButton 
-                                            id="supremePcsButton"
-                                            linkLocation="productPage"
-                                            ssIndex='product'
-                                            ssValue='supremePc'
-                                            textContent='Supreme'
-                                            textAfterArrow={<React.Fragment>
-                                                <br/>
-                                                {this.state.prices.supreme ? '£ '+this.state.prices.supreme : 'loading...'}
-                                            </React.Fragment>} />
-                                    </td>
-                                    <td></td>
-                                    <td colSpan="2">
-    
-                                        {/*dominant pc button*/}
-                                        <SlidingButton 
-                                            id="dominantPcsButton"
-                                            linkLocation="productPage"
-                                            ssIndex='product'
-                                            ssValue='dominantPc'
-                                            textContent='Dominant'
-                                            textAfterArrow={<React.Fragment>
-                                                <br/>
-                                                {this.state.prices.dominant ? '£ '+this.state.prices.dominant : 'loading...'}
-                                            </React.Fragment>} />
+                                    <td>
+                                        {this.state.fancyButtonsHTML[4]}
                                     </td>
                                 </tr>
                             </thead>
                         </table>
-                        <p>
-                            Please note: all our PCs come with Windows 11 pre-installed. This can be changed in the purchase menus
-                        </p>
                     </div>
     
-                    {/*CUSTOM PCS SECTION*/}
-                    <div className="outofPurple">
-                        <GenericMarkupSection
-                        headingText='Design your own PC'
-                        subheadingText='Build your dreams'
-                        paragraphText='Using our custom PC creator, you can design the PC of your dreams online, right now.'
-                        linkContent='Click here to get started ⟶'
-                        linkDestination='/customPcs'
-                        imgSrc='images/motherboardTall.jpeg'
-                        leftBool={false} 
-                        customImageCellStyles={{width: '60%'}}/>
+                    <DividerLine purple={true} />
+    
+                    {/*pick your perfect model section*/}
+                    <div className="outOfPurple">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td style={{width: '55%'}}>
+                                        <h2 className="alignLeft">
+                                            Pick your perfect model
+                                        </h2>
+                                        <p>
+                                            We understand it can be hard to select the ideal PC from our range of prebuilt PCs. Need help? Look no further:
+                                        </p>
+                                        
+                                        {/*solid*/}
+                                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignRight">
+                                            Solid:
+                                        </h2>
+                                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignRight">
+                                            Our solid model is aimed at gamers who wish to play most games in 1080p with high FPS.
+                                        </p>
+    
+                                        {/*strong*/}
+                                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignLeft">
+                                            Strong:
+                                        </h2>
+                                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignLeft">
+                                            Our strong model is for gamers who wish to play all games easily in 1080p with very high FPS, and many single-player games in 1440p with lower FPS.
+                                        </p>
+    
+                                        {/*powerful*/}
+                                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignRight">
+                                            Powerful:
+                                        </h2>
+                                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignRight">
+                                            Our powerful model is aimed at those who wish to easily play all games in 1440p  with high FPS as well as have high aesthetic build quality.
+                                        </p>
+    
+                                        {/*supreme*/}
+                                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignLeft">
+                                            Supreme:
+                                        </h2>
+                                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignLeft">
+                                            Our supreme model is designed with gamers who want to play games in 4K with an RGB flair as well as never have to worry about storage space or cooling whatsoever.
+                                        </p>
+    
+                                        {/*dominant*/}
+                                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignRight">
+                                            Dominant:
+                                        </h2>
+                                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignRight">
+                                            Our dominant model is curated for gamers with a passion for quality, easily running any game on max settings in 4K resolution without breaking a sweat. For dominating the competition, this is the perfect solution.
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <SmartImage imageClasses="mainImage" imagePath="images/gamingPcVTall.png" imageStyles={{maxHeight: 'unset'}} />
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
+    
+                    <DividerLine purple={false} />
+    
+                    {/*custom pcs section*/}
+                    <div>
+                        <GenericMarkupSection
+                            heading="Build your dreams"
+                            paragraph="Using our custom PC creator, you can design the PC of your dreams online, right now. Choose from a massive range of available parts and we'll be in touch to verify whether your build works, giving you peace of mind and and easy purchase."
+                            linkText="Click here to get started ⟶"
+                            linkDestination="/customPCs"
+                            left={true}
+                            imagePath="images/motherboardTall.jpeg" />
+                    </div>
+    
+                    {/*for programmatic navigation*/}
+                    {this.state.autoNav}
                 </React.Fragment>
             );
         }
 
-        //mobile gaming pcs page
+        //mobile pcsMain page
         else {
             return (
                 <React.Fragment>
+                    <PageHeader heading="Gaming PCs" subheading="Hand crafted and ready to go" />
 
-                    {/*header section*/}
+                    {/*get your dream setup section*/}
+                    <div>
+                        <GenericMarkupSection
+                            heading="Get your dream setup"
+                            paragraph="Our gaming pcs are designed with a passion for quality, meaning whatever you choose, you can be sure that your PC will get you in the game. We have models ranging from the highest performing, to the most budget effective. Whatever your needs, satisfy them here."
+                            left={true}
+                            imagePath="images/gamingSetupWIDE1.jpeg" />
+                    </div>
+
+                    <DividerLine purple={false} />
+
+                    {/*button for each model section*/}
                     <div className="intoPurple">
-                        <h1>
-                            Hand crafted gaming PCs, ready to go
-                        </h1>
+                        <h2>
+                            For high quality Gaming PCs, you're in the right place!
+                        </h2>
+                        {this.state.fancyButtonsHTML}
+                    </div>
+
+                    <DividerLine purple={true} />
+
+                    {/*pick your perfect model section*/}
+                    <div className="outOfPurple">
                         <table>
                             <thead>
                                 <tr>
-                                    <td>
-                                        <Image imagePath="images/gamingSetupWIDE1.jpeg" imageClasses="mainImage"/>
-                                    </td>
                                     <td style={{width: '40%'}}>
-                                        <h2 className="alignLeft">
-                                            Get your dream setup
+                                        <h2 className="alignRight">
+                                            Pick your perfect model
                                         </h2>
+                                    </td>
+                                    <td>
+                                        <SmartImage imageClasses="mainImage" imagePath="images/gamingPcVTall.png" />
                                     </td>
                                 </tr>
                             </thead>
                         </table>
                         <p>
-                            We sell PCs ranging from the highest performing to the most budget effective. Whatever your needs, satisfy them here
+                            We understand it can be hard to select the ideal PC from our range of prebuilt PCs. Need help? Look no further:
                         </p>
-                    </div>
 
-                    <div className="dividerLine"></div>
-
-                    {/*PREBUILT PRODUCTS SECTION*/}
-                    <div className="purpleGrey">
-                        <h1>
-                            Browse our PCs
-                        </h1>
-                        <h2 className="alignRight">
-                            For high quality gaming PCs, you're in the right place
+                        {/*solid*/}
+                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignRight">
+                            Solid:
                         </h2>
+                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignRight">
+                            Our solid model is aimed at gamers who wish to play most games in 1080p with high FPS.
+                        </p>
 
-                        {/*solid pc button*/}
-                        <SlidingButton 
-                            id="solidPcsButton"
-                            linkLocation="productPage"
-                            ssIndex='product'
-                            ssValue='solidPc'
-                            imgSrc={this.state.productImages.temporary}
-                            textContent='Solid'
-                            textAfterArrow={<React.Fragment>
-                                <br/><br/>
-                                {this.state.prices.solid ? '£ '+this.state.prices.solid : 'loading...'}
-                            </React.Fragment>} />
+                        {/*strong*/}
+                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignLeft">
+                            Strong:
+                        </h2>
+                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignLeft">
+                            Our strong model is for gamers who wish to play all games easily in 1080p with very high FPS, and many single-player games in 1440p with lower FPS.
+                        </p>
 
-                        {/*strong pc button*/}
-                        <SlidingButton
-                            id="strongPcsButton"
-                            linkLocation="productPage"
-                            ssIndex="product"
-                            ssValue='strongPc'
-                            imgSrc={this.state.productImages.temporary}
-                            textContent='Strong'
-                            textAfterArrow={<React.Fragment>
-                                <br/><br/>
-                                {this.state.prices.strong ? '£ '+this.state.prices.strong : 'loading...'}
-                            </React.Fragment>} />
+                        {/*powerful*/}
+                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignRight">
+                            Powerful:
+                        </h2>
+                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignRight">
+                            Our powerful model is aimed at those who wish to easily play all games in 1440p  with high FPS as well as have high aesthetic build quality.
+                        </p>
 
-                        {/*powerful pc button*/}
-                        <SlidingButton 
-                            id="powerfulPcsButton"
-                            linkLocation="productPage"
-                            ssIndex='product'
-                            ssValue='powerfulPc'
-                            imgSrc={this.state.productImages.temporary}
-                            textContent='Powerful'
-                            textAfterArrow={<React.Fragment>
-                                <br/><br/>
-                                {this.state.prices.powerful ? '£ '+this.state.prices.powerful : 'loading...'}
-                            </React.Fragment>} />
+                        {/*supreme*/}
+                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignLeft">
+                            Supreme:
+                        </h2>
+                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignLeft">
+                            Our supreme model is designed with gamers who want to play games in 4K with an RGB flair as well as never have to worry about storage space or cooling whatsoever.
+                        </p>
 
-                        {/*supreme pc button*/}
-                        <SlidingButton 
-                            id="supremePcsButton"
-                            linkLocation="productPage"
-                            ssIndex='product'
-                            ssValue='supremePc'
-                            imgSrc={this.state.productImages.temporary}
-                            textContent='Supreme'
-                            textAfterArrow={<React.Fragment>
-                                <br/><br/>
-                                {this.state.prices.supreme ? '£ '+this.state.prices.supreme : 'loading...'}
-                            </React.Fragment>} />
-
-                            {/*dominant pc button*/}
-                            <SlidingButton 
-                                id="dominantPcsButton"
-                                linkLocation="productPage"
-                                ssIndex='product'
-                                ssValue='dominantPc'
-                                imgSrc={this.state.productImages.temporary}
-                                textContent='Dominant'
-                                textAfterArrow={<React.Fragment>
-                                    <br/><br/>
-                                    {this.state.prices.dominant ? '£ '+this.state.prices.dominant : 'loading...'}
-                                </React.Fragment>} />
-                        <p>
-                            Please note: all our PCs come with Windows 11 pre-installed. This can be changed in the purchase menus
+                        {/*dominant*/}
+                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignRight">
+                            Dominant:
+                        </h2>
+                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignRight">
+                            Our dominant model is curated for gamers with a passion for quality, easily running any game on max settings in 4K resolution without breaking a sweat. For dominating the competition, this is the perfect solution.
                         </p>
                     </div>
 
-                    <div className="dividerLine"></div>
+                    <DividerLine purple={false} />
 
-                    {/*CUSTOM PCS SECTION*/}
-                    <div className="outofPurple">
+                    {/*custom pcs section*/}
+                    <div>
                         <GenericMarkupSection
-                            headingText='Design your own PC'
-                            subheadingText='Build your dreams'
-                            paragraphText='Using our custom PC creator, you can design the PC of your dreams online, right now.'
-                            linkContent='Tap here to get started ⟶'
-                            linkDestination='/customPcs'
-                            imgSrc='images/motherboardTall.jpeg'
-                            leftBool={false} 
-                            customImageCellStyles={{width: '60%'}}
-                            DontShowDividerLineBool={true}/>
+                            heading="Build your dreams"
+                            paragraph="Using our custom PC creator, you can design the PC of your dreams online, right now. Choose from a massive range of available parts and we'll be in touch to verify whether your build works, giving you peace of mind and and easy purchase."
+                            linkText="Click here to get started ⟶"
+                            linkDestination="/customPCs"
+                            left={true}
+                            imagePath="images/motherboardTall.jpeg" />
                     </div>
+
+                    {/*for programmatic navigation*/}
+                    {this.state.autoNav}
                 </React.Fragment>
             );
         };

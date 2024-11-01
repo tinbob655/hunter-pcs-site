@@ -1,92 +1,110 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
-import SlidingButton from '../../multiPageComponents/slidingButton.jsx';
-import gamesCompilationVideo from '../../../media/HunterPcs all games compilation.mp4';
-import {isMobile} from '../../../index.js';
-import AutoNav from '../../multiPageComponents/autoNav.jsx';
+import PageHeader from '../../multiPageComponents/pageHeader.jsx';
+import SmartImage from '../../multiPageComponents/smartImage.jsx';
 import './homeStyles.scss';
-import Image from '../../multiPageComponents/image.jsx';
+import FancyButton from '../../multiPageComponents/fancyButton.jsx';
+import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection.jsx';
+import DividerLine from '../../multiPageComponents/dividerLine.jsx';
+import firebaseInstance from '../../../classes/firebase.js';
+import {getDownloadURL, ref} from 'firebase/storage';
+import MobileProvider from '../../../context/mobileContext.jsx';
 
 class Home extends Component {
+
+    static contextType = MobileProvider;
 
     constructor(props) {
         super(props);
 
         this.state = {
-            navigator: <></>,
+            gameplayVideoURL: '',
+            isMobile: false,
         };
+
     };
 
-    componentDidMount() {
-        
-        //fancy animations for home page on load
+    async componentDidMount() {
 
-        async function animateParagraphs() {
-            const paragraphs = document.querySelectorAll('[id^="homePageParagraph"]');
+        this.setState({isMobile: this.context});
 
-            for(let i = 0; i < paragraphs.length; i++) {
-                paragraphs[i].classList.add('startAnimation');
-                await new Promise(r => {setTimeout(r, 500)});
+        this.loadVideo();
+
+        //play page rendering animations
+        const animatedImage = document.getElementById('animatedHomePageImage');
+        const animatedParagraphs = document.querySelectorAll('.homePageAnimatedParagraph');
+        const animatedHeader = document.getElementById('homePageAnimatedHeader');
+
+        //function for delays rather that setTimeouts to reduce callback hell
+        async function delay(amount) { 
+            return new Promise(resolve => setTimeout(resolve, amount));
+        };
+
+        //show the main image
+        await delay(500);
+        animatedImage.classList.add('shown');
+
+        //show the subheading
+        await delay(100);
+        animatedHeader.classList.add('shown');
+
+        //gradually show the paragraphs
+        if (animatedParagraphs && animatedParagraphs.length > 0) {
+            await delay(500);
+            let index = 0;
+            while (index <= animatedParagraphs.length -1) {
+                animatedParagraphs[index].classList.add('shown');
+                await delay(500);
+                index++;
             };
-        };
-        
-        function startAnimationForElement(elementId, delay) {
+        }
+    };
+
+    componentDidUpdate() {
+        if (this.state.isMobile && !document.getElementById('animatedParagraphsWrapperDiv').classList.contains('shown')) {
             setTimeout(() => {
-                const element = document.getElementById(elementId);
-                element.classList.add('startAnimation');
-            }, delay);
+                document.getElementById('animatedParagraphsWrapperDiv').classList.add('shown');
+            }, 1000);
         };
-
-        startAnimationForElement('homePageHeader', 500);
-        startAnimationForElement('homePageSubheader', 750);
-        startAnimationForElement('homePageImage', 1000);
-        setTimeout(() => {
-            animateParagraphs();
-        }, 1500);
-
-
     };
 
     render() {
 
         //desktop home page
-        if (!isMobile()) {
+        if (!this.state.isMobile) {
             return (
                 <React.Fragment>
-                    {/*PAGE HEADER*/}
+                    <PageHeader heading="Hunter PCs" subheading="Made to measure gaming PCs" />
+                    
+                    {/*packing a serious punch section*/}
                     <div>
-                        <h1 style={{marginLeft: '50%', textAlign: 'unset'}} id="homePageHeader">
-                            PCs made to measure
-                        </h1>
-    
                         <table>
                             <thead>
                                 <tr>
-                                    <td style={{width: '60%'}}>
-                                        <img src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Falt%20Logo.jpg?alt=media&token=83dd8d5d-16ec-4f74-bb00-0fb407d8e659"
-                                        style={{width: '50vw', height: '50vw', marginLeft: '7.5%', marginRight: 'unset', borderRadius: '10px'}}
-                                        alt="loading..." id="homePageImage"/>
+                                    <td style={{width: '45%'}}>
+                                        <SmartImage imageId="animatedHomePageImage" imageClasses="mainImage" imagePath="images/alt Logo.jpg" />
                                     </td>
-                                    <td style={{paddingRight: '5%'}}>
-                                        <h2 style={{marginRight: '1%', textAlign: 'right'}} id="homePageSubheader">
+                                    <td>
+                                        <h2 className="alignRight" id="homePageAnimatedHeader">
                                             Packing a serious punch
                                         </h2>
-                                        <p className="alignRight homePageAnimatedParagraph" id="homePageParagraph0">
+    
+                                        {/*separate paragraphs required so they can be gradually faded in*/}
+                                        <p className="homePageAnimatedParagraph" style={{marginLeft: '70%'}}>
                                             Perfect for:
                                         </p>
-                                        <p style={{textAlign: 'right', marginRight: '15%'}} id="homePageParagraph1" className="homePageAnimatedParagraph">
+                                        <p className="homePageAnimatedParagraph" style={{marginLeft: '56%'}}>
                                             -AAA gaming
                                         </p>
-                                        <p style={{textAlign: 'right', marginRight: '20%'}} id="homePageParagraph2" className="homePageAnimatedParagraph">
+                                        <p className="homePageAnimatedParagraph" style={{marginLeft: '42%'}}>
                                             -Ultra low latency
                                         </p>
-                                        <p style={{textAlign: 'right', marginRight: '25%'}} id="homePageParagraph3" className="homePageAnimatedParagraph">
+                                        <p className="homePageAnimatedParagraph" style={{marginLeft: '28%'}}>
                                             -Office and work
                                         </p>
-                                        <p style={{textAlign: 'right', marginRight: '30%'}} id="homePageParagraph4" className="homePageAnimatedParagraph">
+                                        <p className="homePageAnimatedParagraph" style={{marginLeft: '16%'}}>
                                             -Streaming video
                                         </p>
-                                        <p style={{textAlign: 'right', marginRight: '40%'}} id="homePageParagraph5" className="homePageAnimatedParagraph">
+                                        <p className="homePageAnimatedParagraph" style={{marginLeft: '0'}}>
                                             -Just chilling
                                         </p>
                                     </td>
@@ -95,141 +113,85 @@ class Home extends Component {
                         </table>
                     </div>
     
-                    {/*GAMING, PREBULIT, CUSTOM BUTTONS*/}
+                    <DividerLine />
+    
+                    {/*three fancy buttons section*/}
                     <div className="intoPurple">
-                        <table style={{width: '100%'}}>
-                            <thead>
-                                <tr>
-    
-                                    {/*GAMING PCS BUTTON*/}
-                                    <td style={{width: '33.3%'}}>
-                                        <SlidingButton 
-                                        id="gamingPcs"
-                                        imgSrc='images/image of pc.jpeg'
-                                        linkLocation='/pcsMain'
-                                        textContent='Gaming' />
-                                    </td>
-    
-                                    {/*PREBULIT PCS BUTTON*/}
-                                    <td style={{width: '33.3%'}}>
-                                        <SlidingButton
-                                        id="preBuilt"
-                                        imgSrc='images/rainbow pc.png'
-                                        linkLocation='/pcsMain'
-                                        textContent='Prebuilt' />
-                                    </td>
-    
-                                    {/*CUSTOM PCS BUTTON*/}
-                                    <td style={{width: '33.3%'}}>
-                                        <SlidingButton 
-                                        id="custom"
-                                        imgSrc="images/stock pc parts.png"
-                                        linkLocation='/customPcs'
-                                        textContent='Custom' />
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-    
-                    {/*PERFECT FOR GAMING SECTION*/}
-                    <div className="purpleGrey">
                         <table>
                             <thead>
                                 <tr>
                                     <td>
-                                    <h1 style={{textAlign: 'left', marginLeft: '2%'}}>
-                                        Perfect for gaming
-                                    </h1>
-                                    <p style={{width: '75%', marginLeft: '15%', textAlign: 'right'}}>
-                                        Here at Hunter PCs, we know that the best PCs are designed to run games smooth as butter. That's why we've been working hard to deliver you the 
-                                        best gaming experience at the lowest price. <br/>We make all our computers with high end components from trusted manufacturers.
-                                    </p>
-                                    <Link to='/pcsMain'>
-                                        <h3>
-                                            Browse all gaming PCs  ⟶
-                                        </h3>
-                                    </Link>
+                                        <FancyButton title="Gaming" destination="/pcsMain" />
                                     </td>
-    
-                                    <td style={{width: '50%'}}>
-                                        <Image imagePath="images/rounded skull 2.jpeg" imageClasses="mainImage centered" imageStyles={{width: '85%'}} />
+                                    <td>
+                                        <FancyButton title="Prebuilt" destination="/pcsMain" />
+                                    </td>
+                                    <td>
+                                        <FancyButton title="Custom" destination='/customPCs' />
                                     </td>
                                 </tr>
                             </thead>
                         </table>
                     </div>
     
-                    {/*VIDEO FROM PC SECTION*/}
-                    <div className="outofPurple">
-                        <h1>
+                    <DividerLine purple={true} />
+    
+                    {/*perfect for gaming section*/}
+                    <div className="purple">
+                        <GenericMarkupSection
+                         heading="Perfect for gaming"
+                         paragraph="Here at Hunter PCs, we know that the best PCs are designed to run games smooth as butter. That's why we've been working hard to deliver you the best gaming experience at the lowest price. We make all our computers with high end components from trusted manufacturers."
+                         left={false}
+                         imagePath="images/rounded skull 2.jpeg"
+                         linkText="Browse all gaming PCs ⟶"
+                         linkDestination="/pcsMain" />
+                    </div>
+    
+                    <DividerLine purple={true} />
+    
+                    {/*video of gameplay section*/}
+                    <div className="outOfPurple">
+                        <h2 style={{marginTop: 0, marginBottom: 0, paddingBottom: 0}}>
                             Play your favourite titles
-                        </h1>
-                            <video autoPlay loop loading="lazy" alt="loading..." controls>
-                            <source src={gamesCompilationVideo} type="video/mp4"/>
+                        </h2>
+                        <p className="noVerticalSpacing" style={{marginBottom: '10px'}}>
+                            Minecraft, Starfield, Red Dead, Sea of Thieves and many more run easily on Hunter PCs.
+                        </p>
+                        <video autoPlay loop loading="lazy" alt="loading..." controls id="gameplayVideo" key={this.state.gameplayVideoURL}>
+                            <source src={this.state.gameplayVideoURL} type="video/mp4"/>
                         </video>
                     </div>
     
-                    {/*DESIGN YOUR OWN PC SECTION*/}
-                    <div style={{ marginTop: '15vh'}}>
-                        <h1 className="alignRight">
-                            Design your own, custom build
-                        </h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>
-                                        <p className="alignLeft">
-                                            Need that specific PC you've always wanted? Well you're in luck: here at Hunter PCs, you can design your own custom PC
-                                             and have one of our experts assemble it for you. We'll even deliver it straight to your door as well
-                                        </p>
-                                        <Link to='/customPcs'>
-                                            <h3>
-                                                Design your dream PC ⟶
-                                            </h3>
-                                        </Link>
-                                    </td>
-                                    <td style={{width: '50%'}}>
-                                        <Image imagePath="images/image of pc.jpeg" imageClasses="mainImage centered" imageStyles={{marginRight: 'auto', width: '65%', marginLeft: '10%'}} />
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
+                    <DividerLine purple={false} />
     
-                    {/*QUALITY GUARANTEED SECTION*/}
+                    {/*design your own pc section*/}
                     <div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>
-                                        <Image imagePath="images/gamingSetupTall2.jpeg" imageClasses="mainImage centered" imageStyles={{width: '85%'}} />
-                                    </td>
-    
-                                    <td style={{width: '60%'}}>
-                                        <h1 className="alignRight">
-                                            Quality guaranteed
-                                        </h1>
-                                        <p className="alignRight">
-                                            We guarantee no expense spared. That means every one of your PC's components is made by branded and trusted manufacturers.
-                                            And not just that, we will also thoroughly test your build to make sure you get the maximum performance possible
-                                        </p>
-                                        <button type="button" onClick={() => {
-                                            sessionStorage.setItem('supportPageScroll', 'noExpensesSpared');
-                                            this.setState({navigator: <AutoNav destination='/support' randomHash={Math.random()}/>})
-                                        }}>
-                                            <h3>
-                                                Learn more about our no expense spared guarantee ⟶
-                                            </h3>
-                                        </button>
-                                    </td>
-    
-                                </tr>
-                            </thead>
-                        </table>
+                        <GenericMarkupSection
+                            heading="Design your own, custom build"
+                            paragraph="Need that specific PC you've always wanted? Well you're in luck: here at Hunter PCs, you can design your own custom PC and have one of our experts assemble it for you. We'll even deliver it straight to your door as well"
+                            left={false}
+                            linkText="Design your dream PC ⟶"
+                            linkDestination="/customPCs"
+                            imagePath="images/image of pc.jpeg" />
                     </div>
-
-                    {this.state.navigator}
+    
+                    <DividerLine purple={false} />
+    
+                    {/*no expense spared guarantee*/}
+                    <div>
+                        <GenericMarkupSection
+                        heading="Quality guaranteed"
+                        paragraph="We guarantee no expense spared. That means every one of your PC's components is made by branded and trusted manufacturers. And not just that, we will also thoroughly test your build to make sure you get the maximum performance possible."
+                        buttonText="Learn more about our no expense spared guarantee ⟶"
+                        buttonAction={() => {
+                            
+                            //button is required to enable support page scrolling
+                            sessionStorage.setItem('supportPageScroll', 'noExpenseSpared');
+                            window.location.href += 'support';
+                        }}
+                        left={true}
+                        imagePath="images/gamingSetupTall2.jpeg" />
+                    </div>
                 </React.Fragment>
             );
         }
@@ -238,195 +200,140 @@ class Home extends Component {
         else {
             return (
                 <React.Fragment>
+                    <PageHeader heading="Hunter PCs" subheading="Made to measure gaming PCs" />
 
-                    {/*PAGE HEADER*/}
+                    {/*packing a serious punch section*/}
                     <div>
-                        <h1 id="homePageHeader">
-                            PCs Made to Measure
-                        </h1>
-                        <table>
-                            <tr>
-                                <td>
-                                    <img src="https://firebasestorage.googleapis.com/v0/b/hunter-pcs-firebase.appspot.com/o/images%2Falt%20Logo.jpg?alt=media&token=83dd8d5d-16ec-4f74-bb00-0fb407d8e659"
-                                    className="mainImage centered"
-                                    alt="loading..." id="homePageImage"/>
-                                </td>
-                                <td style={{width: '40%'}}>
-                                    <h2 className="alignLeft" id="homePageSubheader">
-                                        Packing a serious punch
-                                    </h2>
-                                </td>
-                            </tr>
-                        </table>
                         <table>
                             <thead>
                                 <tr>
-                                    <td>
-                                        <p id="homePageParagraph0" className="homePageAnimatedParagraph">
-                                            -AAA gaming
-                                        </p>
+                                    <td style={{width: '60%'}}>
+                                        <SmartImage imageId="animatedHomePageImage" imageClasses="mainImage" imagePath="images/alt Logo.jpg" />
                                     </td>
                                     <td>
-                                        <p id="homePageParagraph1" className="homePageAnimatedParagraph">
-                                            -Ultra low latency
-                                        </p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p id="homePageParagraph2" className="homePageAnimatedParagraph"> 
-                                            -Office and work
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p id="homePageParagraph3" className="homePageAnimatedParagraph">
-                                            -Streaming video
-                                        </p>
+                                        <h2 className="alignRight" id="homePageAnimatedHeader">
+                                            Packing a serious punch
+                                        </h2>
                                     </td>
                                 </tr>
                             </thead>
                         </table>
-                        <p id="homePageParagraph4" className="homePageAnimatedParagraph">
-                            -Just chilling
-                        </p>
+                        <div id="animatedParagraphsWrapperDiv">
+                            <p>
+                                Perfect for:
+                            </p>
+                            <p>
+                                -AAA gaming
+                            </p>
+                            <p>
+                                -Ultra low latency
+                            </p>
+                            <p>
+                                -Office and work
+                            </p>
+                            <p>
+                                -Streaming video
+                            </p>
+                            <p>
+                                -Just chilling
+                            </p>
+                        </div>
                     </div>
 
-                    <div className="dividerLine"></div>
+                    <DividerLine />
 
-                    {/*GAMING, PREBUILT AND CUSTOM BUTTONS*/}
+                    {/*three fancy buttons section*/}
                     <div className="intoPurple">
-                        <SlidingButton 
-                        id="gamingPcs"
-                        imgSrc='images/image of pc.jpeg'
-                        linkLocation='pcsMain'
-                        textContent='Gaming' />
+                        <FancyButton title="Gaming" destination="/pcsMain" />
 
-                        <SlidingButton
-                        id="preBuilt"
-                        imgSrc='images/rainbow pc.png'
-                        linkLocation='pcsMain'
-                        textContent='Prebuilt' />
+                        <FancyButton title="Prebuilt" destination="/pcsMain" />
 
-                        <SlidingButton 
-                        id="custom"
-                        imgSrc="images/stock pc parts.png"
-                        linkLocation='customPcs'
-                        textContent='Custom' />
+                        <FancyButton title="Custom" destination='/customPCs' />
                     </div>
 
-                    <div className="dividerLine"></div>
+                    <DividerLine purple={true} />
 
-                    {/*PERFECT FOT GAMING SECTION*/}
-                    <div className="purpleGrey">
-                        <h1>
-                            Perfect for gaming
-                        </h1>
-                        <table>
-                            <tr>
-                                <td style={{width: '40%'}}>
-                                    <h2 className="alignRight">
-                                        Maximum speed
-                                    </h2>
-                                </td>
-                                <td>
-                                    <Image imagePath="images/rounded skull 2.jpeg" imageClasses="mainImage centered" />
-                                </td>
-                            </tr>
-                        </table>
-                        <p>
-                            Here at Hunter PCs, we know that the best PCs are designed to run games smooth as butter. That's why we've been working hard to deliver you the 
-                            best gaming experience at the lowest price. <br/>We make all our computers with high end components from trusted manufacturers.
+                    {/*perfect for gaming section*/}
+                    <div className="purple" style={{paddingBottom: '10px'}}>
+                    <GenericMarkupSection
+                         heading="Perfect for gaming"
+                         paragraph="Here at Hunter PCs, we know that the best PCs are designed to run games smooth as butter. That's why we've been working hard to deliver you the best gaming experience at the lowest price. We make all our computers with high end components from trusted manufacturers."
+                         left={false}
+                         imagePath="images/rounded skull 2.jpeg"
+                         linkText="Browse all gaming PCs ⟶"
+                         linkDestination="/pcsMain" />
+                    </div>
+
+                    <DividerLine purple={true} />
+
+                    {/*video of gameplay section*/}
+                    <div className="outOfPurple">
+                        <h2 style={{marginTop: 0, marginBottom: 0, paddingBottom: 0}}>
+                            Play your favourite titles
+                        </h2>
+                        <p className="noVerticalSpacing" style={{marginBottom: '10px'}}>
+                            Minecraft, Starfield, Red Dead, Sea of Thieves and many more run easily on Hunter PCs.
                         </p>
-                        <Link to='/pcsMain'>
-                            <h3>
-                                Browse all gaming PCs  ⟶
-                            </h3>
-                        </Link>
-                    </div>
-
-                    <div className="dividerLine"></div>
-
-                    {/*VIDEO OF GAMEPLAY SECTION*/}
-                    <div className="outofPurple">
-                        <h1>
-                            Play your favourite titles, no sweat
-                        </h1>
-                        <video autoPlay loop loading="lazy" alt="loading..." controls>
-                            <source src={gamesCompilationVideo} type="video/mp4" />
+                        <video autoPlay loop loading="lazy" alt="loading..." controls id="gameplayVideo" key={this.state.gameplayVideoURL}>
+                            <source src={this.state.gameplayVideoURL} type="video/mp4" />
                         </video>
                     </div>
 
-                    <div className="dividerLine"></div>
+                    <DividerLine purple={false} />
 
-                    {/*DESIGN YOUR OWN PC SECTION*/}
+                    {/*design your own pc section*/}
                     <div>
-                        <h1>
-                            Design your own, custom build
-                        </h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>
-                                        <Image imagePath="images/image of pc.jpeg" imageClasses="mainImage centered" />
-                                    </td>
-                                    <td style={{width: '40%'}}>
-                                        <h2 className="alignLeft">
-                                            Build your dreams
-                                        </h2>
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
-                        <p>
-                            Need that specific PC you've always wanted? Well you're in luck: here at Hunter PCs, you can design your own custom PC
-                            and have one of our experts assemble it for you. We'll even deliver it straight to your door as well
-                        </p>
-                        <Link to='/customPcs'>
-                            <h3>
-                                Pick your perfect parts ⟶
-                            </h3>
-                        </Link>
+                    <GenericMarkupSection
+                            heading="Design your own, custom build"
+                            paragraph="Need that specific PC you've always wanted? Well you're in luck: here at Hunter PCs, you can design your own custom PC and have one of our experts assemble it for you. We'll even deliver it straight to your door as well"
+                            left={false}
+                            linkText="Design your dream PC ⟶"
+                            linkDestination="/customPCs"
+                            imagePath="images/image of pc.jpeg" />
                     </div>
 
-                    <div className="dividerLine"></div>
+                    <DividerLine purple={false} />
 
-                    {/*QUALITY GUARANTEED SECTION*/}
+                    {/*no expense spared section*/}
                     <div>
-                        <h1>
-                            Quality guaranteed
-                        </h1>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td style={{width: '40%'}}>
-                                        <h2 className="alignRight">
-                                            No expense spared
-                                        </h2>
-                                    </td>
-                                    <td>
-                                        <Image imagePath="images/gamingSetupTall2.jpeg" imageClasses="mainImage centered" imageStyles={{width: '85%'}} />
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
-                        <p>
-                            We guarantee no expense spared. That means every one of your PC's components is made by branded and trusted manufacturers.
-                            And not just that, we will also thoroughly test your build to make sure you get the maximum performance possible
-                        </p>
-                        <button type="button" onClick={() => {
-                            sessionStorage.setItem('supportPageScroll', 'noExpensesSpared');
-                            this.setState({navigator: <AutoNav destination='/support' randomHash={Math.random()} />});
-                        }}>
-                            <h3>
-                                Learn more about our no expense spared guarantee ⟶
-                            </h3>
-                        </button>
+                        <GenericMarkupSection
+                        heading="Quality guaranteed"
+                        paragraph="We guarantee no expense spared. That means every one of your PC's components is made by branded and trusted manufacturers. And not just that, we will also thoroughly test your build to make sure you get the maximum performance possible."
+                        buttonText="Learn more about our no expense spared guarantee ⟶"
+                        buttonAction={() => {
+                            
+                            //button is required to enable support page scrolling
+                            sessionStorage.setItem('supportPageScroll', 'noExpenseSpared');
+                            window.location.href += 'support';
+                        }}
+                        left={true}
+                        imagePath="images/gamingSetupTall2.jpeg" />
                     </div>
-
-                    {this.state.navigator}
                 </React.Fragment>
             );
         };
+    };
+
+    loadVideo() {
+
+        //by using an intersection observer, we can detect when the gameplay video is actually seen by the user.
+        //This means we are able to only load the video once it is visible and thus reduce firebase storage usage.
+        new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (entry.intersectionRatio > 0) {
+                    
+                    //the element is visible
+                    //fetch the video from firebase storage
+                    const storage = firebaseInstance.getFirebaseStorage;
+                    getDownloadURL(ref(storage, 'gameplayVideos/HunterPcs all games compilation.mp4')).then((url) => {
+                        this.setState({gameplayVideoURL: url});
+                    });
+
+                    //destroy the observer so it does not fire unless page is changed
+                    observer.disconnect();
+                };
+            });
+        }).observe(document.getElementById('gameplayVideo'));
     };
 };
 

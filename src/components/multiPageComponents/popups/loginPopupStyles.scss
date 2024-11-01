@@ -1,0 +1,20 @@
+div#logInFormWrapper {
+    transform: translateX(-60vw);
+}
+
+div#signUpFormWrapper {
+    transform: translateX(60vw);
+}
+
+div#logInFormWrapper , div#signUpFormWrapper {
+    position: absolute;
+    width: 100%;
+
+    transition-property: transform;
+    transition-duration: 1s;
+    transition-timing-function: ease;
+
+    &.shown {
+        transform: translateX(0);
+    }
+}

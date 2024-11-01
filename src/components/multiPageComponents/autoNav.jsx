@@ -1,16 +1,18 @@
 import React, {useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 
- //small component to navigate to a specified page (easiest way to do this programatically)
- function AutoNav({destination, randomHash}) {
+//this only works as a function because it requires react hooks
+export default function AutoNav({destination}) {
 
     const navigate = useNavigate();
-    
+
+    //when the component mounts, navigate to the required page
     useEffect(() => {
         navigate(destination);
-    }, [randomHash]);
+    }, []);
 
-    return(<React.Fragment></React.Fragment>);
+    return (
+        <React.Fragment>
+        </React.Fragment>
+    );
 };
-
-export default AutoNav;
