@@ -2,8 +2,23 @@ import React, {Component} from 'react';
 import PageHeader from '../../multiPageComponents/pageHeader.jsx';
 import GenericMarkupSection from '../../multiPageComponents/genericMarkupSection.jsx';
 import DividerLine from '../../multiPageComponents/dividerLine.jsx';
+import MobileProvider from '../../../context/mobileContext.jsx';
 
 class About extends Component {
+
+    static contextType = MobileProvider;
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isMobile: this.context,
+        };
+    };
+
+    componentDidMount() {
+        this.setState({isMobile: this.context});
+    };
 
     render() {
         return (
@@ -28,7 +43,7 @@ class About extends Component {
                 <DividerLine purple={false} />
 
                 {/*fully customisable section*/}
-                <div className="intoPurple">
+                <div className="intoPurple" style={this.state.isMobile ? {paddingBottom: '10px'} : {}}>
                     <GenericMarkupSection heading="Fully customisable"
                     paragraph="Each and every PC you find in our prebuilt gaming PCs section can be fully customised to your heart's content. Just have a look over on our custom PCs page"
                     left={false}
