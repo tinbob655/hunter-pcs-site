@@ -6,6 +6,7 @@ import firebaseInstance from '../../../classes/firebase.js';
 import {query, collection, where, getDocs, deleteDoc, doc} from 'firebase/firestore';
 import AuthProvider from '../../../context/authContext.jsx';
 import SecureLS from 'secure-ls';
+import MobileProvider from '../../../context/mobileContext.jsx';
 
 class StripeCheckout extends Component {
 
@@ -58,11 +59,21 @@ class StripeCheckout extends Component {
                         Checkout
                     </h1>
 
-                    {this.state.clientSecret && (
-                        <EmbeddedCheckoutProvider stripe={this.state.stripePromise} options={this.state.options}>
-                            <EmbeddedCheckout />
-                        </EmbeddedCheckoutProvider>
-                    )}
+                    <MobileProvider.Consumer>
+                        {(isMobile) => {
+                            return (
+                                <React.Fragment>
+                                    <div style={isMobile ? {maxWidth: '75%', marginLeft: 'auto', marginRight: 'auto'} : {}}>
+                                        {this.state.clientSecret && (
+                                            <EmbeddedCheckoutProvider stripe={this.state.stripePromise} options={this.state.options}>
+                                                <EmbeddedCheckout />
+                                            </EmbeddedCheckoutProvider>
+                                        )}
+                                    </div>
+                                </React.Fragment>
+                            );
+                        }}
+                    </MobileProvider.Consumer>
 
                     <p>
                         Please note that all of our purchases are handled securely by Stripe

@@ -51,12 +51,12 @@ class PurchaseCompleted extends Component {
             const deliveryAddress = sessionStorage.getItem('deliveryAddress');
     
             //send a message to discord to indicate that a purchase has been made
-            this.state.discord.sendMessage(
-                `New purchase made by user with uid: ${this.context.uid} and email address: ${this.context.email}
-                The product(s) purchased: ${basketData}
-                The order id: ${orderID}
-                The delivery address: ${deliveryAddress}`
-            );
+            // this.state.discord.sendMessage(
+            //     `New purchase made by user with uid: ${this.context.uid} and email address: ${this.context.email}
+            //     The product(s) purchased: ${basketData}
+            //     The order id: ${orderID}
+            //     The delivery address: ${deliveryAddress}`
+            // );
 
             //also empty the user's basket
             userBasket.resetBasket();
@@ -70,7 +70,7 @@ class PurchaseCompleted extends Component {
 
                 {/*congratulations section*/}
                 <div>
-                    <GenericMarkupSection heading="Congratulations!"
+                    <GenericMarkupSection heading="Well done!"
                     paragraph={`Your purchase was successful! We'll get to work building your perfect PC to get you in the game as soon as possible! We'll email you at ${this.context.email} with your purchase progress.\n\nIf you have any questions, please do not hesitate to contact us at hunterpcsuk@gmail.com`}
                     left={true}
                     imagePath="images/gamingSetupWIDE2.jpeg" />
@@ -93,13 +93,14 @@ class PurchaseCompleted extends Component {
                     <h1>
                         Get your code:
                     </h1>
-                    <h2 style={{marginBottom: 0, paddingBottom: 0}}>
-                        Your code is: {this.state.friendCode}
+                    <h2 style={{marginBottom: 0, paddingBottom: 0, whiteSpace: 'pre-wrap'}}>
+                        Your code is: {'\n'}
+                        {this.state.friendCode}
                     </h2>
                     <button type="button" onClick={() => {
                         navigator.clipboard.writeText(this.state.friendCode);
                     }} >
-                        <h3 style={{marginTop: 0, paddingTop: 0}}>
+                        <h3 style={{marginTop: '10px', paddingTop: 0}}>
                             Click here to copy it ⟶
                         </h3>
                     </button>
