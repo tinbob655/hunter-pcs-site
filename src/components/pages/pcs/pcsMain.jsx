@@ -130,9 +130,6 @@ class PcsMain extends Component {
                                 </tr>
                             </thead>
                         </table>
-                        <p style={{marginBottom: 0}}>
-                            Please note: all our PCs come with Windows 11. This can be changed in the purchase menus.
-                        </p>
                     </div>
     
                     <DividerLine purple={true} />
@@ -240,9 +237,6 @@ class PcsMain extends Component {
                             For high quality Gaming PCs, you're in the right place!
                         </h2>
                         {this.state.fancyButtonsHTML}
-                        <p style={{marginBottom: 0}}>
-                            Please note: all our PCs come with Windows 11. This can be changed in the purchase menus.
-                        </p>
                     </div>
 
                     <DividerLine purple={true} />
