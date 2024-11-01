@@ -48,7 +48,7 @@ class CustomPCPurchaseCompleted extends Component {
                 {/*congratulations section*/}
                 <div>
                     <GenericMarkupSection key={this.state.authEmail}
-                    heading="Congratulations!"
+                    heading="Well done!"
                     paragraph={`Your purchase was successful! We'll start by validating that all the parts you have chosen will work with one another. We'll keep you updated at ${this.state.authEmail} with our progress.\n\nIf you have any questions, please don't hesitate to contact us at hunterpcsuk@gmail.com`}
                     left={true}
                     imagePath="images/gamingSetupWIDE2.jpeg" />

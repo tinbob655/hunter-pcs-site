@@ -8,6 +8,7 @@ import AddressPopup from '../../../multiPageComponents/popups/addressPopup.jsx';
 import CustomSpecPopup from './customSpecPopup.jsx';
 import AuthProvider from '../../../../context/authContext.jsx';
 import LoginPopup from '../../../multiPageComponents/popups/loginPopup.jsx';
+import MobileProvider from '../../../../context/mobileContext.jsx';
 
 class CustomPCs extends Component {
 
@@ -35,64 +36,142 @@ class CustomPCs extends Component {
     render() {
         return (
             <React.Fragment>
-                <PageHeader heading="Custom PCs" subheading="Build your dreams" />
 
-                {/*get started section*/}
-                <div>
-                    <GenericMarkupSection
-                    heading="Get started"
-                    paragraph="The first step of purchasing your custom PC is to design it. You can do that using the link below, which will take you to PC Part Picker. After creating your build, scroll down on this page and click the 'Create your PC' button"
-                    left={true}
-                    imagePath="images/gamingSetupWIDE2.jpeg"
-                    buttonText="Design your custom rig ⟶"
-                    buttonAction={() => {
-                        window.open('https://pcpartpicker.com/list/', '_blank');
-                    }} />
-                </div>
+                <MobileProvider.Consumer>
+                    {(isMobile) => {
 
-                <DividerLine purple={false} />
+                        //desktop customPCs page
+                        if (!isMobile) {
+                            return (
+                                <React.Fragment>
+                                    <PageHeader heading="Custom PCs" subheading="Build your dreams" />
 
-                {/*buy now section*/}
-                <div className="intoPurple">
-                    <table>
-                        <thead>
-                            <tr>
-                                <td style={{width: '55%'}}>
-                                    <h2 className="alignRight">
-                                        All finished?
-                                    </h2>
-                                    <p className="alignLeft">
-                                        If you've finished designing your custom PC, then hit the button below. We'll verify that your PC's parts work together, then we'll build it and ship it as usual.
-                                    </p>
-                                    <div style={{maxWidth: '700px', marginLeft: 'auto', marginRight: 'auto', marginTop: '50px'}} key={this.state.authUID}>
-
-                                        {this.state.authUID ? (
-                                            <React.Fragment>
-
-                                                {/*the user is logged in, show the buy now button*/}
-                                                <FancyButton title="Buy now" action={() => {this.buyNowButtonClicked();}} />
-                                            </React.Fragment>
-                                        ) : (
-                                            <React.Fragment>
-
-                                                {/*the user is not logged in, show a log in button*/}
-                                                <FancyButton title="Log in" action={() => {this.logInButtonClicked();}} />
-                                            </React.Fragment>
-                                        )}
+                                    {/*get started section*/}
+                                    <div>
+                                        <GenericMarkupSection
+                                        heading="Get started"
+                                        paragraph="The first step of purchasing your custom PC is to design it. You can do that using the link below, which will take you to PC Part Picker. After creating your build, scroll down on this page and click the 'Create your PC' button"
+                                        left={true}
+                                        imagePath="images/gamingSetupWIDE2.jpeg"
+                                        buttonText="Design your custom rig ⟶"
+                                        buttonAction={() => {
+                                            window.open('https://pcpartpicker.com/list/', '_blank');
+                                        }} />
                                     </div>
-                                </td>
-                                <td>
-                                    <SmartImage imageClasses="mainImage" imagePath="images/rounded skull 3.jpeg" imageStyles={{marginBottom: '60px'}} />
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
 
-                    {/*popups have to be here because otherwise the footer breaks*/}
-                    <AddressPopup shown={this.state.addressPopupShown} closeFunc={() => {this.addressPopupClosed()}} />
-                    <CustomSpecPopup shown={this.state.customSpecPopupShown} closeFunc={() => {this.customSpecPopupClosed()}} />
-                    <LoginPopup shown={this.state.loginPopupShown} />
-                </div>
+                                    <DividerLine purple={false} />
+
+                                    {/*buy now section*/}
+                                    <div className="intoPurple">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td style={{width: '55%'}}>
+                                                        <h2 className="alignRight">
+                                                            All finished?
+                                                        </h2>
+                                                        <p className="alignLeft">
+                                                            If you've finished designing your custom PC, then hit the button below. We'll verify that your PC's parts work together, then we'll build it and ship it as usual.
+                                                        </p>
+                                                        <div style={{maxWidth: '700px', marginLeft: 'auto', marginRight: 'auto', marginTop: '50px'}} key={this.state.authUID}>
+
+                                                            {this.state.authUID ? (
+                                                                <React.Fragment>
+
+                                                                    {/*the user is logged in, show the buy now button*/}
+                                                                    <FancyButton title="Buy now" action={() => {this.buyNowButtonClicked();}} />
+                                                                </React.Fragment>
+                                                            ) : (
+                                                                <React.Fragment>
+
+                                                                    {/*the user is not logged in, show a log in button*/}
+                                                                    <FancyButton title="Log in" action={() => {this.logInButtonClicked();}} />
+                                                                </React.Fragment>
+                                                            )}
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <SmartImage imageClasses="mainImage" imagePath="images/rounded skull 3.jpeg" imageStyles={{marginBottom: '60px'}} />
+                                                    </td>
+                                                </tr>
+                                            </thead>
+                                        </table>
+
+                                        {/*popups have to be here because otherwise the footer breaks*/}
+                                        <AddressPopup shown={this.state.addressPopupShown} closeFunc={() => {this.addressPopupClosed()}} />
+                                        <CustomSpecPopup shown={this.state.customSpecPopupShown} closeFunc={() => {this.customSpecPopupClosed()}} />
+                                        <LoginPopup shown={this.state.loginPopupShown} />
+                                    </div>
+                                </React.Fragment>
+                            )
+                        }
+
+                        //mobile customPCs page
+                        else {
+                            return (
+                                <React.Fragment>
+                                    <PageHeader heading="Custom PCs" subheading="Build your dreams" />
+
+                                    {/*get started section*/}
+                                    <div>
+                                        <GenericMarkupSection
+                                        heading="Get started"
+                                        paragraph="The first step of purchasing your custom PC is to design it. You can do that using the link below, which will take you to PC Part Picker. After creating your build, scroll down on this page and click the 'Create your PC' button"
+                                        left={true}
+                                        imagePath="images/gamingSetupWIDE2.jpeg"
+                                        buttonText="Design your custom rig ⟶"
+                                        buttonAction={() => {
+                                            window.open('https://pcpartpicker.com/list/', '_blank');
+                                        }} />
+                                    </div>
+
+                                    <DividerLine purple={false} />
+
+                                    {/*buy now section*/}
+                                    <div className="intoPurple">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>
+                                                        <h2 className="alignRight">
+                                                            All finished?
+                                                        </h2>
+                                                    </td>
+                                                    <td style={{width: '60%'}}>
+                                                        <SmartImage imageClasses="mainImage" imagePath="images/rounded skull 3.jpeg" imageStyles={{marginBottom: '60px'}} />
+                                                    </td>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                        <p>
+                                            If you've finished designing your custom PC, then hit the button below. We'll verify that your PC's parts work together, then we'll build it and ship it as usual.
+                                        </p>
+                                        <div key={this.state.authUID} style={{paddingBottom: '30px'}}>
+                                            {this.state.authUID ? (
+                                                <React.Fragment>
+
+                                                    {/*the user is logged in, show the buy now button*/}
+                                                    <FancyButton title="Buy now" action={() => {this.buyNowButtonClicked();}} />
+                                                </React.Fragment>
+                                            ) : (
+                                                <React.Fragment>
+
+                                                    {/*the user is not logged in, show a log in button*/}
+                                                    <FancyButton title="Log in" action={() => {this.logInButtonClicked();}} />
+                                                </React.Fragment>
+                                            )}
+                                        </div>
+
+                                        {/*popups have to be here because otherwise the footer breaks*/}
+                                        <AddressPopup shown={this.state.addressPopupShown} closeFunc={() => {this.addressPopupClosed()}} />
+                                        <CustomSpecPopup shown={this.state.customSpecPopupShown} closeFunc={() => {this.customSpecPopupClosed()}} />
+                                        <LoginPopup shown={this.state.loginPopupShown} />
+                                    </div>
+                                </React.Fragment>
+                            );
+                        };
+                    }}
+                </MobileProvider.Consumer>
             </React.Fragment>
         );
     };
