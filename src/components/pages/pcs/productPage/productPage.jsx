@@ -7,6 +7,7 @@ import firebaseInstance from '../../../../classes/firebase.js';
 import {updateDoc, doc, increment} from 'firebase/firestore';
 import AuthContext from '../../../../context/authContext.jsx';
 import AutoNav from '../../../multiPageComponents/autoNav.jsx';
+import MobileProvider from '../../../../context/mobileContext.jsx';
 
 class ProductPage extends Component {
 
@@ -45,46 +46,109 @@ class ProductPage extends Component {
     render() {
         return (
             <React.Fragment>
-                {/*cannot use a pageHeader component because the title needs to change with state (and that doesn't work with react class components)*/}
-                <h1  className="alignLeft noVerticalSpacing" style={{marginLeft: '12.5%'}}>
-                    {this.state.productData?.frontendName || 'loading...'}
-                </h1>
-                <p  className="alignLeft noVerticalSpacing" style={{marginLeft: '17%', color: '#c5abbe'}}>
-                    {this.state.productData?.subheaderDescription || 'loading...'}
-                </p>
 
-                <DividerLine purple={false} />
+                {/*have to set isMobile this way as we are using two contexts here*/}
+                <MobileProvider.Consumer>
+                    {(isMobile) => {
 
-                {/*product description section*/}
-                <div className="intoPurple">
-                    <table>
-                        <thead>
-                            <tr>
-                                <td>
-                                    <h2 className="alignLeft">
-                                        Our {this.state.productData?.frontendName || 'loading...'}:
-                                    </h2>
-                                    <p className="alignRight">
-                                        {this.state.productData?.fullDescription || 'loading...'}
+                        //desktop product page
+                        if (!isMobile) {
+                            return (
+                                <React.Fragment>
+
+                                    {/*cannot use a pageHeader component because the title needs to change with state (and that doesn't work with react class components)*/}
+                                    <h1  className="alignLeft noVerticalSpacing" style={{marginLeft: '12.5%'}}>
+                                        {this.state.productData?.frontendName || 'loading...'}
+                                    </h1>
+                                    <p  className="alignLeft noVerticalSpacing" style={{marginLeft: '17%', color: '#c5abbe'}}>
+                                        {this.state.productData?.subheaderDescription || 'loading...'}
+                                    </p>
+            
+                                    <DividerLine purple={false} />
+            
+                                    {/*product description section*/}
+                                    <div className="intoPurple">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>
+                                                        <h2 className="alignLeft">
+                                                            Our {this.state.productData?.frontendName || 'loading...'}:
+                                                        </h2>
+                                                        <p className="alignRight">
+                                                            {this.state.productData?.fullDescription || 'loading...'}
+                                                        </p>
+            
+                                                        {/*add to basket button*/}
+                                                        <div style={{maxWidth: '75%', marginTop: '50px', marginLeft: 'auto', marginRight: 'auto'}}>
+                                                            <FancyButton title="Add to basket" action={() => {this.addToBasketButtonPressed()}} />
+                                                        </div>
+                                                    </td>
+                                                    <td style={{width: '40%'}}>
+                                                        <SmartImage imagePath="images/image of pc.jpeg" imageClasses="mainImage" />
+                                                        <h2 style={{marginTop: '10px', paddingTop: 0}}>
+                                                            £{this.state.productData?.price || 'loading...'}
+                                                        </h2>
+                                                    </td>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+            
+                                    {this.state.autoNav}
+                                </React.Fragment>
+                            );
+                        }
+
+                        //mobile product page
+                        else {
+                            return (
+                                <React.Fragment>
+
+                                    {/*cannot use a pageHeader component because the title needs to change with state*/}
+                                    <h1 className="alignLeft noVerticalSpacing" style={{marginLeft: '12.5%'}}>
+                                        {this.state.productData?.frontendName || 'loading...'}
+                                    </h1>
+                                    <p className="alignLeft noVerticalSpacing" style={{marginLeft: '17%', color: '#c5abbe'}}>
+                                        {this.state.productData?.subheaderDescription || 'loading...'}
                                     </p>
 
-                                    {/*add to basket button*/}
-                                    <div style={{maxWidth: '75%', marginTop: '50px', marginLeft: 'auto', marginRight: 'auto'}}>
-                                        <FancyButton title="Add to basket" action={() => {this.addToBasketButtonPressed()}} />
-                                    </div>
-                                </td>
-                                <td style={{width: '40%'}}>
-                                    <SmartImage imagePath="images/image of pc.jpeg" imageClasses="mainImage" />
-                                    <h2 style={{marginTop: '10px', paddingTop: 0}}>
-                                        £{this.state.productData?.price || 'loading...'}
-                                    </h2>
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
+                                    <DividerLine purple={false} />
 
-                {this.state.autoNav}
+                                    {/*product description section*/}
+                                    <div className="intoPurple">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>
+                                                        <h2 className="alignRight">
+                                                            Our {this.state.productData?.frontendName || 'loading...'}
+                                                        </h2>
+                                                    </td>
+                                                    <td style={{width: '60%'}}>
+                                                        <SmartImage imagePath="images/image of pc.jpeg" imageClasses="mainImage" />
+                                                        <h2 style={{marginTop: '10px', paddingTop: 0}}>
+                                                            £{this.state.productData?.price || 'loading...'}
+                                                        </h2>
+                                                    </td>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                        <p>
+                                            {this.state.productData?.fullDescription || 'loading...'}
+                                        </p>
+                                        <div style={{paddingBottom: '50px'}}>
+                                            <FancyButton title="Get it" action={() => {this.addToBasketButtonPressed()}} />
+                                        </div>
+                                    </div>
+
+                                    {this.state.autoNav}
+                                </React.Fragment>
+                            );
+                        };
+                    }}
+                </MobileProvider.Consumer>
+
             </React.Fragment>
         );
     };
