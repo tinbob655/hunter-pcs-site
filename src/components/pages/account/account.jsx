@@ -33,7 +33,7 @@ class Account extends Component {
                             paragraph="Create an account with us and unlock the full potential of Hunter PCs. We do not collect any of your personal information as privacy is one of our core values here."
                             left={true}
                             imagePath="images/gamingSetupWIDE2.jpeg"
-                            buttonText="Click here to sign up"
+                            buttonText="Click here to sign up ⟶"
                             buttonAction={() => {
                                 this.startLogInSignUp();
                             }} />
@@ -53,11 +53,11 @@ class Account extends Component {
                     {/*your account section*/}
                     <div>
                         <GenericMarkupSection
-                            heading={`Hello, ${this.context.email}`}
-                            paragraph="Welcome back to your Hunter PCs account and thanks for being a member. You'll get special perks like discounts after checkout and more payment options. If you want to sign out or log into a different account, please use the below button."
+                            heading="Welcome back!"
+                            paragraph={`Hello ${this.context?.email} and welcome back to your Hunter PCs account, thanks for being a member. You'll get special perks like discounts after checkout and more payment options. If you want to sign out or log into a different account, please use the below button.`}
                             left={true}
                             imagePath="images/gamingSetupWIDE2.jpeg"
-                            buttonText="Sign out"
+                            buttonText="Sign out ⟶"
                             buttonAction={() => {
                                 const auth = firebaseInstance.getFirebaseAuth;
                                 signOut(auth).then(() => {
