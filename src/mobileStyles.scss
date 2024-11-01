@@ -63,6 +63,17 @@ div {
         transition-duration: 0.75s;
         transition-timing-function: ease;
     }
+
+    &.popupWrapper {
+        $height: 66vh;
+        $width: 90vw;
+        height: $height;
+        top: (100vh - $height) / 2;
+        width: $width;
+        left: (100vw - $width) / 2;
+        border-radius: 25px;
+        box-shadow: 0 0 20px 0 #75606f;
+    }
 }
 
 span {
@@ -73,6 +84,10 @@ span {
         opacity: 1;
         margin-left: 10%;
     }
+}
+
+input {
+    width: 75%;
 }
 
 video {
