@@ -74,6 +74,14 @@ div {
         border-radius: 25px;
         box-shadow: 0 0 20px 0 #75606f;
     }
+
+    &#logInFormWrapper {
+        transform: translateX(-80vw);
+    }
+
+    &#signUpFormWrapper {
+        transform: translateX(80vw);
+    }
 }
 
 span {

@@ -2,12 +2,15 @@ import React, {Component} from 'react';
 import './loginPopupStyles.scss';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import firebaseInstance from '../../../classes/firebase.js';
+import MobileProvider from '../../../context/mobileContext.jsx';
 
 /**
  * @param {boolean} shown whether the popup is displayed or not
  */
 
 class LoginPopup extends Component {
+
+    static contextType = MobileProvider;
 
     constructor(props) {
         super(props);
@@ -17,7 +20,12 @@ class LoginPopup extends Component {
             shown: this.props.shown,
             popupWrapperClass: '',
             panelOption: 'none',
+            isMobile: this.context,
         };
+    };
+
+    componentDidMount() {
+        this.setState({isMobile: this.context});
     };
 
     componentDidUpdate() {
@@ -32,77 +40,158 @@ class LoginPopup extends Component {
     };
 
     render() {
-        return(
-            <React.Fragment>
-                <div className={`popupWrapper ${this.state.popupWrapperClass}`} id="loginPopupWrapper" style={this.state.shown ? {} : {opacity: 0}} >
-                    <h1 style={{marginBottom: 0, marginTop: '5px'}}>
-                        Join us
-                    </h1>
 
-                    {/*log in or sign up buttons*/}
-                    <table>
-                        <thead>
-                            <tr>
-                                <td style={{borderRight: '5px solid #f2e1ee'}}>
-                                    <button onClick={() => {this.signUpLogInSelector('logIn')}} type="button" >
-                                        <h3>
-                                            Log in
-                                        </h3>
-                                    </button>
-                                </td>
-                                <td>
-                                    <button onClick={() => {this.signUpLogInSelector('signUp')}} type="button" >
-                                        <h3>
-                                            Sign up
-                                        </h3>
-                                    </button>
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
-
-                    {/*log in form section*/}
-                    <div id="logInFormWrapper" className="shown">
-                        <h2>
-                            Log in
-                        </h2>
-                        <form id="logInForm" onSubmit={(event) => {this.logInFormSubmitted(event)}}>
-                            <p className="aboveInput">
-                                Email:
-                            </p>
-                            <input type="email" name="email" placeholder="Email..." required className="popup" />
-                            <p className="aboveInput" style={{marginTop: '30px'}}>
-                                Password:
-                            </p>
-                            <input type="password" name="password" placeholder="Password..." required className="popup" />
-                            <input type="submit" className="submit" value="Submit" />
-                        </form>
+        //desktop login popup
+        if (!this.state.isMobile) {
+            return(
+                <React.Fragment>
+                    <div className={`popupWrapper ${this.state.popupWrapperClass}`} id="loginPopupWrapper" style={this.state.shown ? {} : {opacity: 0}} >
+                        <h1 style={{marginBottom: 0, marginTop: '5px'}}>
+                            Join us
+                        </h1>
+    
+                        {/*log in or sign up buttons*/}
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td style={{borderRight: '5px solid #f2e1ee'}}>
+                                        <button onClick={() => {this.signUpLogInSelector('logIn')}} type="button" >
+                                            <h3>
+                                                Log in
+                                            </h3>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button onClick={() => {this.signUpLogInSelector('signUp')}} type="button" >
+                                            <h3>
+                                                Sign up
+                                            </h3>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+    
+                        {/*log in form section*/}
+                        <div id="logInFormWrapper" className="shown">
+                            <h2>
+                                Log in
+                            </h2>
+                            <form id="logInForm" onSubmit={(event) => {this.logInFormSubmitted(event)}}>
+                                <p className="aboveInput">
+                                    Email:
+                                </p>
+                                <input type="email" name="email" placeholder="Email..." required className="popup" />
+                                <p className="aboveInput" style={{marginTop: '30px'}}>
+                                    Password:
+                                </p>
+                                <input type="password" name="password" placeholder="Password..." required className="popup" />
+                                <input type="submit" className="submit" value="Submit" />
+                            </form>
+                        </div>
+    
+                        {/*sign up form section*/}
+                        <div id="signUpFormWrapper">
+                            <h2>
+                                Sign up
+                            </h2>
+                            <form id="signUpForm" onSubmit={(event) => {this.signUpFormSubmitted(event)}}>
+                                <p className="aboveInput">
+                                    Email:
+                                </p>
+                                <input type="email" name="email" placeholder="Email..." required className="popup" />
+                                <p className="aboveInput" style={{marginTop: '30px'}}>
+                                    Password:
+                                </p>
+                                <input type="password" name="password" placeholder="Password..." required className="popup" />
+                                <p className="aboveInput" style={{marginTop: '30px'}}>
+                                    Confirm Password:
+                                </p>
+                                <input type="password" name="confirmPassword" placeholder="Confirm Password..." required className="popup" />
+                                <input type="submit" className="submit" value="Submit" />
+                            </form>
+                        </div>
                     </div>
+                </React.Fragment>
+            );
+        }
 
-                    {/*sign up form section*/}
-                    <div id="signUpFormWrapper">
-                        <h2>
-                            Sign up
-                        </h2>
-                        <form id="signUpForm" onSubmit={(event) => {this.signUpFormSubmitted(event)}}>
-                            <p className="aboveInput">
-                                Email:
-                            </p>
-                            <input type="email" name="email" placeholder="Email..." required className="popup" />
-                            <p className="aboveInput" style={{marginTop: '30px'}}>
-                                Password:
-                            </p>
-                            <input type="password" name="password" placeholder="Password..." required className="popup" />
-                            <p className="aboveInput" style={{marginTop: '30px'}}>
-                                Confirm Password:
-                            </p>
-                            <input type="password" name="confirmPassword" placeholder="Confirm Password..." required className="popup" />
-                            <input type="submit" className="submit" value="Submit" />
-                        </form>
+        //mobile login popup
+        else {
+            return (
+                <React.Fragment>
+                    <div className={`popupWrapper ${this.state.popupWrapperClass}`} id="loginPopupWrapper" style={this.state.shown ? {} : {opacity: 0}}>
+                        <h1>
+                            Join us
+                        </h1>
+
+                        {/*log in / sign up buttons*/}
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <button onClick={() => {this.signUpLogInSelector('logIn')}} type="button" style={{width: '100%'}}>
+                                            <h3 style={{fontSize: '20px'}}>
+                                                Log in ⟶
+                                            </h3>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button onClick={() => {this.signUpLogInSelector('signUp')}} type="button" style={{width: '100%'}}>
+                                            <h3 style={{fontSize: '20px'}}>
+                                                Sign up ⟶
+                                            </h3>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+
+                        <div style={{width: '75%', height: '5px', backgroundColor: 'white', marginLeft: 'auto', marginRight: 'auto'}}></div>
+
+                        {/*log in form section*/}
+                        <div id="logInFormWrapper" className="shown">
+                            <h2>
+                                Log in
+                            </h2>
+                            <form id="logInForm" onSubmit={(event) => {this.logInFormSubmitted(event)}}>
+                                <p className="aboveInput">
+                                    Email:
+                                </p>
+                                <input type="email" name="email" placeholder="Email..." required className="popup" />
+                                <p className="aboveInput" style={{marginTop: '30px'}}>
+                                    Password:
+                                </p>
+                                <input type="password" name="password" placeholder="Password..." required className="popup" />
+                                <input type="submit" className="submit" value="Submit" />
+                            </form>
+                        </div>
+
+                        {/*sign up form section*/}
+                        <div id="signUpFormWrapper">
+                            <h2>
+                                Sign up
+                            </h2>
+                            <form id="signUpForm" onSubmit={(event) => {this.signUpFormSubmitted(event)}}>
+                                <p className="aboveInput">
+                                    Email:
+                                </p>
+                                <input type="email" name="email" placeholder="Email..." required className="popup" />
+                                <p className="aboveInput" style={{marginTop: '30px'}}>
+                                    Password:
+                                </p>
+                                <input type="password" name="password" placeholder="Password..." required className="popup" />
+                                <p className="aboveInput" style={{marginTop: '30px'}}>
+                                    Confirm Password:
+                                </p>
+                                <input type="password" name="confirmPassword" placeholder="Confirm Password..." required className="popup" />
+                                <input type="submit" className="submit" value="Submit" />
+                            </form>
+                        </div>
                     </div>
-                </div>
-            </React.Fragment>
-        );
+                </React.Fragment>
+            );
+        }
     };
 
     signUpLogInSelector(option) {
