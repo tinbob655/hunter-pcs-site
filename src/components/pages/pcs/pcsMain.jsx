@@ -232,7 +232,7 @@ class PcsMain extends Component {
                     <DividerLine purple={false} />
 
                     {/*button for each model section*/}
-                    <div className="intoPurple">
+                    <div className="intoPurple" style={{paddingBottom: '10px'}}>
                         <h2>
                             For high quality Gaming PCs, you're in the right place!
                         </h2>
