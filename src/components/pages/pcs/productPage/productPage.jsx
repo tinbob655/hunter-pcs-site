@@ -8,6 +8,7 @@ import {updateDoc, doc, increment} from 'firebase/firestore';
 import AuthContext from '../../../../context/authContext.jsx';
 import AutoNav from '../../../multiPageComponents/autoNav.jsx';
 import MobileProvider from '../../../../context/mobileContext.jsx';
+import LoginPopup from '../../../multiPageComponents/popups/loginPopup.jsx';
 
 class ProductPage extends Component {
 
@@ -26,6 +27,7 @@ class ProductPage extends Component {
             productData: null,
             authUID: null,
             autoNav: <></>,
+            loginPopupShown: false,
         };
     };
 
@@ -93,6 +95,8 @@ class ProductPage extends Component {
                                                 </tr>
                                             </thead>
                                         </table>
+
+                                        <LoginPopup shown={this.state.loginPopupShown} />
                                     </div>
             
                                     {this.state.autoNav}
@@ -140,6 +144,8 @@ class ProductPage extends Component {
                                         <div style={{paddingBottom: '50px'}}>
                                             <FancyButton title="Get it" action={() => {this.addToBasketButtonPressed()}} />
                                         </div>
+
+                                        <LoginPopup shown={this.state.loginPopupShown} />
                                     </div>
 
                                     {this.state.autoNav}
@@ -170,7 +176,9 @@ class ProductPage extends Component {
             }, 500);
         }
         else {
-            throw new Error('Log in before adding to basket');
+            
+            //if the user was not logged in, show the login popup
+            this.setState({loginPopupShown: true});
         };
     };
 };
