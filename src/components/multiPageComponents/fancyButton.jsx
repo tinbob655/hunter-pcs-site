@@ -6,6 +6,7 @@ import MobileProvider from '../../context/mobileContext';
  * @param {string} title the main text of the button
  * @param {string} destination the destination for the button starting '/' (if wanted)
  * @param {function} action the action for the button to do (if wanted)
+ * @param {number} widthOverridePercentage the new width of the button  (if wanted)
  */
 
 class FancyButton extends Component {
@@ -22,6 +23,7 @@ class FancyButton extends Component {
             action: this.props.action || null,
             uniqueId: Math.random()*Math.random().toString(),
             isMobile: this.context || undefined,
+            widthOverride: this.props.widthOverridePercentage,
         };
 
         //if neither an action not a destination was supplied, throw an error
@@ -47,7 +49,7 @@ class FancyButton extends Component {
     render() {
         return (
             <React.Fragment>
-                <div className="fancyButtonWrapper" id={`${this.state.uniqueId}Wrapper`} onMouseOver={() => {this.buttonHovered()}} onMouseLeave={() => {this.buttonUnhovered()}}>
+                <div className="fancyButtonWrapper" id={`${this.state.uniqueId}Wrapper`} onMouseOver={() => {this.buttonHovered()}} onMouseLeave={() => {this.buttonUnhovered()}} style={this.state.widthOverride ? {width: `${this.state.widthOverride}%`} : {}}>
                     {this.state.action ? (
                         <React.Fragment>
 
