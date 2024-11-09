@@ -303,7 +303,7 @@ class Basket extends Component {
                                                         {/*the user has items in their basket and is logged in, show the items*/}
                                                         {this.renderBasketItemsMarkup()}
     
-                                                        <DividerLine purple={false} />
+                                                        <div style={{height: '5px', width: '75%', margin: 'auto', marginTop: '2.25vh', marginBottom: '2.25vh', backgroundColor: 'white'}} ></div>
     
                                                         {/*total basket cost*/}
                                                         <p>
