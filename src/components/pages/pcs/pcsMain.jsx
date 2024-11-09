@@ -58,7 +58,7 @@ class PcsMain extends Component {
                 //add the HTML to the array
                 fancyButtonsHTML.push(
                     <React.Fragment>
-                        <FancyButton title={frontendProductName} action={() => {
+                        <FancyButton widthOverridePercentage={85} title={frontendProductName} action={() => {
                             sessionStorage.setItem('product', product);
                             this.setState({
                                 autoNav: <AutoNav destination={'/productPage'} />

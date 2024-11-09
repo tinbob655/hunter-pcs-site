@@ -121,13 +121,13 @@ class Home extends Component {
                             <thead>
                                 <tr>
                                     <td>
-                                        <FancyButton title="Gaming" destination="/pcsMain" />
+                                        <FancyButton title="Gaming" destination="/pcsMain" widthOverridePercentage={85} />
                                     </td>
                                     <td>
-                                        <FancyButton title="Prebuilt" destination="/pcsMain" />
+                                        <FancyButton title="Prebuilt" destination="/pcsMain" widthOverridePercentage={85} />
                                     </td>
                                     <td>
-                                        <FancyButton title="Custom" destination='/customPCs' />
+                                        <FancyButton title="Custom" destination='/customPCs' widthOverridePercentage={85} />
                                     </td>
                                 </tr>
                             </thead>
