@@ -27,8 +27,15 @@ class FirestoreBasket {
         //only save if data exists
         if (data) {
 
-            //save the data to the class
-            this.#basketItems = data;
+            //only allow saving if data is a map (object)
+            if (typeof(data) === 'object') {
+                
+                //save the data to the class
+                this.#basketItems = data;
+            }
+            else {
+                throw new Error('Basket data is not a map (object)');
+            };
         }
         else {
             throw new Error('Could not fetch basket data');

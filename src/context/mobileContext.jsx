@@ -20,6 +20,14 @@ class MobileProvider extends Component {
         };
     };
 
+    componentDidUpdate() {
+
+        //make sure that isMobile is always a Boolean
+        if (typeof(this.state.isMobile) != 'boolean') {
+            this.setState({isMobile: window.innerWidth >= window.innerHeight ? false : true});
+        };
+    };
+
     componentDidMount() {
         //update the mobile state when the window is resized
         window.onresize = () => {

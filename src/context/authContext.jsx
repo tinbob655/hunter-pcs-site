@@ -20,12 +20,17 @@ class AuthProvider extends Component {
 
         //when the firebase auth state changes, update this class' state and the global context
         onAuthStateChanged(auth, (user) => {
-            this.setState({
-                user: user,
-            });
 
-            //save the auth state to session storage (in case of page refresh)
-            sessionStorage.setItem('auth', JSON.stringify(user));
+            //make sure user is of the correct type
+            if (typeof(user) === 'object') {
+                this.setState({
+                    user: user,
+                });
+    
+                //save the auth state to session storage (in case of page refresh)
+                sessionStorage.setItem('auth', JSON.stringify(user));
+            }
+            else throw new Error('User was not an object');
         });
     };
 
