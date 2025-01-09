@@ -101,13 +101,13 @@ class LoginPopup extends Component {
                                 </p>
                                 <input type="email" name="email" placeholder="Email..." required className="popup" />
                                 <p className="aboveInput" style={{marginTop: '30px'}}>
-                                    Password:
+                                    Create password:
                                 </p>
-                                <input type="password" name="password" placeholder="Password..." required className="popup" />
+                                <input type="password" name="password" placeholder="Create password..." required className="popup" />
                                 <p className="aboveInput" style={{marginTop: '30px'}}>
-                                    Confirm Password:
+                                    Confirm  new password:
                                 </p>
-                                <input type="password" name="confirmPassword" placeholder="Confirm Password..." required className="popup" />
+                                <input type="password" name="confirmPassword" placeholder="Confirm new password..." required className="popup" />
                                 <input type="submit" className="submit" value="Submit" />
                             </form>
                         </div>
