@@ -411,6 +411,11 @@ class Basket extends Component {
             purchaseName += ` (${percentageDiscount}% discount applied)`;
         };
 
+        //make sure the price is above 30p as this is the stripe minimum
+        if (price < 0.3) {
+            throw new Error('Price is too small (needs to be above 30p)');
+        };
+
         //make a stripe session
         const stripe = require('stripe')(process.env.REACT_APP_STRIPE_SK);
         const session = await stripe.checkout.sessions.create({

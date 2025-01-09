@@ -99,6 +99,12 @@ class FirestoreBasket {
             if (Object.keys(this.#prices).includes(itemName)) {
     
                 //the item name is valid
+                //make sure that the total cost of the items in the user's basket is not greater than the maximum stripe cost
+                if (this.getTotalBasketCost() >= 99999.99) {
+
+                    //the basket is past the max size, clear it
+                    this.resetBasket();
+                };
                 //add the items to the user's basket
                 const firestore = firebaseInstance.getFirebaseFirestore
                 updateDoc(doc(firestore, 'baskets', this.#uid), {
