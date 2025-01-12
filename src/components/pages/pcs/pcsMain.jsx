@@ -19,8 +19,8 @@ class PcsMain extends Component {
         //an auto nav is required for navigation to the product page as params are required to be passed in (and it is not being used in the usual sense of a component, rather a page)
         this.state = {
             autoNav: <></>,
-            products: ['solid', 'strong', 'powerful', 'supreme', 'dominant'],
-            fancyButtonsHTML: [<></>]*5,
+            products: ['solid', 'strong', 'powerful', 'supreme', 'dominant', 'almighty'],
+            fancyButtonsHTML: [<></>]*6,
             isMobile: this.context,
         };
     };
@@ -126,6 +126,13 @@ class PcsMain extends Component {
                                     </td>
                                     <td>
                                         {this.state.fancyButtonsHTML[4]}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colSpan={2}>
+                                        <div style={{width: '50%', marginLeft: 'auto', marginRight: 'auto'}}>
+                                            {this.state.fancyButtonsHTML[5]}
+                                        </div>
                                     </td>
                                 </tr>
                             </thead>
