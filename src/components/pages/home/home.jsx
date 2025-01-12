@@ -19,13 +19,37 @@ class Home extends Component {
         this.state = {
             gameplayVideoURL: '',
             isMobile: false,
+            preOrderTime: {
+                days: 0,
+                hours: 0,
+                minutes: 0,
+                seconds: 0,
+            }
         };
-
     };
 
     async componentDidMount() {
 
-        this.setState({isMobile: this.context});
+        //TEMPORARY
+        //get the time left until the NVIDIA 50 series gpus are released
+        const releaseDate = new Date('January 30, 2025, 15:00');
+        setInterval(() => {
+            const currentDate = new Date();
+            const timeLeft = new Date(releaseDate - currentDate);
+            this.setState({
+                preOrderTime: {
+                    days: timeLeft.getDate() -1,
+                    hours: timeLeft.getHours(),
+                    minutes: timeLeft.getMinutes(),
+                    seconds: timeLeft.getSeconds(),
+                },
+            });
+        }, 1000);
+
+        //save the date (as well as context) to state
+        this.setState({
+            isMobile: this.context,
+        });
 
         this.loadVideo();
 
@@ -56,7 +80,7 @@ class Home extends Component {
                 await delay(500);
                 index++;
             };
-        }
+        };
     };
 
     componentDidUpdate() {
@@ -113,6 +137,35 @@ class Home extends Component {
                         </table>
                     </div>
     
+                    <DividerLine />
+
+                    {/*TEMPORARY NVIDIA 50 SERIES SECTION*/}
+                    <div>
+                        <h1 className="alignRight">
+                            New! Get ready for NVIDIA's 50 series GPUs
+                        </h1>
+                        <p className="alignLeft">
+                            With more processing power than ever before, NVIDIA's new GPU lineup will be available from the 30th of January. Get in first by pre-ordering one of our next-gen models, perfectly optimised for the new cards.
+                        </p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <FancyButton action={() => {
+                                            sessionStorage.setItem('product', 'almighty');
+                                            window.location.href += 'productPage';
+                                        }} title="Pre-order now" />
+                                    </td>
+                                    <td>
+                                        <p>
+                                            Only {this.state.preOrderTime.days} days, {this.state.preOrderTime.hours} hours, {this.state.preOrderTime.minutes} minutes and {this.state.preOrderTime.seconds} seconds left to place your pre-order
+                                        </p>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
                     <DividerLine />
     
                     {/*three fancy buttons section*/}
