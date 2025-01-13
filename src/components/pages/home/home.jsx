@@ -304,7 +304,7 @@ class Home extends Component {
                         <FancyButton title="Custom" destination='/customPCs' />
                     </div>
 
-                    <DividerLine purple={true} />
+                    <DividerLine purple={true} key={this.state.isMobile}/>
 
                     {/*perfect for gaming section*/}
                     <div className="purple" style={{paddingBottom: '10px'}}>
@@ -332,7 +332,7 @@ class Home extends Component {
                         </video>
                     </div>
 
-                    <DividerLine purple={false} />
+                    <DividerLine purple={false} key={this.state.isMobile} />
 
                     {/*design your own pc section*/}
                     <div>
