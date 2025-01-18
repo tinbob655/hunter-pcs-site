@@ -135,6 +135,7 @@ class FirestoreBasket {
                 powerfulPc: 0,
                 supremePc: 0,
                 dominantPc: 0,
+                almightyPc: 0,
             });
         }
         else {
