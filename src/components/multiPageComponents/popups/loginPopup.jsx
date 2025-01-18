@@ -22,6 +22,7 @@ class LoginPopup extends Component {
             popupWrapperClass: '',
             panelOption: 'none',
             isMobile: this.context,
+            errorMessage: '',
         };
     };
 
@@ -72,6 +73,10 @@ class LoginPopup extends Component {
                                 </tr>
                             </thead>
                         </table>
+
+                        <p style={this.state.errorMessage.length > 0 ? {visibility: 'visible', color: 'red'} : {visibility: 'hidden'}} key={this.state.errorMessage} >
+                            {this.state.errorMessage}
+                        </p>
     
                         {/*log in form section*/}
                         <div id="logInFormWrapper" className="shown">
@@ -147,6 +152,10 @@ class LoginPopup extends Component {
                                 </tr>
                             </thead>
                         </table>
+                        
+                        <p style={this.state.errorMessage.length > 0 ? {visibility: 'visible', color: 'red'} : {visibility: 'hidden'}} key={this.state.errorMessage} >
+                            {this.state.errorMessage}
+                        </p>
 
                         <div style={{width: '75%', height: '5px', backgroundColor: 'white', marginLeft: 'auto', marginRight: 'auto'}}></div>
 
@@ -231,7 +240,16 @@ class LoginPopup extends Component {
         const email = event.currentTarget.email.value;
         const password = event.currentTarget.password.value;
 
-        await signInWithEmailAndPassword(auth, email, password);
+        try {
+
+            await signInWithEmailAndPassword(auth, email, password);
+        }
+        catch(err) {
+            if (err.code == 'auth/invalid-credential') {
+                this.setState({errorMessage: 'Incorrect email or password'});
+                throw new Error(err);
+            };
+        };
 
         //if there were no errors, refresh the page
         window.location.reload();
