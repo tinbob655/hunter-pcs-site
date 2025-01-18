@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './loginPopupStyles.scss';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { setDoc, doc } from 'firebase/firestore';
 import firebaseInstance from '../../../classes/firebase.js';
 import MobileProvider from '../../../context/mobileContext.jsx';
 
@@ -251,7 +252,20 @@ class LoginPopup extends Component {
         };
 
         //create the user's account
-        await createUserWithEmailAndPassword(auth, email, password1);
+        const userCred = await createUserWithEmailAndPassword(auth, email, password1);
+        
+        //create a basket for the new user, with no items in to start with
+        const firestore = firebaseInstance.getFirebaseFirestore;
+        const uid = userCred.user.uid;
+        alert(uid)
+        await setDoc(doc(firestore, 'baskets', uid), {
+            solidPc: 0,
+            strongPc: 0,
+            powerfulPc: 0,
+            supremePc: 0,
+            dominantPc: 0,
+            almightyPc: 0,
+        });
 
         //if there were no errors, refresh the page
         window.location.reload();
