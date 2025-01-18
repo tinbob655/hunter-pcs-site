@@ -10,6 +10,7 @@ class AddressPopup extends Component {
         this.state = {
             shown: this.props.shown,
             closeFunc: this.props.closeFunc,
+            invalidMessage: '',
         };
     };
 
@@ -28,6 +29,10 @@ class AddressPopup extends Component {
                     <h1>
                         Where do you want your PC?
                     </h1>
+
+                    <p style={this.state.invalidMessage.length > 0 ? {visibility: 'visible', color: 'red'} : {visibility: 'hidden'}} key={this.state.invalidMessage}>
+                        {this.state.invalidMessage}
+                    </p>
 
                     {/*address form*/}
                     <form id="addressForm" onSubmit={(event) => {this.addressFormSubmitted(event)}}>
@@ -65,12 +70,14 @@ class AddressPopup extends Component {
         //make sure the postcode is 4-7 characters (- the space)
         let postcodeNoSpace = postcode.replace(' ', '');
         if (postcodeNoSpace.length > 7 || postcodeNoSpace.length < 4) {
+            this.setState({invalidMessage: 'Invalid postcode, please try again'})
             throw new Error('Invalid postcode length');
         };
 
         //make sure the postcode only consists of numbers and letters
         const regex = /^[A-Za-z0-9]*$/;
         if (!regex.test(postcodeNoSpace)) {
+            this.setState({invalidMessage: 'Invalid postcode, please try again'})
             throw new Error('Postcode may only contain numbers and letters');
         };
 
