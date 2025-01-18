@@ -275,7 +275,6 @@ class LoginPopup extends Component {
         //create a basket for the new user, with no items in to start with
         const firestore = firebaseInstance.getFirebaseFirestore;
         const uid = userCred.user.uid;
-        alert(uid)
         await setDoc(doc(firestore, 'baskets', uid), {
             solidPc: 0,
             strongPc: 0,
