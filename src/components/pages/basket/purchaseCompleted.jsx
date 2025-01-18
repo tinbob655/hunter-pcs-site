@@ -51,12 +51,12 @@ class PurchaseCompleted extends Component {
             const deliveryAddress = sessionStorage.getItem('deliveryAddress');
     
             //send a message to discord to indicate that a purchase has been made
-            // this.state.discord.sendMessage(
-            //     `New purchase made by user with uid: ${this.context.uid} and email address: ${this.context.email}
-            //     The product(s) purchased: ${basketData}
-            //     The order id: ${orderID}
-            //     The delivery address: ${deliveryAddress}`
-            // );
+            this.state.discord.sendMessage(
+                `New purchase made by user with uid: ${this.context.uid} and email address: ${this.context.email}
+                The product(s) purchased: ${basketData}
+                The order id: ${orderID}
+                The delivery address: ${deliveryAddress}`
+            );
 
             //also empty the user's basket
             userBasket.resetBasket();
