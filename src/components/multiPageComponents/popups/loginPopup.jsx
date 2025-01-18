@@ -266,6 +266,7 @@ class LoginPopup extends Component {
 
         //make sure the 2 passwords match
         if (password1 != password2) {
+            this.setState({errorMessage: 'Passwords do not match, please try again'});
             throw new Error('Passwords do not match, please try again');
         };
 
