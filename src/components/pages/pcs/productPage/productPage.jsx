@@ -82,9 +82,21 @@ class ProductPage extends Component {
                                                         </p>
             
                                                         {/*add to basket button*/}
-                                                        <div style={{maxWidth: '75%', marginTop: '50px', marginLeft: 'auto', marginRight: 'auto'}}>
-                                                            <FancyButton title="Add to basket" action={() => {this.addToBasketButtonPressed()}} />
-                                                        </div>
+                                                        {this.state.productData?.frontendName == 'Almighty PC' ? (
+                                                            <React.Fragment>
+                                                                {/*if the product is an almighty pc, tell the user it is out of stock
+                                                                NOTE THAT THIS IS TEMPORARY*/}
+                                                                <h2 style={{fontSize: '30px', marginTop: '50px'}}>
+                                                                    This product is out of stock at the moment. Please check again later.
+                                                                </h2>
+                                                            </React.Fragment>
+                                                        ) : (
+                                                            <React.Fragment>
+                                                                <div style={{maxWidth: '75%', marginTop: '50px', marginLeft: 'auto', marginRight: 'auto'}}>
+                                                                    <FancyButton title="Add to basket" action={() => {this.addToBasketButtonPressed()}} />
+                                                                </div>
+                                                            </React.Fragment>
+                                                        )}
                                                     </td>
                                                     <td style={{width: '40%'}}>
                                                         <SmartImage imagePath="images/image of pc.jpeg" imageClasses="mainImage" />
@@ -141,9 +153,21 @@ class ProductPage extends Component {
                                         <p>
                                             {this.state.productData?.fullDescription || 'loading...'}
                                         </p>
-                                        <div style={{paddingBottom: '50px'}}>
-                                            <FancyButton title="Get it" action={() => {this.addToBasketButtonPressed()}} />
-                                        </div>
+                                        {this.state.productData?.frontendName == 'Almighty PC' ? (
+                                            <React.Fragment>
+                                                {/*if the product is an almighty pc, tell the user it is out of stock
+                                                NOTE THAT THIS IS TEMPORARY*/}
+                                                <h2 style={{fontSize: '30px', marginTop: '50px', marginBottom: '0'}}>
+                                                    This product is out of stock at the moment. Please check again later.
+                                                </h2>
+                                            </React.Fragment>
+                                        ) : (
+                                            <React.Fragment>
+                                                <div style={{maxWidth: '75%', marginTop: '50px', marginLeft: 'auto', marginRight: 'auto'}}>
+                                                    <FancyButton title="Add to basket" action={() => {this.addToBasketButtonPressed()}} />
+                                                </div>
+                                            </React.Fragment>
+                                        )}
 
                                         <LoginPopup shown={this.state.loginPopupShown} />
                                     </div>
@@ -163,6 +187,11 @@ class ProductPage extends Component {
 
         //only add to the basket if the user is logged in
         if (this.state.authUID) {
+
+            //TEMPORARY WHILE NVIDIA 5090 OUT OF STOCK: if they try to purchase an almighty pc, do not allow them to#
+            if (this.state.productData.frontendName == 'Almighty PC') {
+                throw new Error('This product is out of stock. Please try again later.');
+            };
 
             //the user was logged in, add the item to their basket
             const firestore = firebaseInstance.getFirebaseFirestore;

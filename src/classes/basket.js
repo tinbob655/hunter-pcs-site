@@ -105,6 +105,12 @@ class FirestoreBasket {
                     //the basket is past the max size, clear it
                     this.resetBasket();
                 };
+
+                //TEMPORARY: the almighty pc is currently out of stock, do not allow a user to add it to the basket
+                if (itemName == 'almightyPc') {
+                    throw new Error('This product is currently out of stock. Please check again later.');
+                };
+                
                 //add the items to the user's basket
                 const firestore = firebaseInstance.getFirebaseFirestore
                 updateDoc(doc(firestore, 'baskets', this.#uid), {
