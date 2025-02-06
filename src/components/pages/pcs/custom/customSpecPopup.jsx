@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import AuthProvider from '../../../../context/authContext.jsx';
+import firebaseInstance from '../../../../classes/firebase.js';
+import {setDoc, doc, getDoc, updateDoc, deleteField} from 'firebase/firestore';
 
 /**
  * @param {function} closeFunc will fire when the popup is closed
@@ -7,12 +10,32 @@ import React, {Component} from 'react';
 
 class CustomSpecPopup extends Component {
 
+    static contextType = AuthProvider;
+
     constructor(props) {
         super(props);
 
         this.state = {
             shown: this.props.shown,
             closeFunc: this.props.closeFunc,
+            uid: this.context?.uid,
+        };
+    };
+
+    async componentDidMount() {
+        
+        //set the uid
+        this.setState({uid: this.context?.uid});
+
+        //attempt to resume a previous custom PC form session if it is available in the database
+        if (this.context) {
+            const firestore = firebaseInstance.getFirebaseFirestore;
+            const previousSession = (await getDoc(doc(firestore, 'baskets', this.context?.uid)))?.data();
+            if (previousSession) {
+
+                //set the default values in the form as the values from the previous session
+                this.setState({defaultValues: previousSession.customPC});
+            };
         };
     };
 
@@ -30,7 +53,7 @@ class CustomSpecPopup extends Component {
                 <h1>
                     Your Spec
                 </h1>
-                <form id="customSpecForm" onSubmit={(event) => {this.customSpecFormSubmitted(event);}}>
+                <form id="customSpecForm" onSubmit={(event) => {this.customSpecFormSubmitted(event);}} onChange={(event) => {this.customPCFormUpdated(event)}}>
                     {this.getCustomSpecForm()}
                 </form>
             </div>
@@ -47,11 +70,11 @@ class CustomSpecPopup extends Component {
 
         parts.forEach((part) => {
             specFormHTML.push(
-                <React.Fragment>
+                <React.Fragment key={this.state.defaultValues}>
                     <p className="aboveInput">
                         {part[0]}:
                     </p>
-                    <input type="text" name={part[1]} placeholder={`${part[0]}...`} required className="popup" />
+                    <input type="text" name={part[1]} placeholder={`${part[0]}...`} required className="popup" defaultValue={this.state.defaultValues ? this.state.defaultValues[part[1]] : ''} />
                 </React.Fragment>
             );
         });
@@ -66,7 +89,7 @@ class CustomSpecPopup extends Component {
     customSpecFormSubmitted(event) {
         event.preventDefault();
 
-        //dave the form data to sessionStorage
+        //save the form data to sessionStorage
         const currentTarget = event.currentTarget;
         const formData = {
             GPU: currentTarget.GPU.value,
@@ -80,9 +103,35 @@ class CustomSpecPopup extends Component {
             operatingSystem: currentTarget.operatingSystem.value,
         };
 
-        sessionStorage.setItem('customSpec', JSON.stringify(formData));
+        //wipe any saved custom PC from firebase
+        const firestore = firebaseInstance.getFirebaseFirestore;
+        updateDoc(doc(firestore, 'basket', this.state.uid), {
+            customPC: deleteField(),
+        }).finally(() => {
+            sessionStorage.setItem('customSpec', JSON.stringify(formData));
+        });
 
-        this.state.closeFunc();
+    };
+
+    customPCFormUpdated(event) {
+        event.preventDefault();
+
+        //dave a map of the form data to firestore in case it needs to be resumed later
+        const currentTarget = event.currentTarget;
+        const firestore = firebaseInstance.getFirebaseFirestore;
+        const formData = {
+            GPU: currentTarget.GPU.value,
+            CPU: currentTarget.CPU.value,
+            memory: currentTarget.memory.value,
+            storage: currentTarget.storage.value,
+            motherboard: currentTarget.motherboard.value,
+            cooler: currentTarget.cooler.value,
+            case: currentTarget.case.value,
+            powerSupply: currentTarget.powerSupply.value,
+            operatingSystem: currentTarget.operatingSystem.value,
+        };
+
+        setDoc(doc(firestore, 'baskets', this.state.uid), {customPC: formData}, {merge: true});
     };
 };
 
