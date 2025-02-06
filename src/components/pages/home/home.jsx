@@ -138,35 +138,6 @@ class Home extends Component {
                     </div>
     
                     <DividerLine />
-
-                    {/*TEMPORARY NVIDIA 50 SERIES SECTION*/}
-                    <div>
-                        <h1 className="alignRight">
-                            New! Get ready for NVIDIA's 50 series GPUs
-                        </h1>
-                        <p className="alignLeft">
-                            With more processing power than ever before, NVIDIA's new GPU lineup will be available from the 30th of January. Get in first by pre-ordering one of our next-gen models, perfectly optimised for the new cards.
-                        </p>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td>
-                                        <FancyButton action={() => {
-                                            sessionStorage.setItem('product', 'almighty');
-                                            window.location.href += 'productPage';
-                                        }} title="Pre-order now" />
-                                    </td>
-                                    <td>
-                                        <p>
-                                            Only {this.state.preOrderTime.days} days, {this.state.preOrderTime.hours} hours, {this.state.preOrderTime.minutes} minutes and {this.state.preOrderTime.seconds} seconds left to place your pre-order
-                                        </p>
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-
-                    <DividerLine />
     
                     {/*three fancy buttons section*/}
                     <div className="intoPurple">
