@@ -193,6 +193,14 @@ class PcsMain extends Component {
                                         <p style={{marginTop: 0, marginBottom: '20px'}} className="alignRight">
                                             Our dominant model is curated for gamers with a passion for quality, easily running any game on max settings in 4K resolution without breaking a sweat. For dominating the competition, this is the perfect solution.
                                         </p>
+
+                                        {/*almighty*/}
+                                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignLeft">
+                                            Almighty:
+                                        </h2>
+                                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignLeft">
+                                            Our almighty model is engineered to perfection, with the best hardware from the best manufacturers. Featuring NVIDIA's 5090, there isn't a challenge you can throw at this PC that it won't beat.
+                                        </p>
                                     </td>
                                     <td>
                                         <SmartImage imageClasses="mainImage" imagePath="images/gamingPcVTall.png" imageStyles={{maxHeight: 'unset'}} />
@@ -306,6 +314,14 @@ class PcsMain extends Component {
                         </h2>
                         <p style={{marginTop: 0, marginBottom: '20px'}} className="alignRight">
                             Our dominant model is curated for gamers with a passion for quality, easily running any game on max settings in 4K resolution without breaking a sweat. For dominating the competition, this is the perfect solution.
+                        </p>
+
+                        {/*almighty*/}
+                        <h2 style={{marginBottom: 0, paddingBottom: 0}} className="alignLeft">
+                            Almighty:
+                        </h2>
+                        <p style={{marginTop: 0, marginBottom: '20px'}} className="alignLeft">
+                            Our almighty model is engineered to perfection, with the best hardware from the best manufacturers. Featuring NVIDIA's 5090, there isn't a challenge you can throw at this PC that it won't beat.
                         </p>
                     </div>
 
