@@ -150,7 +150,7 @@ class PcsMain extends Component {
                                         <h2 className="alignLeft">
                                             Pick your perfect model
                                         </h2>
-                                        <p>
+                                        <p style={{maxWidth: '75%'}}>
                                             We understand it can be hard to select the ideal PC from our range of prebuilt PCs. Need help? Look no further:
                                         </p>
                                         
