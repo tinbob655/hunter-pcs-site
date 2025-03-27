@@ -68,9 +68,13 @@ class FirestoreBasket {
     
             //repeat for each item in the user's basket
             Object.keys(this.#basketItems).forEach((item) => {
-    
-                //add the quantity of the item multiplied by its cost to totalCost
-                totalCost += (this.#basketItems[item] * this.#prices[item]);
+                
+                //do not calculate a cost for customPCs are these require the verification of a builder
+                if (item != 'customPC') {
+                    
+                    //add the quantity of the item multiplied by its cost to totalCost
+                    totalCost += (this.#basketItems[item] * this.#prices[item]);
+                };
             });
             return totalCost;
         }
